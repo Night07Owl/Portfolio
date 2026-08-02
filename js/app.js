@@ -114,15 +114,7 @@ function setupCommitGrid(){
   function clearFace(){ cells.forEach(c => { c.style.opacity = .18; }); }
   function on(x,y){ cells[y*11+x].style.opacity = 1; }
 
-  const faces = {
-    smile(){
-      clearFace();
-      on(2,2); on(3,2); on(2,3); on(3,3);
-      on(7,2); on(8,2); on(7,3); on(8,3);
-      on(3,7); on(4,8); on(5,8); on(6,8); on(7,7);
-    },
-
-    function drawSprite(sprite){
+  function drawSprite(sprite){
 
     clearFace();
 
@@ -142,63 +134,32 @@ function setupCommitGrid(){
 
 const sprites={
 
-ghost:[
-"...#####...",
-"..#######..",
-".##.#.#.##.",
-".##.....##.",
-".##.#.#.##.",
-".##.....##.",
-".#########.",
-".##.....##.",
-".#.#.#.#.#.",
-"...#...#...",
-"..........."
-],
-
-wave1:[
-"..##.......",
-".####......",
-"..##.......",
+ghost: [
 "...#####...",
 "..#.....#..",
-".#..##...#.",
 ".#.......#.",
+"#..##.##..#",
+"#..##.##..#",
+"#.........#",
+"#..#...#..#",
+"#...###...#",
+"##.......##",
 ".#..###..#.",
-"..#######..",
-".....#.....",
-"....###...."
+"..##...##.."
 ],
 
-wave2:[
-".....##....",
-"....####...",
-".....##....",
-"...#####...",
-"..#.....#..",
-".#..##...#.",
-".#.......#.",
-".#..###..#.",
-"..#######..",
-".....#.....",
-"....###...."
-],
-
-film:[
-"###########",
-"#.#.#.#.#.#",
-"###########",
-"#.........#",
-"###########",
-"#.#.#.#.#.#",
-"###########",
-"#.........#",
-"###########",
-"#.#.#.#.#.#",
-"###########"
-]
 
 };
+
+  const faces = {
+    smile(){
+      clearFace();
+      on(2,2); on(3,2); on(2,3); on(3,3);
+      on(7,2); on(8,2); on(7,3); on(8,3);
+      on(3,7); on(4,8); on(5,8); on(6,8); on(7,7);
+    },
+
+
 
 
     neutral(){
@@ -239,7 +200,7 @@ film:[
     grid.classList.add('smile');
     faces.smile();
     animateFace();
-  }, 2000);
+  }, 600);
 
   function animateFace(){
 
@@ -250,28 +211,6 @@ film:[
         ()=>faces.wink(),
 
         ()=>drawSprite(sprites.ghost),
-
-        ()=>{
-
-            let frame=0;
-
-            const wave=setInterval(()=>{
-
-                drawSprite(frame%2===0 ? sprites.wave1 : sprites.wave2);
-
-                frame++;
-
-                if(frame==8){
-
-                    clearInterval(wave);
-
-                }
-
-            },250);
-
-        },
-
-        ()=>drawSprite(sprites.film),
 
         ()=>faces.grin()
 
@@ -287,7 +226,7 @@ film:[
 
         sequence[index]();
 
-    },2500);
+    },2000);
 
 }
 }
