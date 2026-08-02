@@ -121,6 +121,86 @@ function setupCommitGrid(){
       on(7,2); on(8,2); on(7,3); on(8,3);
       on(3,7); on(4,8); on(5,8); on(6,8); on(7,7);
     },
+
+    function drawSprite(sprite){
+
+    clearFace();
+
+    sprite.forEach((row,y)=>{
+
+        [...row].forEach((pixel,x)=>{
+
+            if(pixel=="#"){
+                on(x,y);
+            }
+
+        });
+
+    });
+
+}
+
+const sprites={
+
+ghost:[
+"...#####...",
+"..#######..",
+".##.#.#.##.",
+".##.....##.",
+".##.#.#.##.",
+".##.....##.",
+".#########.",
+".##.....##.",
+".#.#.#.#.#.",
+"...#...#...",
+"..........."
+],
+
+wave1:[
+"..##.......",
+".####......",
+"..##.......",
+"...#####...",
+"..#.....#..",
+".#..##...#.",
+".#.......#.",
+".#..###..#.",
+"..#######..",
+".....#.....",
+"....###...."
+],
+
+wave2:[
+".....##....",
+"....####...",
+".....##....",
+"...#####...",
+"..#.....#..",
+".#..##...#.",
+".#.......#.",
+".#..###..#.",
+"..#######..",
+".....#.....",
+"....###...."
+],
+
+film:[
+"###########",
+"#.#.#.#.#.#",
+"###########",
+"#.........#",
+"###########",
+"#.#.#.#.#.#",
+"###########",
+"#.........#",
+"###########",
+"#.#.#.#.#.#",
+"###########"
+]
+
+};
+
+
     neutral(){
       clearFace();
       on(2,2); on(3,2); on(2,3); on(3,3);
@@ -162,23 +242,54 @@ function setupCommitGrid(){
   }, 2000);
 
   function animateFace(){
-    let current = 'smile';
 
-    setInterval(() => {
-      const r = Math.random();
-      if (r < .55) current = 'smile';
-      else if (r < .72) current = 'neutral';
-      else if (r < .88) current = 'grin';
-      else current = 'wink';
-      faces[current]();
-    }, 1300);
+    const sequence=[
 
-    setInterval(() => {
-      const old = current;
-      faces.blink();
-      setTimeout(() => { faces[old](); }, 150);
-    }, 4500);
-  }
+        ()=>faces.smile(),
+
+        ()=>faces.wink(),
+
+        ()=>drawSprite(sprites.ghost),
+
+        ()=>{
+
+            let frame=0;
+
+            const wave=setInterval(()=>{
+
+                drawSprite(frame%2===0 ? sprites.wave1 : sprites.wave2);
+
+                frame++;
+
+                if(frame==8){
+
+                    clearInterval(wave);
+
+                }
+
+            },250);
+
+        },
+
+        ()=>drawSprite(sprites.film),
+
+        ()=>faces.grin()
+
+    ];
+
+    let index=0;
+
+    sequence[0]();
+
+    setInterval(()=>{
+
+        index=(index+1)%sequence.length;
+
+        sequence[index]();
+
+    },2500);
+
+}
 }
 
 // ---- Protosem rail (week 0 - 20) ----
