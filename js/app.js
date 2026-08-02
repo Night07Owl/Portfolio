@@ -79,43 +79,6 @@ let ticking = false;
 let navButtons = [];
 let sectionEls = [];
 
-function updateOnScroll(){
-  const headerOffset = 90;
-
-  const featured = document.getElementById('page-featured');
-  const protosem = document.getElementById('page-protosem');
-  const edits = document.getElementById('page-edits');
-  if (!featured || !protosem || !edits) return;
-
-  // Start transition before Protosem
-  const transitionStart = featured.offsetTop + featured.offsetHeight * 0.35;
-  const transitionEnd = protosem.offsetTop;
-
-  if (window.scrollY < transitionStart) {
-    applyTheme(THEMES.light);
-  }
-  else if (window.scrollY < transitionEnd) {
-    let t = (window.scrollY - transitionStart) / (transitionEnd - transitionStart);
-    t = Math.max(0, Math.min(t, 1));
-    applyTheme(lerpTheme(THEMES.light, THEMES.protosem, t));
-  }
-  else if (window.scrollY < edits.offsetTop) {
-    applyTheme(THEMES.protosem);
-  }
-  else {
-    let t = (window.scrollY - edits.offsetTop) / window.innerHeight;
-    t = Math.max(0, Math.min(t, 1));
-    applyTheme(lerpTheme(THEMES.protosem, THEMES.edits, t));
-  }
-
-  // ---- active nav tab, based on which section holds the header line ----
-  const line = window.scrollY + headerOffset + 1;
-  let activeIdx = 0;
-  sectionEls.forEach((el, idx) => { if (el && el.offsetTop <= line) activeIdx = idx; });
-  navButtons.forEach((b, idx) => b.classList.toggle('active', idx === activeIdx));
-
-  ticking = false;
-}
 
 window.addEventListener('scroll', () => {
   if (!ticking){ requestAnimationFrame(updateOnScroll); ticking = true; }
@@ -310,3 +273,186 @@ async function loadPartials(){
 document.getElementById('year').textContent = new Date().getFullYear();
 setupParallax();
 loadPartials();
+
+const cursor = document.getElementById("cursor");
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+let x = mouseX;
+let y = mouseY;
+
+window.addEventListener("mousemove", (e)=>{
+
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+});
+
+function animate(){
+
+    x += (mouseX - x) * 0.18;
+    y += (mouseY - y) * 0.18;
+
+    cursor.style.left = x + "px";
+    cursor.style.top = y + "px";
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+
+// -----------------------
+// PAGE COLORS
+// -----------------------
+
+const blob = document.querySelector(".cursor-blob");
+
+const colors = {
+    "page-home":"#ff4444",
+    "page-featured":"#ffffff",
+    "page-protosem":"#ff9900",
+    "page-edits":"#9b5cff"
+};
+
+function updateOnScroll(){
+
+  const featured = document.getElementById("page-featured");
+  const protosem = document.getElementById("page-protosem");
+  const edits = document.getElementById("page-edits");
+
+  if(!featured || !protosem || !edits) return;
+
+  const featuredTop = featured.getBoundingClientRect().top;
+  const protosemTop = protosem.getBoundingClientRect().top;
+  const editsTop = edits.getBoundingClientRect().top;
+
+  // HOME
+  const trigger = window.innerHeight * 0.3;
+
+if(featuredTop > trigger){
+
+      applyTheme(THEMES.light);
+
+      root.setProperty("--blob1","#ff3333");
+      root.setProperty("--blob2","#ff4444");
+  }
+
+  // FEATURED
+ else if(protosemTop > trigger){
+
+      applyTheme(THEMES.light);
+
+      root.setProperty("--blob1","#ffffff");
+      root.setProperty("--blob2","#ffffff");
+  }
+
+  // PROTOSEM
+  else if(editsTop > trigger){
+
+      applyTheme(THEMES.protosem);
+
+      root.setProperty("--blob1","#ff8800");
+      root.setProperty("--blob2","#ffbb33");
+  }
+
+  // EDITS
+  else{
+
+      applyTheme(THEMES.edits);
+
+      root.setProperty("--blob1","#8d5cff");
+      root.setProperty("--blob2","#b574ff");
+  }
+
+  // NAV
+  const headerOffset = 90;
+  const line = window.scrollY + headerOffset;
+
+  let activeIdx = 0;
+
+  sectionEls.forEach((el, idx)=>{
+      if(el.offsetTop <= line) activeIdx = idx;
+  });
+
+  navButtons.forEach((b,idx)=>{
+      b.classList.toggle("active",idx===activeIdx);
+  });
+
+  ticking = false;
+}
+
+
+updateCursorColor();
+
+setInterval(() => {
+
+    if(!cursor.classList.contains("featured-mode"))
+        return;
+
+    const trail = document.createElement("div");
+
+    trail.className = "cursor-trail";
+
+    trail.style.left = x + "px";
+    trail.style.top = y + "px";
+
+    document.body.appendChild(trail);
+
+    setTimeout(() => trail.remove(), 450);
+
+}, 40); // ~60 FPS
+
+function updateCursorColor(){
+
+    const sections = document.querySelectorAll(".panel");
+
+    let active = null;
+
+    sections.forEach(section=>{
+
+        const rect = section.getBoundingClientRect();
+
+        if(rect.top <= window.innerHeight/2 &&
+           rect.bottom >= window.innerHeight/2){
+
+            active = section.id;
+
+        }
+
+    });
+
+    if(!active){
+        requestAnimationFrame(updateCursorColor);
+        return;
+    }
+
+    // FEATURED MODE
+    if(active === "page-featured"){
+
+        cursor.classList.add("featured-mode");
+
+        blob.style.background = "#fff";
+
+        blob.style.boxShadow = `
+            0 0 8px rgba(255,255,255,.95),
+            0 0 18px rgba(120,180,255,.8),
+            0 0 35px rgba(120,180,255,.45)
+        `;
+
+    } else {
+
+        cursor.classList.remove("featured-mode");
+
+        blob.style.background = colors[active];
+
+        blob.style.boxShadow = `
+            0 0 20px ${colors[active]},
+            0 0 45px ${colors[active]}
+        `;
+
+    }
+
+    requestAnimationFrame(updateCursorColor);
+}
