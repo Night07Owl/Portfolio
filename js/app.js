@@ -362,7 +362,7 @@ const blob = document.querySelector(".cursor-blob");
 const colors = {
     "page-home":"#ff4444",
     "page-featured":"#ffffff",
-    "page-protosem":"#ff9900",
+    "page-protosem":"#ff7300",
     "page-edits":"#9b5cff"
 };
 
@@ -394,8 +394,8 @@ if(featuredTop > trigger){
 
       applyTheme(THEMES.light);
 
-      root.setProperty("--blob1","#ffffff");
-      root.setProperty("--blob2","#ffffff");
+      root.setProperty("--blob1","#0b0835");
+      root.setProperty("--blob2","#2b022b");
   }
 
   // PROTOSEM
@@ -403,8 +403,8 @@ if(featuredTop > trigger){
 
       applyTheme(THEMES.protosem);
 
-      root.setProperty("--blob1","#ff8800");
-      root.setProperty("--blob2","#ffbb33");
+      root.setProperty("--blob1","#aa2e09");
+      root.setProperty("--blob2","#520f0c");
   }
 
   // EDITS
@@ -412,8 +412,8 @@ if(featuredTop > trigger){
 
       applyTheme(THEMES.edits);
 
-      root.setProperty("--blob1","#8d5cff");
-      root.setProperty("--blob2","#b574ff");
+      root.setProperty("--blob1","#0f0524");
+      root.setProperty("--blob2","#3a0c6e");
   }
 
   // NAV
@@ -505,4 +505,26 @@ function updateCursorColor(){
     }
 
     requestAnimationFrame(updateCursorColor);
+}
+
+const video = document.getElementById("ghostVideo");
+
+if(video){
+
+    const start = 11;   // seconds
+    const end = 22;    // seconds
+
+    video.currentTime = start;
+
+    video.addEventListener("loadedmetadata", () => {
+        video.currentTime = start;
+    });
+
+    video.addEventListener("timeupdate", () => {
+        if(video.currentTime >= end){
+            video.currentTime = start;
+            video.play();
+        }
+    });
+
 }
