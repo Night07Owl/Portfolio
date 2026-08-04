@@ -313,11 +313,32 @@ async function loadPartials(){
   }
 
   setupNavAndLinks();
-  setupCommitGrid();
-  setupRail();
-  setupTimeline();
-  setupVideoFullscreen();
-  updateOnScroll();
+setupCommitGrid();
+setupRail();
+setupTimeline();
+setupVideoFullscreen();
+
+const video = document.getElementById("ghostVideo");
+
+if (video) {
+
+    const start = 10;
+    const end = 32;
+
+    video.addEventListener("loadedmetadata", () => {
+        video.currentTime = start;
+    });
+
+    video.addEventListener("timeupdate", () => {
+        if (video.currentTime >= end) {
+            video.currentTime = start;
+            video.play();
+        }
+    });
+
+}
+
+updateOnScroll();
 }
 
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -507,24 +528,3 @@ function updateCursorColor(){
     requestAnimationFrame(updateCursorColor);
 }
 
-const video = document.getElementById("ghostVideo");
-
-if(video){
-
-    const start = 11;   // seconds
-    const end = 22;    // seconds
-
-    video.currentTime = start;
-
-    video.addEventListener("loadedmetadata", () => {
-        video.currentTime = start;
-    });
-
-    video.addEventListener("timeupdate", () => {
-        if(video.currentTime >= end){
-            video.currentTime = start;
-            video.play();
-        }
-    });
-
-}
