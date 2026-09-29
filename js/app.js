@@ -6,6 +6,7 @@ const THEMES = {
     ink:[255,255,255],
     inkSoft:[170,170,170],
     accent:[255,40,40],      // Red
+    accent2:[0,247,255],     // Cyan
     border:[60,20,20]
   },
   protosem:{
@@ -14,6 +15,7 @@ const THEMES = {
     ink:[246,236,227],
     inkSoft:[201,175,158],
     accent:[255,122,26],     // Orange
+    accent2:[255,190,40],    // Amber
     border:[54,46,40]
   },
   edits:{
@@ -22,34 +24,13 @@ const THEMES = {
     ink:[237,237,243],
     inkSoft:[154,154,166],
     accent:[156,106,222],    // Purple
+    accent2:[0,247,255],     // Cyan
     border:[54,54,62]
   }
 };
 
 
-const role = document.getElementById("role");
 
-const roles = ["DEV", "EDITOR"];
-let index = 0;
-
-function switchRole() {
-    role.classList.add("glitching");
-
-    // Change text halfway through the glitch
-    setTimeout(() => {
-        index = (index + 1) % roles.length;
-        role.textContent = roles[index];
-    }, 250);
-
-    role.addEventListener(
-        "animationend",
-        () => role.classList.remove("glitching"),
-        { once: true }
-    );
-}
-
-// Change every 5 seconds
-setInterval(switchRole, 5000);
 
 
 
@@ -73,6 +54,9 @@ function applyTheme(theme){
   root.setProperty('--ink', theme.ink.join(','));
   root.setProperty('--ink-soft', theme.inkSoft.join(','));
   root.setProperty('--accent', theme.accent.join(','));
+  if (theme.accent2) {
+    root.setProperty('--accent2', theme.accent2.join(','));
+  }
 }
 
 let ticking = false;
@@ -235,10 +219,26 @@ ghost: [
 function setupRail(){
   const rail = document.getElementById('rail');
   if (!rail) return;
+  rail.innerHTML = '';
   for (let w = 0; w <= 20; w++){
     const node = document.createElement('div');
     node.className = 'rail-node' + (w<=1 ? ' done' : (w===2 ? ' now' : ''));
     node.innerHTML = `<div class="rail-dot"></div><div class="rail-label">${String(w).padStart(2,'0')}</div>`;
+    node.style.cursor = 'pointer';
+    node.title = `Jump to Week ${String(w).padStart(2,'0')}`;
+    node.addEventListener('click', () => {
+      const card = document.querySelector(`.week-card[data-week="${w}"]`);
+      if (card) {
+        card.scrollIntoView({ behavior:'smooth', block:'center' });
+        card.style.transition = 'box-shadow 0.3s ease, border-color 0.3s ease';
+        card.style.borderColor = 'rgb(var(--accent))';
+        card.style.boxShadow = '0 0 24px rgba(var(--accent),0.45)';
+        setTimeout(() => {
+          card.style.borderColor = '';
+          card.style.boxShadow = '';
+        }, 1500);
+      }
+    });
     rail.appendChild(node);
   }
 }
@@ -272,11 +272,13 @@ function setupTimeline(){
 function setupVideoFullscreen(){
   document.querySelectorAll('.edit-video').forEach(video => {
     video.addEventListener('play', () => {
-      if (video.requestFullscreen) {
-        video.requestFullscreen();
-      } else if (video.webkitEnterFullscreen) {
-        video.webkitEnterFullscreen(); // iPhone Safari
-      }
+      try {
+        if (video.requestFullscreen) {
+          video.requestFullscreen().catch(() => {});
+        } else if (video.webkitEnterFullscreen) {
+          video.webkitEnterFullscreen(); // iPhone Safari
+        }
+      } catch (err) {}
     });
   });
 }
