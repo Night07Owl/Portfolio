@@ -3243,6 +3243,25 @@ pre.code-content code {
   }
 }
 
+.video-demo-single {
+  padding: 20px;
+  background: #080c14;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.working-video-player {
+  width: 100%;
+  max-width: 880px;
+  max-height: 500px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 242, 254, 0.15);
+  background: #000;
+  outline: none;
+}
+
 .video-player-frame {
   position: relative;
   border-radius: var(--radius-sm);
