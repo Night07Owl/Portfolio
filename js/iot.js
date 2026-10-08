@@ -224,13 +224,60 @@ function setupTask1Sandbox() {
 }
 
 // ==========================================================================
-// 3. TASK 2 SANDBOX: ADAFRUIT IO CLOUD MQTT PUBLISHER
+// 3. TASK 2 SANDBOX: ADAFRUIT IO CLOUD MQTT BULB CONTROLLER
 // ==========================================================================
 function setupTask2Sandbox() {
+  const btnOn = document.getElementById('btnMqttBulbOn');
+  const btnOff = document.getElementById('btnMqttBulbOff');
+  const bulbStateEl = document.getElementById('simBulbStateVal');
+  const feedOutput = document.getElementById('mqttFeedOutput');
+  const virtualBulb = document.getElementById('simVirtualBulb');
+
+  function setBulbState(isOn) {
+    const now = new Date().toLocaleTimeString();
+    const command = isOn ? 'ON' : 'OFF';
+
+    if (bulbStateEl) {
+      bulbStateEl.textContent = isOn ? 'ON (ENERGIZED)' : 'OFF (DE-ENERGIZED)';
+      bulbStateEl.style.color = isOn ? '#34d399' : '#f43f5e';
+    }
+
+    if (virtualBulb) {
+      if (isOn) {
+        virtualBulb.classList.add('lit');
+      } else {
+        virtualBulb.classList.remove('lit');
+      }
+    }
+
+    if (feedOutput) {
+      feedOutput.textContent = `[${now}] DASHBOARD: User clicked ${command} toggle
+[${now}] MQTT PUB: sudhiksha/feeds/bulb -> "${command}" (io.adafruit.com:1883)
+[${now}] BROKER: QoS 0 message delivered to subscriber ESP32 (Port 1883)
+[${now}] ESP32 SUB: readSubscription() detected message "${command}"
+[${now}] GPIO 26: digitalWrite(26, ${isOn ? 'LOW' : 'HIGH'}) -> Active-LOW Relay ${isOn ? 'ON' : 'OFF'}
+[${now}] HARDWARE: Bulb lamp is physically ${isOn ? 'ILLUMINATED' : 'SHUT OFF'}`;
+    }
+  }
+
+  if (btnOn) {
+    btnOn.addEventListener('click', (e) => {
+      e.preventDefault();
+      setBulbState(true);
+    });
+  }
+
+  if (btnOff) {
+    btnOff.addEventListener('click', (e) => {
+      e.preventDefault();
+      setBulbState(false);
+    });
+  }
+
+  // Backward compatibility with generic slider/btn if present
   const slider = document.getElementById('simMqttSlider');
   const valDisplay = document.getElementById('simMqttVal');
   const publishBtn = document.getElementById('btnPublishMqtt');
-  const feedOutput = document.getElementById('mqttFeedOutput');
 
   if (slider && valDisplay) {
     slider.addEventListener('input', () => {
@@ -240,18 +287,10 @@ function setupTask2Sandbox() {
 
   if (publishBtn && feedOutput) {
     publishBtn.addEventListener('click', () => {
-      const val = slider ? parseFloat(slider.value).toFixed(1) : '28.5';
       const now = new Date().toLocaleTimeString();
-
-      feedOutput.textContent = `[${now}] PUB: night07owl/feeds/temperature -> ${val} °C
-[${now}] TCP: io.adafruit.com:1883 | Packet Size: 18 bytes
-[${now}] ACK: Broker received QoS 0 message
-[${now}] DASH: Adafruit IO gauge component updated instantly!`;
-      
-      publishBtn.textContent = '✅ Published to Adafruit IO!';
-      setTimeout(() => {
-        publishBtn.textContent = '🚀 Publish MQTT Packet to Adafruit IO';
-      }, 1500);
+      feedOutput.textContent = `[${now}] PUB: sudhiksha/feeds/bulb -> "ON"
+[${now}] TCP: io.adafruit.com:1883 | QoS 0 Delivered
+[${now}] ESP32: GPIO 26 set to LOW -> Bulb ON`;
     });
   }
 }
