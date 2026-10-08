@@ -10,58 +10,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/iot.css">
-<style>
-  /* Palette 62 Showcase Bar */
-  .palette-strip {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    background: var(--surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-pill);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    color: var(--text-secondary);
-  }
-  .palette-swatches {
-    display: inline-flex;
-    gap: 4px;
-  }
-  .swatch-circle {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  .s1 { background: #45496A; }
-  .s2 { background: #7D8BAE; }
-  .s3 { background: #E5857B; }
-  .s4 { background: #F1B2B2; }
-  .s5 { background: #E8CCC7; }
-</style>
 </head>
 
 <body>
 
-<!-- HEADER WITH COLOR PALETTE #62 TABS -->
+<!-- HEADER WITH DARK PALETTE #62 TABS -->
 <header class="iot-header">
   <div class="iot-brand">
     <a href="index.html" class="brand-back">← Back to Portfolio</a>
     <div class="brand-title">
-      SUDHIKSHA <span class="brand-badge">FORGE IoT</span>
+      PROTOSEM <span class="brand-badge">FORGE IoT</span>
     </div>
-  </div>
-
-  <div class="palette-strip" title="UI/UX Palette #62">
-    <span>PALETTE #62:</span>
-    <span class="palette-swatches">
-      <span class="swatch-circle s1" title="#45496A"></span>
-      <span class="swatch-circle s2" title="#7D8BAE"></span>
-      <span class="swatch-circle s3" title="#E5857B"></span>
-      <span class="swatch-circle s4" title="#F1B2B2"></span>
-      <span class="swatch-circle s5" title="#E8CCC7"></span>
-    </span>
   </div>
 
   <nav class="iot-task-switcher" aria-label="IoT Assignments Navigation">
@@ -276,6 +235,15 @@
           </tr>
         </tbody>
       </table>
+      <div class="media-slot-card">
+        <img src="images/iot/task1_circuit.png" alt="Task 1 Circuit Schematic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-dropzone">
+          <div class="media-dropzone-icon">⚡</div>
+          <span class="media-badge">Station 05: Circuit Schematic Slot</span>
+          <div class="media-dropzone-path">images/iot/task1_circuit.png</div>
+          <p class="media-dropzone-desc">Attach your breadboard circuit schematic diagram here. Place file in <code>images/iot/task1_circuit.png</code>.</p>
+        </div>
+      </div>
     </section>
 
     <!-- 6. IMPLEMENTATION -->
@@ -370,6 +338,16 @@
           </div>
         </div>
       </div>
+
+      <div class="media-slot-card">
+        <img src="images/iot/task1_hardware.jpg" alt="Task 1 Physical Hardware Setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-dropzone">
+          <div class="media-dropzone-icon">📷</div>
+          <span class="media-badge">Station 07: Physical Hardware Photo</span>
+          <div class="media-dropzone-path">images/iot/task1_hardware.jpg</div>
+          <p class="media-dropzone-desc">Attach photo of your physical ESP32, breadboard, and LED wiring here. Place file in <code>images/iot/task1_hardware.jpg</code>.</p>
+        </div>
+      </div>
     </section>
 
     <!-- 8. EVIDENCE & LIVE SIMULATOR -->
@@ -389,7 +367,7 @@
             <button id="simLedToggle" class="btn-repo" style="font-size: 0.78rem; padding: 8px 18px;">Send HTTP GET /H (Turn ON)</button>
           </div>
           <div class="evidence-info">
-            <div class="evidence-label">DEMO_01_SIMULATOR.PNG</div>
+            <div class="evidence-label">LIVE SIMULATION</div>
             <div class="evidence-title">Live ESP32 Logic & Actuator Simulator</div>
             <p class="evidence-desc">Interactive demonstration illustrating how dispatching HTTP GET packets modulates GPIO 2 output logic.</p>
           </div>
@@ -397,10 +375,11 @@
 
         <div class="evidence-card">
           <div class="evidence-visual">
+            <img src="images/iot/task1_web_interface.png" alt="Browser Web Interface" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <svg viewBox="0 0 320 180" width="100%" height="100%">
-              <rect width="320" height="180" fill="#2E324D"/>
-              <rect x="20" y="20" width="280" height="140" rx="8" fill="#3D4263" stroke="#4F557E" stroke-width="2"/>
-              <rect x="35" y="35" width="250" height="24" rx="4" fill="#252840"/>
+              <rect width="320" height="180" fill="#151825"/>
+              <rect x="20" y="20" width="280" height="140" rx="8" fill="#1B1E2E" stroke="#3D4263" stroke-width="2"/>
+              <rect x="35" y="35" width="250" height="24" rx="4" fill="#131521"/>
               <text x="45" y="51" fill="#E8CCC7" font-family="monospace" font-size="11">http://192.168.1.45/H</text>
               <rect x="50" y="80" width="100" height="35" rx="6" fill="#E5857B"/>
               <text x="75" y="102" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="12">TURN ON</text>
@@ -409,8 +388,8 @@
             </svg>
           </div>
           <div class="evidence-info">
-            <div class="evidence-label">WEB_UI_SCREENSHOT_FINAL.PNG</div>
-            <div class="evidence-title">Browser Web Interface</div>
+            <div class="evidence-label">images/iot/task1_web_interface.png</div>
+            <div class="evidence-title">Browser Web Interface Screenshot</div>
             <p class="evidence-desc">Client interface rendered by the ESP32 featuring direct toggle actions and live state reflection.</p>
           </div>
         </div>
@@ -675,6 +654,26 @@
           </tr>
         </tbody>
       </table>
+
+      <div class="media-slot-card">
+        <img src="images/iot/task2_circuit.png" alt="Task 2 Circuit Schematic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-dropzone">
+          <div class="media-dropzone-icon">⚡</div>
+          <span class="media-badge">Station 05: Circuit Schematic Slot</span>
+          <div class="media-dropzone-path">images/iot/task2_circuit.png</div>
+          <p class="media-dropzone-desc">Attach your Task 2 MQTT wiring diagram here. Place file in <code>images/iot/task2_circuit.png</code>.</p>
+        </div>
+      </div>
+
+      <div class="media-slot-card">
+        <img src="images/iot/task2_hardware.jpg" alt="Task 2 Physical Hardware Setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-dropzone">
+          <div class="media-dropzone-icon">📷</div>
+          <span class="media-badge">Station 07: Physical Hardware Photo</span>
+          <div class="media-dropzone-path">images/iot/task2_hardware.jpg</div>
+          <p class="media-dropzone-desc">Attach photo of your ESP32 hardware test bench here. Place file in <code>images/iot/task2_hardware.jpg</code>.</p>
+        </div>
+      </div>
     </section>
 
     <!-- 6. CODE -->
@@ -749,18 +748,19 @@
       <div class="evidence-grid">
         <div class="evidence-card">
           <div class="evidence-visual">
+            <img src="images/iot/task2_dashboard.png" alt="Adafruit IO Cloud Dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <svg viewBox="0 0 320 180" width="100%" height="100%">
-              <rect width="320" height="180" fill="#2E324D"/>
-              <rect x="15" y="15" width="290" height="150" rx="8" fill="#3D4263" stroke="#4F557E" stroke-width="2"/>
+              <rect width="320" height="180" fill="#151825"/>
+              <rect x="15" y="15" width="290" height="150" rx="8" fill="#1B1E2E" stroke="#3D4263" stroke-width="2"/>
               <text x="30" y="40" fill="#E8CCC7" font-family="sans-serif" font-weight="bold" font-size="13">Adafruit IO — ESP32 Control</text>
-              <rect x="30" y="60" width="125" height="85" rx="6" fill="#252840" stroke="#45496A"/>
+              <rect x="30" y="60" width="125" height="85" rx="6" fill="#131521" stroke="#45496A"/>
               <text x="42" y="82" fill="#F1B2B2" font-family="sans-serif" font-size="10">FEED: led-control</text>
               <circle cx="92" cy="115" r="18" fill="#E5857B"/>
               <text x="82" y="120" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="11">ON</text>
             </svg>
           </div>
           <div class="evidence-info">
-            <div class="evidence-label">DASHBOARD_FINAL_MQTT.PNG</div>
+            <div class="evidence-label">images/iot/task2_dashboard.png</div>
             <div class="evidence-title">Adafruit IO Cloud Dashboard</div>
             <p class="evidence-desc">Interactive toggle block linked to the MQTT feed showing sub-100ms response time.</p>
           </div>
@@ -768,9 +768,10 @@
 
         <div class="evidence-card">
           <div class="evidence-visual">
+            <img src="images/iot/task2_serial_monitor.png" alt="Hardware Telemetry Log" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <svg viewBox="0 0 320 180" width="100%" height="100%">
-              <rect width="320" height="180" fill="#2E324D"/>
-              <rect x="40" y="30" width="240" height="120" rx="6" fill="#3D4263" stroke="#4F557E"/>
+              <rect width="320" height="180" fill="#151825"/>
+              <rect x="40" y="30" width="240" height="120" rx="6" fill="#1B1E2E" stroke="#3D4263"/>
               <circle cx="80" cy="70" r="14" fill="#E5857B" opacity="0.3"/>
               <circle cx="80" cy="70" r="8" fill="#E5857B"/>
               <text x="110" y="65" fill="#FAF5EE" font-family="sans-serif" font-size="11" font-weight="bold">ESP32 DevKit V1</text>
@@ -779,7 +780,7 @@
             </svg>
           </div>
           <div class="evidence-info">
-            <div class="evidence-label">SERIAL_MQTT_LOG_VERIFIED.PNG</div>
+            <div class="evidence-label">images/iot/task2_serial_monitor.png</div>
             <div class="evidence-title">Hardware Telemetry Log</div>
             <p class="evidence-desc">Serial output verifying MQTT handshake, subscription acknowledgment, and payload parsing.</p>
           </div>
@@ -993,6 +994,26 @@
           </div>
         </div>
       </div>
+
+      <div class="media-slot-card">
+        <img src="images/iot/task3_circuit.png" alt="Task 3 Circuit Schematic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-dropzone">
+          <div class="media-dropzone-icon">⚡</div>
+          <span class="media-badge">Station 05: Circuit Schematic Slot</span>
+          <div class="media-dropzone-path">images/iot/task3_circuit.png</div>
+          <p class="media-dropzone-desc">Attach your Task 3 IFTTT automation circuit schematic here. Place file in <code>images/iot/task3_circuit.png</code>.</p>
+        </div>
+      </div>
+
+      <div class="media-slot-card">
+        <img src="images/iot/task3_hardware.jpg" alt="Task 3 Physical Hardware Setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-dropzone">
+          <div class="media-dropzone-icon">📷</div>
+          <span class="media-badge">Station 07: Physical Hardware Photo</span>
+          <div class="media-dropzone-path">images/iot/task3_hardware.jpg</div>
+          <p class="media-dropzone-desc">Attach photo of your ESP32 automation test rig here. Place file in <code>images/iot/task3_hardware.jpg</code>.</p>
+        </div>
+      </div>
     </section>
 
     <!-- 6. CODE -->
@@ -1052,6 +1073,52 @@
     }
   }
 }</code></pre>
+      </div>
+    </section>
+
+    <!-- 8. EVIDENCE -->
+    <section class="skeleton-section" id="t3-evidence">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">08</span>
+          <h2 class="sec-title">Evidence & Automation Verification</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #3: LABELED EVIDENCE</span>
+      </div>
+      <div class="evidence-grid">
+        <div class="evidence-card">
+          <div class="evidence-visual">
+            <img src="images/iot/task3_ifttt_applet.png" alt="IFTTT Applet Configuration" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-dropzone" style="display:none; padding:20px;">
+              <div class="media-dropzone-icon">⚡</div>
+              <span class="media-badge">IFTTT Applet Screenshot</span>
+              <div class="media-dropzone-path">images/iot/task3_ifttt_applet.png</div>
+              <p class="media-dropzone-desc">Screenshot of your IFTTT Applet recipe ("If Maker Webhook Then Adafruit IO / Email").</p>
+            </div>
+          </div>
+          <div class="evidence-info">
+            <div class="evidence-label">images/iot/task3_ifttt_applet.png</div>
+            <div class="evidence-title">IFTTT Automation Rule Configuration</div>
+            <p class="evidence-desc">Applet trigger linking inbound HTTP webhooks with automated cloud actuator feeds.</p>
+          </div>
+        </div>
+
+        <div class="evidence-card">
+          <div class="evidence-visual">
+            <img src="images/iot/task3_email_alert.png" alt="Automation Notification Alert" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-dropzone" style="display:none; padding:20px;">
+              <div class="media-dropzone-icon">📬</div>
+              <span class="media-badge">Alert Notification Screenshot</span>
+              <div class="media-dropzone-path">images/iot/task3_email_alert.png</div>
+              <p class="media-dropzone-desc">Screenshot of the email alert or push notification received upon event execution.</p>
+            </div>
+          </div>
+          <div class="evidence-info">
+            <div class="evidence-label">images/iot/task3_email_alert.png</div>
+            <div class="evidence-title">Automated Event Alert Dispatch</div>
+            <p class="evidence-desc">Verified email or mobile notification triggered automatically upon threshold breach.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1237,6 +1304,26 @@
           </div>
         </div>
       </div>
+
+      <div class="media-slot-card">
+        <img src="images/iot/task4_circuit.png" alt="Task 4 Circuit Schematic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-dropzone">
+          <div class="media-dropzone-icon">⚡</div>
+          <span class="media-badge">Station 05: Circuit Schematic Slot</span>
+          <div class="media-dropzone-path">images/iot/task4_circuit.png</div>
+          <p class="media-dropzone-desc">Attach your Task 4 Firebase circuit schematic (ESP32, DHT11, LDR, Relay) here. Place file in <code>images/iot/task4_circuit.png</code>.</p>
+        </div>
+      </div>
+
+      <div class="media-slot-card">
+        <img src="images/iot/task4_hardware.jpg" alt="Task 4 Physical Hardware Setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-dropzone">
+          <div class="media-dropzone-icon">📷</div>
+          <span class="media-badge">Station 07: Physical Hardware Photo</span>
+          <div class="media-dropzone-path">images/iot/task4_hardware.jpg</div>
+          <p class="media-dropzone-desc">Attach photo of your ESP32 with DHT11 and LDR hardware bench here. Place file in <code>images/iot/task4_hardware.jpg</code>.</p>
+        </div>
+      </div>
     </section>
 
     <!-- 6. CODE -->
@@ -1310,27 +1397,45 @@
       <div class="evidence-grid">
         <div class="evidence-card">
           <div class="evidence-visual">
+            <img src="images/iot/task4_dashboard.png" alt="Live Sensor Monitoring View" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <svg viewBox="0 0 320 180" width="100%" height="100%">
-              <rect width="320" height="180" fill="#2E324D"/>
-              <rect x="20" y="20" width="130" height="65" rx="6" fill="#3D4263" stroke="#4F557E"/>
+              <rect width="320" height="180" fill="#151825"/>
+              <rect x="20" y="20" width="130" height="65" rx="6" fill="#1B1E2E" stroke="#3D4263"/>
               <text x="32" y="40" fill="#F1B2B2" font-family="sans-serif" font-size="10">TEMPERATURE</text>
               <text x="32" y="70" fill="#FAF5EE" font-family="sans-serif" font-weight="bold" font-size="22">27.4 °C</text>
               
-              <rect x="170" y="20" width="130" height="65" rx="6" fill="#3D4263" stroke="#4F557E"/>
+              <rect x="170" y="20" width="130" height="65" rx="6" fill="#1B1E2E" stroke="#3D4263"/>
               <text x="182" y="40" fill="#E8CCC7" font-family="sans-serif" font-size="10">HUMIDITY</text>
               <text x="182" y="70" fill="#FAF5EE" font-family="sans-serif" font-weight="bold" font-size="22">62.0 %</text>
 
-              <rect x="20" y="95" width="280" height="65" rx="6" fill="#3D4263" stroke="#4F557E"/>
+              <rect x="20" y="95" width="280" height="65" rx="6" fill="#1B1E2E" stroke="#3D4263"/>
               <text x="32" y="115" fill="#E5857B" font-family="sans-serif" font-size="10">LIGHT SENSOR (LDR)</text>
-              <rect x="32" y="125" width="160" height="10" rx="5" fill="#252840"/>
+              <rect x="32" y="125" width="160" height="10" rx="5" fill="#131521"/>
               <rect x="32" y="125" width="110" height="10" rx="5" fill="#E5857B"/>
               <text x="200" y="134" fill="#FAF5EE" font-family="monospace" font-size="11">1845 / 4095</text>
             </svg>
           </div>
           <div class="evidence-info">
-            <div class="evidence-label">FIREBASE_DASHBOARD_LIVE.PNG</div>
+            <div class="evidence-label">images/iot/task4_dashboard.png</div>
             <div class="evidence-title">Live Sensor Monitoring View</div>
             <p class="evidence-desc">Real-time synchronized dials reflecting current room temperature, humidity, and ambient light level.</p>
+          </div>
+        </div>
+
+        <div class="evidence-card">
+          <div class="evidence-visual">
+            <img src="images/iot/task4_firebase_console.png" alt="Firebase Console Realtime Tree" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-dropzone" style="display:none; padding:20px;">
+              <div class="media-dropzone-icon">🔥</div>
+              <span class="media-badge">Firebase Console Slot</span>
+              <div class="media-dropzone-path">images/iot/task4_firebase_console.png</div>
+              <p class="media-dropzone-desc">Attach screenshot of Firebase Realtime Database JSON tree updating in real time.</p>
+            </div>
+          </div>
+          <div class="evidence-info">
+            <div class="evidence-label">images/iot/task4_firebase_console.png</div>
+            <div class="evidence-title">Firebase Realtime DB Console</div>
+            <p class="evidence-desc">Live database console proving dynamic telemetry push events and WebSocket sync.</p>
           </div>
         </div>
       </div>
@@ -1547,6 +1652,26 @@
           4. <strong>Software Rules:</strong> Turn ON when Light &lt; 1400; Turn OFF when Light &gt; 1700. The 300-point buffer zone eliminates false switching from passing shadows.
         </p>
       </div>
+
+      <div class="media-slot-card">
+        <img src="images/iot/task5_circuit.png" alt="Task 5 Complete Capstone Schematic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-dropzone">
+          <div class="media-dropzone-icon">⚡</div>
+          <span class="media-badge">Station 05: Capstone Schematic Slot</span>
+          <div class="media-dropzone-path">images/iot/task5_circuit.png</div>
+          <p class="media-dropzone-desc">Attach your complete Capstone multi-sensor circuit schematic (ESP32, DHT11, LDR, Relay, AC load) here.</p>
+        </div>
+      </div>
+
+      <div class="media-slot-card">
+        <img src="images/iot/task5_hardware.jpg" alt="Task 5 Complete Physical Prototype" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-dropzone">
+          <div class="media-dropzone-icon">📷</div>
+          <span class="media-badge">Station 07: Physical Prototype Setup</span>
+          <div class="media-dropzone-path">images/iot/task5_hardware.jpg</div>
+          <p class="media-dropzone-desc">Attach photo of your completed multi-sensor breadboard hardware prototype bench here.</p>
+        </div>
+      </div>
     </section>
 
     <!-- 6. CODE -->
@@ -1626,19 +1751,37 @@
 
         <div class="evidence-card">
           <div class="evidence-visual">
+            <img src="images/iot/task5_dashboard.png" alt="Capstone Multi-Sensor Dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-dropzone" style="display:none; padding:20px;">
+              <div class="media-dropzone-icon">📊</div>
+              <span class="media-badge">Capstone Dashboard Screenshot</span>
+              <div class="media-dropzone-path">images/iot/task5_dashboard.png</div>
+              <p class="media-dropzone-desc">Attach screenshot of complete Capstone multi-sensor live dashboard.</p>
+            </div>
+          </div>
+          <div class="evidence-info">
+            <div class="evidence-label">images/iot/task5_dashboard.png</div>
+            <div class="evidence-title">Capstone Cloud Telemetry Dashboard</div>
+            <p class="evidence-desc">Unified monitoring interface showing live temperature, humidity, light, and relay status.</p>
+          </div>
+        </div>
+
+        <div class="evidence-card">
+          <div class="evidence-visual">
+            <img src="images/iot/task5_csv_data.png" alt="Historical Telemetry Spreadsheet / Chart" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <svg viewBox="0 0 320 180" width="100%" height="100%">
-              <rect width="320" height="180" fill="#2E324D"/>
+              <rect width="320" height="180" fill="#151825"/>
               <path d="M20 150 L60 130 L100 135 L140 100 L180 85 L220 70 L260 90 L300 65" fill="none" stroke="#E5857B" stroke-width="2.5"/>
               <path d="M20 120 L60 115 L100 125 L140 130 L180 128 L220 132 L260 130 L300 125" fill="none" stroke="#F1B2B2" stroke-width="2" stroke-dasharray="4"/>
               <circle cx="220" cy="70" r="4" fill="#E5857B"/>
-              <rect x="25" y="25" width="120" height="30" rx="4" fill="#3D4263" stroke="#4F557E"/>
+              <rect x="25" y="25" width="120" height="30" rx="4" fill="#1B1E2E" stroke="#3D4263"/>
               <text x="35" y="44" fill="#FAF5EE" font-family="monospace" font-size="10">Temp / Lux Trend</text>
             </svg>
           </div>
           <div class="evidence-info">
-            <div class="evidence-label">TELEMETRY_CHART_FINAL.PNG</div>
-            <div class="evidence-title">Historical Time-Series Graph</div>
-            <p class="evidence-desc">Dual-axis trend chart showing the inverted correlation between ambient light drop and relay engagement.</p>
+            <div class="evidence-label">images/iot/task5_csv_data.png</div>
+            <div class="evidence-title">Historical Time-Series Graph / CSV Data</div>
+            <p class="evidence-desc">Dual-axis trend chart and spreadsheet validation proving autonomous time-series logging.</p>
           </div>
         </div>
       </div>
@@ -1719,7 +1862,7 @@
 </main>
 
 <footer class="iot-footer">
-  © <span id="year">2026</span> Sudhiksha. Prototype Seminar IoT Portfolio — Designed with Color Palette #62.
+  © <span id="year">2026</span> IoT Engineering Portfolio — Prototype Seminar Forge Track.
 </footer>
 
 <script src="js/iot.js"></script>
