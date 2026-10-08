@@ -4312,6 +4312,224 @@ pre.code-content code {
   white-space: nowrap;
 }
 
+/* ==========================================================================
+   TASK 04: SMARTYY LIVE FRAME, FIRE CYCLE & MULTI-VIDEO SHOWCASE
+   ========================================================================== */
+.smartyy-live-container {
+  background: linear-gradient(180deg, #160e06 0%, #0c0804 100%);
+  border: 1px solid var(--t4-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 24px var(--t4-glow);
+  margin-top: 20px;
+  margin-bottom: 26px;
+}
+
+.smartyy-browser-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: #1c1106;
+  border-bottom: 1px solid var(--t4-border);
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.browser-controls-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.browser-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.browser-dot.dot-close { background: #ef4444; }
+.browser-dot.dot-min { background: #f59e0b; }
+.browser-dot.dot-max { background: #10b981; }
+
+.browser-url-pill {
+  flex: 1;
+  min-width: 240px;
+  max-width: 540px;
+  background: #0d0803;
+  border: 1px solid rgba(255, 138, 0, 0.28);
+  border-radius: var(--radius-pill);
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #fdba74;
+}
+
+.url-lock {
+  color: #10b981;
+  font-size: 0.82rem;
+}
+
+.browser-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-smartyy-launch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--t4-gradient);
+  color: #0c0804 !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px var(--t4-glow);
+}
+
+.btn-smartyy-launch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--t4-glow);
+}
+
+.smartyy-iframe-wrap {
+  position: relative;
+  width: 100%;
+  height: 640px;
+  background: #0c0804;
+}
+
+.smartyy-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.t4-time-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #ff8a00;
+  background: rgba(255, 138, 0, 0.14);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* 3-Video Grid for Task 4 */
+.t4-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.t4-video-card-item {
+  background: var(--surface-card);
+  border: 1px solid var(--t4-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.t4-video-card-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--t4-accent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 20px var(--t4-glow);
+}
+
+.t4-video-header-sub {
+  padding: 14px 16px;
+  background: rgba(255, 138, 0, 0.08);
+  border-bottom: 1px solid var(--t4-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.t4-video-header-sub h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  color: #f8fafc;
+}
+
+.t4-video-player-frame {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  display: block;
+}
+
+.t4-video-info-box {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.t4-video-info-box p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* Checklist Matrix */
+.checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.checklist-item {
+  background: rgba(255, 138, 0, 0.05);
+  border: 1px solid rgba(255, 138, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: #f1f5f9;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.checklist-item:hover {
+  background: rgba(255, 138, 0, 0.1);
+  border-color: var(--t4-accent);
+}
+
+.check-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+
 
 
 
