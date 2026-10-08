@@ -1615,6 +1615,54 @@ pre.code-content code {
   border: 1px solid rgba(139, 92, 246, 0.5);
 }
 
+.state-http {
+  background: rgba(168, 85, 247, 0.9);
+  color: #FFFFFF;
+  border: 1px solid rgba(168, 85, 247, 0.5);
+}
+
+.evidence-sub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+  margin-bottom: 18px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+.evidence-sub-header .sub-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.evidence-sub-header .sub-icon {
+  font-size: 1.4rem;
+}
+
+.evidence-sub-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.evidence-sub-header p {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.photo-simple-explain {
+  font-size: 0.84rem;
+  color: var(--text-primary);
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+
 .photo-card-info {
   padding: 16px;
   display: flex;
@@ -1634,6 +1682,18 @@ pre.code-content code {
   color: var(--text-secondary);
   line-height: 1.5;
 }
+
+.table-note {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(168, 85, 247, 0.08);
+  border-left: 3px solid var(--t1-accent);
+  border-radius: 4px;
+}
+
 
 /* ==========================================================================
    CIRCUIT SCHEMATIC DIAGRAM & SVG
@@ -1937,6 +1997,721 @@ pre.code-content code {
 }
 
 /* ==========================================================================
+   WHAT I LEARNT SECTION STYLES (TASK 1 EMBEDDED WEB SERVER)
+   ========================================================================== */
+
+/* 1. Hero Formula Banner ("In Simple Words") */
+.learnt-formula-card {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.09) 0%, rgba(20, 20, 26, 0.96) 100%);
+  border: 1px solid var(--t1-border);
+  border-radius: var(--radius-md);
+  padding: clamp(20px, 3vw, 28px);
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.learnt-formula-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--t1-gradient);
+}
+
+.formula-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.formula-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.formula-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.formula-pipeline-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface-navy);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  gap: 12px;
+  margin-bottom: 18px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.formula-node {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  flex: 1;
+  min-width: 140px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.formula-node:hover {
+  transform: translateY(-2px);
+  border-color: var(--t1-accent);
+}
+
+.node-highlight {
+  border-color: var(--t1-accent);
+  background: var(--t1-tint);
+  box-shadow: 0 0 18px var(--t1-glow);
+}
+
+.formula-node-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.formula-node-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.formula-node-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.formula-node-role {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.formula-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--t1-accent);
+  flex-shrink: 0;
+  padding: 0 6px;
+  text-align: center;
+}
+
+.formula-connector .arrow-glyph {
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.formula-summary-box {
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 3px solid var(--t1-accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.formula-summary-box p {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  line-height: 1.65;
+}
+
+.formula-summary-box strong {
+  color: #FFFFFF;
+}
+
+.formula-summary-box em {
+  color: #c084fc;
+  font-style: normal;
+}
+
+/* 2. Browser Interaction Lifecycle (The 5-Step Process) */
+.lifecycle-section-wrap {
+  background: var(--surface-navy);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  margin-bottom: 24px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.lifecycle-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.lifecycle-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lifecycle-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.lifecycle-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.lifecycle-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.lifecycle-step-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.lifecycle-step-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--t1-accent);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.2);
+}
+
+.step-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.step-badge-num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: rgba(168, 85, 247, 0.18);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.step-icon {
+  font-size: 1.25rem;
+}
+
+.step-title {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.step-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+.step-footer-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 3px 6px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+/* 3. Core Architectural Concepts Grid */
+.learnt-concepts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.concept-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.concept-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--t1-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.concept-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.concept-icon-pill {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--t1-tint);
+  border: 1px solid var(--t1-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.concept-category-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+
+.concept-title {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.concept-text {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.concept-meta-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.concept-meta-footer span.spec-highlight {
+  color: #c084fc;
+}
+
+/* 4. Commercial Applications Matrix */
+.commercial-matrix-wrap {
+  background: var(--surface-navy);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.commercial-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.commercial-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.commercial-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.commercial-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.commercial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.commercial-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.commercial-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--t1-border);
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.2);
+}
+
+.commercial-card-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.commercial-card h5 {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.commercial-card p {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.commercial-tag {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  width: fit-content;
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   CODE BREAKDOWN & SERIAL MONITOR TELEMETRY
+   ========================================================================== */
+.code-breakdown-wrap {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.code-breakdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.code-breakdown-title-group h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.code-breakdown-title-group p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.code-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 16px;
+}
+
+.breakdown-card {
+  background: var(--surface-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.breakdown-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--t1-accent);
+}
+
+.breakdown-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.breakdown-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.12);
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.breakdown-code-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.breakdown-card h5 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breakdown-list li {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 14px;
+}
+
+.breakdown-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--t1-accent);
+  font-weight: bold;
+}
+
+/* SERIAL MONITOR CONSOLE */
+.serial-monitor-wrap {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.serial-console-card {
+  background: #08080f;
+  border: 1px solid #202230;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.serial-console-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #12131d;
+  border-bottom: 1px solid #202230;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.serial-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.serial-title {
+  font-family: var(--font-display);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.serial-meta-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.serial-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.serial-output-code {
+  padding: 16px 18px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #cbd5e1;
+  background: #06070a;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.serial-output-code .log-boot { color: #818cf8; }
+.serial-output-code .log-wifi { color: #38bdf8; }
+.serial-output-code .log-ip { color: #34d399; font-weight: 700; }
+.serial-output-code .log-srv { color: #f59e0b; }
+.serial-output-code .log-hit { color: #c084fc; }
+
+.serial-explain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.serial-explain-card {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.serial-explain-card h5 {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.serial-explain-card p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* REFLECTION CARD */
+.reflection-card {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(13, 14, 23, 0.95) 100%);
+  border: 1px solid var(--t1-border);
+  border-radius: var(--radius-sm);
+  padding: 22px 24px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reflection-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.reflection-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reflection-icon {
+  font-size: 1.2rem;
+}
+
+.reflection-label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #c084fc;
+}
+
+.reflection-quote {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #f1f5f9;
+  font-style: italic;
+  margin: 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--t1-accent);
+}
+
+/* ==========================================================================
    RESPONSIVE DESIGN (TABLETS & MOBILE)
    ========================================================================== */
 @media (max-width: 900px) {
@@ -2007,4 +2782,33 @@ pre.code-content code {
     align-items: flex-start;
     gap: 14px;
   }
+
+  .formula-pipeline-track {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .formula-connector {
+    transform: rotate(90deg);
+    padding: 6px 0;
+  }
+
+  .lifecycle-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
+@media (max-width: 600px) {
+  .lifecycle-steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .learnt-concepts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .commercial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

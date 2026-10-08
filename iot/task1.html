@@ -62,17 +62,43 @@
     <div class="sec-header">
       <div class="sec-title-wrap">
         <span class="sec-num">01</span>
-        <h2 class="sec-title">Overview</h2>
+        <h2 class="sec-title">Objective, Problem Statement &amp; Project Summary</h2>
       </div>
-      <span class="sec-tag">// OBJECTIVE & SUMMARY</span>
+      <span class="sec-tag">// OBJECTIVE &amp; SUMMARY</span>
     </div>
 
-    <p class="lead-text">
-      The objective of this assignment is to bridge embedded hardware with browser-based interfaces by configuring an ESP32 microcontroller as a standalone local HTTP web server. 
-    </p>
-    <p class="body-text">
-      Traditional microcontrollers require physical tethering via UART or external displays for user interaction. In this project, we solve this friction by connecting the ESP32 to a local 2.4 GHz Wi-Fi network in Station (STA) mode, binding an HTTP server on port 80, and serving a responsive HTML5 user interface directly from flash memory. When a client on the same local subnet visits the ESP32's assigned DHCP IP address, clicking buttons dispatches HTTP GET requests (such as <code>/H</code> and <code>/L</code>) that directly modulate the digital logic state of GPIO pin 2, toggling a high-brightness LED with zero internet reliance.
-    </p>
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <h4>Objective</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+          <li>• To develop a basic <strong>IoT-based LED control system</strong> using the <strong>ESP32</strong>.</li>
+          <li>• To configure the ESP32 as a <strong>web server</strong> over a Wi-Fi network.</li>
+          <li>• To create a simple <strong>web-based interface</strong> for controlling the LED.</li>
+          <li>• To enable the user to <strong>turn the LED ON and OFF remotely</strong> through a web browser.</li>
+        </ul>
+      </div>
+
+      <div class="concept-card">
+        <h4>Problem Being Addressed</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+          <li>• Traditionally, an LED connected to a microcontroller is controlled using a <strong>physical switch, push button, or predefined program logic</strong>.</li>
+          <li>• This project demonstrates a more convenient method of controlling the LED <strong>remotely through a web browser</strong>.</li>
+          <li>• It eliminates the need for a physical button and allows the LED to be controlled over a <strong>Wi-Fi network</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="concept-card">
+        <h4>Project Summary</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+          <li>• The <strong>ESP32</strong> is connected to a Wi-Fi network and configured to function as a <strong>local web server</strong>.</li>
+          <li>• The ESP32 hosts a simple web interface containing <strong>ON and OFF control buttons</strong>.</li>
+          <li>• When the user enters the ESP32's <strong>IP address</strong> in a browser, the control webpage is displayed.</li>
+          <li>• Selecting <strong>ON</strong> or <strong>OFF</strong> sends an <strong>HTTP request</strong> to the ESP32.</li>
+          <li>• The ESP32 receives the request and changes the <strong>LED state accordingly</strong>.</li>
+          <li>• This provides a simple example of <strong>wireless device control using an ESP32 web server</strong>.</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <!-- 2. CONCEPTS -->
@@ -514,7 +540,7 @@
 
     <div class="reflection-card">
       <p>
-        "Building a raw HTTP web server on bare-metal silicon gave me a deep appreciation for the network layers we normally take for granted. Managing socket lifecycles, understanding the difference between Wi-Fi connection establishment and HTTP application-layer parsing, and observing the real electrical consequences of RF transceivers on power rails were unforgettable lessons. It laid the foundation for understanding why lightweight protocols like MQTT exist for cloud-scale IoT."
+        "This task provided me with a better understanding of how an IoT-based web control system works. I understood how a web browser communicates with the ESP32 through HTTP requests and how buttons on a webpage can be used to control a physical LED."
       </p>
     </div>
   </section>
@@ -534,7 +560,7 @@
         <h4>Task 01: ESP32 Web Server Firmware</h4>
         <p>Contains Arduino .ino sketch, circuit schematics, pinout map, and standalone HTML assets.</p>
       </div>
-      <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">
+      <a href="https://github.com/Night07Owl/Task-1---ESP32-Web-Server-HTML-LED-Control" target="_blank" rel="noopener noreferrer" class="btn-repo">
         View Code on GitHub →
       </a>
     </div>
