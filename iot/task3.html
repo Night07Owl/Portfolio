@@ -514,6 +514,154 @@
         </div>
       </div>
     </div>
+
+    <!-- PHYSICAL HARDWARE STATE TESTING CARDS -->
+    <div class="evidence-photos-grid" style="margin-top: 24px;">
+      <div class="evidence-photo-card">
+        <div class="photo-img-wrap">
+          <img src="../images/iot/task2_hardware_setup.jpg" alt="Active state testing showing bulb illuminated" style="width: 100%; height: 100%; object-fit: cover;">
+          <span class="photo-state-badge state-on">● BULB STATE : ILLUMINATED (ON)</span>
+        </div>
+        <div class="photo-card-info">
+          <h4>Active State: Automated Voice Trigger "Activate Bulb"</h4>
+          <ul class="bullet-list-sm">
+            <li>Spoken trigger processed by Google Assistant and IFTTT in under 1.4 seconds.</li>
+            <li>Adafruit IO feed <code>bulb</code> updated with payload string <code>"ON"</code>.</li>
+            <li>ESP32 executes <code>digitalWrite(RELAY_PIN, LOW)</code>, pulling GPIO 26 to GND.</li>
+            <li>Tongling relay coil is energized, closing the 230V circuit to illuminate the 60W bulb.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="evidence-photo-card">
+        <div class="photo-img-wrap" style="background: #050b08;">
+          <svg viewBox="0 0 500 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="inactBgGradT3" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#050e0a" />
+                <stop offset="100%" stop-color="#020805" />
+              </linearGradient>
+              <pattern id="inactGridT3" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(16, 185, 129, 0.05)" stroke-width="0.8" />
+              </pattern>
+            </defs>
+            
+            <!-- Background Canvas -->
+            <rect width="500" height="300" fill="url(#inactBgGradT3)" />
+            <rect width="500" height="300" fill="url(#inactGridT3)" />
+
+            <!-- Top Telemetry Status Header -->
+            <rect x="15" y="12" width="470" height="32" rx="6" fill="rgba(244, 63, 94, 0.08)" stroke="rgba(244, 63, 94, 0.3)" stroke-width="1" />
+            <circle cx="32" cy="28" r="4.5" fill="#f43f5e" />
+            <text x="46" y="32" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">INACTIVE STATE: RELAY DE-ENERGIZED · ARMATURE OPEN</text>
+            <rect x="390" y="18" width="85" height="20" rx="4" fill="rgba(244, 63, 94, 0.15)" />
+            <text x="432" y="32" fill="#fda4af" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" text-anchor="middle">OFF (IDLE)</text>
+
+            <!-- 1. ESP32 Logic Block (Left) -->
+            <g transform="translate(20, 60)">
+              <rect x="0" y="0" width="130" height="215" rx="8" fill="#09140f" stroke="#1b3628" stroke-width="1.5" />
+              <rect x="10" y="10" width="110" height="24" rx="4" fill="#0f2219" />
+              <text x="65" y="26" fill="#34d399" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" text-anchor="middle">ESP32 DevKit</text>
+              
+              <rect x="12" y="46" width="106" height="42" rx="4" fill="#08100c" stroke="#1d3829" stroke-width="1" />
+              <text x="65" y="62" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">PIN CONTROL</text>
+              <text x="65" y="78" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">GPIO 26</text>
+
+              <!-- Active-LOW Logic Indicator (HIGH = DE-ENERGIZED) -->
+              <rect x="12" y="100" width="106" height="52" rx="4" fill="rgba(244, 63, 94, 0.08)" stroke="rgba(244, 63, 94, 0.25)" stroke-width="1" />
+              <text x="65" y="116" fill="#cbd5e1" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">LOGIC VOLTAGE</text>
+              <text x="65" y="132" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" text-anchor="middle">3.3V (HIGH)</text>
+              <text x="65" y="145" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="7.5" text-anchor="middle">Active-LOW Idle</text>
+
+              <rect x="12" y="162" width="106" height="38" rx="4" fill="#08100c" />
+              <text x="65" y="177" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">MQTT VALUE</text>
+              <text x="65" y="192" fill="#cbd5e1" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" text-anchor="middle">"OFF"</text>
+            </g>
+
+            <!-- Signal Line: ESP32 to Relay -->
+            <path d="M 150 150 L 180 150" fill="none" stroke="#64748b" stroke-width="2.5" stroke-dasharray="4,3" />
+            <polygon points="180,150 173,146 173,154" fill="#64748b" />
+            <text x="165" y="142" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">HIGH</text>
+
+            <!-- 2. Relay Module Block (Center) -->
+            <g transform="translate(185, 60)">
+              <rect x="0" y="0" width="165" height="215" rx="8" fill="#08140f" stroke="#22543d" stroke-width="1.5" />
+              <rect x="10" y="10" width="145" height="24" rx="4" fill="#0d241a" />
+              <text x="82" y="26" fill="#34d399" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" text-anchor="middle">5V Tongling Relay</text>
+
+              <!-- Optocoupler State -->
+              <rect x="15" y="44" width="135" height="36" rx="4" fill="#06120c" stroke="#1d3829" stroke-width="1" />
+              <text x="82" y="58" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">OPTOCOUPLER</text>
+              <text x="82" y="72" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" text-anchor="middle">OFF (LED Inactive)</text>
+
+              <!-- Electromagnetic Coil -->
+              <g transform="translate(15, 88)">
+                <rect x="0" y="0" width="135" height="42" rx="4" fill="#091811" stroke="rgba(244, 63, 94, 0.2)" stroke-width="1" />
+                <text x="67" y="16" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">SOLENOID COIL</text>
+                <text x="67" y="32" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" text-anchor="middle">⚡ 0mA (De-energized)</text>
+              </g>
+
+              <!-- Mechanical Switch Armature (OPEN) -->
+              <g transform="translate(15, 138)">
+                <rect x="0" y="0" width="135" height="65" rx="4" fill="#06100b" stroke="#1d3829" stroke-width="1" />
+                <circle cx="25" cy="32" r="5" fill="#38bdf8" />
+                <text x="25" y="52" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" text-anchor="middle">COM</text>
+
+                <!-- Contact Points -->
+                <circle cx="110" cy="18" r="4.5" fill="#64748b" />
+                <text x="110" y="11" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="bold" text-anchor="middle">NC</text>
+                
+                <circle cx="110" cy="46" r="4.5" fill="#f43f5e" />
+                <text x="110" y="60" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="bold" text-anchor="middle">NO</text>
+
+                <!-- Armature lever sprung open toward NC / away from NO -->
+                <line x1="25" y1="32" x2="95" y2="20" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" />
+                
+                <!-- Open Air Gap Highlight -->
+                <line x1="95" y1="23" x2="108" y2="44" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="3,2" />
+                <text x="75" y="44" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold">OPEN GAP</text>
+              </g>
+            </g>
+
+            <!-- Disconnected Path: Relay NO to Bulb -->
+            <path d="M 350 206 L 375 206" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="4,3" />
+            <line x1="360" y1="200" x2="366" y2="212" stroke="#f43f5e" stroke-width="2" />
+            <line x1="366" y1="200" x2="360" y2="212" stroke="#f43f5e" stroke-width="2" />
+
+            <!-- 3. Electric Bulb & Load (Right) -->
+            <g transform="translate(380, 60)">
+              <rect x="0" y="0" width="105" height="215" rx="8" fill="#07120d" stroke="#1d3829" stroke-width="1.5" />
+              <rect x="8" y="10" width="89" height="24" rx="4" fill="#0d1e16" />
+              <text x="52" y="26" fill="#34d399" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" text-anchor="middle">230V AC Bulb</text>
+
+              <!-- Inactive Bulb Drawing -->
+              <g transform="translate(52, 95)">
+                <circle cx="0" cy="0" r="28" fill="#0c1813" stroke="#334155" stroke-width="2" />
+                <path d="M -12 20 L 12 20 L 8 32 L -8 32 Z" fill="#1e293b" stroke="#334155" stroke-width="1" />
+                <!-- Dim Filament -->
+                <path d="M -8 10 Q 0 -6 0 5 Q 0 -6 8 10" fill="none" stroke="#475569" stroke-width="1.5" />
+                <text x="0" y="4" text-anchor="middle" font-size="18" opacity="0.25">💡</text>
+              </g>
+
+              <rect x="8" y="152" width="89" height="48" rx="4" fill="rgba(244, 63, 94, 0.08)" stroke="rgba(244, 63, 94, 0.2)" stroke-width="1" />
+              <text x="52" y="168" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="7.5" text-anchor="middle">LOAD STATE</text>
+              <text x="52" y="184" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" text-anchor="middle">DARK / OFF</text>
+              <text x="52" y="195" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="7.5" text-anchor="middle">0V Utility Power</text>
+            </g>
+          </svg>
+          <span class="photo-state-badge state-off">○ BULB STATE : DE-ENERGIZED (OFF)</span>
+        </div>
+        <div class="photo-card-info">
+          <h4>Inactive State: Automated Voice Trigger "Turn Off Bulb"</h4>
+          <ul class="bullet-list-sm">
+            <li>Spoken shutoff phrase matched by IFTTT Applet 2, transmitting <code>"OFF"</code>.</li>
+            <li>ESP32 parses message, executing <code>digitalWrite(RELAY_PIN, HIGH)</code>.</li>
+            <li>Relay contacts spring back to the Normally Open (NO) position, isolating high voltage.</li>
+            <li>Bulb shuts off with zero physical touch required on the microcontroller board.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- 4. HARDWARE & WIRING SPECIFICATIONS -->
@@ -731,26 +879,6 @@
     </div>
   </section>
 
-  <!-- 8. REPOSITORY LINK -->
-  <section class="skeleton-section" id="repository">
-    <div class="sec-header">
-      <div class="sec-title-wrap">
-        <span class="sec-num">08</span>
-        <h2 class="sec-title">Project Source &amp; Repository</h2>
-      </div>
-      <span class="sec-tag">// GITHUB SOURCE CODE</span>
-    </div>
-
-    <div class="repo-card">
-      <div class="repo-info">
-        <h4>Task 03: IFTTT + Adafruit IO IoT Automation</h4>
-        <p>Contains Arduino sketch, IFTTT applet configurations, and documentation.</p>
-      </div>
-      <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">
-        View Code on GitHub →
-      </a>
-    </div>
-  </section>
 
 </main>
 
