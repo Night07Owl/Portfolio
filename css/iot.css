@@ -1,44 +1,78 @@
 /* ==========================================================================
-   COLOR PALETTE #62 — IoT ENGINEERING PORTFOLIO (DARK THEME)
-   Palette Tones:
-     #45496A (Slate Navy)
-     #7D8BAE (Dusty Slate Blue)
-     #E5857B (Terracotta Coral)
-     #F1B2B2 (Soft Rose Blush)
-     #E8CCC7 (Blush Champagne)
+   SUDHIKSHA PORTFOLIO — IOT ENGINEERING HUB
+   Theme: Deep Dark Minimalist (Matches Main Portfolio #050505)
+   Features:
+     - Left Sidebar Sticky Navigation
+     - Sleek Purplish "Back to Portfolio" Pill Button
+     - Distinct Unique Gradients for Task 1, 2, 3, 4, 5
+     - High-Performance Ambient Background Glow Blobs
    ========================================================================== */
 
 :root {
-  --palette-navy: #45496A;
-  --palette-slate: #7D8BAE;
-  --palette-coral: #E5857B;
-  --palette-rose: #F1B2B2;
-  --palette-blush: #E8CCC7;
-
-  /* Sleek Dark Canvas & Surfaces */
-  --bg-main: #131521;
-  --bg-alt: #0E101A;
-  --surface: #1B1E2E;
-  --surface-muted: #24283D;
-  --surface-navy: #151825;
-
-  /* Borders & Dividers */
-  --border-subtle: rgba(125, 139, 174, 0.18);
-  --border-strong: rgba(125, 139, 174, 0.32);
-  --border-coral: rgba(229, 133, 123, 0.45);
-  --border-slate: rgba(125, 139, 174, 0.35);
+  /* Core Dark Canvas & Surfaces (Matches Main Portfolio) */
+  --bg-main: #050505;
+  --bg-alt: #0a0a0d;
+  --surface: #101014;
+  --surface-muted: #16161c;
+  --surface-navy: #0c0d12;
+  --surface-elevated: #1a1b24;
 
   /* Typography Colors */
-  --text-primary: #F5F3EF;
-  --text-secondary: #B6BDD3;
-  --text-muted: #7D8BAE;
-  --text-inverse: #131521;
+  --text-primary: #F5F5F7;
+  --text-secondary: #A3A3B2;
+  --text-muted: #6B6B7B;
+  --text-inverse: #050505;
 
-  /* Accents & Tints */
-  --tint-coral: rgba(229, 133, 123, 0.16);
-  --tint-slate: rgba(125, 139, 174, 0.16);
-  --tint-rose: rgba(241, 178, 178, 0.14);
-  --tint-navy: rgba(69, 73, 106, 0.45);
+  /* Refined Glass Borders */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --border-glass: rgba(255, 255, 255, 0.10);
+
+  /* Purplish Branding Accent (For Back Button & Global Highlights) */
+  --purple-primary: #a855f7;
+  --purple-deep: #7c3aed;
+  --purple-glow: rgba(168, 85, 247, 0.45);
+  --purple-tint: rgba(168, 85, 247, 0.14);
+  --purple-border: rgba(168, 85, 247, 0.38);
+
+  /* =========================================================
+     UNIQUE GRADIENTS PER TASK (TASK 1 TO 5)
+     ========================================================= */
+
+  /* Task 1: ESP32 Web Server (Purple / Violet) */
+  --t1-gradient: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+  --t1-accent: #a855f7;
+  --t1-glow: rgba(168, 85, 247, 0.45);
+  --t1-tint: rgba(168, 85, 247, 0.14);
+  --t1-border: rgba(168, 85, 247, 0.38);
+
+  /* Task 2: Adafruit IO MQTT (Cyber Cyan / Electric Blue) */
+  --t2-gradient: linear-gradient(135deg, #00f2fe 0%, #007cf0 100%);
+  --t2-accent: #00f2fe;
+  --t2-glow: rgba(0, 242, 254, 0.45);
+  --t2-tint: rgba(0, 242, 254, 0.14);
+  --t2-border: rgba(0, 242, 254, 0.38);
+
+  /* Task 3: IFTTT Event Automation (Emerald Mint / Aqua) */
+  --t3-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  --t3-accent: #10b981;
+  --t3-glow: rgba(16, 185, 129, 0.45);
+  --t3-tint: rgba(16, 185, 129, 0.14);
+  --t3-border: rgba(16, 185, 129, 0.38);
+
+  /* Task 4: Firebase Realtime Dashboard (Solar Amber / Crimson Flame) */
+  --t4-gradient: linear-gradient(135deg, #ff8a00 0%, #e52e71 100%);
+  --t4-accent: #ff8a00;
+  --t4-glow: rgba(255, 138, 0, 0.45);
+  --t4-tint: rgba(255, 138, 0, 0.14);
+  --t4-border: rgba(255, 138, 0, 0.38);
+
+  /* Task 5: Capstone Autonomous System & CSV (Cyber Rose / Neon Violet) */
+  --t5-gradient: linear-gradient(135deg, #f43f5e 0%, #8b5cf6 100%);
+  --t5-accent: #f43f5e;
+  --t5-glow: rgba(244, 63, 94, 0.45);
+  --t5-tint: rgba(244, 63, 94, 0.14);
+  --t5-border: rgba(244, 63, 94, 0.38);
 
   /* Typography */
   --font-display: 'Space Grotesk', -apple-system, sans-serif;
@@ -51,9 +85,9 @@
   --radius-lg: 20px;
   --radius-pill: 999px;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
 * {
@@ -73,6 +107,7 @@ body {
   min-height: 100vh;
   line-height: 1.7;
   overflow-x: hidden;
+  position: relative;
 }
 
 a {
@@ -80,49 +115,116 @@ a {
   text-decoration: none;
 }
 
-/* ============ STICKY HEADER ============ */
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* ==========================================================================
+   AMBIENT BACKGROUND BLOBS (MATCHES MAIN PORTFOLIO)
+   ========================================================================== */
+.iot-bg-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.28;
+  transition: background 0.8s ease, box-shadow 0.8s ease, transform 0.8s ease;
+}
+
+.blob-purple {
+  width: 450px;
+  height: 450px;
+  top: -100px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.7) 0%, rgba(99, 102, 241, 0.2) 70%, transparent 100%);
+}
+
+.blob-task {
+  width: 550px;
+  height: 550px;
+  top: 35%;
+  right: -150px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.6) 0%, rgba(217, 70, 239, 0.2) 70%, transparent 100%);
+}
+
+/* ==========================================================================
+   STICKY HEADER
+   ========================================================================== */
 .iot-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(19, 21, 33, 0.88);
-  backdrop-filter: blur(16px);
+  background: rgba(5, 5, 5, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 14px clamp(16px, 4vw, 40px);
+  padding: 16px clamp(18px, 4vw, 44px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-.iot-brand {
+.iot-header-left {
   display: flex;
   align-items: center;
-  gap: 14px;
 }
 
+/* ==========================================================================
+   PURPLISH "BACK TO PORTFOLIO" BUTTON
+   ========================================================================== */
 .brand-back {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  background: var(--surface-muted);
-  border: 1px solid var(--border-subtle);
-  padding: 7px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #F5F3FF;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.16) 0%, rgba(124, 58, 237, 0.26) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.42);
+  padding: 8px 18px;
   border-radius: var(--radius-pill);
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  box-shadow: var(--shadow-sm);
+  gap: 10px;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.brand-back .back-arrow {
+  font-size: 1rem;
+  color: #c084fc;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
 }
 
 .brand-back:hover {
-  background: var(--palette-navy);
+  background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
   color: #FFFFFF;
-  border-color: var(--palette-slate);
-  transform: translateX(-2px);
+  border-color: #c084fc;
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.65), 0 4px 14px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.brand-back:hover .back-arrow {
+  transform: translateX(-4px);
+  color: #FFFFFF;
+}
+
+/* Brand Title Center */
+.iot-header-center {
+  display: flex;
+  align-items: center;
 }
 
 .brand-title {
@@ -132,77 +234,411 @@ a {
   color: var(--text-primary);
   letter-spacing: -0.01em;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: baseline;
+  gap: 8px;
 }
 
-.brand-badge {
+.brand-title .brand-role {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: var(--palette-coral);
-  background: var(--tint-coral);
-  border: 1px solid var(--border-coral);
-  padding: 3px 10px;
-  border-radius: var(--radius-pill);
-  letter-spacing: 0.04em;
+  color: var(--purple-primary);
+  letter-spacing: 0.08em;
 }
 
-/* ============ TASK SEGMENTED SWITCHER ============ */
-.iot-task-switcher {
+/* Status Pill Right */
+.iot-header-right {
   display: flex;
   align-items: center;
-  gap: 6px;
-  background: var(--surface-muted);
-  padding: 5px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border-subtle);
-  overflow-x: auto;
-  scrollbar-width: none;
 }
 
-.iot-task-switcher::-webkit-scrollbar {
-  display: none;
-}
-
-.task-nav-btn {
+.iot-status-pill {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 500;
   color: var(--text-secondary);
-  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  padding: 5px 12px;
   border-radius: var(--radius-pill);
-  border: 1px solid transparent;
-  background: transparent;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-  cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+}
+
+.status-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 14px #10b981; }
+  100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+/* ==========================================================================
+   MAIN APP LAYOUT (LEFT SIDEBAR + CONTENT)
+   ========================================================================== */
+.iot-app-layout {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px clamp(16px, 3.5vw, 44px) 100px;
+  gap: 36px;
+  position: relative;
+  z-index: 1;
+  align-items: flex-start;
+}
+
+/* ==========================================================================
+   LEFT SIDEBAR: TASK 1 TO 5 TABS
+   ========================================================================== */
+.iot-sidebar {
+  flex: 0 0 300px;
+  position: sticky;
+  top: 86px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(16, 16, 20, 0.88);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px 16px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  z-index: 40;
+}
+
+.sidebar-top {
+  padding: 4px 8px 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.sidebar-heading {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.iot-task-switcher {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 100%;
+}
+
+/* Base Tab Button */
+.task-nav-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
   user-select: none;
 }
 
-.task-nav-btn:hover {
-  color: #FFFFFF;
-  background: rgba(125, 139, 174, 0.18);
+.btn-accent-bar {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3.5px;
+  border-radius: 0 4px 4px 0;
+  opacity: 0;
+  transition: opacity 0.22s ease;
 }
 
-.task-nav-btn.active {
-  background: var(--palette-coral);
-  color: #FFFFFF;
+.btn-num {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: all 0.22s ease;
+}
+
+.btn-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.btn-title {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
   font-weight: 600;
-  box-shadow: 0 4px 16px rgba(229, 133, 123, 0.45);
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ============ MAIN CONTAINER ============ */
+.btn-sub {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.btn-arrow {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  opacity: 0.4;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   EACH TASK TAB HAS ITS OWN UNIQUE STYLING & GRADIENT (TABS 1 TO 5)
+   ========================================================================== */
+
+/* Task 1: Violet & Fuchsia */
+.task-nav-btn[data-task="task1"] .btn-num {
+  background: var(--t1-tint);
+  color: var(--t1-accent);
+}
+.task-nav-btn[data-task="task1"]:hover {
+  border-color: var(--t1-border);
+  background: rgba(168, 85, 247, 0.06);
+  transform: translateX(4px);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.15);
+}
+.task-nav-btn[data-task="task1"].active {
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.2) 0%, rgba(217, 70, 239, 0.08) 100%);
+  border-color: var(--t1-accent);
+  box-shadow: 0 0 20px var(--t1-glow);
+}
+.task-nav-btn[data-task="task1"].active .btn-accent-bar {
+  opacity: 1;
+  background: var(--t1-gradient);
+}
+.task-nav-btn[data-task="task1"].active .btn-num {
+  background: var(--t1-gradient);
+  color: #FFFFFF;
+  box-shadow: 0 0 10px var(--t1-glow);
+}
+.task-nav-btn[data-task="task1"].active .btn-arrow {
+  opacity: 1;
+  color: var(--t1-accent);
+  transform: translateX(2px);
+}
+
+/* Task 2: Electric Cyan & Sky Blue */
+.task-nav-btn[data-task="task2"] .btn-num {
+  background: var(--t2-tint);
+  color: var(--t2-accent);
+}
+.task-nav-btn[data-task="task2"]:hover {
+  border-color: var(--t2-border);
+  background: rgba(0, 242, 254, 0.06);
+  transform: translateX(4px);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+}
+.task-nav-btn[data-task="task2"].active {
+  background: linear-gradient(90deg, rgba(0, 242, 254, 0.2) 0%, rgba(0, 124, 240, 0.08) 100%);
+  border-color: var(--t2-accent);
+  box-shadow: 0 0 20px var(--t2-glow);
+}
+.task-nav-btn[data-task="task2"].active .btn-accent-bar {
+  opacity: 1;
+  background: var(--t2-gradient);
+}
+.task-nav-btn[data-task="task2"].active .btn-num {
+  background: var(--t2-gradient);
+  color: #050505;
+  box-shadow: 0 0 10px var(--t2-glow);
+}
+.task-nav-btn[data-task="task2"].active .btn-arrow {
+  opacity: 1;
+  color: var(--t2-accent);
+  transform: translateX(2px);
+}
+
+/* Task 3: Emerald Mint & Aqua */
+.task-nav-btn[data-task="task3"] .btn-num {
+  background: var(--t3-tint);
+  color: var(--t3-accent);
+}
+.task-nav-btn[data-task="task3"]:hover {
+  border-color: var(--t3-border);
+  background: rgba(16, 185, 129, 0.06);
+  transform: translateX(4px);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+}
+.task-nav-btn[data-task="task3"].active {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.2) 0%, rgba(6, 182, 212, 0.08) 100%);
+  border-color: var(--t3-accent);
+  box-shadow: 0 0 20px var(--t3-glow);
+}
+.task-nav-btn[data-task="task3"].active .btn-accent-bar {
+  opacity: 1;
+  background: var(--t3-gradient);
+}
+.task-nav-btn[data-task="task3"].active .btn-num {
+  background: var(--t3-gradient);
+  color: #FFFFFF;
+  box-shadow: 0 0 10px var(--t3-glow);
+}
+.task-nav-btn[data-task="task3"].active .btn-arrow {
+  opacity: 1;
+  color: var(--t3-accent);
+  transform: translateX(2px);
+}
+
+/* Task 4: Solar Amber & Crimson Flame */
+.task-nav-btn[data-task="task4"] .btn-num {
+  background: var(--t4-tint);
+  color: var(--t4-accent);
+}
+.task-nav-btn[data-task="task4"]:hover {
+  border-color: var(--t4-border);
+  background: rgba(255, 138, 0, 0.06);
+  transform: translateX(4px);
+  box-shadow: 0 0 15px rgba(255, 138, 0, 0.15);
+}
+.task-nav-btn[data-task="task4"].active {
+  background: linear-gradient(90deg, rgba(255, 138, 0, 0.2) 0%, rgba(229, 46, 113, 0.08) 100%);
+  border-color: var(--t4-accent);
+  box-shadow: 0 0 20px var(--t4-glow);
+}
+.task-nav-btn[data-task="task4"].active .btn-accent-bar {
+  opacity: 1;
+  background: var(--t4-gradient);
+}
+.task-nav-btn[data-task="task4"].active .btn-num {
+  background: var(--t4-gradient);
+  color: #050505;
+  box-shadow: 0 0 10px var(--t4-glow);
+}
+.task-nav-btn[data-task="task4"].active .btn-arrow {
+  opacity: 1;
+  color: var(--t4-accent);
+  transform: translateX(2px);
+}
+
+/* Task 5: Cyber Rose & Neon Violet */
+.task-nav-btn[data-task="task5"] .btn-num {
+  background: var(--t5-tint);
+  color: var(--t5-accent);
+}
+.task-nav-btn[data-task="task5"]:hover {
+  border-color: var(--t5-border);
+  background: rgba(244, 63, 94, 0.06);
+  transform: translateX(4px);
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
+}
+.task-nav-btn[data-task="task5"].active {
+  background: linear-gradient(90deg, rgba(244, 63, 94, 0.2) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border-color: var(--t5-accent);
+  box-shadow: 0 0 20px var(--t5-glow);
+}
+.task-nav-btn[data-task="task5"].active .btn-accent-bar {
+  opacity: 1;
+  background: var(--t5-gradient);
+}
+.task-nav-btn[data-task="task5"].active .btn-num {
+  background: var(--t5-gradient);
+  color: #FFFFFF;
+  box-shadow: 0 0 10px var(--t5-glow);
+}
+.task-nav-btn[data-task="task5"].active .btn-arrow {
+  opacity: 1;
+  color: var(--t5-accent);
+  transform: translateX(2px);
+}
+
+/* Active Common Typography */
+.task-nav-btn.active .btn-title {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+.task-nav-btn.active .btn-sub {
+  color: var(--text-secondary);
+}
+
+/* Sidebar Footer Card */
+.sidebar-footer-card {
+  margin-top: 6px;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+}
+
+.footer-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.chip-name {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.footer-card-desc {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   MAIN CONTENT AREA
+   ========================================================================== */
 .iot-container {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 36px clamp(16px, 3.5vw, 36px) 100px;
+  flex: 1;
+  min-width: 0;
+  max-width: 1060px;
 }
 
-/* ============ HERO BANNER ============ */
+/* ==========================================================================
+   HERO BANNER
+   ========================================================================== */
 .task-banner {
   background: var(--surface);
   border: 1px solid var(--border-subtle);
@@ -221,7 +657,7 @@ a {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--palette-navy), var(--palette-slate), var(--palette-coral), var(--palette-rose));
+  background: var(--purple-primary);
 }
 
 .task-eyebrow {
@@ -230,15 +666,12 @@ a {
   gap: 10px;
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  color: var(--palette-coral);
   font-weight: 600;
   letter-spacing: 0.06em;
   margin-bottom: 14px;
 }
 
 .eyebrow-num {
-  background: var(--tint-coral);
-  border: 1px solid var(--border-coral);
   padding: 3px 12px;
   border-radius: var(--radius-pill);
 }
@@ -283,33 +716,16 @@ a {
   gap: 6px;
 }
 
-.meta-chip.chip-coral {
-  background: var(--tint-coral);
-  border-color: var(--border-coral);
-  color: var(--palette-coral);
-  font-weight: 600;
-}
-
-.meta-chip.chip-navy {
-  background: var(--tint-navy);
-  border-color: var(--border-slate);
-  color: #FAF5EE;
-}
-
-.meta-chip.chip-slate {
-  background: var(--tint-slate);
-  border-color: var(--border-slate);
-  color: var(--text-secondary);
-}
-
-/* ============ QUICK JUMP PILLS ============ */
+/* ==========================================================================
+   QUICK JUMP PILLS
+   ========================================================================== */
 .quick-jump-bar {
   display: flex;
   align-items: center;
   gap: 8px;
   overflow-x: auto;
-  padding: 12px 0 20px;
-  margin-bottom: 24px;
+  padding: 12px 0 6px;
+  margin-top: 18px;
   scrollbar-width: none;
 }
 
@@ -330,13 +746,13 @@ a {
 }
 
 .jump-link:hover {
-  background: var(--palette-coral);
   color: #FFFFFF;
-  border-color: var(--palette-coral);
   transform: translateY(-1px);
 }
 
-/* ============ SKELETON SECTION CARDS ============ */
+/* ==========================================================================
+   SECTION-LEVEL STYLING & SKELETON CARDS
+   ========================================================================== */
 .skeleton-section {
   background: var(--surface);
   border: 1px solid var(--border-subtle);
@@ -372,8 +788,6 @@ a {
   font-family: var(--font-mono);
   font-size: 0.74rem;
   font-weight: 700;
-  color: #FFFFFF;
-  background: var(--palette-coral);
   padding: 3px 8px;
   border-radius: 6px;
 }
@@ -408,7 +822,18 @@ p.body-text {
   margin-bottom: 16px;
 }
 
-/* ============ CONCEPTS GRID ============ */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #f3e8ff;
+}
+
+/* ==========================================================================
+   CONCEPTS GRID
+   ========================================================================== */
 .concepts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -426,8 +851,7 @@ p.body-text {
 
 .concept-card:hover {
   transform: translateY(-2px);
-  border-color: var(--palette-coral);
-  background: rgba(36, 40, 61, 0.95);
+  background: rgba(28, 28, 36, 0.95);
 }
 
 .concept-card h4 {
@@ -441,19 +865,15 @@ p.body-text {
   gap: 8px;
 }
 
-.concept-card h4::before {
-  content: '◆';
-  color: var(--palette-coral);
-  font-size: 0.75rem;
-}
-
 .concept-card p {
   font-size: 0.88rem;
   color: var(--text-secondary);
   line-height: 1.62;
 }
 
-/* ============ SYSTEM DESIGN DIAGRAM ============ */
+/* ==========================================================================
+   SYSTEM DESIGN DIAGRAM
+   ========================================================================== */
 .diagram-wrap {
   background: var(--surface-navy);
   border: 1px solid var(--border-subtle);
@@ -461,7 +881,7 @@ p.body-text {
   padding: 26px;
   margin: 16px 0;
   overflow-x: auto;
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 
 .diagram-flow {
@@ -482,16 +902,9 @@ p.body-text {
   color: #fff;
 }
 
-.diagram-node.active-node {
-  border-color: var(--palette-coral);
-  background: rgba(229, 133, 123, 0.15);
-  box-shadow: 0 0 16px rgba(229, 133, 123, 0.3);
-}
-
 .diagram-node .node-type {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: var(--palette-rose);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 4px;
@@ -515,17 +928,14 @@ p.body-text {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  color: var(--palette-coral);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   padding: 0 6px;
 }
 
-.diagram-arrow svg {
-  stroke: var(--palette-coral);
-}
-
-/* ============ TABLES ============ */
+/* ==========================================================================
+   TABLES
+   ========================================================================== */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
@@ -551,10 +961,10 @@ p.body-text {
 .hw-table th {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: var(--palette-rose);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   background: var(--surface-muted);
+  color: var(--text-primary);
 }
 
 .hw-table td {
@@ -566,7 +976,7 @@ p.body-text {
 }
 
 .hw-table tr:hover td {
-  background: rgba(125, 139, 174, 0.06);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .hw-table .badge-pin {
@@ -574,16 +984,18 @@ p.body-text {
   font-size: 0.72rem;
   font-weight: 600;
   color: #FFFFFF;
-  background: rgba(125, 139, 174, 0.2);
-  border: 1px solid var(--border-slate);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-strong);
   padding: 2px 8px;
   border-radius: 4px;
 }
 
-/* ============ CODE BLOCKS ============ */
+/* ==========================================================================
+   CODE BLOCKS
+   ========================================================================== */
 .code-box {
-  background: #0E101A;
-  border: 1px solid #282C44;
+  background: #08080c;
+  border: 1px solid #1e1e28;
   border-radius: var(--radius-sm);
   overflow: hidden;
   margin: 16px 0;
@@ -595,14 +1007,14 @@ p.body-text {
   align-items: center;
   justify-content: space-between;
   padding: 10px 16px;
-  background: #161828;
-  border-bottom: 1px solid #282C44;
+  background: #101018;
+  border-bottom: 1px solid #1e1e28;
 }
 
 .code-filename {
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  color: var(--palette-blush);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -610,10 +1022,10 @@ p.body-text {
 
 .code-filename::before {
   content: '';
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--palette-coral);
+  background: #a855f7;
 }
 
 .copy-btn {
@@ -621,17 +1033,16 @@ p.body-text {
   font-size: 0.7rem;
   padding: 4px 10px;
   border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
   color: #FAF5EE;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .copy-btn:hover {
-  background: var(--palette-coral);
+  background: rgba(255, 255, 255, 0.15);
   color: #FFFFFF;
-  border-color: var(--palette-coral);
 }
 
 pre.code-content {
@@ -639,22 +1050,26 @@ pre.code-content {
   overflow-x: auto;
   font-family: var(--font-mono);
   font-size: 0.82rem;
-  color: #F4EBE0;
+  color: #E8E8EE;
   line-height: 1.62;
 }
 
 pre.code-content code {
   font-family: inherit;
+  background: transparent;
+  padding: 0;
 }
 
-.c-kw { color: #E5857B; font-weight: 600; }
-.c-fn { color: #A4B3DC; }
-.c-str { color: #F1B2B2; }
-.c-num { color: #E8CCC7; }
-.c-cmt { color: #767D9C; font-style: italic; }
-.c-type { color: #D1B394; }
+.c-kw { color: #f43f5e; font-weight: 600; }
+.c-fn { color: #60a5fa; }
+.c-str { color: #34d399; }
+.c-num { color: #fbbf24; }
+.c-cmt { color: #6b7280; font-style: italic; }
+.c-type { color: #c084fc; }
 
-/* ============ CONFIGURATION STEPS ============ */
+/* ==========================================================================
+   CONFIGURATION STEPS
+   ========================================================================== */
 .config-steps {
   display: flex;
   flex-direction: column;
@@ -675,7 +1090,6 @@ pre.code-content code {
   flex: 0 0 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--palette-coral);
   color: #FFFFFF;
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -698,10 +1112,12 @@ pre.code-content code {
   color: var(--text-secondary);
 }
 
-/* ============ MEDIA PLACEHOLDER / IMAGE SLOTS ============ */
+/* ==========================================================================
+   MEDIA / IMAGE SLOTS
+   ========================================================================== */
 .media-slot-card {
   background: var(--surface-navy);
-  border: 1px dashed var(--border-coral);
+  border: 1px dashed var(--border-strong);
   border-radius: var(--radius-sm);
   padding: 24px;
   margin: 18px 0;
@@ -716,8 +1132,7 @@ pre.code-content code {
 }
 
 .media-slot-card:hover {
-  border-color: var(--palette-coral);
-  background: rgba(27, 30, 46, 0.95);
+  background: rgba(20, 20, 28, 0.95);
 }
 
 .media-slot-card img {
@@ -725,7 +1140,7 @@ pre.code-content code {
   height: auto;
   border-radius: var(--radius-sm);
   display: block;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
 }
 
 .media-dropzone {
@@ -740,19 +1155,18 @@ pre.code-content code {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--tint-coral);
+  background: rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--palette-coral);
   font-size: 1.3rem;
 }
 
 .media-dropzone-path {
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--palette-blush);
-  background: rgba(0, 0, 0, 0.45);
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.55);
   padding: 5px 14px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-subtle);
@@ -768,12 +1182,14 @@ pre.code-content code {
 .media-badge {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  color: var(--palette-rose);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  color: var(--text-muted);
 }
 
-/* ============ EVIDENCE SHOWCASE ============ */
+/* ==========================================================================
+   EVIDENCE SHOWCASE
+   ========================================================================== */
 .evidence-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -812,7 +1228,6 @@ pre.code-content code {
 .evidence-label {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  color: var(--palette-coral);
   font-weight: 600;
   letter-spacing: 0.05em;
   margin-bottom: 4px;
@@ -832,7 +1247,9 @@ pre.code-content code {
   line-height: 1.5;
 }
 
-/* ============ CHALLENGES & FIXES ============ */
+/* ==========================================================================
+   CHALLENGES & FIXES
+   ========================================================================== */
 .challenges-grid {
   display: flex;
   flex-direction: column;
@@ -850,8 +1267,8 @@ pre.code-content code {
 
 .challenge-top {
   padding: 12px 18px;
-  background: var(--tint-coral);
-  border-bottom: 1px solid var(--border-coral);
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--border-subtle);
   display: flex;
   align-items: baseline;
   gap: 10px;
@@ -862,7 +1279,7 @@ pre.code-content code {
   font-size: 0.68rem;
   font-weight: 700;
   color: #FFFFFF;
-  background: var(--palette-coral);
+  background: #ef4444;
   padding: 2px 8px;
   border-radius: 4px;
 }
@@ -890,8 +1307,8 @@ pre.code-content code {
   margin-bottom: 6px;
 }
 
-.cause-box h5 { color: var(--palette-rose); }
-.fix-box h5 { color: var(--palette-coral); }
+.cause-box h5 { color: #f87171; }
+.fix-box h5 { color: #34d399; }
 
 .cause-box p,
 .fix-box p {
@@ -900,13 +1317,16 @@ pre.code-content code {
   line-height: 1.55;
 }
 
-/* ============ REFLECTION ============ */
+/* ==========================================================================
+   REFLECTION
+   ========================================================================== */
 .reflection-card {
   background: var(--surface-muted);
-  border-left: 4px solid var(--palette-coral);
   border-radius: var(--radius-sm);
   padding: 22px 26px;
   margin: 14px 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .reflection-card p {
@@ -916,7 +1336,9 @@ pre.code-content code {
   font-style: italic;
 }
 
-/* ============ REPOSITORY LINK ============ */
+/* ==========================================================================
+   REPOSITORY LINK
+   ========================================================================== */
 .repo-card {
   display: flex;
   align-items: center;
@@ -930,7 +1352,6 @@ pre.code-content code {
 }
 
 .repo-card:hover {
-  border-color: var(--palette-coral);
   box-shadow: var(--shadow-sm);
 }
 
@@ -953,25 +1374,23 @@ pre.code-content code {
   font-weight: 600;
   padding: 10px 22px;
   border-radius: var(--radius-pill);
-  background: var(--palette-coral);
   color: #FFFFFF;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: all 0.2s ease;
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(229, 133, 123, 0.4);
   border: none;
   cursor: pointer;
 }
 
 .btn-repo:hover {
-  background: #d46e63;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(229, 133, 123, 0.5);
 }
 
-/* ============ FORGE CHECKLIST ============ */
+/* ==========================================================================
+   FORGE CHECKLIST
+   ========================================================================== */
 .forge-checklist-box {
   margin-top: 36px;
   padding: 26px;
@@ -1014,16 +1433,140 @@ pre.code-content code {
 }
 
 .check-item:hover {
-  background: rgba(36, 40, 61, 0.9);
+  background: rgba(36, 36, 48, 0.9);
 }
 
 .check-item .box-done {
-  color: var(--palette-coral);
   font-size: 0.95rem;
   font-weight: bold;
 }
 
-/* ============ FOOTER ============ */
+/* ==========================================================================
+   INDIVIDUAL GRADIENTS APPLIED TO EACH TASK VIEW
+   ========================================================================== */
+
+/* TASK 1: VIOLET & FUCHSIA */
+#view-task1 .task-banner::before { background: var(--t1-gradient); }
+#view-task1 .eyebrow-num { background: var(--t1-tint); border: 1px solid var(--t1-border); color: var(--t1-accent); }
+#view-task1 .task-eyebrow { color: var(--t1-accent); }
+#view-task1 .meta-chip.chip-coral { background: var(--t1-tint); border-color: var(--t1-border); color: var(--t1-accent); font-weight: 600; }
+#view-task1 .jump-link:hover { background: var(--t1-gradient); border-color: var(--t1-accent); box-shadow: 0 0 12px var(--t1-glow); }
+#view-task1 .sec-num { background: var(--t1-gradient); color: #FFFFFF; }
+#view-task1 .concept-card:hover { border-color: var(--t1-accent); }
+#view-task1 .concept-card h4::before { content: '◆'; color: var(--t1-accent); font-size: 0.75rem; }
+#view-task1 .diagram-node.active-node { border-color: var(--t1-accent); background: var(--t1-tint); box-shadow: 0 0 16px var(--t1-glow); }
+#view-task1 .diagram-arrow { color: var(--t1-accent); }
+#view-task1 .diagram-arrow svg { stroke: var(--t1-accent); }
+#view-task1 .step-badge { background: var(--t1-gradient); }
+#view-task1 .evidence-label { color: var(--t1-accent); }
+#view-task1 .reflection-card { border-left: 4px solid var(--t1-accent); }
+#view-task1 .btn-repo { background: var(--t1-gradient); box-shadow: 0 4px 16px var(--t1-glow); }
+#view-task1 .check-item .box-done { color: var(--t1-accent); }
+#view-task1 .interactive-widget button { background: var(--t1-gradient); color: #fff; box-shadow: 0 0 16px var(--t1-glow); border: none; }
+
+/* TASK 2: CYBER CYAN & SKY BLUE */
+#view-task2 .task-banner::before { background: var(--t2-gradient); }
+#view-task2 .eyebrow-num { background: var(--t2-tint); border: 1px solid var(--t2-border); color: var(--t2-accent); }
+#view-task2 .task-eyebrow { color: var(--t2-accent); }
+#view-task2 .meta-chip.chip-coral { background: var(--t2-tint); border-color: var(--t2-border); color: var(--t2-accent); font-weight: 600; }
+#view-task2 .jump-link:hover { background: var(--t2-gradient); border-color: var(--t2-accent); color: #050505; font-weight: 700; box-shadow: 0 0 12px var(--t2-glow); }
+#view-task2 .sec-num { background: var(--t2-gradient); color: #050505; font-weight: 800; }
+#view-task2 .concept-card:hover { border-color: var(--t2-accent); }
+#view-task2 .concept-card h4::before { content: '◆'; color: var(--t2-accent); font-size: 0.75rem; }
+#view-task2 .diagram-node.active-node { border-color: var(--t2-accent); background: var(--t2-tint); box-shadow: 0 0 16px var(--t2-glow); }
+#view-task2 .diagram-arrow { color: var(--t2-accent); }
+#view-task2 .diagram-arrow svg { stroke: var(--t2-accent); }
+#view-task2 .step-badge { background: var(--t2-gradient); color: #050505; font-weight: 800; }
+#view-task2 .evidence-label { color: var(--t2-accent); }
+#view-task2 .reflection-card { border-left: 4px solid var(--t2-accent); }
+#view-task2 .btn-repo { background: var(--t2-gradient); color: #050505; font-weight: 700; box-shadow: 0 4px 16px var(--t2-glow); }
+#view-task2 .check-item .box-done { color: var(--t2-accent); }
+#view-task2 .interactive-widget button { background: var(--t2-gradient); color: #050505; font-weight: 700; box-shadow: 0 0 16px var(--t2-glow); border: none; }
+
+/* TASK 3: EMERALD MINT & AQUA */
+#view-task3 .task-banner::before { background: var(--t3-gradient); }
+#view-task3 .eyebrow-num { background: var(--t3-tint); border: 1px solid var(--t3-border); color: var(--t3-accent); }
+#view-task3 .task-eyebrow { color: var(--t3-accent); }
+#view-task3 .meta-chip.chip-coral { background: var(--t3-tint); border-color: var(--t3-border); color: var(--t3-accent); font-weight: 600; }
+#view-task3 .jump-link:hover { background: var(--t3-gradient); border-color: var(--t3-accent); box-shadow: 0 0 12px var(--t3-glow); }
+#view-task3 .sec-num { background: var(--t3-gradient); color: #FFFFFF; }
+#view-task3 .concept-card:hover { border-color: var(--t3-accent); }
+#view-task3 .concept-card h4::before { content: '◆'; color: var(--t3-accent); font-size: 0.75rem; }
+#view-task3 .diagram-node.active-node { border-color: var(--t3-accent); background: var(--t3-tint); box-shadow: 0 0 16px var(--t3-glow); }
+#view-task3 .diagram-arrow { color: var(--t3-accent); }
+#view-task3 .diagram-arrow svg { stroke: var(--t3-accent); }
+#view-task3 .step-badge { background: var(--t3-gradient); }
+#view-task3 .evidence-label { color: var(--t3-accent); }
+#view-task3 .reflection-card { border-left: 4px solid var(--t3-accent); }
+#view-task3 .btn-repo { background: var(--t3-gradient); box-shadow: 0 4px 16px var(--t3-glow); }
+#view-task3 .check-item .box-done { color: var(--t3-accent); }
+#view-task3 .interactive-widget button { background: var(--t3-gradient); color: #fff; box-shadow: 0 0 16px var(--t3-glow); border: none; }
+
+/* TASK 4: SOLAR AMBER & CRIMSON FLAME */
+#view-task4 .task-banner::before { background: var(--t4-gradient); }
+#view-task4 .eyebrow-num { background: var(--t4-tint); border: 1px solid var(--t4-border); color: var(--t4-accent); }
+#view-task4 .task-eyebrow { color: var(--t4-accent); }
+#view-task4 .meta-chip.chip-coral { background: var(--t4-tint); border-color: var(--t4-border); color: var(--t4-accent); font-weight: 600; }
+#view-task4 .jump-link:hover { background: var(--t4-gradient); border-color: var(--t4-accent); color: #050505; font-weight: 700; box-shadow: 0 0 12px var(--t4-glow); }
+#view-task4 .sec-num { background: var(--t4-gradient); color: #050505; font-weight: 800; }
+#view-task4 .concept-card:hover { border-color: var(--t4-accent); }
+#view-task4 .concept-card h4::before { content: '◆'; color: var(--t4-accent); font-size: 0.75rem; }
+#view-task4 .diagram-node.active-node { border-color: var(--t4-accent); background: var(--t4-tint); box-shadow: 0 0 16px var(--t4-glow); }
+#view-task4 .diagram-arrow { color: var(--t4-accent); }
+#view-task4 .diagram-arrow svg { stroke: var(--t4-accent); }
+#view-task4 .step-badge { background: var(--t4-gradient); color: #050505; font-weight: 800; }
+#view-task4 .evidence-label { color: var(--t4-accent); }
+#view-task4 .reflection-card { border-left: 4px solid var(--t4-accent); }
+#view-task4 .btn-repo { background: var(--t4-gradient); color: #050505; font-weight: 700; box-shadow: 0 4px 16px var(--t4-glow); }
+#view-task4 .check-item .box-done { color: var(--t4-accent); }
+#view-task4 .interactive-widget button { background: var(--t4-gradient); color: #050505; font-weight: 700; box-shadow: 0 0 16px var(--t4-glow); border: none; }
+
+/* TASK 5: CYBER ROSE & NEON VIOLET */
+#view-task5 .task-banner::before { background: var(--t5-gradient); }
+#view-task5 .eyebrow-num { background: var(--t5-tint); border: 1px solid var(--t5-border); color: var(--t5-accent); }
+#view-task5 .task-eyebrow { color: var(--t5-accent); }
+#view-task5 .meta-chip.chip-coral { background: var(--t5-tint); border-color: var(--t5-border); color: var(--t5-accent); font-weight: 600; }
+#view-task5 .jump-link:hover { background: var(--t5-gradient); border-color: var(--t5-accent); box-shadow: 0 0 12px var(--t5-glow); }
+#view-task5 .sec-num { background: var(--t5-gradient); color: #FFFFFF; }
+#view-task5 .concept-card:hover { border-color: var(--t5-accent); }
+#view-task5 .concept-card h4::before { content: '◆'; color: var(--t5-accent); font-size: 0.75rem; }
+#view-task5 .diagram-node.active-node { border-color: var(--t5-accent); background: var(--t5-tint); box-shadow: 0 0 16px var(--t5-glow); }
+#view-task5 .diagram-arrow { color: var(--t5-accent); }
+#view-task5 .diagram-arrow svg { stroke: var(--t5-accent); }
+#view-task5 .step-badge { background: var(--t5-gradient); }
+#view-task5 .evidence-label { color: var(--t5-accent); }
+#view-task5 .reflection-card { border-left: 4px solid var(--t5-accent); }
+#view-task5 .btn-repo { background: var(--t5-gradient); box-shadow: 0 4px 16px var(--t5-glow); }
+#view-task5 .check-item .box-done { color: var(--t5-accent); }
+#view-task5 .interactive-widget button,
+#btnDownloadCsvSim { background: var(--t5-gradient); color: #fff; box-shadow: 0 0 16px var(--t5-glow); border: none; }
+
+/* ==========================================================================
+   INTERACTIVE SIMULATION WIDGETS
+   ========================================================================== */
+.interactive-widget {
+  background: var(--surface-navy);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  margin: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sim-led-bulb {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #252838;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.25s ease;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 .iot-footer {
   text-align: center;
   padding: 40px 20px;
@@ -1032,28 +1575,90 @@ pre.code-content code {
   color: var(--text-muted);
   border-top: 1px solid var(--border-subtle);
   background: var(--bg-main);
+  position: relative;
+  z-index: 10;
 }
 
-/* ============ RESPONSIVE MEDIA QUERIES ============ */
-@media (max-width: 860px) {
-  .iot-header {
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLETS & MOBILE)
+   ========================================================================== */
+@media (max-width: 980px) {
+  .iot-app-layout {
     flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
+    padding-top: 16px;
+    gap: 20px;
   }
-  .iot-brand {
-    justify-content: space-between;
-  }
-  .iot-task-switcher {
+
+  .iot-sidebar {
+    position: sticky;
+    top: 68px;
     width: 100%;
-    overflow-x: auto;
+    flex: none;
+    padding: 12px;
+    border-radius: var(--radius-md);
   }
+
+  .sidebar-top,
+  .sidebar-footer-card {
+    display: none;
+  }
+
+  .iot-task-switcher {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .iot-task-switcher::-webkit-scrollbar {
+    display: none;
+  }
+
+  .task-nav-btn {
+    flex: 0 0 auto;
+    min-width: 160px;
+    padding: 10px 12px;
+  }
+
+  .btn-accent-bar {
+    left: 4px;
+    top: 4px;
+    bottom: 4px;
+  }
+
+  .btn-arrow {
+    display: none;
+  }
+
   .challenge-body {
     grid-template-columns: 1fr;
   }
+
   .repo-card {
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .iot-header {
+    padding: 12px 16px;
+  }
+
+  .brand-title .brand-role {
+    display: none;
+  }
+
+  .iot-status-pill {
+    display: none;
+  }
+
+  .task-nav-btn {
+    min-width: 140px;
+  }
+
+  .btn-sub {
+    display: none;
   }
 }

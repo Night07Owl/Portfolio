@@ -80,7 +80,7 @@ window.addEventListener('scroll', () => {
 // ---- Nav / hero links: smooth-scroll to section ----
 function setupNavAndLinks(){
   navButtons = Array.from(document.querySelectorAll('nav button'));
-  sectionEls = ['home','featured','protosem','edits','iot'].map(id => document.getElementById('page-' + id));
+  sectionEls = ['home','featured','protosem','edits'].map(id => document.getElementById('page-' + id));
 
   document.querySelectorAll('[data-target]').forEach(btn => {
     btn.addEventListener('click', e => {
@@ -318,7 +318,7 @@ function setupParallax(){
 
 // ================= Load each tab's partial, in order, into one scrolling page =================
 async function loadPartials(){
-  const order = ['home','featured','protosem','edits','iot'];
+  const order = ['home','featured','protosem','edits'];
   const main = document.getElementById('main');
 
   for (const name of order){
@@ -466,21 +466,11 @@ if(featuredTop > trigger){
   }
 
   // EDITS
-  else if(iotTop > trigger){
-
+  else {
       applyTheme(THEMES.edits);
 
       root.setProperty("--blob1","#0f0524");
       root.setProperty("--blob2","#3a0c6e");
-  }
-
-  // IOT
-  else{
-
-      applyTheme(THEMES.iot);
-
-      root.setProperty("--blob1","#003b46");
-      root.setProperty("--blob2","#006655");
   }
 
   // NAV

@@ -1,6 +1,34 @@
 // ==========================================================================
-// COLOR PALETTE #62 — IoT Interactive Master Script
+// SUDHIKSHA IOT ENGINEERING HUB — Dynamic Interactions & Task Engine
 // ==========================================================================
+
+const TASK_THEMES = {
+  task1: {
+    accent: '#a855f7',
+    gradient: 'radial-gradient(circle, rgba(168, 85, 247, 0.6) 0%, rgba(217, 70, 239, 0.2) 70%, transparent 100%)',
+    name: '01 · Web Server'
+  },
+  task2: {
+    accent: '#00f2fe',
+    gradient: 'radial-gradient(circle, rgba(0, 242, 254, 0.6) 0%, rgba(0, 124, 240, 0.2) 70%, transparent 100%)',
+    name: '02 · Adafruit MQTT'
+  },
+  task3: {
+    accent: '#10b981',
+    gradient: 'radial-gradient(circle, rgba(16, 185, 129, 0.6) 0%, rgba(6, 182, 212, 0.2) 70%, transparent 100%)',
+    name: '03 · IFTTT Auto'
+  },
+  task4: {
+    accent: '#ff8a00',
+    gradient: 'radial-gradient(circle, rgba(255, 138, 0, 0.6) 0%, rgba(229, 46, 113, 0.2) 70%, transparent 100%)',
+    name: '04 · Firebase Monitor'
+  },
+  task5: {
+    accent: '#f43f5e',
+    gradient: 'radial-gradient(circle, rgba(244, 63, 94, 0.6) 0%, rgba(139, 92, 246, 0.2) 70%, transparent 100%)',
+    name: '05 · Capstone & Export'
+  }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   setupTaskTabSwitcher();
@@ -9,28 +37,36 @@ document.addEventListener('DOMContentLoaded', () => {
   setupChecklistInteractivity();
 });
 
-// ---- Smooth Tab Switching for Master Hub (iot.html) ----
+// ---- Smooth Tab Switching for Left Sidebar ----
 function setupTaskTabSwitcher() {
   const tabButtons = document.querySelectorAll('.task-nav-btn[data-task]');
   const taskViews = document.querySelectorAll('.task-view');
+  const dynamicBlob = document.getElementById('dynamicBlob');
 
   if (tabButtons.length === 0 || taskViews.length === 0) return;
 
   function activateTask(taskId) {
-    // Update button states
+    document.body.setAttribute('data-active-task', taskId);
+
+    // Update dynamic background ambient blob
+    if (dynamicBlob && TASK_THEMES[taskId]) {
+      dynamicBlob.style.background = TASK_THEMES[taskId].gradient;
+    }
+
+    // Update sidebar button states
     tabButtons.forEach(btn => {
       const isActive = btn.dataset.task === taskId;
       btn.classList.toggle('active', isActive);
       btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
     });
 
-    // Update view visibility
+    // Update view visibility with gentle fade
     taskViews.forEach(view => {
       const match = view.id === `view-${taskId}`;
       if (match) {
         view.style.display = 'block';
         view.style.opacity = '0';
-        view.style.transform = 'translateY(6px)';
+        view.style.transform = 'translateY(8px)';
         requestAnimationFrame(() => {
           view.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
           view.style.opacity = '1';
@@ -80,7 +116,7 @@ function setupCopyButtons() {
         await navigator.clipboard.writeText(codeEl.textContent);
         const originalText = btn.textContent;
         btn.textContent = 'Copied!';
-        btn.style.background = 'var(--palette-coral)';
+        btn.style.background = 'var(--purple-primary)';
         btn.style.color = '#fff';
         setTimeout(() => {
           btn.textContent = originalText;
@@ -106,19 +142,21 @@ function setupSimulationWidgets() {
     ledToggleBtn.addEventListener('click', () => {
       isOn = !isOn;
       if (isOn) {
-        ledIndicator.style.background = 'var(--palette-coral)';
-        ledIndicator.style.boxShadow = '0 0 20px rgba(229, 133, 123, 0.8), 0 0 40px rgba(229, 133, 123, 0.4)';
+        ledIndicator.style.background = '#a855f7';
+        ledIndicator.style.boxShadow = '0 0 25px rgba(168, 85, 247, 0.9), 0 0 50px rgba(168, 85, 247, 0.5)';
         ledStateText.textContent = 'HIGH (3.3V) — LED IS ON';
-        ledStateText.style.color = 'var(--palette-coral)';
+        ledStateText.style.color = '#c084fc';
         ledToggleBtn.textContent = 'Send HTTP GET /L (Turn OFF)';
-        ledToggleBtn.style.background = 'var(--palette-navy)';
+        ledToggleBtn.style.background = '#1e1b4b';
+        ledToggleBtn.style.color = '#c084fc';
       } else {
-        ledIndicator.style.background = '#2B2F4A';
+        ledIndicator.style.background = '#1e1e28';
         ledIndicator.style.boxShadow = 'none';
         ledStateText.textContent = 'LOW (0V) — LED IS OFF';
         ledStateText.style.color = 'var(--text-muted)';
         ledToggleBtn.textContent = 'Send HTTP GET /H (Turn ON)';
-        ledToggleBtn.style.background = 'var(--palette-coral)';
+        ledToggleBtn.style.background = 'var(--t1-gradient)';
+        ledToggleBtn.style.color = '#ffffff';
       }
     });
   }
@@ -159,10 +197,10 @@ function setupChecklistInteractivity() {
       if (icon) {
         if (icon.textContent === '☑') {
           icon.textContent = '☐';
-          icon.style.color = 'var(--text-muted)';
+          icon.style.opacity = '0.4';
         } else {
           icon.textContent = '☑';
-          icon.style.color = 'var(--palette-coral)';
+          icon.style.opacity = '1';
         }
       }
     });

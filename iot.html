@@ -14,25 +14,105 @@
 
 <body>
 
+<!-- AMBIENT GLOW BLOBS (MATCHING PORTFOLIO THEME) -->
+<div class="iot-bg-blob blob-purple"></div>
+<div class="iot-bg-blob blob-task" id="dynamicBlob"></div>
+
 <!-- STICKY HEADER -->
 <header class="iot-header">
-  <div class="iot-brand">
-    <a href="index.html" class="brand-back">← Back to Portfolio</a>
+  <div class="iot-header-left">
+    <a href="index.html" class="brand-back" id="backToPortfolio">
+      <span class="back-arrow">←</span>
+      <span class="back-text">Back to Portfolio</span>
+    </a>
+  </div>
+
+  <div class="iot-header-center">
     <div class="brand-title">
-      PROTOSEM <span class="brand-badge">FORGE IoT</span>
+      SUDHIKSHA <span class="brand-role">IOT TRACK</span>
     </div>
   </div>
 
-  <nav class="iot-task-switcher" aria-label="IoT Assignments Navigation">
-    <button class="task-nav-btn active" data-task="task1">01 · Web Server</button>
-    <button class="task-nav-btn" data-task="task2">02 · Adafruit MQTT</button>
-    <button class="task-nav-btn" data-task="task3">03 · IFTTT Auto</button>
-    <button class="task-nav-btn" data-task="task4">04 · Firebase Monitor</button>
-    <button class="task-nav-btn" data-task="task5">05 · Capstone & Export</button>
-  </nav>
+  <div class="iot-header-right">
+    <div class="iot-status-pill">
+      <span class="status-live-dot"></span>
+      <span class="status-text">5 STATIONS</span>
+    </div>
+  </div>
 </header>
 
-<main class="iot-container">
+<!-- MAIN APP LAYOUT: LEFT SIDEBAR + CONTENT -->
+<div class="iot-app-layout">
+
+  <!-- LEFT SIDEBAR: TASK 1 TO 5 TABS -->
+  <aside class="iot-sidebar" id="iotSidebar" aria-label="IoT Assignments Navigation">
+    <div class="sidebar-top">
+      <span class="sidebar-kicker">// STATIONS</span>
+      <h3 class="sidebar-heading">Assignments</h3>
+    </div>
+
+    <nav class="iot-task-switcher" aria-label="IoT Assignments Navigation">
+      <button class="task-nav-btn active" data-task="task1" id="tab-task1">
+        <span class="btn-accent-bar"></span>
+        <span class="btn-num">01</span>
+        <div class="btn-info">
+          <span class="btn-title">Web Server</span>
+          <span class="btn-sub">ESP32 Local HTTP & LED</span>
+        </div>
+        <span class="btn-arrow">→</span>
+      </button>
+
+      <button class="task-nav-btn" data-task="task2" id="tab-task2">
+        <span class="btn-accent-bar"></span>
+        <span class="btn-num">02</span>
+        <div class="btn-info">
+          <span class="btn-title">Adafruit MQTT</span>
+          <span class="btn-sub">Cloud Broker Pub/Sub</span>
+        </div>
+        <span class="btn-arrow">→</span>
+      </button>
+
+      <button class="task-nav-btn" data-task="task3" id="tab-task3">
+        <span class="btn-accent-bar"></span>
+        <span class="btn-num">03</span>
+        <div class="btn-info">
+          <span class="btn-title">IFTTT Auto</span>
+          <span class="btn-sub">Webhooks & Triggers</span>
+        </div>
+        <span class="btn-arrow">→</span>
+      </button>
+
+      <button class="task-nav-btn" data-task="task4" id="tab-task4">
+        <span class="btn-accent-bar"></span>
+        <span class="btn-num">04</span>
+        <div class="btn-info">
+          <span class="btn-title">Firebase Monitor</span>
+          <span class="btn-sub">Realtime DB & UI</span>
+        </div>
+        <span class="btn-arrow">→</span>
+      </button>
+
+      <button class="task-nav-btn" data-task="task5" id="tab-task5">
+        <span class="btn-accent-bar"></span>
+        <span class="btn-num">05</span>
+        <div class="btn-info">
+          <span class="btn-title">Capstone & Export</span>
+          <span class="btn-sub">Autonomous Control & CSV</span>
+        </div>
+        <span class="btn-arrow">→</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer-card">
+      <div class="footer-card-header">
+        <span class="chip-dot"></span>
+        <span class="chip-name">ESP32 DevKit V1</span>
+      </div>
+      <p class="footer-card-desc">Hardware to Cloud Engineering · 5 stations completed</p>
+    </div>
+  </aside>
+
+  <main class="iot-container">
 
   <!-- =========================================================================
        TASK 01 VIEW: ESP32 WEB SERVER & HTML LED CONTROL
@@ -2193,6 +2273,7 @@ Waiting for browser requests...
   </div>
 
 </main>
+</div><!-- end .iot-app-layout -->
 
 <footer class="iot-footer">
   © <span id="year">2026</span> IoT Engineering Portfolio — Prototype Seminar Forge Track.
