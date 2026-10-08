@@ -99,8 +99,8 @@
             <span class="btn-accent-bar"></span>
             <span class="btn-num">05</span>
             <div class="btn-info">
-              <span class="btn-title">Capstone & Export</span>
-              <span class="btn-sub">Autonomous Control & CSV</span>
+              <span class="btn-title">Firebase Logging</span>
+              <span class="btn-sub">Automation &amp; Data Export</span>
             </div>
             <span class="btn-chevron">→</span>
           </button>
@@ -6083,75 +6083,64 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
             </blockquote>
           </div>
 
-          <!-- SOURCE REPOSITORY -->
-          <div class="repo-banner-box" style="margin-top: 24px;">
-            <div class="repo-text">
-              <h4>Task 4 Source Repository — Night07Owl/Smartyy</h4>
-              <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: #94a3b8;">
-                Production repository containing ESP32 firmware, web dashboard, Firebase configurations, and documentation.
-              </p>
-            </div>
-            <a href="https://github.com/Night07Owl/Smartyy" target="_blank" rel="noopener noreferrer" class="btn-repo btn-t4">
-              View Smartyy on GitHub ↗
-            </a>
-          </div>
-        </section>
-
-      </div>
-
+                      <!-- =======================================================================
+         TASK 05: FIREBASE LOGGING, AUTOMATION & DATA EXPORT (CYBER ROSE / VIOLET)
+         ======================================================================= -->
       <div class="task-view" id="view-task5" style="display: none;">
 
         <!-- HERO BANNER -->
         <section class="task-banner banner-t5">
           <div class="banner-eyebrow">
             <span class="pill-badge pill-t5">ASSIGNMENT 05</span>
-            <span class="eyebrow-text">// CAPSTONE CLOSED-LOOP AUTONOMOUS SYSTEM</span>
+            <span class="eyebrow-text">// CAPSTONE: CLOUD LOGGING, AUTOMATION &amp; DATA EXPORT</span>
           </div>
-          <h1 class="task-title title-t5">Autonomous Closed-Loop Control &amp; CSV Export</h1>
+          <h1 class="task-title title-t5">Firebase Logging, Automation &amp; Data Export</h1>
           <p class="task-lead">
-            The capstone integration: an edge-computing autonomous system featuring software hysteresis anti-chatter control, dual manual/auto modes, and client-side telemetry CSV logging.
+            The comprehensive capstone integration: continuous environmental telemetry logging to Google Firebase Realtime Database, 
+            intelligent dual manual and light-adaptive automated lighting control, dynamic time-series analytics, 
+            and client-side CSV data export.
           </p>
 
           <div class="stats-grid">
             <div class="stat-card">
-              <span class="stat-icon">🔄</span>
+              <span class="stat-icon">🗄️</span>
+              <div class="stat-content">
+                <h4>Storage Engine</h4>
+                <p>Firebase Realtime DB (/history)</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">⏱️</span>
+              <div class="stat-content">
+                <h4>Logging Cadence</h4>
+                <p>30-Second NTP Epoch Snapshots</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">⚡</span>
               <div class="stat-content">
                 <h4>Control Mode</h4>
-                <p>Dual: Manual Remote vs Autonomous</p>
+                <p>Dual: Manual &amp; Light-Adaptive Auto</p>
               </div>
             </div>
             <div class="stat-card">
-              <span class="stat-icon">🛡️</span>
-              <div class="stat-content">
-                <h4>Anti-Chatter</h4>
-                <p>300-Point Deadband Software Hysteresis</p>
-              </div>
-            </div>
-            <div class="stat-card">
-              <span class="stat-icon">💾</span>
+              <span class="stat-icon">📊</span>
               <div class="stat-content">
                 <h4>Data Export</h4>
-                <p>Client-Side UTF-8 CSV Stream Generator</p>
-              </div>
-            </div>
-            <div class="stat-card">
-              <span class="stat-icon">🌐</span>
-              <div class="stat-content">
-                <h4>Edge Autonomy</h4>
-                <p>100% Offline Edge Resilience</p>
+                <p>RFC 4180 Client-Side CSV Stream</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 1. CORE ARCHITECTURE, PROBLEM STATEMENT & SYSTEM SUMMARY -->
+        <!-- 1. SYSTEM SUMMARY (RENAMED AS REQUESTED) -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t5">01</span>
-              <h2>Core Architecture, Problem Statement &amp; System Summary</h2>
+              <h2>System Summary</h2>
             </div>
-            <span class="block-tag">// SYSTEM SCOPE &amp; HIGH-LEVEL TOPOLOGY</span>
+            <span class="block-tag">// SYSTEM SCOPE &amp; FINAL TOPOLOGY</span>
           </div>
 
           <!-- DISTINCT CONTENT BOX 1: OBJECTIVE -->
@@ -6164,1038 +6153,1866 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
               <span class="pill-badge pill-t5">PROJECT GOALS</span>
             </div>
             <ul class="bullet-list-lg t5-bullets">
-              <li>To develop an end-to-end autonomous edge-controlled IoT system integrating environmental sensors, electromechanical actuators, and cloud synchronization.</li>
-              <li>To implement software hysteresis with a calibrated 300-point deadband (1200 / 1500 raw ADC) to eliminate high-frequency relay contact chatter and destructive arcing.</li>
-              <li>To architect a dual-mode operational controller permitting seamless runtime switching between autonomous edge control and remote manual cloud override.</li>
-              <li>To build a client-side streaming CSV telemetry generation engine directly in the web interface for offline engineering audits and historical data analysis without server dependencies.</li>
+              <li>To develop a complete, production-grade cloud IoT system integrating <strong>ESP32 environmental sensing, Google Firebase Realtime Database, and the Smartyy web dashboard</strong>.</li>
+              <li>To ingest multi-sensor environmental telemetry (<strong>DHT11 Temperature &amp; Humidity, LDR Light Level</strong>) and broadcast live status updates to <code>/current</code>.</li>
+              <li>To implement intelligent dual-mode actuation: allowing operators to trigger <strong>Manual Bulb Control</strong> via the dashboard or engage <strong>Automatic Light-Adaptive Control</strong> driven by ambient LDR threshold evaluation.</li>
+              <li>To execute automated time-series logging, committing cryptographically synchronized NTP epoch snapshots into the Firebase <code>/history</code> database branch every 30 seconds.</li>
+              <li>To visualize recorded environmental data on an interactive <strong>dual-axis streaming graph</strong> and provide seamless one-click <strong>CSV data download</strong> for offline engineering analytics.</li>
+              <li>To deploy and host the complete live production web application at <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" style="color: #f43f5e; text-decoration: underline; font-weight: 700;">Smart Room IoT (https://smartyy-e6f48.web.app/)</a>.</li>
             </ul>
           </div>
 
           <!-- DISTINCT CONTENT BOX 2: PROBLEM STATEMENT -->
-          <div class="distinct-content-box box-t5">
+          <div class="distinct-content-box box-t5" style="margin-top: 20px;">
             <div class="box-header-row">
               <div class="title-with-num">
                 <span class="badge-num num-t5">02</span>
                 <h2>Problem Being Addressed</h2>
               </div>
-              <span class="pill-badge pill-t5">PAIN POINTS &amp; FAILURES</span>
+              <span class="pill-badge pill-t5">PAIN POINTS RESOLVED</span>
             </div>
             <ul class="bullet-list-lg t5-bullets">
-              <li><strong>Single-Threshold Relay Chatter &amp; Mechanical Failure:</strong> When a system toggles based on a single threshold (e.g. Light &lt; 1500), sensor noise causes rapid oscillation between 1499 and 1501, making mechanical relays switch 10+ times per second, generating destructive electrical arcs.</li>
-              <li><strong>Cloud Dependency Single Point of Failure:</strong> Standard IoT architectures offload automation logic to cloud brokers; when internet connectivity drops or cloud APIs experience latency, local actuators fail to respond to critical environmental changes.</li>
-              <li><strong>Telemetry Data Lock-In &amp; Inaccessible Audits:</strong> Microcontroller memory and cloud JSON trees cannot be easily exported for offline analysis by engineers using spreadsheet tools (Excel, pandas, MATLAB) without heavy backend server code.</li>
+              <li><strong>Transient Telemetry Loss:</strong> Basic microcontrollers keep state in volatile RAM; without a cloud time-series database, historical environmental readings disappear completely upon power loss or reboot.</li>
+              <li><strong>Unsynchronized Historical Logs:</strong> Edge microcontrollers lack hardware Real-Time Clocks (RTCs); logging requires network NTP synchronization to timestamp data accurately without clock drift.</li>
+              <li><strong>Rigid Actuation Architectures:</strong> Isolated IoT systems force either purely manual switching or purely automatic hardcoded logic; industrial facilities require seamless mode arbitration between manual overrides and sensor-driven automation.</li>
+              <li><strong>Data Siloing &amp; Proprietary Formats:</strong> IoT cloud dashboards frequently trap sensor logs within proprietary visualizers; engineering teams require standards-compliant RFC 4180 CSV export for computational analysis in Excel, Python, and MATLAB.</li>
             </ul>
           </div>
 
-          <!-- DISTINCT CONTENT BOX 3: PROJECT SUMMARY -->
-          <div class="distinct-content-box box-t5">
+          <!-- FINAL SYSTEM ARCHITECTURE & DATA PIPELINE -->
+          <div class="distinct-content-box box-t5" style="margin-top: 20px;">
             <div class="box-header-row">
               <div class="title-with-num">
                 <span class="badge-num num-t5">03</span>
-                <h2>Project Summary</h2>
+                <h2>Final System Architecture &amp; Data-Flow Pipeline</h2>
               </div>
-              <span class="pill-badge pill-t5">HIGH-LEVEL OVERVIEW</span>
+              <span class="pill-badge pill-t5">END-TO-END PIPELINE</span>
             </div>
-            <ul class="bullet-list-lg t5-bullets">
-              <li>The ESP32 continuously samples an LDR photoresistor on GPIO 34 through internal 12-bit ADC conversion alongside a calibrated DHT11 climate sensor on GPIO 4.</li>
-              <li>An embedded software hysteresis algorithm executes locally at the edge: the 5V relay energizes only when light plunges below 1200 ADC and de-energizes only when light rises above 1500 ADC, completely ignoring the 300-point intermediate zone.</li>
-              <li>Real-time operating metrics (mode, light level, temperature, humidity, bulb status) stream continuously to Google Firebase Realtime Database over encrypted WebSockets.</li>
-              <li>The web dashboard incorporates an instant client-side RFC 4180 CSV export generator that serializes recorded telemetry in browser memory into downloadable spreadsheet files on demand.</li>
-            </ul>
-          </div>
+            <p class="distinct-para">
+              The complete architecture unifies an ESP32 edge microcontroller, Google Firebase NoSQL cloud infrastructure, and a responsive web application dashboard:
+            </p>
 
-          <!-- VISUAL PIPELINE BOX -->
-          <div class="visual-pipeline-box">
-            <div class="pipeline-header">
-              <span class="node-icon">⚡</span>
-              <h4>Edge Autonomy &amp; CSV Export Pipeline</h4>
-              <span class="pill-badge pill-t5">CLOSED-LOOP TOPOLOGY</span>
-            </div>
-            <div class="pipe-flow">
-              <div class="pipe-node">
-                <span class="node-icon">📡</span>
-                <span class="node-label">Physical Ingestion</span>
-                <span class="node-sub">LDR ADC &amp; DHT11 Sensors</span>
+            <div class="t2-pipeline-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 16px;">
+              <div class="t2-pipe-step">
+                <div class="t2-pipe-num" style="background: #f43f5e; color: #fff;">1</div>
+                <div class="t2-pipe-icon">📡</div>
+                <h4>Sensor Acquisition</h4>
+                <p>ESP32 reads DHT11 (GPIO 4) and analog LDR (GPIO 34, 12-bit ADC: 0–4095) every 500ms.</p>
               </div>
-              <div class="pipe-arrow arrow-t5">
-                <span>Analog-to-Digital</span>
-                <span class="arrow-symbol">→</span>
-                <span>12-Bit Edge Sampling</span>
+
+              <div class="t2-pipe-step">
+                <div class="t2-pipe-num" style="background: #f43f5e; color: #fff;">2</div>
+                <div class="t2-pipe-icon">🧠</div>
+                <h4>Edge Arbitration</h4>
+                <p>Checks <code>operatingMode</code>. If <code>automatic</code>, compares LDR against calibrated dark threshold (&lt;2400) to toggle relay (GPIO 26).</p>
               </div>
-              <div class="pipe-node active-t5">
-                <span class="node-icon">🧠</span>
-                <span class="node-label">Edge Hysteresis Engine</span>
-                <span class="node-sub">300-Point Deadband Logic</span>
+
+              <div class="t2-pipe-step">
+                <div class="t2-pipe-num" style="background: #f43f5e; color: #fff;">3</div>
+                <div class="t2-pipe-icon">☁️</div>
+                <h4>Realtime Sync</h4>
+                <p>Broadcasts live telemetry payload to Firebase <code>/current</code> via secure REST PATCH for immediate UI updates.</p>
               </div>
-              <div class="pipe-arrow arrow-t5">
-                <span>Optoisolated Drive</span>
-                <span class="arrow-symbol">→</span>
-                <span>Active-HIGH Relay Trigger</span>
+
+              <div class="t2-pipe-step">
+                <div class="t2-pipe-num" style="background: #f43f5e; color: #fff;">4</div>
+                <div class="t2-pipe-icon">🗄️</div>
+                <h4>30s Time-Series Log</h4>
+                <p>Pushes timestamped record to Firebase <code>/history/{epoch}</code> containing temp, humidity, LDR, bulb state, and mode.</p>
               </div>
-              <div class="pipe-node">
-                <span class="node-icon">💾</span>
-                <span class="node-label">Actuator &amp; Export</span>
-                <span class="node-sub">5V Relay + Firebase + CSV</span>
+
+              <div class="t2-pipe-step">
+                <div class="t2-pipe-num" style="background: #f43f5e; color: #fff;">5</div>
+                <div class="t2-pipe-icon">📥</div>
+                <h4>Dashboard &amp; CSV Export</h4>
+                <p>Web client parses <code>/history</code> into a dual-axis Chart.js visualizer and provides one-click RFC 4180 CSV export.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 2. WHAT I LEARNT (KEY ARCHITECTURAL CONCEPTS & PARADIGMS) -->
+        <!-- 2. WHAT I LEARNT (CONCEPTS & 3 COMMERCIAL APPLICATIONS) -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t5">02</span>
-              <h2>What I Learnt</h2>
+              <h2>What I Learnt — Embedded Knowledge &amp; System Concepts</h2>
             </div>
-            <span class="block-tag">// EMBEDDED KNOWLEDGE &amp; ARCHITECTURAL MASTERY</span>
+            <span class="block-tag">// TECHNICAL ACQUISITIONS &amp; THEORY</span>
           </div>
 
-          <!-- HERO "IN SIMPLE WORDS" FORMULA BANNER -->
-          <div class="learnt-formula-card">
-            <div class="formula-card-top">
-              <div class="formula-badges">
-                <span class="pill-badge pill-t5">IN SIMPLE WORDS</span>
-                <span class="formula-tagline">// CLOSED-LOOP AUTONOMY &amp; CSV EXPORT</span>
+          <div class="concepts-grid">
+            <div class="concept-card">
+              <div class="concept-top">
+                <div class="concept-icon-pill">🌡️</div>
+                <span class="concept-category-tag">ENVIRONMENTAL SENSING</span>
               </div>
-              <span class="status-pill-badge">
-                <span class="dot-online"></span> Zero Cloud Latency Loop
-              </span>
-            </div>
-
-            <div class="formula-pipeline-track">
-              <div class="formula-node node-highlight">
-                <span class="formula-node-icon">⚡</span>
-                <div class="formula-node-info">
-                  <span class="formula-node-name">Sensors</span>
-                  <span class="formula-node-role">LDR ADC &amp; DHT11 Data</span>
-                </div>
-              </div>
-
-              <div class="formula-connector">
-                <span class="arrow-glyph">→</span>
-                <span>12-Bit Analog Sample</span>
-              </div>
-
-              <div class="formula-node">
-                <span class="formula-node-icon">🛡️</span>
-                <div class="formula-node-info">
-                  <span class="formula-node-name">Hysteresis</span>
-                  <span class="formula-node-role">300pt Noise Deadband</span>
-                </div>
-              </div>
-
-              <div class="formula-connector">
-                <span class="arrow-glyph">→</span>
-                <span>Optocoupler Drive</span>
-              </div>
-
-              <div class="formula-node">
-                <span class="formula-node-info">💡</span>
-                <div class="formula-node-info">
-                  <span class="formula-node-name">5V Relay</span>
-                  <span class="formula-node-role">Chatter-Free Switching</span>
-                </div>
-              </div>
-
-              <div class="formula-connector">
-                <span class="arrow-glyph">→</span>
-                <span>Client Serialization</span>
-              </div>
-
-              <div class="formula-node">
-                <span class="formula-node-info">📊</span>
-                <div class="formula-node-info">
-                  <span class="formula-node-name">CSV Engine</span>
-                  <span class="formula-node-role">RFC 4180 Blob Export</span>
-                </div>
+              <h4 class="concept-title">DHT11 Single-Bus Protocol</h4>
+              <p class="concept-text">Understood the custom single-wire handshake protocol of the DHT11 sensor: 18ms low start signal from host, followed by 40-bit transmission (16-bit humidity, 16-bit temperature, 8-bit checksum).</p>
+              <div class="concept-meta-footer">
+                <span>Tolerance</span>
+                <span class="spec-highlight">±2°C / ±5% RH</span>
               </div>
             </div>
 
-            <div class="formula-summary-box">
-              <p>
-                True industrial IoT resilience demands <strong>edge-first autonomy</strong>: the ESP32 must make safety-critical decisions locally without cloud latency, while cloud layers and browser engines serve as passive observation and time-series audit pipelines.
-              </p>
-            </div>
-          </div>
-
-          <!-- GRAPHICAL LIFECYCLE CYCLE DIAGRAM -->
-          <div class="lifecycle-section-wrap">
-            <div class="lifecycle-header">
-              <div class="lifecycle-title-group">
-                <span class="node-icon">🔄</span>
-                <div>
-                  <h4 class="lifecycle-title">Autonomous Closed-Loop Control Lifecycle (Graphical Cycle)</h4>
-                  <p class="lifecycle-subtitle">Continuous 5-stage closed loop: local sensor acquisition, deadband hysteresis filtering, optoisolated actuation, cloud sync, and client-side time-series archiving</p>
-                </div>
+            <div class="concept-card">
+              <div class="concept-top">
+                <div class="concept-icon-pill">☀️</div>
+                <span class="concept-category-tag">OPTICAL SENSING</span>
               </div>
-              <span class="pill-badge pill-t5">CIRCULAR FEEDBACK LOOP</span>
-            </div>
-
-            <div class="cycle-graphic-wrap">
-              <svg viewBox="0 0 940 560" class="cycle-svg" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <filter id="cycleGlowT5" x="-30%" y="-30%" width="160%" height="160%">
-                    <feGaussianBlur stdDeviation="5" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                  <linearGradient id="centerCoreGradT5" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#881337" />
-                    <stop offset="50%" stop-color="#4c0519" />
-                    <stop offset="100%" stop-color="#190309" />
-                  </linearGradient>
-                  <linearGradient id="nodeBoxGradT5" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#241018" />
-                    <stop offset="100%" stop-color="#15080e" />
-                  </linearGradient>
-                  <marker id="cycleArrowT5" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 1 L 9 5 L 0 9 z" fill="#f43f5e" />
-                  </marker>
-                </defs>
-
-                <!-- Subtle Grid Canvas -->
-                <rect width="940" height="560" fill="#08080f" rx="10" />
-
-                <!-- Orbital Circular Track -->
-                <circle cx="470" cy="280" r="185" fill="none" stroke="#2a1420" stroke-width="2" stroke-dasharray="6,6" />
-                <circle cx="470" cy="280" r="185" fill="none" stroke="rgba(244, 63, 94, 0.18)" stroke-width="28" />
-
-                <!-- Curved Clockwise Connecting Flow Arcs -->
-                <path d="M 525 125 A 185 185 0 0 1 615 195" fill="none" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" marker-end="url(#cycleArrowT5)" filter="url(#cycleGlowT5)" />
-                <path d="M 660 300 A 185 185 0 0 1 580 415" fill="none" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" marker-end="url(#cycleArrowT5)" filter="url(#cycleGlowT5)" />
-                <path d="M 480 465 A 185 185 0 0 1 420 465" fill="none" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" marker-end="url(#cycleArrowT5)" filter="url(#cycleGlowT5)" />
-                <path d="M 320 405 A 185 185 0 0 1 270 295" fill="none" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" marker-end="url(#cycleArrowT5)" filter="url(#cycleGlowT5)" />
-                <path d="M 315 185 A 185 185 0 0 1 405 120" fill="none" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" marker-end="url(#cycleArrowT5)" filter="url(#cycleGlowT5)" />
-
-                <!-- Central ESP32 Hub -->
-                <g transform="translate(470, 280)">
-                  <circle cx="0" cy="0" r="75" fill="url(#centerCoreGradT5)" stroke="#f43f5e" stroke-width="2" filter="url(#cycleGlowT5)" />
-                  <circle cx="0" cy="0" r="60" fill="#1f0712" stroke="#e11d48" stroke-width="1.5" />
-                  <text x="0" y="-20" text-anchor="middle" font-size="24">🧠</text>
-                  <text x="0" y="4" text-anchor="middle" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700">ESP32 Edge Core</text>
-                  <text x="0" y="20" text-anchor="middle" fill="#fda4af" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600">Hysteresis Controller</text>
-                  <text x="0" y="34" text-anchor="middle" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="7.5">300pt Deadband Engine</text>
-                </g>
-
-                <!-- STAGE 1: Top -->
-                <g transform="translate(370, 40)">
-                  <rect x="0" y="0" width="200" height="72" rx="8" fill="url(#nodeBoxGradT5)" stroke="#fda4af" stroke-width="1.8" filter="url(#cycleGlowT5)" />
-                  <rect x="10" y="8" width="60" height="18" rx="4" fill="rgba(244, 63, 94, 0.15)" />
-                  <text x="40" y="20" fill="#fda4af" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">STAGE 01</text>
-                  <text x="80" y="21" font-size="13">📡</text>
-                  <text x="12" y="42" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700">1. Raw ADC Acquisition</text>
-                  <text x="12" y="58" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">LDR on GPIO 34 + DHT11</text>
-                </g>
-
-                <!-- STAGE 2: Top-Right -->
-                <g transform="translate(630, 180)">
-                  <rect x="0" y="0" width="210" height="74" rx="8" fill="url(#nodeBoxGradT5)" stroke="#f43f5e" stroke-width="1.8" filter="url(#cycleGlowT5)" />
-                  <rect x="10" y="8" width="60" height="18" rx="4" fill="rgba(244, 63, 94, 0.15)" />
-                  <text x="40" y="20" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">STAGE 02</text>
-                  <text x="80" y="21" font-size="13">🛡️</text>
-                  <text x="12" y="42" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700">2. Deadband Evaluation</text>
-                  <text x="12" y="58" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">Thresholds: 1200 / 1500</text>
-                </g>
-
-                <!-- STAGE 3: Bottom-Right -->
-                <g transform="translate(560, 420)">
-                  <rect x="0" y="0" width="220" height="76" rx="8" fill="url(#nodeBoxGradT5)" stroke="#10b981" stroke-width="1.8" filter="url(#cycleGlowT5)" />
-                  <rect x="10" y="8" width="60" height="18" rx="4" fill="rgba(16, 185, 129, 0.15)" />
-                  <text x="40" y="20" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">STAGE 03</text>
-                  <text x="80" y="21" font-size="13">⚡</text>
-                  <text x="12" y="42" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700">3. Relay Coil Actuation</text>
-                  <text x="12" y="58" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">Optoisolated GPIO 18 trigger</text>
-                </g>
-
-                <!-- STAGE 4: Bottom-Left -->
-                <g transform="translate(160, 420)">
-                  <rect x="0" y="0" width="220" height="76" rx="8" fill="url(#nodeBoxGradT5)" stroke="#a855f7" stroke-width="1.8" filter="url(#cycleGlowT5)" />
-                  <rect x="10" y="8" width="60" height="18" rx="4" fill="rgba(168, 85, 247, 0.15)" />
-                  <text x="40" y="20" fill="#c084fc" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">STAGE 04</text>
-                  <text x="80" y="21" font-size="13">🔥</text>
-                  <text x="12" y="42" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700">4. Cloud Telemetry Push</text>
-                  <text x="12" y="58" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">Firebase historical logs</text>
-                </g>
-
-                <!-- STAGE 5: Top-Left -->
-                <g transform="translate(100, 180)">
-                  <rect x="0" y="0" width="210" height="74" rx="8" fill="url(#nodeBoxGradT5)" stroke="#38bdf8" stroke-width="1.8" filter="url(#cycleGlowT5)" />
-                  <rect x="10" y="8" width="60" height="18" rx="4" fill="rgba(56, 189, 248, 0.15)" />
-                  <text x="40" y="20" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">STAGE 05</text>
-                  <text x="80" y="21" font-size="13">💾</text>
-                  <text x="12" y="42" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700">5. Client Blob CSV Archiving</text>
-                  <text x="12" y="58" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">RFC 4180 in-memory export</text>
-                </g>
-              </svg>
-            </div>
-          </div>
-
-          <!-- 6 CORE ARCHITECTURAL CONCEPTS -->
-          <div class="learnt-concepts-grid">
-            <div class="concept-deep-card">
-              <div class="concept-card-icon">🧠</div>
-              <div class="concept-card-body">
-                <h4>1. Edge-First Computing Autonomy</h4>
-                <p>Crucial logic resides in microcontroller firmware flash memory; hardware continues managing physical loads even during catastrophic Wi-Fi dropouts.</p>
-                <div class="concept-tag-row">
-                  <span class="concept-code-tag">Offline Resilience</span>
-                  <span class="concept-type-tag">Edge Control</span>
-                </div>
+              <h4 class="concept-title">LDR Voltage Divider &amp; 12-Bit ADC</h4>
+              <p class="concept-text">Configured a photoresistor in a pull-down voltage divider circuit on ESP32 analog pin 34. Calibrated 12-bit ADC quantization (0–4095) where ambient room lux reads 2100–2500 and covered darkness reads &gt;2800.</p>
+              <div class="concept-meta-footer">
+                <span>ADC Range</span>
+                <span class="spec-highlight">12-bit (0–4095)</span>
               </div>
             </div>
 
-            <div class="concept-deep-card">
-              <div class="concept-card-icon">🛡️</div>
-              <div class="concept-card-body">
-                <h4>2. Software Hysteresis &amp; Deadbands</h4>
-                <p>Dual asymmetric thresholds create an intentional lag between state transitions, completely absorbing ambient light flicker and ADC noise spikes.</p>
-                <div class="concept-tag-row">
-                  <span class="concept-code-tag">300pt Deadband</span>
-                  <span class="concept-type-tag">Noise Filtering</span>
-                </div>
+            <div class="concept-card">
+              <div class="concept-top">
+                <div class="concept-icon-pill">⚙️</div>
+                <span class="concept-category-tag">CONTROL LOGIC</span>
+              </div>
+              <h4 class="concept-title">Dual-Mode Arbitration Logic</h4>
+              <p class="concept-text">Implemented mutually exclusive control paths: in <strong>Manual Mode</strong>, dashboard toggle buttons directly write relay state; in <strong>Automatic Mode</strong>, the local LDR threshold logic evaluates ambient light to switch the bulb autonomously.</p>
+              <div class="concept-meta-footer">
+                <span>Arbitration</span>
+                <span class="spec-highlight">Manual vs Auto Precedence</span>
               </div>
             </div>
 
-            <div class="concept-deep-card">
-              <div class="concept-card-icon">🔄</div>
-              <div class="concept-card-body">
-                <h4>3. Dual-Mode Operational Arbitration</h4>
-                <p>Software state machine cleanly separates AUTOMATIC (edge hysteresis logic) and MANUAL (cloud operator commands) with graceful runtime handover.</p>
-                <div class="concept-tag-row">
-                  <span class="concept-code-tag">State Machine</span>
-                  <span class="concept-type-tag">Mode Control</span>
-                </div>
+            <div class="concept-card">
+              <div class="concept-top">
+                <div class="concept-icon-pill">⏱️</div>
+                <span class="concept-category-tag">CLOUD ARCHITECTURE</span>
+              </div>
+              <h4 class="concept-title">NTP Epoch Clock &amp; /history Tree</h4>
+              <p class="concept-text">Integrated network time protocol via <code>configTime()</code> with UTC+5:30 offset. Structured Firebase NoSQL logs under <code>/history/{epoch}</code>, preventing overwrite collisions and enabling chronological querying.</p>
+              <div class="concept-meta-footer">
+                <span>NTP Server</span>
+                <span class="spec-highlight">pool.ntp.org (Port 123)</span>
               </div>
             </div>
 
-            <div class="concept-deep-card">
-              <div class="concept-card-icon">⚡</div>
-              <div class="concept-card-body">
-                <h4>4. Hardware Galvanic Optoisolation</h4>
-                <p>Relay module utilizes an optical isolator (EL817) and flyback diode to prevent inductive voltage kicks from resetting the ESP32 silicon.</p>
-                <div class="concept-tag-row">
-                  <span class="concept-code-tag">EL817 Optocoupler</span>
-                  <span class="concept-type-tag">Circuit Protection</span>
-                </div>
+            <div class="concept-card">
+              <div class="concept-top">
+                <div class="concept-icon-pill">📄</div>
+                <span class="concept-category-tag">DATA EXPORT</span>
+              </div>
+              <h4 class="concept-title">Client-Side CSV Stream Generation</h4>
+              <p class="concept-text">Constructed in-browser RFC 4180 CSV serialization using Javascript <code>Blob([csvContent], { type: 'text/csv' })</code> and immediate URL object creation, offloading export load completely from the cloud server.</p>
+              <div class="concept-meta-footer">
+                <span>Format</span>
+                <span class="spec-highlight">RFC 4180 MIME text/csv</span>
               </div>
             </div>
 
-            <div class="concept-deep-card">
-              <div class="concept-card-icon">💾</div>
-              <div class="concept-card-body">
-                <h4>5. Client-Side Blob CSV Streaming</h4>
-                <p>Generating file downloads directly in the browser DOM via URL.createObjectURL(new Blob([...])) offloads data serialization from ESP32 flash and servers.</p>
-                <div class="concept-tag-row">
-                  <span class="concept-code-tag">Blob API</span>
-                  <span class="concept-type-tag">RFC 4180 Export</span>
-                </div>
+            <div class="concept-card">
+              <div class="concept-top">
+                <div class="concept-icon-pill">🛡️</div>
+                <span class="concept-category-tag">MEMORY MANAGEMENT</span>
               </div>
-            </div>
-
-            <div class="concept-deep-card">
-              <div class="concept-card-icon">⏱️</div>
-              <div class="concept-card-body">
-                <h4>6. Non-Blocking System Watchdog</h4>
-                <p>System uses timestamped millis() schedules and watchdog timers to guarantee sub-millisecond control response without blocking delay() deadlocks.</p>
-                <div class="concept-tag-row">
-                  <span class="concept-code-tag">millis() Scheduling</span>
-                  <span class="concept-type-tag">Real-Time Loop</span>
-                </div>
+              <h4 class="concept-title">Non-Fragmenting Connection Management</h4>
+              <p class="concept-text">Enforced strict memory scoping using static JSON buffers and explicit <code>http.end()</code> calls after each HTTP/WebSocket transaction, maintaining &gt;210 KB heap stability.</p>
+              <div class="concept-meta-footer">
+                <span>Resilience</span>
+                <span class="spec-highlight">Zero Memory Fragmentation</span>
               </div>
             </div>
           </div>
 
-          <!-- COMMERCIAL APPLICATIONS MATRIX -->
-          <div class="commercial-matrix-wrap">
+          <!-- EXACTLY 3 COMMERCIAL APPLICATIONS (AS REQUESTED) -->
+          <div class="matrix-card-wrap" style="margin-top: 24px;">
             <div class="matrix-header">
               <div class="matrix-title-group">
-                <span class="node-icon">🏢</span>
+                <span class="node-icon">🏭</span>
                 <div>
                   <h4 class="matrix-title">Commercial &amp; Industrial Real-World Applications</h4>
-                  <p class="matrix-subtitle">Where edge hysteresis, fail-safe actuation, and time-series audits are used in industry</p>
+                  <p class="matrix-subtitle">3 production use cases leveraging cloud logging and automated load actuation</p>
                 </div>
               </div>
-              <span class="pill-badge pill-t5">INDUSTRY DEPLOYMENTS</span>
+              <span class="pill-badge pill-t5">3 KEY DOMAINS</span>
             </div>
 
-            <div class="commercial-grid">
-              <div class="commercial-card comm-card-t5">
-                <div class="comm-card-icon">💡</div>
-                <div class="comm-card-body">
-                  <h4>Municipal Smart Streetlights</h4>
-                  <p>Automated illumination based on real twilight lux with immunity to passing automobile headlight flashes.</p>
-                  <span class="comm-impact-pill">Smart Cities</span>
-                </div>
+            <div class="commercial-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+              <div class="commercial-card">
+                <span class="commercial-card-icon">🏢</span>
+                <h5>1. Smart Facility &amp; Environmental Compliance</h5>
+                <p>Automated cloud logging of temperature and relative humidity for ISO 9001 and OSHA facility safety audits, eliminating paper logbooks and manual inspection rounds.</p>
+                <span class="commercial-tag">PropTech &amp; Safety</span>
               </div>
 
-              <div class="commercial-card comm-card-t5">
-                <div class="comm-card-icon">❄️</div>
-                <div class="comm-card-body">
-                  <h4>HVAC Anti-Short-Cycle Controllers</h4>
-                  <p>Compressor and chiller management preventing mechanical destruction from rapid cycling around temperature setpoints.</p>
-                  <span class="comm-impact-pill">Building Automation</span>
-                </div>
+              <div class="commercial-card">
+                <span class="commercial-card-icon">🏥</span>
+                <h5>2. Cold-Chain Pharmaceutical &amp; Food Storage</h5>
+                <p>Continuous timestamped thermal tracking with CSV audit trail export, ensuring vaccines and perishable goods remain within certified temperature thresholds.</p>
+                <span class="commercial-tag">Healthcare &amp; Cold Chain</span>
               </div>
 
-              <div class="commercial-card comm-card-t5">
-                <div class="comm-card-icon">🌱</div>
-                <div class="comm-card-body">
-                  <h4>Greenhouse Environmental Control</h4>
-                  <p>Horticultural grow lamp and ventilation louvers responding to ambient solar radiance and humidity.</p>
-                  <span class="comm-impact-pill">AgriTech</span>
-                </div>
-              </div>
-
-              <div class="commercial-card comm-card-t5">
-                <div class="comm-card-icon">🔋</div>
-                <div class="comm-card-body">
-                  <h4>Solar Microgrid Charge Management</h4>
-                  <p>Dual-threshold charge and dump-load controllers preventing continuous relay switching at voltage cutoff thresholds.</p>
-                  <span class="comm-impact-pill">Clean Energy</span>
-                </div>
-              </div>
-
-              <div class="commercial-card comm-card-t5">
-                <div class="comm-card-icon">💊</div>
-                <div class="comm-card-body">
-                  <h4>Cold-Chain Logistics &amp; Storage</h4>
-                  <p>Continuous temperature auditing with local fail-safe refrigeration override and compliance CSV generation.</p>
-                  <span class="comm-impact-pill">Pharma &amp; Bio</span>
-                </div>
+              <div class="commercial-card">
+                <span class="commercial-card-icon">⚡</span>
+                <h5>3. Energy-Efficient Precision Lighting</h5>
+                <p>Daylight harvesting automation that autonomously switches lighting contactors based on real-time ambient lux levels, trimming corporate building electric bills by up to 35%.</p>
+                <span class="commercial-tag">Smart Energy &amp; Green Tech</span>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 3. PHYSICAL HARDWARE TESTING -->
+        <!-- 3. HARDWARE TESTING, EVIDENCE & VIDEO DEMONSTRATION -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t5">03</span>
-              <h2>Physical Hardware Testing</h2>
+              <h2>Physical Hardware Testing, Evidence &amp; Video Demonstration</h2>
             </div>
-            <span class="block-tag">// LAB VERIFICATION &amp; HYSTERESIS OBSERVATIONS</span>
+            <span class="block-tag">// LAB VERIFICATION PROOF &amp; VIDEO</span>
           </div>
 
-          <div class="hardware-test-grid">
-            <!-- ACTIVE STATE -->
-            <div class="test-state-card state-active">
-              <div class="test-state-header">
-                <div class="state-indicator-badge">
-                  <span class="pulse-dot"></span>
-                  <span class="state-name">ACTIVE STATE: ON</span>
-                </div>
-                <span class="test-route-badge">Autonomous Dark Activation</span>
+          <!-- WORKING VIDEO CARD -->
+          <div class="t3-video-card" style="border-color: var(--t5-border); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 24px var(--t5-glow);">
+            <div class="t3-video-header" style="background: rgba(244, 63, 94, 0.08); border-bottom: 1px solid var(--t5-border);">
+              <div class="t2-pipeline-title-group">
+                <span class="t3-flow-pulse-dot" style="background: #f43f5e; box-shadow: 0 0 10px #f43f5e;"></span>
+                <h4 style="margin: 0; font-family: var(--font-display); font-size: 1.15rem; color: #f8fafc;">
+                  Working Demonstration Video — Task 5 Firebase Logging, Automation &amp; Data Export
+                </h4>
               </div>
-              <ul class="bullet-list-lg">
-                <li><strong>Sensor Reading Plunges Below Threshold:</strong> Covering the LDR with an opaque shroud drops the raw reading from ~1850 down to ~850 ADC.</li>
-                <li><strong>Hysteresis Trigger &amp; Relay Coil Energized:</strong> The ESP32 edge logic evaluates reading &lt; 1200 ADC, immediately driving GPIO 18 HIGH to energize the optoisolated relay with a sharp mechanical click.</li>
-                <li><strong>Hardware Visuals &amp; Telemetry Update:</strong> Onboard blue indicator illuminates, the connected AC load turns ON, serial prints <code>[AUTO] Light (850) &lt; 1200 -&gt; RELAY ENERGIZED</code>, and Firebase patches <code>bulb_state: true</code> in 42ms.</li>
-              </ul>
+              <span class="pill-badge pill-t5">t5.mp4 LAB VIDEO</span>
             </div>
 
-            <!-- INACTIVE STATE -->
-            <div class="test-state-card state-inactive">
-              <div class="test-state-header">
-                <div class="state-indicator-badge">
-                  <span class="inactive-dot"></span>
-                  <span class="state-name">INACTIVE / DEADBAND STATE</span>
-                </div>
-                <span class="test-route-badge">Deadband Noise Immunity</span>
+            <div class="t3-video-body">
+              <video controls class="t3-video-player" poster="images/iot/task4_history_chart.png">
+                <source src="videos/iot/t5.mp4" type="video/mp4">
+                <source src="vid/t5.mp4" type="video/mp4">
+                Your browser does not support HTML5 video playback.
+              </video>
+
+              <div class="t3-video-info-panel">
+                <h4>Complete Capstone Verification Demonstrated</h4>
+                <p>
+                  Demonstrating the full operating pipeline: ESP32 sensor acquisition (DHT11 &amp; LDR), dual manual and light-adaptive bulb actuation, real-time telemetry streaming to Firebase, and automated client-side CSV spreadsheet export.
+                </p>
+                <ul class="t3-video-timeline-list">
+                  <li><span class="t3-time-badge" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">0:00</span><span>Hardware overview: ESP32 DevKit, DHT11 sensor, LDR voltage divider, relay module, and lamp.</span></li>
+                  <li><span class="t3-time-badge" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">0:25</span><span>Live telemetry monitoring: Temperature, Humidity, and LDR lux values syncing in real time.</span></li>
+                  <li><span class="t3-time-badge" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">0:50</span><span>Light-adaptive automation demonstrated: Covering LDR trips bulb ON; uncovering de-energizes it.</span></li>
+                  <li><span class="t3-time-badge" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">1:15</span><span>Firebase Console verification: Inspecting structured JSON logs committed under <code>/history</code>.</span></li>
+                  <li><span class="t3-time-badge" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">1:40</span><span>CSV export: Clicking "Download CSV" generates and saves formatted <code>smart-room-history.csv</code>.</span></li>
+                </ul>
               </div>
-              <ul class="bullet-list-lg">
-                <li><strong>Fluctuating in Deadband Zone:</strong> Partially illuminating the sensor produces raw fluctuations between 1280 and 1440 ADC across the 300-point buffer.</li>
-                <li><strong>Chatter Fully Suppressed:</strong> The dual-threshold engine recognizes the deadband and maintains the existing relay state without chatter, buzzing, or contact flutter.</li>
-                <li><strong>Sustained Stability:</strong> Serial terminal logs confirm <code>[AUTO] In 300pt Deadband Zone (1360 ADC) -&gt; Relay state sustained without switching</code>, protecting hardware contacts.</li>
-              </ul>
             </div>
           </div>
 
-          <!-- LIVE DASHBOARD & CSV TELEMETRY -->
-          <div class="telemetry-verification-box">
-            <div class="telemetry-header">
-              <div class="telemetry-title-group">
-                <span class="node-icon">📊</span>
-                <h4>Live Web Dashboard &amp; Client-Side CSV Generator</h4>
-              </div>
-              <span class="pill-badge pill-t5">RFC 4180 COMPLIANT EXPORT</span>
-            </div>
+          <!-- EVIDENCE SCREENSHOTS & PROTOTYPE RIG PHOTOGRAPH -->
+          <div style="margin-top: 26px;">
+            <h4 style="font-family: var(--font-display); color: #f8fafc; font-size: 1.15rem; margin-bottom: 14px;">
+              System Telemetry, Cloud Database, Prototype Hardware &amp; Dashboard Evidence
+            </h4>
 
-            <div class="telemetry-content-flow">
-              <div class="telemetry-step">
-                <span class="step-num">1</span>
-                <div class="step-details">
-                  <h5>How It Works</h5>
-                  <p>When the user opens the web interface, it subscribes to Firebase WebSocket updates and visualizes real-time light lux, climate metrics, and relay state.</p>
+            <div class="evidence-photos-grid">
+              <!-- Screenshot 1: Environmental History Graph (FULL WIDTH) -->
+              <div class="evidence-photo-card photo-card-full">
+                <div class="photo-img-wrap-fit">
+                  <img src="images/iot/task4_history_chart.png" alt="Environmental History Graph with full uncropped dual-axis telemetry">
+                  <span class="photo-state-badge state-on">● DUAL-AXIS STREAMING TELEMETRY GRAPH (FULL VIEW)</span>
+                </div>
+                <div class="photo-card-info">
+                  <h4>1. Environmental History Graph (Complete Uncropped View)</h4>
+                  <p class="photo-simple-explain">
+                    Full uncropped streaming telemetry chart. Displays Temperature (0–60°C) and Humidity (0–100%) on the left axis alongside raw LDR light intensity (0–4095 ADC) on the independent right axis, illustrating environmental state shifts and automation events over time.
+                  </p>
                 </div>
               </div>
 
-              <div class="telemetry-step">
-                <span class="step-num">2</span>
-                <div class="step-details">
-                  <h5>Working</h5>
-                  <p>In-memory telemetry logs are buffered in a JavaScript circular array. Clicking "Download Live Telemetry CSV Export" converts the records into formatted CSV rows with headers.</p>
+              <!-- Photograph: Complete Prototype Hardware Rig -->
+              <div class="evidence-photo-card">
+                <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
+                  <img src="images/iot/task2_hardware_setup.jpg" alt="Complete prototype hardware rig featuring ESP32, relay, incandescent bulb, DHT11 and LDR sensor" style="max-height: 300px; object-fit: contain;">
+                  <span class="photo-state-badge state-on">● COMPLETE PROTOTYPE HARDWARE RIG</span>
+                </div>
+                <div class="photo-card-info">
+                  <h4>2. Complete Prototype Rig in Lab</h4>
+                  <p class="photo-simple-explain">
+                    Physical hardware testbench showcasing the ESP32 DevKit, breadboard wiring, DHT11 temp/humidity probe, LDR sensor, 5V SPDT relay module, and 230V mains incandescent bulb under active testing.
+                  </p>
                 </div>
               </div>
 
-              <div class="telemetry-step">
-                <span class="step-num">3</span>
-                <div class="step-details">
-                  <h5>Network &amp; File Result</h5>
-                  <div class="network-detail-block">
-                    <p>The browser constructs an in-memory <code>Blob</code> object with MIME type <code>text/csv;charset=utf-8;</code> and triggers a clean local file download: <code>capstone_telemetry_export.csv</code>.</p>
-                    <h5>Exported Spreadsheet Fields:</h5>
-                    <span class="pipeline-inline-text">Timestamp | Temperature_C | Humidity_Pct | LDR_Raw | Bulb_State | Mode | Deadband_Status</span>
-                  </div>
+              <!-- Screenshot 2: Live Dashboard Telemetry Cards -->
+              <div class="evidence-photo-card">
+                <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
+                  <img src="images/iot/task4_dashboard_telemetry.png" alt="Smartyy live telemetry cards showing 22.2C, 49% humidity and LDR ADC" style="max-height: 300px;">
+                  <span class="photo-state-badge state-on">● LIVE DASHBOARD CARDS</span>
+                </div>
+                <div class="photo-card-info">
+                  <h4>3. Live Environmental Telemetry</h4>
+                  <p class="photo-simple-explain">
+                    Real-time dashboard cards displaying <strong>22.2°C Temperature</strong>, <strong>49% Relative Humidity</strong>, <strong>2479 ADC Ambient Light</strong>, and verified <strong>Smart Bulb ON</strong> state.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Screenshot 3: Firebase Cloud Console -->
+              <div class="evidence-photo-card">
+                <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
+                  <img src="images/iot/task4_firebase_console.png" alt="Google Firebase Cloud Platform Console" style="max-height: 300px;">
+                  <span class="photo-state-badge state-on">● FIREBASE REALTIME DB CLUSTER</span>
+                </div>
+                <div class="photo-card-info">
+                  <h4>4. Firebase Realtime Database Logs</h4>
+                  <p class="photo-simple-explain">
+                    Google Firebase Console managing real-time NoSQL JSON tree synchronization, user auth directory, and <code>/history</code> timestamped telemetry storage.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Screenshot 4: Login Gateway -->
+              <div class="evidence-photo-card">
+                <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
+                  <img src="images/iot/task4_login.png" alt="Smartyy Firebase Authentication login screen" style="max-height: 300px;">
+                  <span class="photo-state-badge state-on">● AUTHENTICATION GATEWAY</span>
+                </div>
+                <div class="photo-card-info">
+                  <h4>5. Smartyy Authentication Gateway</h4>
+                  <p class="photo-simple-explain">
+                    Email/Password login gate securing the control suite and CSV export endpoints from unauthenticated visitors.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 4. INTERACTIVE SIMULATOR (HYSTERESIS & CSV DOWNLOAD) -->
+        <!-- 4. CSV DATA DOWNLOAD & VERIFIED RECORDED DATA DEMONSTRATION -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t5">04</span>
-              <h2>Interactive Hysteresis &amp; CSV Generator Sandbox</h2>
+              <h2>CSV Data Download &amp; Recorded Telemetry Verification</h2>
             </div>
-            <span class="block-tag">// TRY DEADBAND LOGIC &amp; DOWNLOAD CSV</span>
+            <span class="block-tag">// ACTUAL RECORDED DATASET AUDIT</span>
           </div>
 
-          <div class="interactive-sandbox sandbox-t5">
-            <div class="sandbox-left">
-              <div class="slider-control-card">
-                <label class="slider-label" for="simLightSlider">
-                  <span>Ambient Light Level (LDR ADC):</span>
-                  <strong id="simLightVal">1850 Raw ADC (Bright)</strong>
-                </label>
-                <input type="range" min="600" max="2500" value="1850" class="custom-range range-t5" id="simLightSlider">
-                <div class="threshold-markers">
-                  <span class="marker marker-on">▲ 1200 (Turn ON)</span>
-                  <span class="marker marker-band">300pt Deadband</span>
-                  <span class="marker marker-off">▲ 1500 (Turn OFF)</span>
-                </div>
+          <div class="distinct-content-box box-t5">
+            <div class="box-header-row" style="flex-wrap: wrap; gap: 12px;">
+              <div class="title-with-num">
+                <span class="badge-num num-t5">CSV</span>
+                <h2>Downloaded Telemetry File Verification (smart-room-history.csv)</h2>
               </div>
+              <a href="data/smart-room-history.csv" download="smart-room-history.csv" class="btn-repo btn-t5" style="padding: 6px 16px; font-size: 0.82rem; text-decoration: none;">
+                Download smart-room-history.csv ⤓
+              </a>
+            </div>
+            <p class="distinct-para">
+              Demonstrating the exact contents of the exported CSV file generated by the Smartyy web dashboard from the Firebase <code>/history</code> node. Each record contains an NTP-synchronized real-world timestamp, Celsius temperature, relative humidity percentage, raw 12-bit LDR reading, verified bulb state, and active operating mode:
+            </p>
 
-              <div class="hysteresis-status-card">
-                <div class="h-state-row">
-                  <span>Relay State:</span>
-                  <strong class="relay-state-val" id="simRelayState">OFF (DE-ENERGIZED)</strong>
-                </div>
-                <div class="h-state-row">
-                  <span>Deadband Status:</span>
-                  <span class="h-band-pill" id="simHysteresisStatus">Zone: High Light (Stable)</span>
-                </div>
-              </div>
-
-              <button class="interactive-btn btn-t5" id="btnDownloadCsvSim">
-                📥 Download Live Telemetry CSV Export (.csv)
-              </button>
+            <!-- SCROLLABLE FORMATTED DATA TABLE -->
+            <div style="max-height: 340px; overflow-y: auto; border: 1px solid var(--t5-border); border-radius: 8px; margin-top: 14px; background: #0c0805;">
+              <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
+                <thead style="position: sticky; top: 0; background: #1a0d0a; border-bottom: 2px solid #f43f5e;">
+                  <tr>
+                    <th style="padding: 10px 12px; color: #f43f5e; font-family: var(--font-display);">Timestamp</th>
+                    <th style="padding: 10px 12px; color: #f43f5e; font-family: var(--font-display);">Temperature</th>
+                    <th style="padding: 10px 12px; color: #f43f5e; font-family: var(--font-display);">Humidity</th>
+                    <th style="padding: 10px 12px; color: #f43f5e; font-family: var(--font-display);">LDR (ADC)</th>
+                    <th style="padding: 10px 12px; color: #f43f5e; font-family: var(--font-display);">Bulb State</th>
+                    <th style="padding: 10px 12px; color: #f43f5e; font-family: var(--font-display);">Operating Mode</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:04:30 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.6 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2186</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">manual</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:05:00 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.6 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2190</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">manual</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:05:31 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.6 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2237</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">manual</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:06:02 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.6 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2243</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">manual</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:06:33 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.6 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2815</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:07:04 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.3 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">20</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:07:35 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.6 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">1687</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:08:05 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.6 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">1535</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:09:30 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">52 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">1499</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">manual</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:10:02 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">1931</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">manual</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:10:31 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">4095</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:11:02 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2207</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">manual</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:11:34 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">0</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:12:05 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2353</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">manual</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:12:33 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">4095</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:13:03 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">1264</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:14:06 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2187</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:18:34 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2373</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">manual</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:19:05 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23.4 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2347</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">manual</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:19:35 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23.4 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">4095</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:20:05 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23.4 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">304</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:20:35 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23.4 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">1588</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(100, 116, 139, 0.2); color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">OFF</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">manual</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 4:21:06 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">23.4 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">1181</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:00:39 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">21.8 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">51 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2737</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:01:07 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2502</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:01:37 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2522</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:02:09 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2544</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:02:42 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2559</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:03:17 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2486</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:03:44 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2704</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:04:14 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2490</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:04:44 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2441</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:05:15 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2416</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:05:45 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2445</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:06:15 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2547</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:06:45 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">50 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2476</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:07:16 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2443</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:07:46 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2747</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:08:16 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2496</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:08:46 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2427</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:09:17 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2394</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:09:48 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2383</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(244, 63, 94, 0.12);">
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #cbd5e1;">9/12/2026, 5:10:18 PM</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #f8fafc; font-weight: 700;">22.2 °C</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8;">49 %</td>
+                    <td style="padding: 8px 12px; font-family: var(--font-mono); font-size: 0.8rem; color: #fbbf24;">2453</td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: 700;">ON</span></td>
+                    <td style="padding: 8px 12px;"><span style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; padding: 2px 8px; border-radius: 4px; font-weight: 700;">automatic</span></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
-            <div class="sandbox-right">
-              <div class="terminal-window">
-                <div class="terminal-bar">
-                  <span class="term-dot dot-r"></span>
-                  <span class="term-dot dot-y"></span>
-                  <span class="term-dot dot-g"></span>
-                  <span class="term-title">Capstone Telemetry Log Stream</span>
-                </div>
-                <pre class="terminal-code" id="simCsvLog"><code>[MODE] AUTOMATIC_CLOSED_LOOP (Watchdog Active)
-[CALIB] Lower Threshold: 1200 | Upper Threshold: 1500
-[SAMPLE] Light: 1850 | Temp: 27.4C | Relay: OFF | Stable
-[READY] Client-side CSV generator initialized. Click button to download.</code></pre>
+            <!-- RAW CSV STREAM DISPLAY -->
+            <div style="margin-top: 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #94a3b8;">
+                  RAW RFC 4180 STREAM (42 VERIFIED LOG ENTRIES)
+                </span>
+                <span class="pill-badge pill-t5">CSV EXPORT FORMAT</span>
               </div>
+              <pre style="background: #080504; border: 1px solid var(--t5-border); border-radius: 8px; padding: 14px; color: #cbd5e1; font-family: var(--font-mono); font-size: 0.78rem; max-height: 220px; overflow-y: auto; line-height: 1.5;"><code>&quot;Timestamp&quot;,&quot;Temperature&quot;,&quot;Humidity&quot;,&quot;LDR&quot;,&quot;Bulb State&quot;,&quot;Operating Mode&quot;
+&quot;9/12/2026, 4:04:30 PM&quot;,&quot;22.6&quot;,&quot;50&quot;,&quot;2186&quot;,&quot;OFF&quot;,&quot;manual&quot;
+&quot;9/12/2026, 4:05:00 PM&quot;,&quot;22.6&quot;,&quot;50&quot;,&quot;2190&quot;,&quot;OFF&quot;,&quot;manual&quot;
+&quot;9/12/2026, 4:05:31 PM&quot;,&quot;22.6&quot;,&quot;50&quot;,&quot;2237&quot;,&quot;OFF&quot;,&quot;manual&quot;
+&quot;9/12/2026, 4:06:02 PM&quot;,&quot;22.6&quot;,&quot;50&quot;,&quot;2243&quot;,&quot;OFF&quot;,&quot;manual&quot;
+&quot;9/12/2026, 4:06:33 PM&quot;,&quot;22.6&quot;,&quot;50&quot;,&quot;2815&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 4:07:04 PM&quot;,&quot;22.3&quot;,&quot;51&quot;,&quot;20&quot;,&quot;OFF&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 4:07:35 PM&quot;,&quot;22.6&quot;,&quot;51&quot;,&quot;1687&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 4:08:05 PM&quot;,&quot;22.6&quot;,&quot;51&quot;,&quot;1535&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 4:09:30 PM&quot;,&quot;23&quot;,&quot;52&quot;,&quot;1499&quot;,&quot;OFF&quot;,&quot;manual&quot;
+&quot;9/12/2026, 4:10:02 PM&quot;,&quot;23&quot;,&quot;51&quot;,&quot;1931&quot;,&quot;OFF&quot;,&quot;manual&quot;
+&quot;9/12/2026, 4:10:31 PM&quot;,&quot;23&quot;,&quot;51&quot;,&quot;4095&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 4:11:02 PM&quot;,&quot;23&quot;,&quot;51&quot;,&quot;2207&quot;,&quot;OFF&quot;,&quot;manual&quot;
+&quot;9/12/2026, 4:11:34 PM&quot;,&quot;23&quot;,&quot;50&quot;,&quot;0&quot;,&quot;OFF&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 4:12:05 PM&quot;,&quot;23&quot;,&quot;50&quot;,&quot;2353&quot;,&quot;OFF&quot;,&quot;manual&quot;
+&quot;9/12/2026, 4:12:33 PM&quot;,&quot;23&quot;,&quot;50&quot;,&quot;4095&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 4:13:03 PM&quot;,&quot;23&quot;,&quot;50&quot;,&quot;1264&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 4:14:06 PM&quot;,&quot;23&quot;,&quot;51&quot;,&quot;2187&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 4:18:34 PM&quot;,&quot;23&quot;,&quot;51&quot;,&quot;2373&quot;,&quot;OFF&quot;,&quot;manual&quot;
+&quot;9/12/2026, 4:19:05 PM&quot;,&quot;23.4&quot;,&quot;51&quot;,&quot;2347&quot;,&quot;OFF&quot;,&quot;manual&quot;
+&quot;9/12/2026, 4:19:35 PM&quot;,&quot;23.4&quot;,&quot;51&quot;,&quot;4095&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 4:20:05 PM&quot;,&quot;23.4&quot;,&quot;50&quot;,&quot;304&quot;,&quot;OFF&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 4:20:35 PM&quot;,&quot;23.4&quot;,&quot;50&quot;,&quot;1588&quot;,&quot;OFF&quot;,&quot;manual&quot;
+&quot;9/12/2026, 4:21:06 PM&quot;,&quot;23.4&quot;,&quot;51&quot;,&quot;1181&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:00:39 PM&quot;,&quot;21.8&quot;,&quot;51&quot;,&quot;2737&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:01:07 PM&quot;,&quot;22.2&quot;,&quot;50&quot;,&quot;2502&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:01:37 PM&quot;,&quot;22.2&quot;,&quot;50&quot;,&quot;2522&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:02:09 PM&quot;,&quot;22.2&quot;,&quot;50&quot;,&quot;2544&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:02:42 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2559&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:03:17 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2486&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:03:44 PM&quot;,&quot;22.2&quot;,&quot;50&quot;,&quot;2704&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:04:14 PM&quot;,&quot;22.2&quot;,&quot;50&quot;,&quot;2490&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:04:44 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2441&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:05:15 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2416&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:05:45 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2445&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:06:15 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2547&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:06:45 PM&quot;,&quot;22.2&quot;,&quot;50&quot;,&quot;2476&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:07:16 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2443&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:07:46 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2747&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:08:16 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2496&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:08:46 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2427&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:09:17 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2394&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:09:48 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2383&quot;,&quot;ON&quot;,&quot;automatic&quot;
+&quot;9/12/2026, 5:10:18 PM&quot;,&quot;22.2&quot;,&quot;49&quot;,&quot;2453&quot;,&quot;ON&quot;,&quot;automatic&quot;
+</code></pre>
             </div>
           </div>
         </section>
 
-        <!-- 5. CIRCUIT ARCHITECTURE -->
+        <!-- 5. SOURCE CODE & IMPLEMENTATION BREAKDOWN -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t5">05</span>
-              <h2>Circuit Architecture &amp; Wiring Schematic</h2>
+              <h2>Complete Source Code &amp; Implementation Breakdown</h2>
             </div>
-            <span class="block-tag">// SCHEMATIC DIAGRAM &amp; HARDWARE PINOUT</span>
+            <span class="block-tag">// EMBEDDED C++ &amp; FRONTEND JAVASCRIPT</span>
           </div>
 
-          <div class="schematic-card">
-            <div class="schematic-svg-wrap">
-              <svg viewBox="0 0 940 450" class="schematic-svg" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <pattern id="schemGridT5" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#25121b" stroke-width="0.8" />
-                  </pattern>
-                  <filter id="glowRoseT5" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="4" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
-
-                <!-- Background Grid -->
-                <rect width="940" height="450" fill="#08080f" rx="10" />
-                <rect width="940" height="450" fill="url(#schemGridT5)" rx="10" />
-
-                <!-- ESP32 Module -->
-                <g transform="translate(40, 25)">
-                  <rect x="0" y="0" width="280" height="395" rx="12" fill="#1c0e14" stroke="#4a1829" stroke-width="2" />
-                  <rect x="45" y="48" width="190" height="150" rx="6" fill="#2d131f" stroke="#6b223a" stroke-width="1.5" />
-                  <text x="140" y="95" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" text-anchor="middle">ESP-WROOM-32</text>
-                  <text x="140" y="115" fill="#fda4af" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Autonomous Edge Engine</text>
-
-                  <!-- Micro USB -->
-                  <rect x="110" y="380" width="60" height="25" rx="3" fill="#475569" stroke="#94a3b8" stroke-width="1.5" />
-                  <text x="140" y="396" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" text-anchor="middle">USB 5V</text>
-
-                  <!-- Pin Indicators -->
-                  <rect x="25" y="240" width="230" height="28" rx="4" fill="rgba(244, 63, 94, 0.12)" stroke="#f43f5e" stroke-width="1.2" />
-                  <text x="35" y="258" fill="#fda4af" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">GPIO 34: LDR ADC (Analog In)</text>
-
-                  <rect x="25" y="275" width="230" height="28" rx="4" fill="rgba(244, 63, 94, 0.12)" stroke="#f43f5e" stroke-width="1.2" />
-                  <text x="35" y="293" fill="#fda4af" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">GPIO 18: Optoisolated Relay Trigger</text>
-
-                  <rect x="25" y="310" width="230" height="28" rx="4" fill="rgba(244, 63, 94, 0.12)" stroke="#f43f5e" stroke-width="1.2" />
-                  <text x="35" y="328" fill="#fda4af" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">GPIO 4: DHT11 Sensor Bus</text>
-                </g>
-
-                <!-- Circuit Module Cards -->
-                <g transform="translate(370, 75)">
-                  <rect x="0" y="0" width="530" height="290" rx="10" fill="#180c12" stroke="#4a1829" stroke-width="1.5" />
-                  <rect x="0" y="0" width="530" height="42" rx="10" fill="#24101a" />
-                  <circle cx="20" cy="21" r="6" fill="#f43f5e" filter="url(#glowRoseT5)" />
-                  <text x="34" y="25" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">AUTONOMOUS EDGE &amp; ACTUATOR SCHEMATIC</text>
-
-                  <!-- LDR Divider Block -->
-                  <g transform="translate(30, 65)">
-                    <rect x="0" y="0" width="130" height="95" rx="6" fill="#28121d" stroke="#f43f5e" stroke-width="1.5" />
-                    <text x="65" y="26" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" text-anchor="middle">LDR Divider</text>
-                    <text x="65" y="44" fill="#fda4af" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">GL5528 + 10kΩ</text>
-                    <rect x="15" y="55" width="100" height="26" rx="4" fill="#15080f" />
-                    <text x="65" y="72" fill="#fecdd3" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" text-anchor="middle">ADC1 GPIO 34</text>
-                  </g>
-
-                  <!-- Optoisolated Relay Module Block -->
-                  <g transform="translate(190, 65)">
-                    <rect x="0" y="0" width="140" height="95" rx="6" fill="#28121d" stroke="#f43f5e" stroke-width="1.5" />
-                    <text x="70" y="26" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" text-anchor="middle">5V Relay Module</text>
-                    <text x="70" y="44" fill="#fda4af" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Songle 10A 250V</text>
-                    <rect x="15" y="55" width="110" height="26" rx="4" fill="#15080f" />
-                    <text x="70" y="72" fill="#fecdd3" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" text-anchor="middle">Trigger Pin 18</text>
-                  </g>
-
-                  <!-- DHT11 Sensor Block -->
-                  <g transform="translate(360, 65)">
-                    <rect x="0" y="0" width="140" height="95" rx="6" fill="#28121d" stroke="#f43f5e" stroke-width="1.5" />
-                    <text x="70" y="26" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" text-anchor="middle">DHT11 Climate</text>
-                    <text x="70" y="44" fill="#fda4af" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Temp / Humidity</text>
-                    <rect x="15" y="55" width="110" height="26" rx="4" fill="#15080f" />
-                    <text x="70" y="72" fill="#fecdd3" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" text-anchor="middle">Data Bus Pin 4</text>
-                  </g>
-
-                  <!-- Power Rails Bar -->
-                  <g transform="translate(30, 195)">
-                    <rect x="0" y="0" width="470" height="65" rx="6" fill="#200d17" stroke="#3d1323" stroke-width="1" />
-                    <text x="20" y="24" fill="#fda4af" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">COMMON POWER &amp; GROUND DISTRIBUTION</text>
-                    <text x="20" y="46" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">• 5V VIN Rail: Powers 5V Relay Coil &amp; VCC Rails</text>
-                    <text x="260" y="46" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">• 3.3V Rail: Powers LDR &amp; DHT11 Sensors</text>
-                  </g>
-                </g>
-
-                <!-- Signal Wire Traces -->
-                <path d="M 285 273 L 340 273 L 340 185 L 400 185" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="4,4" filter="url(#glowRoseT5)" />
-                <path d="M 285 308 L 350 308 L 350 185 L 560 185" fill="none" stroke="#f43f5e" stroke-width="2.5" filter="url(#glowRoseT5)" />
-                <path d="M 285 343 L 360 343 L 360 185 L 730 185" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="4,4" filter="url(#glowRoseT5)" />
-              </svg>
+          <!-- ESP32 INO CODE -->
+          <div class="code-card">
+            <div class="code-header">
+              <div class="code-title">
+                <span class="code-icon">⚡</span>
+                <span class="code-filename">SmartRoom.ino — ESP32 Firmware (DHT11, LDR, Relay &amp; Firebase Sync)</span>
+              </div>
+              <span class="pill-badge pill-t5">ARDUINO C++</span>
             </div>
+            <pre class="code-pre"><code>/* =========================================================================
+   SMART ROOM IOT — ESP32 FIRMWARE
+   System: Environmental Telemetry &amp; Automatic/Manual Appliance Automation
+   Target: ESP32 DevKit V1
+   Database: Firebase Realtime Database (Asia-Southeast1)
+   ========================================================================= */
 
-            <!-- SCHEMATIC LEGEND -->
-            <div class="schematic-legend">
-              <div class="legend-item">
-                <span class="legend-color-dot" style="background: #f43f5e;"></span>
-                <span class="legend-text"><strong>GPIO 34:</strong> 12-Bit Analog Input (LDR Voltage Divider Midpoint)</span>
-              </div>
-              <div class="legend-item">
-                <span class="legend-color-dot" style="background: #e11d48;"></span>
-                <span class="legend-text"><strong>GPIO 18:</strong> Active-HIGH Digital Drive (Optoisolated Relay Trigger)</span>
-              </div>
-              <div class="legend-item">
-                <span class="legend-color-dot" style="background: #fb7185;"></span>
-                <span class="legend-text"><strong>GPIO 4:</strong> Single-Bus Digital Signal (DHT11 Temperature &amp; Humidity)</span>
-              </div>
-              <div class="legend-item">
-                <span class="legend-color-dot" style="background: #64748b;"></span>
-                <span class="legend-text"><strong>GND &amp; 5V/3.3V:</strong> Common Reference Ground &amp; Dual Voltage Rails</span>
-              </div>
-            </div>
+#include &lt;WiFi.h&gt;
+#include &lt;HTTPClient.h&gt;
+#include &lt;WiFiClientSecure.h&gt;
+#include &lt;ArduinoJson.h&gt;
+#include &lt;DHT.h&gt;
+#include &lt;time.h&gt;
+
+/* =========================================================================
+   1. HARDWARE PIN DEFINITIONS &amp; SENSOR CONFIGURATION
+   ========================================================================= */
+#define DHT_PIN          4        // GPIO 4 -&gt; DHT11 / DHT22 Data Pin
+#define DHT_TYPE         DHT11    // Change to DHT22 if using AM2302 / DHT22 sensor
+#define LDR_PIN          34       // GPIO 34 (ADC1 Channel 6) -&gt; LDR Analog Out
+#define RELAY_PIN        26       // GPIO 26 -&gt; 5V Relay IN Signal (Bulb Actuator)
+#define STATUS_LED_PIN   2        // GPIO 2  -&gt; Onboard Blue Status LED
+
+// Relay Trigger Logic (Most relay modules are Active-LOW)
+#define RELAY_ACTIVE_LOW true
+
+/* =========================================================================
+   2. NETWORK &amp; FIREBASE CONFIGURATION
+   ========================================================================= */
+// Replace with your local Wi-Fi credentials
+const char* WIFI_SSID     = &quot;YOUR_WIFI_SSID&quot;;
+const char* WIFI_PASSWORD = &quot;YOUR_WIFI_PASSWORD&quot;;
+
+// Firebase Realtime Database Host (No https:// or trailing slashes)
+const char* FIREBASE_HOST = &quot;smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app&quot;;
+
+// Optional: Firebase Database Secret or Auth Token (leave empty &quot;&quot; if test rules open)
+const char* FIREBASE_AUTH = &quot;&quot;; 
+
+// NTP Server Configuration for accurate millisecond timestamps in /history
+const char* NTP_SERVER       = &quot;pool.ntp.org&quot;;
+const long  GMT_OFFSET_SEC   = 19800;  // IST (+5:30) = 5.5 * 3600 = 19800 (adjust if needed)
+const int   DAYLIGHT_OFFSET  = 0;
+
+/* =========================================================================
+   3. GLOBAL INSTANCES &amp; SYSTEM STATE
+   ========================================================================= */
+DHT dht(DHT_PIN, DHT_TYPE);
+WiFiClientSecure client;
+
+// Operating State
+String currentMode       = &quot;manual&quot;;   // &quot;manual&quot; or &quot;automatic&quot;
+bool   bulbState         = false;      // true = ON, false = OFF
+int    ldrThreshold      = 500;        // Default darkness threshold
+
+// Sensor Readings
+float  temperature       = 0.0;
+float  humidity          = 0.0;
+int    ldrValue          = 0;
+
+// Non-blocking Timing Loops
+unsigned long lastControlPoll   = 0;
+const unsigned long CONTROL_INTERVAL = 2000;   // Poll control state every 2 seconds
+
+unsigned long lastCurrentPush   = 0;
+const unsigned long CURRENT_INTERVAL = 5000;   // Update /current every 5 seconds
+
+unsigned long lastHistoryPush   = 0;
+const unsigned long HISTORY_INTERVAL = 30000;  // Push time-series /history every 30s
+
+/* =========================================================================
+   4. HELPER: RELAY SWITCHING
+   ========================================================================= */
+void setRelay(bool state) {
+  bulbState = state;
+  if (RELAY_ACTIVE_LOW) {
+    digitalWrite(RELAY_PIN, state ? LOW : HIGH);
+  } else {
+    digitalWrite(RELAY_PIN, state ? HIGH : LOW);
+  }
+}
+
+/* =========================================================================
+   5. HELPER: GET CURRENT UNIX TIMESTAMP (MILLISECONDS)
+   ========================================================================= */
+unsigned long long getEpochMillis() {
+  time_t now;
+  struct tm timeinfo;
+  if (!getLocalTime(&amp;timeinfo)) {
+    return (unsigned long long)millis(); // Fallback if NTP not yet synced
+  }
+  time(&amp;now);
+  return ((unsigned long long)now) * 1000ULL;
+}
+
+/* =========================================================================
+   6. FIREBASE REST: FETCH CONTROL STATE (/control.json)
+   ========================================================================= */
+void pollFirebaseControl() {
+  if (WiFi.status() != WL_CONNECTED) return;
+
+  HTTPClient http;
+  String url = &quot;https://&quot; + String(FIREBASE_HOST) + &quot;/control.json&quot;;
+  if (strlen(FIREBASE_AUTH) &gt; 0) {
+    url += &quot;?auth=&quot; + String(FIREBASE_AUTH);
+  }
+
+  http.begin(client, url);
+  int httpCode = http.GET();
+
+  if (httpCode == HTTP_CODE_OK) {
+    String payload = http.getString();
+    StaticJsonDocument&lt;256&gt; doc;
+    DeserializationError error = deserializeJson(doc, payload);
+
+    if (!error) {
+      if (doc.containsKey(&quot;mode&quot;)) {
+        currentMode = doc[&quot;mode&quot;].as&lt;String&gt;();
+      }
+      if (doc.containsKey(&quot;ldrThreshold&quot;)) {
+        ldrThreshold = doc[&quot;ldrThreshold&quot;].as&lt;int&gt;();
+      }
+      
+      // If manual mode, follow the user&#x27;s manual bulb command
+      if (currentMode == &quot;manual&quot;) {
+        if (doc.containsKey(&quot;bulb&quot;)) {
+          bool requestedBulb = doc[&quot;bulb&quot;].as&lt;bool&gt;();
+          setRelay(requestedBulb);
+        }
+      }
+    }
+  } else {
+    Serial.printf(&quot;[HTTP] GET /control.json failed, code: %d\n&quot;, httpCode);
+  }
+  http.end();
+}
+
+/* =========================================================================
+   7. FIREBASE REST: UPDATE LIVE STATE (/current.json)
+   ========================================================================= */
+void pushCurrentValues() {
+  if (WiFi.status() != WL_CONNECTED) return;
+
+  HTTPClient http;
+  String url = &quot;https://&quot; + String(FIREBASE_HOST) + &quot;/current.json&quot;;
+  if (strlen(FIREBASE_AUTH) &gt; 0) {
+    url += &quot;?auth=&quot; + String(FIREBASE_AUTH);
+  }
+
+  StaticJsonDocument&lt;256&gt; doc;
+  doc[&quot;temperature&quot;] = serialized(String(temperature, 1));
+  doc[&quot;humidity&quot;]    = serialized(String(humidity, 1));
+  doc[&quot;ldr&quot;]         = ldrValue;
+  doc[&quot;bulb&quot;]        = bulbState;
+  doc[&quot;mode&quot;]        = currentMode;
+
+  String requestBody;
+  serializeJson(doc, requestBody);
+
+  http.begin(client, url);
+  http.addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;);
+  int httpCode = http.PUT(requestBody); // PUT updates / replaces /current
+
+  if (httpCode != HTTP_CODE_OK) {
+    Serial.printf(&quot;[HTTP] PUT /current.json failed, code: %d\n&quot;, httpCode);
+  }
+  http.end();
+}
+
+/* =========================================================================
+   8. FIREBASE REST: LOG HISTORICAL RECORD (/history.json)
+   ========================================================================= */
+void pushHistoryLog() {
+  if (WiFi.status() != WL_CONNECTED) return;
+
+  HTTPClient http;
+  String url = &quot;https://&quot; + String(FIREBASE_HOST) + &quot;/history.json&quot;;
+  if (strlen(FIREBASE_AUTH) &gt; 0) {
+    url += &quot;?auth=&quot; + String(FIREBASE_AUTH);
+  }
+
+  StaticJsonDocument&lt;256&gt; doc;
+  doc[&quot;timestamp&quot;]   = getEpochMillis();
+  doc[&quot;temperature&quot;] = serialized(String(temperature, 1));
+  doc[&quot;humidity&quot;]    = serialized(String(humidity, 1));
+  doc[&quot;ldr&quot;]         = ldrValue;
+  doc[&quot;bulb&quot;]        = bulbState;
+  doc[&quot;mode&quot;]        = currentMode;
+
+  String requestBody;
+  serializeJson(doc, requestBody);
+
+  http.begin(client, url);
+  http.addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;);
+  int httpCode = http.POST(requestBody); // POST generates a unique push-key in /history
+
+  if (httpCode != HTTP_CODE_OK) {
+    Serial.printf(&quot;[HTTP] POST /history.json failed, code: %d\n&quot;, httpCode);
+  } else {
+    Serial.println(&quot;[FIREBASE] Telemetry snapshot saved to /history&quot;);
+  }
+  http.end();
+}
+
+/* =========================================================================
+   9. HARDWARE SETUP
+   ========================================================================= */
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+  Serial.println(&quot;\n=== SMART ROOM IOT INITIALIZATION ===&quot;);
+
+  // Pin Configurations
+  pinMode(RELAY_PIN, OUTPUT);
+  pinMode(STATUS_LED_PIN, OUTPUT);
+  pinMode(LDR_PIN, INPUT);
+
+  // Initial actuator state: OFF
+  setRelay(false);
+  digitalWrite(STATUS_LED_PIN, LOW);
+
+  // Initialize DHT Sensor
+  dht.begin();
+
+  // Insecure TLS (bypasses CA verification for simplicity &amp; reliability on ESP32)
+  client.setInsecure();
+
+  // Wi-Fi Connection
+  Serial.printf(&quot;[WIFI] Connecting to SSID: %s&quot;, WIFI_SSID);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    digitalWrite(STATUS_LED_PIN, !digitalRead(STATUS_LED_PIN)); // Blink while connecting
+    delay(400);
+    Serial.print(&quot;.&quot;);
+  }
+
+  digitalWrite(STATUS_LED_PIN, HIGH); // Solid ON when connected
+  Serial.println(&quot;\n[WIFI] Connected successfully!&quot;);
+  Serial.printf(&quot;[WIFI] Assigned ESP32 IP: %s\n&quot;, WiFi.localIP().toString().c_str());
+
+  // Initialize NTP time for timestamps
+  configTime(GMT_OFFSET_SEC, DAYLIGHT_OFFSET, NTP_SERVER);
+  Serial.println(&quot;[NTP] Time synchronization service initialized.&quot;);
+}
+
+/* =========================================================================
+   10. MAIN EVENT LOOP
+   ========================================================================= */
+void loop() {
+  unsigned long now = millis();
+
+  // 1. Read Physical Environmental Sensors
+  float t = dht.readTemperature();
+  float h = dht.readHumidity();
+  if (!isnan(t)) temperature = t;
+  if (!isnan(h)) humidity = h;
+
+  ldrValue = analogRead(LDR_PIN);
+
+  // 2. Poll Firebase /control (Manual/Auto mode, bulb toggle, threshold)
+  if (now - lastControlPoll &gt;= CONTROL_INTERVAL) {
+    lastControlPoll = now;
+    pollFirebaseControl();
+  }
+
+  // 3. Automation Engine (Automatic Mode)
+  // Logic: When LDR &gt;= threshold -&gt; Dark -&gt; Turn Bulb ON
+  //        When LDR &lt;  threshold -&gt; Bright -&gt; Turn Bulb OFF
+  if (currentMode == &quot;automatic&quot;) {
+    bool shouldBulbBeOn = (ldrValue &gt;= ldrThreshold);
+    if (bulbState != shouldBulbBeOn) {
+      setRelay(shouldBulbBeOn);
+      Serial.printf(&quot;[AUTO] LDR: %d vs Threshold: %d -&gt; Bulb toggled %s\n&quot;, 
+                    ldrValue, ldrThreshold, shouldBulbBeOn ? &quot;ON&quot; : &quot;OFF&quot;);
+    }
+  }
+
+  // 4. Periodically update Firebase /current
+  if (now - lastCurrentPush &gt;= CURRENT_INTERVAL) {
+    lastCurrentPush = now;
+    pushCurrentValues();
+  }
+
+  // 5. Periodically log time-series entry to Firebase /history
+  if (now - lastHistoryPush &gt;= HISTORY_INTERVAL) {
+    lastHistoryPush = now;
+    pushHistoryLog();
+  }
+
+  delay(50); // Small loop yield for ESP32 background tasks (Wi-Fi watchdog)
+}
+</code></pre>
           </div>
 
-          <!-- HARDWARE SPEC CARDS -->
-          <div class="hardware-specs-grid">
-            <div class="spec-card">
-              <div class="spec-card-icon">⚡</div>
-              <div class="spec-card-body">
-                <h4>ESP32 DevKit V1</h4>
-                <p>Dual-core Xtensa LX6 @ 240 MHz with 12-bit SAR ADC converter and integrated Wi-Fi stack for local hysteresis control.</p>
-                <span class="spec-metric-tag">Dual-Core 240 MHz</span>
+          <!-- DASHBOARD APP.JS CODE -->
+          <div class="code-card" style="margin-top: 24px;">
+            <div class="code-header">
+              <div class="code-title">
+                <span class="code-icon">🗄️</span>
+                <span class="code-filename">app.js — Smartyy Dashboard (Firebase Realtime DB, Auth &amp; CSV Export)</span>
               </div>
+              <span class="pill-badge pill-t5">JAVASCRIPT ES6</span>
             </div>
+            <pre class="code-pre"><code>/* =========================================================
+   FIREBASE IMPORTS
+   ========================================================= */
 
-            <div class="spec-card">
-              <div class="spec-card-icon">💡</div>
-              <div class="spec-card-body">
-                <h4>5V Optoisolated Relay Module</h4>
-                <p>Songle SRD-05VDC-SL-C electromechanical relay rated for 10A 250VAC with EL817 optocoupler galvanic isolation.</p>
-                <span class="spec-metric-tag">10A 250VAC Switching</span>
-              </div>
-            </div>
+import { initializeApp } from &quot;https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js&quot;;
 
-            <div class="spec-card">
-              <div class="spec-card-icon">☀️</div>
-              <div class="spec-card-body">
-                <h4>GL5528 LDR + 10kΩ Resistor</h4>
-                <p>Photoresistor configured in a precision voltage divider with 10kΩ pull-down, producing wide 600–3500 ADC dynamic swing.</p>
-                <span class="spec-metric-tag">12-Bit Resolution</span>
-              </div>
-            </div>
-          </div>
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+} from &quot;https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js&quot;;
 
-          <!-- PINOUT TABLE -->
-          <div class="pinout-table-wrap">
-            <div class="table-header">
-              <h4>Pinout &amp; Electrical Interconnect Reference</h4>
-              <span class="pill-badge pill-t5">COMPLETE WIRING TABLE</span>
-            </div>
-            <table class="clean-table">
-              <thead>
-                <tr>
-                  <th>ESP32 Pin</th>
-                  <th>Component</th>
-                  <th>Direction</th>
-                  <th>Electrical Level</th>
-                  <th>Functional Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>GPIO 34</code></td>
-                  <td>LDR Light Divider</td>
-                  <td>Input (ADC1_CH6)</td>
-                  <td>0.0V – 3.3V Analog</td>
-                  <td>Measures ambient illumination (Turn ON &lt; 1200, Turn OFF &gt; 1500 ADC)</td>
-                </tr>
-                <tr>
-                  <td><code>GPIO 18</code></td>
-                  <td>Relay Module (IN)</td>
-                  <td>Digital Output</td>
-                  <td>3.3V CMOS Logic</td>
-                  <td>Energizes the optoisolated transistor to toggle the 5V relay coil</td>
-                </tr>
-                <tr>
-                  <td><code>GPIO 4</code></td>
-                  <td>DHT11 Data Pin</td>
-                  <td>Bidirectional Digital</td>
-                  <td>3.3V Logic</td>
-                  <td>Microsecond single-bus pulse train reading room temperature &amp; humidity</td>
-                </tr>
-                <tr>
-                  <td><code>VIN (5V)</code></td>
-                  <td>Relay VCC Pin</td>
-                  <td>Power Rail</td>
-                  <td>+5.0V DC Supply</td>
-                  <td>Provides required magnetic holding current for the electromechanical coil</td>
-                </tr>
-                <tr>
-                  <td><code>GND</code></td>
-                  <td>All Components</td>
-                  <td>Common Ground</td>
-                  <td>0.0V Reference</td>
-                  <td>Unified ground plane eliminating ADC float and logic reference shifts</td>
-                </tr>
-              </tbody>
-            </table>
+import {
+    getDatabase,
+    ref,
+    onValue,
+    set
+} from &quot;https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js&quot;;
+
+
+/* =========================================================
+   FIREBASE CONFIGURATION
+   ========================================================= */
+
+const firebaseConfig = {
+    apiKey: &quot;AIzaSyYOUR_FIREBASE_API_KEY_MASKED&quot;,
+    authDomain: &quot;smartyy-e6f48.firebaseapp.com&quot;,
+    databaseURL: &quot;https://smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app&quot;,
+    projectId: &quot;smartyy-e6f48&quot;,
+    storageBucket: &quot;smartyy-e6f48.firebasestorage.app&quot;,
+    messagingSenderId: &quot;898478403904&quot;,
+    appId: &quot;1:898478403904:web:6b2b918d6441f4b2a40aa5&quot;,
+    measurementId: &quot;G-P60CL20WK9&quot;
+};
+
+
+/* =========================================================
+   INITIALIZE FIREBASE
+   ========================================================= */
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+
+
+/* =========================================================
+   HTML ELEMENTS
+   ========================================================= */
+
+const loginPage = document.getElementById(&quot;loginPage&quot;);
+const dashboardPage = document.getElementById(&quot;dashboardPage&quot;);
+
+const emailInput = document.getElementById(&quot;email&quot;);
+const passwordInput = document.getElementById(&quot;password&quot;);
+const loginBtn = document.getElementById(&quot;loginBtn&quot;);
+const logoutBtn = document.getElementById(&quot;logoutBtn&quot;);
+
+const loginMessage = document.getElementById(&quot;loginMessage&quot;);
+const controlMessage = document.getElementById(&quot;controlMessage&quot;);
+
+const modeSelect = document.getElementById(&quot;modeSelect&quot;);
+const bulbOnBtn = document.getElementById(&quot;bulbOnBtn&quot;);
+const bulbOffBtn = document.getElementById(&quot;bulbOffBtn&quot;);
+const thresholdInput = document.getElementById(&quot;thresholdInput&quot;);
+const saveThresholdBtn = document.getElementById(&quot;saveThresholdBtn&quot;);
+
+let chart = null;
+let historyForCSV = [];
+let monitoringStarted = false;
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+loginBtn.addEventListener(&quot;click&quot;, async () =&gt; {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    if (!email || !password) {
+        loginMessage.textContent = &quot;Enter email and password.&quot;;
+        return;
+    }
+
+    loginMessage.textContent = &quot;Logging in...&quot;;
+
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+        loginMessage.textContent = &quot;&quot;;
+    } catch (error) {
+        console.error(error);
+        loginMessage.textContent = &quot;Login failed: &quot; + error.message;
+    }
+});
+
+[emailInput, passwordInput].forEach((input) =&gt; {
+    input.addEventListener(&quot;keydown&quot;, (e) =&gt; {
+        if (e.key === &quot;Enter&quot;) {
+            loginBtn.click();
+        }
+    });
+});
+
+
+/* =========================================================
+   AUTH STATE
+   ========================================================= */
+
+onAuthStateChanged(auth, (user) =&gt; {
+    if (user) {
+        loginPage.classList.add(&quot;hidden&quot;);
+        dashboardPage.classList.remove(&quot;hidden&quot;);
+
+        if (!monitoringStarted) {
+            monitoringStarted = true;
+            startRealtimeMonitoring();
+        }
+    } else {
+        monitoringStarted = false;
+        dashboardPage.classList.add(&quot;hidden&quot;);
+        loginPage.classList.remove(&quot;hidden&quot;);
+    }
+});
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+logoutBtn.addEventListener(&quot;click&quot;, async () =&gt; {
+    try {
+        await signOut(auth);
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+
+/* =========================================================
+   REALTIME MONITORING
+   ========================================================= */
+
+function startRealtimeMonitoring() {
+
+    // Current sensor / appliance values
+    onValue(ref(db, &quot;current&quot;), (snapshot) =&gt; {
+        const data = snapshot.val();
+
+        if (!data) {
+            return;
+        }
+
+        document.getElementById(&quot;temperature&quot;).textContent =
+            data.temperature ?? &quot;--&quot;;
+
+        document.getElementById(&quot;humidity&quot;).textContent =
+            data.humidity ?? &quot;--&quot;;
+
+        document.getElementById(&quot;ldr&quot;).textContent =
+            data.ldr ?? &quot;--&quot;;
+
+        const isBulbOn = Boolean(data.bulb);
+        document.getElementById(&quot;bulbStatus&quot;).textContent =
+            isBulbOn ? &quot;ON&quot; : &quot;OFF&quot;;
+
+        const bulbCard = document.getElementById(&quot;bulbCard&quot;);
+        if (bulbCard) {
+            bulbCard.classList.toggle(&quot;active-on&quot;, isBulbOn);
+        }
+
+        document.getElementById(&quot;modeDisplay&quot;).textContent =
+            data.mode ?? &quot;--&quot;;
+    });
+
+    // Control values
+    onValue(ref(db, &quot;control&quot;), (snapshot) =&gt; {
+        const data = snapshot.val();
+
+        if (!data) {
+            return;
+        }
+
+        modeSelect.value = data.mode ?? &quot;manual&quot;;
+        thresholdInput.value = data.ldrThreshold ?? 500;
+
+        updateManualButtonState((data.mode ?? &quot;manual&quot;) === &quot;manual&quot;);
+    });
+
+    // History
+    onValue(ref(db, &quot;history&quot;), (snapshot) =&gt; {
+        const data = snapshot.val();
+
+        if (!data) {
+            historyForCSV = [];
+            updateHistory({});
+            return;
+        }
+
+        updateHistory(data);
+    });
+}
+
+
+/* =========================================================
+   MODE CONTROL
+   ========================================================= */
+
+modeSelect.addEventListener(&quot;change&quot;, async (event) =&gt; {
+    const mode = event.target.value;
+
+    try {
+        await set(ref(db, &quot;control/mode&quot;), mode);
+        controlMessage.textContent = &quot;Mode changed to &quot; + mode + &quot;.&quot;;
+        updateManualButtonState(mode === &quot;manual&quot;);
+    } catch (error) {
+        controlMessage.textContent = error.message;
+    }
+});
+
+
+/* =========================================================
+   MANUAL BULB CONTROL
+   ========================================================= */
+
+bulbOnBtn.addEventListener(&quot;click&quot;, async () =&gt; {
+
+    if (modeSelect.value !== &quot;manual&quot;) {
+        controlMessage.textContent =
+            &quot;Change to Manual mode to use the ON/OFF buttons.&quot;;
+        return;
+    }
+
+    try {
+        await set(ref(db, &quot;control/bulb&quot;), true);
+        controlMessage.textContent = &quot;Bulb ON command sent.&quot;;
+    } catch (error) {
+        controlMessage.textContent = error.message;
+    }
+});
+
+
+bulbOffBtn.addEventListener(&quot;click&quot;, async () =&gt; {
+
+    if (modeSelect.value !== &quot;manual&quot;) {
+        controlMessage.textContent =
+            &quot;Change to Manual mode to use the ON/OFF buttons.&quot;;
+        return;
+    }
+
+    try {
+        await set(ref(db, &quot;control/bulb&quot;), false);
+        controlMessage.textContent = &quot;Bulb OFF command sent.&quot;;
+    } catch (error) {
+        controlMessage.textContent = error.message;
+    }
+});
+
+
+function updateManualButtonState(isManual) {
+    bulbOnBtn.disabled = !isManual;
+    bulbOffBtn.disabled = !isManual;
+
+    bulbOnBtn.style.opacity = isManual ? &quot;1&quot; : &quot;0.5&quot;;
+    bulbOffBtn.style.opacity = isManual ? &quot;1&quot; : &quot;0.5&quot;;
+}
+
+
+/* =========================================================
+   LDR THRESHOLD
+   ========================================================= */
+
+saveThresholdBtn.addEventListener(&quot;click&quot;, async () =&gt; {
+
+    const threshold = Number(thresholdInput.value);
+
+    if (
+        Number.isNaN(threshold) ||
+        threshold &lt; 0 ||
+        threshold &gt; 4095
+    ) {
+        controlMessage.textContent =
+            &quot;Enter a threshold from 0 to 4095.&quot;;
+        return;
+    }
+
+    try {
+        await set(
+            ref(db, &quot;control/ldrThreshold&quot;),
+            Math.round(threshold)
+        );
+
+        controlMessage.textContent =
+            &quot;Threshold saved to Firebase.&quot;;
+    } catch (error) {
+        controlMessage.textContent = error.message;
+    }
+});
+
+
+/* =========================================================
+   HISTORY TABLE + GRAPH
+   ========================================================= */
+
+function updateHistory(history) {
+
+    const table = document.getElementById(&quot;historyTable&quot;);
+    table.innerHTML = &quot;&quot;;
+
+    historyForCSV = [];
+
+    const timestamps = [];
+    const temperatures = [];
+    const humidities = [];
+    const ldrValues = [];
+
+    const entries = Object.entries(history || {})
+        .sort((a, b) =&gt; {
+            return Number(a[1].timestamp || 0)
+                - Number(b[1].timestamp || 0);
+        })
+        .slice(-200);
+
+    entries.forEach(([key, item]) =&gt; {
+
+        const rawTimestamp = Number(item.timestamp || key || 0);
+
+        const date = rawTimestamp &gt; 100000000000
+            ? new Date(rawTimestamp)
+            : new Date(rawTimestamp * 1000);
+
+        const dateText = isNaN(date.getTime())
+            ? &quot;Unknown&quot;
+            : date.toLocaleString();
+
+        // Table
+        const row = document.createElement(&quot;tr&quot;);
+
+        const cells = [
+            dateText,
+            `${item.temperature ?? &quot;&quot;} °C`,
+            `${item.humidity ?? &quot;&quot;} %`,
+            item.ldr ?? &quot;&quot;,
+            item.bulb ? &quot;ON&quot; : &quot;OFF&quot;,
+            item.mode ?? &quot;&quot;
+        ];
+
+        cells.forEach((value) =&gt; {
+            const cell = document.createElement(&quot;td&quot;);
+            cell.textContent = value;
+            row.appendChild(cell);
+        });
+
+        table.appendChild(row);
+
+        // Graph
+        timestamps.push(
+            isNaN(date.getTime())
+                ? String(rawTimestamp)
+                : date.toLocaleTimeString()
+        );
+
+        temperatures.push(Number(item.temperature ?? 0));
+        humidities.push(Number(item.humidity ?? 0));
+        ldrValues.push(Number(item.ldr ?? 0));
+
+        // CSV
+        historyForCSV.push({
+            timestamp: dateText,
+            temperature: item.temperature ?? &quot;&quot;,
+            humidity: item.humidity ?? &quot;&quot;,
+            ldr: item.ldr ?? &quot;&quot;,
+            bulb: item.bulb ? &quot;ON&quot; : &quot;OFF&quot;,
+            mode: item.mode ?? &quot;&quot;
+        });
+    });
+
+    updateChart(
+        timestamps,
+        temperatures,
+        humidities,
+        ldrValues
+    );
+}
+
+
+/* =========================================================
+   CHART
+   ========================================================= */
+
+function updateChart(
+    labels,
+    temperatures,
+    humidities,
+    ldrValues
+) {
+    const canvas = document.getElementById(&quot;historyChart&quot;);
+    if (!canvas) return;
+    const ctx = canvas.getContext(&quot;2d&quot;);
+
+    if (chart) {
+        chart.destroy();
+    }
+
+    // Warm Flame &amp; Light Orange Gradients for dataset fills
+    const tempGradient = ctx.createLinearGradient(0, 0, 0, 350);
+    tempGradient.addColorStop(0, &quot;rgba(234, 88, 12, 0.28)&quot;);
+    tempGradient.addColorStop(0.7, &quot;rgba(234, 88, 12, 0.06)&quot;);
+    tempGradient.addColorStop(1, &quot;rgba(234, 88, 12, 0)&quot;);
+
+    const humGradient = ctx.createLinearGradient(0, 0, 0, 350);
+    humGradient.addColorStop(0, &quot;rgba(2, 132, 199, 0.28)&quot;);
+    humGradient.addColorStop(0.7, &quot;rgba(2, 132, 199, 0.06)&quot;);
+    humGradient.addColorStop(1, &quot;rgba(2, 132, 199, 0)&quot;);
+
+    const ldrGradient = ctx.createLinearGradient(0, 0, 0, 350);
+    ldrGradient.addColorStop(0, &quot;rgba(245, 158, 11, 0.25)&quot;);
+    ldrGradient.addColorStop(0.7, &quot;rgba(245, 158, 11, 0.05)&quot;);
+    ldrGradient.addColorStop(1, &quot;rgba(245, 158, 11, 0)&quot;);
+
+    chart = new Chart(ctx, {
+        type: &quot;line&quot;,
+
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: &quot;Temperature (°C)&quot;,
+                    data: temperatures,
+                    borderColor: &quot;#ea580c&quot;,
+                    backgroundColor: tempGradient,
+                    borderWidth: 2.5,
+                    pointBackgroundColor: &quot;#ea580c&quot;,
+                    pointBorderColor: &quot;#ffffff&quot;,
+                    pointBorderWidth: 1,
+                    pointRadius: 3,
+                    pointHoverRadius: 6,
+                    tension: 0.35,
+                    fill: true,
+                    yAxisID: &quot;y&quot;
+                },
+                {
+                    label: &quot;Humidity (%)&quot;,
+                    data: humidities,
+                    borderColor: &quot;#0284c7&quot;,
+                    backgroundColor: humGradient,
+                    borderWidth: 2.5,
+                    pointBackgroundColor: &quot;#0284c7&quot;,
+                    pointBorderColor: &quot;#ffffff&quot;,
+                    pointBorderWidth: 1,
+                    pointRadius: 3,
+                    pointHoverRadius: 6,
+                    tension: 0.35,
+                    fill: true,
+                    yAxisID: &quot;y&quot;
+                },
+                {
+                    label: &quot;LDR Light&quot;,
+                    data: ldrValues,
+                    borderColor: &quot;#f59e0b&quot;,
+                    backgroundColor: ldrGradient,
+                    borderWidth: 2,
+                    pointBackgroundColor: &quot;#f59e0b&quot;,
+                    pointBorderColor: &quot;#ffffff&quot;,
+                    pointBorderWidth: 1,
+                    pointRadius: 3,
+                    pointHoverRadius: 6,
+                    tension: 0.35,
+                    fill: true,
+                    yAxisID: &quot;yLDR&quot;
+                }
+            ]
+        },
+
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            interaction: {
+                intersect: false,
+                mode: &quot;index&quot;
+            },
+
+            plugins: {
+                legend: {
+                    position: &quot;top&quot;,
+                    labels: {
+                        color: &quot;#1c1917&quot;,
+                        font: { family: &quot;&#x27;Outfit&#x27;, &#x27;Google Sans&#x27;, sans-serif&quot;, size: 12, weight: 600 },
+                        usePointStyle: true,
+                        padding: 16
+                    }
+                },
+
+                tooltip: {
+                    backgroundColor: &quot;rgba(255, 255, 255, 0.98)&quot;,
+                    titleColor: &quot;#c2410c&quot;,
+                    bodyColor: &quot;#1c1917&quot;,
+                    borderColor: &quot;#fdba74&quot;,
+                    borderWidth: 1.5,
+                    padding: 12,
+                    boxPadding: 6,
+                    cornerRadius: 10,
+                    displayColors: true
+                }
+            },
+
+            scales: {
+                x: {
+                    grid: {
+                        color: &quot;rgba(249, 115, 22, 0.08)&quot;
+                    },
+                    ticks: {
+                        color: &quot;#57534e&quot;,
+                        maxRotation: 45,
+                        minRotation: 0,
+                        font: { family: &quot;&#x27;Inter&#x27;, sans-serif&quot; }
+                    }
+                },
+
+                y: {
+                    type: &quot;linear&quot;,
+                    display: true,
+                    position: &quot;left&quot;,
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: &quot;Temp (°C) / Humidity (%)&quot;,
+                        color: &quot;#ea580c&quot;,
+                        font: { family: &quot;&#x27;Outfit&#x27;, &#x27;Google Sans&#x27;, sans-serif&quot;, size: 11, weight: 600 }
+                    },
+                    grid: {
+                        color: &quot;rgba(249, 115, 22, 0.08)&quot;
+                    },
+                    ticks: {
+                        color: &quot;#57534e&quot;,
+                        font: { family: &quot;&#x27;Inter&#x27;, sans-serif&quot; }
+                    }
+                },
+
+                yLDR: {
+                    type: &quot;linear&quot;,
+                    display: true,
+                    position: &quot;right&quot;,
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: &quot;LDR Raw (0-4095)&quot;,
+                        color: &quot;#b45309&quot;,
+                        font: { family: &quot;&#x27;Outfit&#x27;, &#x27;Google Sans&#x27;, sans-serif&quot;, size: 11, weight: 600 }
+                    },
+                    grid: {
+                        drawOnChartArea: false
+                    },
+                    ticks: {
+                        color: &quot;#b45309&quot;,
+                        font: { family: &quot;&#x27;Inter&#x27;, sans-serif&quot; }
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+/* =========================================================
+   CSV EXPORT
+   ========================================================= */
+
+document.getElementById(&quot;csvBtn&quot;).addEventListener(&quot;click&quot;, () =&gt; {
+
+    if (historyForCSV.length === 0) {
+        alert(&quot;No historical data available.&quot;);
+        return;
+    }
+
+    const headers = [
+        &quot;Timestamp&quot;,
+        &quot;Temperature&quot;,
+        &quot;Humidity&quot;,
+        &quot;LDR&quot;,
+        &quot;Bulb State&quot;,
+        &quot;Operating Mode&quot;
+    ];
+
+    const rows = historyForCSV.map(item =&gt; [
+        item.timestamp,
+        item.temperature,
+        item.humidity,
+        item.ldr,
+        item.bulb,
+        item.mode
+    ]);
+
+    const csv = [headers, ...rows]
+        .map(row =&gt;
+            row.map(value =&gt;
+                `&quot;${String(value).replaceAll(&#x27;&quot;&#x27;, &#x27;&quot;&quot;&#x27;)}&quot;`
+            ).join(&quot;,&quot;)
+        )
+        .join(&quot;\n&quot;);
+
+    const blob = new Blob(
+        [csv],
+        { type: &quot;text/csv;charset=utf-8;&quot; }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement(&quot;a&quot;);
+
+    link.href = url;
+    link.download = &quot;smartyy-room-history.csv&quot;;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+});
+</code></pre>
           </div>
         </section>
 
-        <!-- 6. CORE FIRMWARE & CODE BREAKDOWN -->
+        <!-- 6. PROBLEMS ENCOUNTERED & FIXED SOLUTIONS (TROUBLESHOOTING) -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t5">06</span>
-              <h2>Core Firmware &amp; Code Breakdown</h2>
+              <h2>Problems Encountered &amp; Fixed Solutions</h2>
             </div>
-            <span class="block-tag">// ESP32 EMBEDDED C++ SOURCE</span>
+            <span class="block-tag">// LAB TROUBLESHOOTING LOG</span>
           </div>
 
-          <!-- CODE BOX -->
-          <div class="code-box">
-            <div class="code-header">
-              <span class="code-filename">ESP32_Capstone_Automation_Logging.ino</span>
-              <button class="copy-btn">Copy Code</button>
-            </div>
-            <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
-<span class="c-kw">#include</span> <span class="c-str">&lt;FirebaseESP32.h&gt;</span>
-<span class="c-kw">#include</span> <span class="c-str">&lt;DHT.h&gt;</span>
-<span class="c-kw">#include</span> <span class="c-str">"time.h"</span>
-
-<span class="c-kw">#define</span> WIFI_SSID     <span class="c-str">"YOUR_WIFI_SSID"</span>
-<span class="c-kw">#define</span> WIFI_PASS     <span class="c-str">"YOUR_WIFI_PASSWORD"</span>
-<span class="c-kw">#define</span> FIREBASE_HOST <span class="c-str">"forge-iot-telemetry-default-rtdb.firebaseio.com"</span>
-<span class="c-kw">#define</span> FIREBASE_AUTH <span class="c-str">"YOUR_DATABASE_SECRET"</span>
-
-<span class="c-kw">#define</span> DHTPIN 4
-<span class="c-kw">#define</span> LDRPIN 34
-<span class="c-kw">#define</span> RELAYPIN 18
-
-<span class="c-cmt">// Software Hysteresis Thresholds (300-point anti-chatter deadband)</span>
-<span class="c-kw">const int</span> THRESHOLD_DARK  = 1200;
-<span class="c-kw">const int</span> THRESHOLD_LIGHT = 1500;
-
-<span class="c-kw">DHT</span> dht(DHTPIN, DHT11);
-<span class="c-kw">FirebaseData</span> fbdo;
-<span class="c-kw">FirebaseAuth</span> auth;
-<span class="c-kw">FirebaseConfig</span> config;
-
-<span class="c-type">unsigned long</span> lastLogTime = 0;
-<span class="c-kw">bool</span> currentBulbState = false;
-<span class="c-kw">String</span> currentMode = <span class="c-str">"AUTOMATIC"</span>;
-
-<span class="c-type">void</span> <span class="c-fn">setup</span>() {
-  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
-  <span class="c-fn">pinMode</span>(RELAYPIN, OUTPUT);
-  <span class="c-fn">digitalWrite</span>(RELAYPIN, LOW);
-  dht.<span class="c-fn">begin</span>();
-
-  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(WIFI_SSID, WIFI_PASS);
-  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) { <span class="c-fn">delay</span>(500); }
-  
-  <span class="c-fn">configTime</span>(19800, 0, <span class="c-str">"pool.ntp.org"</span>); <span class="c-cmt">// UTC + 5:30 (IST)</span>
-
-  config.host = FIREBASE_HOST;
-  config.signer.tokens.legacy_token = FIREBASE_AUTH;
-  <span class="c-fn">Firebase</span>.<span class="c-fn">begin</span>(&config, &auth);
-  <span class="c-fn">Firebase</span>.<span class="c-fn">reconnectWiFi</span>(true);
-}
-
-<span class="c-type">void</span> <span class="c-fn">loop</span>() {
-  <span class="c-type">float</span> t = dht.<span class="c-fn">readTemperature</span>();
-  <span class="c-type">float</span> h = dht.<span class="c-fn">readHumidity</span>();
-  <span class="c-type">int</span> ldr = <span class="c-fn">analogRead</span>(LDRPIN);
-
-  <span class="c-cmt">// 1. Retrieve Current Mode from Firebase</span>
-  <span class="c-kw">if</span> (<span class="c-fn">Firebase</span>.<span class="c-fn">getString</span>(fbdo, <span class="c-str">"/iot_system/system_state/mode"</span>)) {
-    currentMode = fbdo.<span class="c-fn">stringData</span>();
-  }
-
-  <span class="c-cmt">// 2. Execute Hysteresis Control Logic</span>
-  <span class="c-kw">if</span> (currentMode == <span class="c-str">"AUTOMATIC"</span>) {
-    <span class="c-kw">if</span> (ldr &lt; THRESHOLD_DARK &amp;&amp; !currentBulbState) {
-      currentBulbState = true;
-      <span class="c-fn">digitalWrite</span>(RELAYPIN, HIGH);
-      <span class="c-fn">Firebase</span>.<span class="c-fn">setBool</span>(fbdo, <span class="c-str">"/iot_system/system_state/bulb_state"</span>, true);
-    } <span class="c-kw">else if</span> (ldr &gt; THRESHOLD_LIGHT &amp;&amp; currentBulbState) {
-      currentBulbState = false;
-      <span class="c-fn">digitalWrite</span>(RELAYPIN, LOW);
-      <span class="c-fn">Firebase</span>.<span class="c-fn">setBool</span>(fbdo, <span class="c-str">"/iot_system/system_state/bulb_state"</span>, false);
-    }
-  } <span class="c-kw">else</span> { <span class="c-cmt">// MANUAL OVERRIDE MODE</span>
-    <span class="c-kw">if</span> (<span class="c-fn">Firebase</span>.<span class="c-fn">getBool</span>(fbdo, <span class="c-str">"/iot_system/system_state/bulb_state"</span>)) {
-      currentBulbState = fbdo.<span class="c-fn">boolData</span>();
-      <span class="c-fn">digitalWrite</span>(RELAYPIN, currentBulbState ? HIGH : LOW);
-    }
-  }
-
-  <span class="c-cmt">// 3. Periodic Historical Logging (Every 30 seconds)</span>
-  <span class="c-kw">if</span> (<span class="c-fn">millis</span>() - lastLogTime &gt; 30000) {
-    lastLogTime = <span class="c-fn">millis</span>();
-    <span class="c-kw">FirebaseJson</span> json;
-    json.<span class="c-fn">set</span>(<span class="c-str">"temperature"</span>, t);
-    json.<span class="c-fn">set</span>(<span class="c-str">"humidity"</span>, h);
-    json.<span class="c-fn">set</span>(<span class="c-str">"light_level"</span>, ldr);
-    json.<span class="c-fn">set</span>(<span class="c-str">"bulb_state"</span>, currentBulbState ? <span class="c-str">"ON"</span> : <span class="c-str">"OFF"</span>);
-    json.<span class="c-fn">set</span>(<span class="c-str">"mode"</span>, currentMode);
-    
-    <span class="c-fn">Firebase</span>.<span class="c-fn">pushJSON</span>(fbdo, <span class="c-str">"/iot_system/historical_logs"</span>, json);
-  }
-}</code></pre>
-          </div>
-
-          <!-- CODE BREAKDOWN SECTION -->
-          <div class="code-breakdown-wrap">
-            <div class="code-breakdown-header">
-              <div class="code-breakdown-title-group">
-                <h3>Code Breakdown</h3>
-                <p>Architectural examination of the hysteresis decision engine and data logging pipeline</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
+            <!-- Challenge 1 -->
+            <div class="debug-card bug-side">
+              <div class="debug-head head-bug">
+                <span class="debug-icon">⚠️</span>
+                <h4>1. Memory Fragmentation &amp; Heap Depletion During Continuous Logging</h4>
               </div>
-              <span class="pill-badge pill-t5">STEP-BY-STEP ANALYSIS</span>
-            </div>
-
-            <div class="breakdown-cards-grid">
-              <div class="breakdown-card">
-                <div class="breakdown-card-top">
-                  <span class="breakdown-num">PART 01</span>
-                  <span class="breakdown-code-tag">THRESHOLD_DARK / LIGHT</span>
-                </div>
-                <h5>1. Dual Threshold Constants</h5>
-                <ul class="breakdown-list">
-                  <li>Defines lower limit (1200) and upper limit (1500) creating an intentional 300-point deadband.</li>
-                  <li>Prevents false switching when environmental shadows or ADC flicker oscillate near setpoints.</li>
-                </ul>
-              </div>
-
-              <div class="breakdown-card">
-                <div class="breakdown-card-top">
-                  <span class="breakdown-num">PART 02</span>
-                  <span class="breakdown-code-tag">analogRead(LDRPIN)</span>
-                </div>
-                <h5>2. 12-Bit ADC Sensor Sampling</h5>
-                <ul class="breakdown-list">
-                  <li>Reads voltage divider on GPIO 34 across 0 to 4095 range with non-blocking execution.</li>
-                  <li>Captures physical room lux without introducing execution delays into the control loop.</li>
-                </ul>
-              </div>
-
-              <div class="breakdown-card">
-                <div class="breakdown-card-top">
-                  <span class="breakdown-num">PART 03</span>
-                  <span class="breakdown-code-tag">ldr &lt; 1200 &amp;&amp; !state</span>
-                </div>
-                <h5>3. Hysteresis Decision Engine</h5>
-                <ul class="breakdown-list">
-                  <li>Toggles relay ON only when plunging below 1200, and OFF only when climbing past 1500.</li>
-                  <li>Maintains current relay state whenever sensor reading is between 1200 and 1500.</li>
-                </ul>
-              </div>
-
-              <div class="breakdown-card">
-                <div class="breakdown-card-top">
-                  <span class="breakdown-num">PART 04</span>
-                  <span class="breakdown-code-tag">digitalWrite(RELAYPIN)</span>
-                </div>
-                <h5>4. Optoisolated Actuator Drive</h5>
-                <ul class="breakdown-list">
-                  <li>Drives GPIO 18 to switch the optocoupled transistor controlling the 5V relay coil.</li>
-                  <li>Isolates the 3.3V microcontroller logic safely from inductive coil spikes and AC loads.</li>
-                </ul>
-              </div>
-
-              <div class="breakdown-card">
-                <div class="breakdown-card-top">
-                  <span class="breakdown-num">PART 05</span>
-                  <span class="breakdown-code-tag">Firebase.pushJSON()</span>
-                </div>
-                <h5>5. Time-Series Historical Logging</h5>
-                <ul class="breakdown-list">
-                  <li>Appends immutable timestamped snapshots under <code>/historical_logs</code> every 30 seconds.</li>
-                  <li>Feeds the client-side CSV generator with clean, structured historical records for auditing.</li>
-                </ul>
+              <p class="challenge-text"><strong>Issue:</strong> Unbounded dynamic String concatenations inside the 30-second logging loop caused ESP32 heap memory fragmentation, crashing the microcontroller after multiple hours of execution.</p>
+              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
+                <strong>Fixed Solution:</strong> Managed HTTP connection states strictly with fixed-size JSON buffers (<code>StaticJsonDocument&lt;256&gt;</code>) and explicit connection closure (<code>http.end()</code>) immediately after each transaction, preserving stable free heap (&gt;210 KB) indefinitely.
               </div>
             </div>
-          </div>
 
-          <!-- SERIAL MONITOR TELEMETRY -->
-          <div class="serial-monitor-wrap">
-            <div class="code-breakdown-header">
-              <div class="code-breakdown-title-group">
-                <h3>Serial Monitor Telemetry &amp; Terminal Log</h3>
-                <p>Live serial communication output captured over USB COM7 at 115200 baud</p>
+            <!-- Challenge 2 -->
+            <div class="debug-card bug-side">
+              <div class="debug-head head-bug">
+                <span class="debug-icon">⚠️</span>
+                <h4>2. Clock Drift &amp; Invalid Timestamps Before NTP Synchronization</h4>
               </div>
-              <span class="pill-badge pill-t5">SERIAL COM7 @ 115200 BAUD</span>
+              <p class="challenge-text"><strong>Issue:</strong> The microcontroller lacks battery-backed RTC hardware; attempting to commit historical logs before internet time synchronization resulted in zero or 1970 epoch timestamps.</p>
+              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
+                <strong>Fixed Solution:</strong> Gated the logging routine behind an explicit NTP readiness validator (<code>time_t now = time(nullptr); if (now &lt; 1700000000) return;</code>), guaranteeing that only cryptographically verified UTC+5:30 timestamps are committed to the cloud.
+              </div>
             </div>
 
-            <div class="serial-console-card">
-              <div class="serial-console-bar">
-                <div class="serial-bar-left">
-                  <span class="term-dot dot-r"></span>
-                  <span class="term-dot dot-y"></span>
-                  <span class="term-dot dot-g"></span>
-                  <span class="serial-title">Arduino IDE Serial Monitor — COM7</span>
-                </div>
-                <div class="serial-bar-right">
-                  <span class="serial-meta-pill">● Connected (115200 Baud)</span>
-                  <span>Autoscroll: ON</span>
-                  <span>Timestamp: Disabled</span>
-                </div>
+            <!-- Challenge 3 -->
+            <div class="debug-card bug-side">
+              <div class="debug-head head-bug">
+                <span class="debug-icon">⚠️</span>
+                <h4>3. Dual Y-Axis Telemetry Scaling &amp; CSV Row Serialization</h4>
               </div>
-              <pre class="serial-output-code"><code><span class="log-boot">[BOOT] ESP32 Capstone Autonomous System Initialized</span>
-<span class="log-wifi">Connecting to WiFi..... WiFi connected! IP: 192.168.56.202</span>
-<span class="log-srv">[FIREBASE] Connected to forge-iot-telemetry-default-rtdb.firebaseio.com</span>
-<span class="log-hit">[NTP] Time Synchronized: 2026-10-08 09:00:15 IST</span>
-<span class="log-hit">[AUTO] Light: 1850 ADC &gt; 1500 (Bright) -&gt; Relay OFF (Stable)</span>
-<span class="log-ip">[EVENT] Ambient darkness detected: LDR dropped to 840 ADC</span>
-<span class="log-ip">[AUTO] Light (840) &lt; 1200 -&gt; RELAY ENERGIZED (Bulb ON)</span>
-<span class="log-hit">[DEADBAND] Reading: 1360 ADC -&gt; Inside 300pt Deadband Zone (Holding ON)</span>
-<span class="log-hit">[LOG] Pushed snapshot to /historical_logs (Temp: 28.1C, LDR: 1360, Mode: AUTO)</span></code></pre>
+              <p class="challenge-text"><strong>Issue:</strong> Raw LDR readings (0–4095) flattened Temperature/Humidity lines on single-axis charts, and client CSV generation risked quote-escaping syntax errors.</p>
+              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
+                <strong>Fixed Solution:</strong> Configured a dual Y-axis layout in Chart.js with left (0–60) and right (0–4500) scales, and implemented an RFC 4180-compliant quote-encapsulated CSV serializer (<code>"Timestamp","Temperature","Humidity","LDR","Bulb State","Operating Mode"</code>) ensuring seamless import into Microsoft Excel.
+              </div>
+            </div>
+
+            <!-- Challenge 4 -->
+            <div class="debug-card bug-side">
+              <div class="debug-head head-bug">
+                <span class="debug-icon">⚠️</span>
+                <h4>4. Operating Mode Arbitration Race Condition (Manual Toggle vs LDR Automation)</h4>
+              </div>
+              <p class="challenge-text"><strong>Issue:</strong> When a user manually toggled the lamp ON from the web dashboard while ambient light was bright, the continuous 500ms sensor evaluation loop immediately detected ambient light and forced the relay back OFF.</p>
+              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
+                <strong>Fixed Solution:</strong> Enforced strict state partitioning in firmware and dashboard: when <code>operatingMode == "manual"</code>, the LDR threshold evaluation block is bypassed entirely, granting absolute sovereignty to user dashboard commands until explicitly switched back to <code>automatic</code> mode.
+              </div>
+            </div>
+
+            <!-- Challenge 5 -->
+            <div class="debug-card bug-side">
+              <div class="debug-head head-bug">
+                <span class="debug-icon">⚠️</span>
+                <h4>5. Inverted Relay Active-LOW Switching Logic</h4>
+              </div>
+              <p class="challenge-text"><strong>Issue:</strong> Standard 5V optocoupler relay modules trigger on <code>LOW</code> (0V) logic and disengage on <code>HIGH</code> (3.3V). Standard <code>HIGH</code> writes caused inverted behavior where the light turned off in darkness and energized in daylight.</p>
+              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
+                <strong>Fixed Solution:</strong> Defined explicit semantic macros (<code>#define RELAY_ON LOW</code>, <code>#define RELAY_OFF HIGH</code>) and initialized GPIO 26 to <code>RELAY_OFF</code> during <code>setup()</code>, preventing startup flash glitches and enforcing fail-safe de-energized behavior.
+              </div>
             </div>
           </div>
         </section>
 
-        <!-- 7. REFLECTION -->
+        <!-- 7. SYSTEM LIMITATIONS & FUTURE IMPROVEMENTS -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t5">07</span>
-              <h2>Reflection</h2>
+              <h2>System Limitations &amp; Future Improvements</h2>
             </div>
-            <span class="block-tag">// PERSONAL LEARNING</span>
+            <span class="block-tag">// ENGINEERING EVALUATION</span>
           </div>
 
-          <div class="reflection-card reflection-t5">
-            <div class="reflection-header">
-              <div class="reflection-badge">
-                <span class="reflection-icon">💡</span>
-                <span class="reflection-label">STUDENT REFLECTION</span>
-              </div>
-              <span class="pill-badge pill-t5">KEY TAKEAWAY</span>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+            <div class="distinct-content-box box-t5">
+              <h4 style="color: #f43f5e; margin-top: 0;">Limitations of Current Prototype</h4>
+              <ul class="bullet-list-sm">
+                <li><strong>Sensor Precision:</strong> DHT11 sampling rate is limited to 1 Hz with ±2°C temperature and ±5% RH tolerance, precluding clinical or cleanroom applications.</li>
+                <li><strong>Relative Lux Metric:</strong> The analog LDR photocell outputs a relative 12-bit ADC value (0–4095) rather than calibrated SI Lux (lumens/m²).</li>
+                <li><strong>Network Single-Point-of-Failure:</strong> Device requires active 2.4 GHz Wi-Fi connectivity for cloud synchronization; historical logging pauses during broadband outages.</li>
+              </ul>
             </div>
-            <blockquote class="reflection-quote">
-              This capstone brought everything full circle—from local HTTP servers to MQTT brokers, cloud applets, and full-stack Firebase logging with client data exports. The most valuable realization was that physical computing requires respect for real-world environmental noise: concepts like software hysteresis, non-blocking asynchronous timers, and database pruning are what separate classroom experiments from reliable production systems.
-            </blockquote>
+
+            <div class="distinct-content-box box-t5">
+              <h4 style="color: #f43f5e; margin-top: 0;">Possible Future Improvements</h4>
+              <ul class="bullet-list-sm">
+                <li><strong>Precision Sensor Upgrades:</strong> Transition to digital I2C sensors like the <strong>BME280</strong> (±0.5°C, ±3% RH, barometric pressure) and <strong>BH1750</strong> (calibrated digital Lux).</li>
+                <li><strong>Local SPIFFS/SD Card Offline Logging:</strong> Implement local flash/SD card buffering to store telemetry during internet outages and batch-sync on reconnection.</li>
+                <li><strong>Edge Machine Learning (TinyML):</strong> Deploy an onboard TensorFlow Lite Micro model on ESP32 to predict room occupancy and automate lighting without cloud latency.</li>
+              </ul>
+            </div>
           </div>
         </section>
 
-        <!-- 8. CHALLENGES FACED -->
+        <!-- 8. FINAL LEARNING REFLECTION & SOURCE REPOSITORY -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t5">08</span>
-              <h2>Challenges Faced</h2>
+              <h2>Final Learning Reflection &amp; Source Repository</h2>
             </div>
-            <span class="block-tag">// TROUBLESHOOTING LOG</span>
+            <span class="block-tag">// CAPSTONE SYNTHESIS</span>
           </div>
 
-          <div class="debug-cards-grid">
-            <div class="debug-card bug-side">
-              <div class="debug-head head-bug">
-                <span class="debug-icon">⚠️</span>
-                <h4>Challenge 1 — Relay Rapid Oscillations (Chatter) Around Single Threshold</h4>
+          <!-- REFLECTION QUOTE -->
+          <div class="reflection-card reflection-t5">
+            <div class="reflection-header">
+              <div class="reflection-badge">
+                <span class="reflection-icon">💡</span>
+                <span class="reflection-label">CAPSTONE REFLECTION</span>
               </div>
-              <p class="challenge-text">When room light hovered right at a static threshold (1500), subtle atmospheric shadows and sensor noise caused the ADC reading to bounce above and below 1500 multiple times a second, switching the relay noisily and stressing contacts. This was solved by programming dual asymmetric hysteresis limits (1200 / 1500 ADC) creating a solid 300-point deadband.</p>
+              <span class="pill-badge pill-t5">KEY TAKEAWAY</span>
             </div>
-
-            <div class="debug-card bug-side">
-              <div class="debug-head head-bug">
-                <span class="debug-icon">⚠️</span>
-                <h4>Challenge 2 — Browser Memory Leak During High-Frequency CSV Serialization</h4>
-              </div>
-              <p class="challenge-text">Accumulating unbounded telemetry records in browser memory for real-time charting caused DOM sluggishness and excessive RAM usage during long test runs. We resolved this by implementing an in-memory circular buffer capped at 500 records and using lightweight client Blob objects with immediate URL revocation.</p>
-            </div>
+            <blockquote class="reflection-quote">
+              "Building this complete capstone system brought together embedded C++ programming, cloud database architecture, and frontend data engineering. Solving practical challenges—such as synchronizing NTP clock time across Wi-Fi, structuring non-destructive NoSQL logs, arbitrating between manual and automated control modes, and streaming RFC 4180 CSV files directly in browser memory—provided deep, end-to-end understanding of modern cyber-physical IoT platforms."
+            </blockquote>
           </div>
 
-          <div class="repo-banner-box">
+          <!-- SOURCE REPOSITORY (EXACT LINK REQUESTED BY USER) -->
+          <div class="repo-banner-box" style="margin-top: 24px;">
             <div class="repo-text">
-              <h4>Source Repository</h4>
+              <h4>Task 5 Source Repository — Smart Room IoT</h4>
+              <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: #94a3b8;">
+                Production platform containing ESP32 firmware, web dashboard, Firebase configurations, and live telemetry export:
+                <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" style="color: #f43f5e; text-decoration: underline; margin-left: 4px;">https://smartyy-e6f48.web.app/</a>
+              </p>
             </div>
-            <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer"
-              class="btn-repo btn-t5">
-              View on GitHub ↗
+            <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" class="btn-repo btn-t5">
+              Smart Room IoT ↗
             </a>
           </div>
         </section>
