@@ -1501,48 +1501,93 @@
             </ul>
           </div>
 
-          <!-- VISUAL PIPELINE BOX: BASIC OPERATION -->
-          <div class="visual-pipeline-box">
-            <div class="pipeline-header">
-              <span class="node-icon">⚡</span>
-              <h4>Basic Operation Pipeline</h4>
-              <span class="pill-badge pill-t2">Adafruit IO Dashboard → MQTT Broker → ESP32 → LED</span>
+          <!-- DISTINCT BASIC OPERATION PIPELINE -->
+          <div class="t2-operation-pipeline-box">
+            <div class="t2-pipeline-topbar">
+              <div class="t2-pipeline-title-group">
+                <span class="t2-pipe-pulse-dot"></span>
+                <h4 class="t2-pipe-main-title">Basic Operation Pipeline</h4>
+              </div>
+              <span class="t2-pipe-status-tag">Adafruit IO Dashboard → MQTT Broker → ESP32 → LED</span>
             </div>
-            <div class="pipe-flow">
-              <div class="pipe-node">
-                <span class="node-icon">🖥️</span>
-                <span class="node-label">Adafruit IO Dashboard</span>
-                <span class="node-sub">User selects ON / OFF</span>
+
+            <div class="t2-pipeline-grid">
+              <!-- Stage 1 -->
+              <div class="t2-pipe-card">
+                <div class="t2-card-head">
+                  <span class="t2-stage-badge">01</span>
+                  <span class="t2-domain-tag">CLOUD DASHBOARD</span>
+                </div>
+                <div class="t2-card-icon-wrap">🖥️</div>
+                <h5 class="t2-card-title">Adafruit IO Dashboard</h5>
+                <p class="t2-card-desc">User toggles ON / OFF switch in the cloud dashboard.</p>
+                <div class="t2-card-footer">
+                  <span class="t2-footer-label">Action</span>
+                  <span class="t2-footer-val">MQTT Publish</span>
+                </div>
               </div>
-              <div class="pipe-arrow arrow-t2">
-                <span>MQTT Publish</span>
-                <span class="arrow-symbol">→</span>
-                <span>sudhiksha/feeds/bulb</span>
+
+              <!-- Connecting Chevron -->
+              <div class="t2-pipe-connector">
+                <span class="t2-conn-arrow">➜</span>
+                <span class="t2-conn-label">Publish</span>
               </div>
-              <div class="pipe-node active-t2">
-                <span class="node-icon">☁️</span>
-                <span class="node-label">MQTT Broker</span>
-                <span class="node-sub">io.adafruit.com:1883</span>
+
+              <!-- Stage 2 -->
+              <div class="t2-pipe-card">
+                <div class="t2-card-head">
+                  <span class="t2-stage-badge">02</span>
+                  <span class="t2-domain-tag">MQTT BROKER</span>
+                </div>
+                <div class="t2-card-icon-wrap">☁️</div>
+                <h5 class="t2-card-title">MQTT Broker</h5>
+                <p class="t2-card-desc">io.adafruit.com routes message on feed: bulb.</p>
+                <div class="t2-card-footer">
+                  <span class="t2-footer-label">Endpoint</span>
+                  <span class="t2-footer-val">Port 1883</span>
+                </div>
               </div>
-              <div class="pipe-arrow arrow-t2">
-                <span>MQTT Subscription</span>
-                <span class="arrow-symbol">→</span>
-                <span>Sub-100ms Push</span>
+
+              <!-- Connecting Chevron -->
+              <div class="t2-pipe-connector">
+                <span class="t2-conn-arrow">➜</span>
+                <span class="t2-conn-label">Push</span>
               </div>
-              <div class="pipe-node">
-                <span class="node-icon">⚡</span>
-                <span class="node-label">ESP32 Client</span>
-                <span class="node-sub">GPIO 26 Active-LOW</span>
+
+              <!-- Stage 3 -->
+              <div class="t2-pipe-card">
+                <div class="t2-card-head">
+                  <span class="t2-stage-badge">03</span>
+                  <span class="t2-domain-tag">EDGE CLIENT</span>
+                </div>
+                <div class="t2-card-icon-wrap">⚡</div>
+                <h5 class="t2-card-title">ESP32</h5>
+                <p class="t2-card-desc">Receives payload and triggers active-LOW GPIO 26.</p>
+                <div class="t2-card-footer">
+                  <span class="t2-footer-label">Signal</span>
+                  <span class="t2-footer-val">LOW = ON</span>
+                </div>
               </div>
-              <div class="pipe-arrow arrow-t2">
-                <span>Relay Drive</span>
-                <span class="arrow-symbol">→</span>
-                <span>LOW = ON / HIGH = OFF</span>
+
+              <!-- Connecting Chevron -->
+              <div class="t2-pipe-connector">
+                <span class="t2-conn-arrow">➜</span>
+                <span class="t2-conn-label">Drive</span>
               </div>
-              <div class="pipe-node">
-                <span class="node-icon">💡</span>
-                <span class="node-label">LED / AC Bulb</span>
-                <span class="node-sub">Physical Illumination</span>
+
+              <!-- Stage 4 -->
+              <div class="t2-pipe-card">
+                <div class="t2-card-head">
+                  <span class="t2-stage-badge">04</span>
+                  <span class="t2-domain-tag">ACTUATOR / LOAD</span>
+                </div>
+                <div class="t2-card-icon-wrap">💡</div>
+                <h5 class="t2-card-title">LED</h5>
+                <p class="t2-card-desc">Relay switches contacts, powering LED / 230V bulb.</p>
+                <div class="t2-card-footer">
+                  <span class="t2-footer-label">Output</span>
+                  <span class="t2-footer-val">State Switched</span>
+                </div>
               </div>
             </div>
           </div>
@@ -2042,17 +2087,10 @@
             </div>
           </div>
 
-          <!-- OPERATIONAL EXECUTION FLOW CHART (REPLACING VIDEO TIMESTAMPS) -->
+          <!-- SYSTEM FLOW CHART -->
           <div class="flow-chart-card">
             <div class="flow-chart-header">
-              <div class="sub-title-group">
-                <span class="sub-icon">⚡</span>
-                <div>
-                  <h4 style="margin: 0; font-size: 1.05rem; color: #f8fafc;">Operational Execution Flow Chart</h4>
-                  <p style="margin: 2px 0 0 0; font-size: 0.78rem; color: #94a3b8;">Step-by-step end-to-end signal flow from web dashboard toggle to physical relay switching</p>
-                </div>
-              </div>
-              <span class="pill-badge pill-t2">SYSTEM FLOW</span>
+              <h3 class="flow-chart-heading">System Flow</h3>
             </div>
 
             <div class="flow-chart-grid">
@@ -2067,21 +2105,21 @@
                 <span class="flow-step-num">STEP 02</span>
                 <div class="flow-step-icon">📤</div>
                 <h5 class="flow-step-title">MQTT Publish</h5>
-                <p class="flow-step-desc">Browser publishes packet to <code>sudhiksha/feeds/bulb</code>.</p>
+                <p class="flow-step-desc">Browser publishes payload to feed topic.</p>
               </div>
 
               <div class="flow-chart-step">
                 <span class="flow-step-num">STEP 03</span>
                 <div class="flow-step-icon">☁️</div>
                 <h5 class="flow-step-title">Broker Routing</h5>
-                <p class="flow-step-desc">Broker at <code>io.adafruit.com:1883</code> dispatches payload.</p>
+                <p class="flow-step-desc">Adafruit IO broker dispatches payload via TCP.</p>
               </div>
 
               <div class="flow-chart-step">
                 <span class="flow-step-num">STEP 04</span>
                 <div class="flow-step-icon">⚡</div>
                 <h5 class="flow-step-title">ESP32 Reception</h5>
-                <p class="flow-step-desc">ESP32 reads packet via <code>readSubscription(1000)</code>.</p>
+                <p class="flow-step-desc">ESP32 receives packet on active subscription.</p>
               </div>
 
               <div class="flow-chart-step">
@@ -2095,7 +2133,7 @@
                 <span class="flow-step-num">STEP 06</span>
                 <div class="flow-step-icon">💡</div>
                 <h5 class="flow-step-title">Relay &amp; Bulb</h5>
-                <p class="flow-step-desc">Contacts close/open, switching 230V AC lamp load.</p>
+                <p class="flow-step-desc">Contacts switch the 230V AC lamp load.</p>
               </div>
             </div>
           </div>
