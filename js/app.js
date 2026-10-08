@@ -26,6 +26,15 @@ const THEMES = {
     accent:[156,106,222],    // Purple
     accent2:[0,247,255],     // Cyan
     border:[54,54,62]
+  },
+  iot:{
+    bg:[9,10,15],
+    surface:[20,23,34],
+    ink:[240,243,250],
+    inkSoft:[154,163,190],
+    accent:[0,247,255],      // Cyan
+    accent2:[0,255,136],     // Emerald
+    border:[34,39,56]
   }
 };
 
@@ -71,7 +80,7 @@ window.addEventListener('scroll', () => {
 // ---- Nav / hero links: smooth-scroll to section ----
 function setupNavAndLinks(){
   navButtons = Array.from(document.querySelectorAll('nav button'));
-  sectionEls = ['home','featured','protosem','edits'].map(id => document.getElementById('page-' + id));
+  sectionEls = ['home','featured','protosem','edits','iot'].map(id => document.getElementById('page-' + id));
 
   document.querySelectorAll('[data-target]').forEach(btn => {
     btn.addEventListener('click', e => {
@@ -309,7 +318,7 @@ function setupParallax(){
 
 // ================= Load each tab's partial, in order, into one scrolling page =================
 async function loadPartials(){
-  const order = ['home','featured','protosem','edits'];
+  const order = ['home','featured','protosem','edits','iot'];
   const main = document.getElementById('main');
 
   for (const name of order){
@@ -409,7 +418,8 @@ const colors = {
     "page-home":"#ff4444",
     "page-featured":"#ffffff",
     "page-protosem":"#ff7300",
-    "page-edits":"#9b5cff"
+    "page-edits":"#9b5cff",
+    "page-iot":"#00f7ff"
 };
 
 function updateOnScroll(){
@@ -417,12 +427,14 @@ function updateOnScroll(){
   const featured = document.getElementById("page-featured");
   const protosem = document.getElementById("page-protosem");
   const edits = document.getElementById("page-edits");
+  const iot = document.getElementById("page-iot");
 
   if(!featured || !protosem || !edits) return;
 
   const featuredTop = featured.getBoundingClientRect().top;
   const protosemTop = protosem.getBoundingClientRect().top;
   const editsTop = edits.getBoundingClientRect().top;
+  const iotTop = iot ? iot.getBoundingClientRect().top : 9999;
 
   // HOME
   const trigger = window.innerHeight * 0.3;
@@ -454,12 +466,21 @@ if(featuredTop > trigger){
   }
 
   // EDITS
-  else{
+  else if(iotTop > trigger){
 
       applyTheme(THEMES.edits);
 
       root.setProperty("--blob1","#0f0524");
       root.setProperty("--blob2","#3a0c6e");
+  }
+
+  // IOT
+  else{
+
+      applyTheme(THEMES.iot);
+
+      root.setProperty("--blob1","#003b46");
+      root.setProperty("--blob2","#006655");
   }
 
   // NAV
