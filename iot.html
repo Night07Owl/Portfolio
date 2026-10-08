@@ -1603,64 +1603,74 @@
             <span class="block-tag">// EMBEDDED KNOWLEDGE &amp; ARCHITECTURAL MASTERY</span>
           </div>
 
-          <!-- HERO "IN SIMPLE WORDS" FORMULA BANNER -->
-          <div class="learnt-formula-card">
-            <div class="formula-card-top">
-              <div class="formula-badges">
-                <span class="formula-tagline">// PUB/SUB CLOUD ARCHITECTURE</span>
+          <!-- PUB/SUB CLOUD ARCHITECTURE BOX -->
+          <div class="distinct-content-box box-t2">
+            <div class="box-header-row">
+              <div class="title-with-num">
+                <span class="badge-num num-t2">01</span>
+                <h2>Pub/Sub Cloud Architecture</h2>
+              </div>
+              <span class="pill-badge pill-t2">CLOUD FLOW</span>
+            </div>
+
+            <div class="pubsub-flow-boxes">
+              <!-- Box 1 -->
+              <div class="pubsub-box">
+                <div class="pubsub-box-icon">🖥️</div>
+                <div class="pubsub-box-content">
+                  <h4 class="pubsub-box-title">Dashboard</h4>
+                  <p class="pubsub-box-role">Publisher (User Click)</p>
+                  <span class="pubsub-box-action">MQTT Pub ("ON" / "OFF")</span>
+                </div>
+              </div>
+
+              <!-- Connector 1 -->
+              <div class="pubsub-connector">
+                <span class="pubsub-arrow">→</span>
+              </div>
+
+              <!-- Box 2 -->
+              <div class="pubsub-box">
+                <div class="pubsub-box-icon">☁️</div>
+                <div class="pubsub-box-content">
+                  <h4 class="pubsub-box-title">io.adafruit.com</h4>
+                  <p class="pubsub-box-role">Cloud Broker (Port 1883)</p>
+                  <span class="pubsub-box-action">MQTT Feed Stream</span>
+                </div>
+              </div>
+
+              <!-- Connector 2 -->
+              <div class="pubsub-connector">
+                <span class="pubsub-arrow">→</span>
+              </div>
+
+              <!-- Box 3 -->
+              <div class="pubsub-box">
+                <div class="pubsub-box-icon">⚡</div>
+                <div class="pubsub-box-content">
+                  <h4 class="pubsub-box-title">ESP32 Client</h4>
+                  <p class="pubsub-box-role">Subscriber (GPIO 26)</p>
+                  <span class="pubsub-box-action">Active-LOW Trigger</span>
+                </div>
+              </div>
+
+              <!-- Connector 3 -->
+              <div class="pubsub-connector">
+                <span class="pubsub-arrow">→</span>
+              </div>
+
+              <!-- Box 4 -->
+              <div class="pubsub-box">
+                <div class="pubsub-box-icon">💡</div>
+                <div class="pubsub-box-content">
+                  <h4 class="pubsub-box-title">Relay &amp; Bulb</h4>
+                  <p class="pubsub-box-role">Physical Load Switched</p>
+                  <span class="pubsub-box-action">230V AC Load</span>
+                </div>
               </div>
             </div>
 
-            <div class="formula-pipeline-track">
-              <div class="formula-node node-highlight">
-                <span class="formula-node-icon">🖥️</span>
-                <div class="formula-node-info">
-                  <span class="formula-node-name">Dashboard</span>
-                  <span class="formula-node-role">Publisher (User Click)</span>
-                </div>
-              </div>
-
-              <div class="formula-connector">
-                <span class="arrow-glyph">→</span>
-                <span>MQTT Pub ("ON" / "OFF")</span>
-              </div>
-
-              <div class="formula-node">
-                <span class="formula-node-icon">☁️</span>
-                <div class="formula-node-info">
-                  <span class="formula-node-name">io.adafruit.com</span>
-                  <span class="formula-node-role">Cloud Broker (Port 1883)</span>
-                </div>
-              </div>
-
-              <div class="formula-connector">
-                <span class="arrow-glyph">→</span>
-                <span>MQTT Feed Stream</span>
-              </div>
-
-              <div class="formula-node">
-                <span class="formula-node-icon">⚡</span>
-                <div class="formula-node-info">
-                  <span class="formula-node-name">ESP32 Client</span>
-                  <span class="formula-node-role">Subscriber (GPIO 26)</span>
-                </div>
-              </div>
-
-              <div class="formula-connector">
-                <span class="arrow-glyph">→</span>
-                <span>Active-LOW Trigger</span>
-              </div>
-
-              <div class="formula-node">
-                <span class="formula-node-icon">💡</span>
-                <div class="formula-node-info">
-                  <span class="formula-node-name">Relay &amp; Bulb</span>
-                  <span class="formula-node-role">Physical Load Switched</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="formula-summary-box">
+            <div class="formula-summary-box" style="margin-top: 18px;">
               <p>
                 Instead of local web servers where client and device must share the same Wi-Fi, <strong>Adafruit IO and MQTT provide an always-on cloud broker</strong> where publishers and subscribers exchange compact messages worldwide with zero port-forwarding requirements.
               </p>
