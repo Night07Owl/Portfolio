@@ -2711,6 +2711,38 @@ pre.code-content code {
   border-left: 3px solid var(--t1-accent);
 }
 
+.reflection-t2 {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(13, 14, 23, 0.95) 100%);
+  border-color: var(--t2-border);
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.12);
+}
+.reflection-t2 .reflection-label { color: var(--t2-accent); }
+.reflection-t2 .reflection-quote { border-left-color: var(--t2-accent); }
+
+.reflection-t3 {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(13, 14, 23, 0.95) 100%);
+  border-color: var(--t3-border);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.12);
+}
+.reflection-t3 .reflection-label { color: var(--t3-accent); }
+.reflection-t3 .reflection-quote { border-left-color: var(--t3-accent); }
+
+.reflection-t4 {
+  background: linear-gradient(135deg, rgba(255, 138, 0, 0.08) 0%, rgba(13, 14, 23, 0.95) 100%);
+  border-color: var(--t4-border);
+  box-shadow: 0 4px 20px rgba(255, 138, 0, 0.12);
+}
+.reflection-t4 .reflection-label { color: var(--t4-accent); }
+.reflection-t4 .reflection-quote { border-left-color: var(--t4-accent); }
+
+.reflection-t5 {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.08) 0%, rgba(13, 14, 23, 0.95) 100%);
+  border-color: var(--t5-border);
+  box-shadow: 0 4px 20px rgba(244, 63, 94, 0.12);
+}
+.reflection-t5 .reflection-label { color: var(--t5-accent); }
+.reflection-t5 .reflection-quote { border-left-color: var(--t5-accent); }
+
 /* DISTINCT SECTION BOXES FOR OBJECTIVE, PROBLEM, SUMMARY */
 .distinct-content-box {
   background: var(--surface-muted);
@@ -2724,6 +2756,26 @@ pre.code-content code {
 .distinct-content-box:hover {
   border-color: var(--t1-accent);
   box-shadow: 0 4px 20px rgba(168, 85, 247, 0.12);
+}
+
+.box-t2:hover {
+  border-color: var(--t2-accent);
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.15);
+}
+
+.box-t3:hover {
+  border-color: var(--t3-accent);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+}
+
+.box-t4:hover {
+  border-color: var(--t4-accent);
+  box-shadow: 0 4px 20px rgba(255, 138, 0, 0.15);
+}
+
+.box-t5:hover {
+  border-color: var(--t5-accent);
+  box-shadow: 0 4px 20px rgba(244, 63, 94, 0.15);
 }
 
 .box-header-row {
@@ -2776,6 +2828,11 @@ pre.code-content code {
   line-height: 1;
   top: 1px;
 }
+
+.t2-bullets li::before { color: var(--t2-accent); }
+.t3-bullets li::before { color: var(--t3-accent); }
+.t4-bullets li::before { color: var(--t4-accent); }
+.t5-bullets li::before { color: var(--t5-accent); }
 
 /* GRAPHICAL CYCLE DIAGRAM */
 .cycle-graphic-wrap {
