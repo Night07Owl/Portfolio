@@ -2711,6 +2711,123 @@ pre.code-content code {
   border-left: 3px solid var(--t1-accent);
 }
 
+/* DISTINCT SECTION BOXES FOR OBJECTIVE, PROBLEM, SUMMARY */
+.distinct-content-box {
+  background: var(--surface-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 22px 24px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.distinct-content-box:hover {
+  border-color: var(--t1-accent);
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.12);
+}
+
+.box-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.box-header-row .title-with-num {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.box-header-row h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.bullet-list-lg {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bullet-list-lg li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  position: relative;
+  padding-left: 18px;
+}
+
+.bullet-list-lg li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--t1-accent);
+  font-size: 1.1rem;
+  line-height: 1;
+  top: 1px;
+}
+
+/* GRAPHICAL CYCLE DIAGRAM */
+.cycle-graphic-wrap {
+  width: 100%;
+  background: #08080f;
+  border: 1px solid #1a1a28;
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.cycle-svg {
+  width: 100%;
+  min-width: 680px;
+  height: auto;
+  display: block;
+}
+
+/* NETWORK DETAIL BLOCK */
+.network-detail-block {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.network-detail-block h5 {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #c084fc;
+  margin-top: 4px;
+}
+
+.pipeline-inline-text {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.challenge-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
 /* ==========================================================================
    RESPONSIVE DESIGN (TABLETS & MOBILE)
    ========================================================================== */
