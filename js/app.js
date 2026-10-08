@@ -302,7 +302,7 @@ async function loadPartials(){
 
   for (const name of order){
     try {
-      const res = await fetch(`partials/${name}.html`);
+      const res = await fetch(`partials/${name}.html?v=2`);
       if (!res.ok) throw new Error(`Failed to load partials/${name}.html`);
       main.insertAdjacentHTML('beforeend', await res.text());
     } catch (err) {
