@@ -64,17 +64,32 @@ header{
   display: inline-block;
 }
 nav ul{display:flex; gap:6px;}
-nav button{
+nav button,
+.nav-iot-btn{
   font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.03em;
   padding:9px 16px; border-radius:999px; border:1px solid transparent;
   background:transparent; color:rgb(var(--ink-soft));
-  transition:color 200ms ease, border-color 200ms ease, background 200ms ease;
+  transition:color 200ms ease, border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;
+  display:inline-flex; align-items:center;
 }
 nav button:hover{color:rgb(var(--ink));}
 nav button.active{
   color:rgb(var(--ink)); border-color:rgba(var(--border),1); background:rgb(var(--surface));
 }
 nav button.active::before{content:'● '; color:rgb(var(--accent)); font-size:0.6rem;}
+
+.nav-iot-btn{
+  border-color:rgba(0, 247, 255, 0.4);
+  background:rgba(0, 247, 255, 0.08);
+  color:rgb(var(--ink));
+}
+.nav-iot-btn:hover{
+  border-color:#00f7ff;
+  color:#00f7ff;
+  background:rgba(0, 247, 255, 0.2);
+  box-shadow:0 0 14px rgba(0, 247, 255, 0.35);
+  transform:translateY(-1px);
+}
 
 main{
     position:relative;
@@ -533,7 +548,8 @@ footer{
   .reel-grid{grid-template-columns:1fr;}
   header{padding:16px 18px;}
   nav ul{gap:2px;}
-  nav button{padding:8px 11px; font-size:0.7rem;}
+  nav button,
+  .nav-iot-btn{padding:8px 11px; font-size:0.7rem;}
   .pr-menubar{display:none;}
 }
 

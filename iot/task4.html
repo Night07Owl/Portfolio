@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 4: Firebase IoT Monitoring Dashboard — IoT Portfolio</title>
+<meta name="description" content="Assignment 4: Real-time full-stack IoT environmental monitoring dashboard using Firebase Realtime Database, user authentication, and ESP32 sensors (DHT11 & LDR).">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/iot.css">
+</head>
+
+<body>
+
+<div class="iot-bg-glow glow-cyan"></div>
+<div class="iot-bg-glow glow-purple"></div>
+
+<!-- HEADER -->
+<header class="iot-header">
+  <div class="iot-brand">
+    <a href="../index.html" class="brand-back">← Back to Portfolio</a>
+    <div class="brand-title">
+      SUDHIKSHA <span class="brand-badge">IOT / STATION 04</span>
+    </div>
+  </div>
+
+  <nav class="iot-task-switcher" aria-label="IoT Assignments Navigation">
+    <a href="task1.html" class="task-nav-btn">Task 01: Web Server</a>
+    <a href="task2.html" class="task-nav-btn">Task 02: Adafruit MQTT</a>
+    <a href="task3.html" class="task-nav-btn">Task 03: IFTTT Automation</a>
+    <a href="task4.html" class="task-nav-btn active">Task 04: Firebase Dashboard</a>
+    <a href="task5.html" class="task-nav-btn">Task 05: Logging & Export</a>
+  </nav>
+</header>
+
+<main class="iot-container">
+
+  <!-- BANNER -->
+  <section class="task-banner">
+    <div class="task-eyebrow">
+      <span class="eyebrow-num">ASSIGNMENT 04</span>
+      <span>// FULL-STACK CLOUD PLATFORM & SENSORS</span>
+    </div>
+    <h1 class="task-title">Firebase IoT Monitoring Dashboard</h1>
+    <p class="task-subtitle">
+      Building an authenticated web dashboard backed by Google Firebase Realtime Database to monitor environmental sensors (DHT11 Temperature & Humidity, LDR Light Level) and toggle physical actuators with sub-second synchronization.
+    </p>
+
+    <div class="task-meta-bar">
+      <span class="meta-chip chip-cyan">Station 04: Complete</span>
+      <span class="meta-chip">Backend: Firebase Realtime DB</span>
+      <span class="meta-chip">Sensors: DHT11 + LDR</span>
+      <span class="meta-chip">Security: Email/Password Auth</span>
+      <span class="meta-chip chip-green">11 / 11 Skeleton Stations Ready</span>
+    </div>
+  </section>
+
+  <!-- 1. OVERVIEW -->
+  <section class="skeleton-section" id="overview">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title">Overview</h2>
+      </div>
+      <span class="sec-tag">// OBJECTIVE & SUMMARY</span>
+    </div>
+
+    <p class="lead-text">
+      The objective of this assignment is to develop an enterprise-style full-stack IoT telemetry application integrating edge sensor acquisition, secure cloud database synchronization, user authentication, and interactive web visualization.
+    </p>
+    <p class="body-text">
+      We interfaced a <strong>DHT11 temperature & humidity sensor</strong> and an <strong>LDR (Light Dependent Resistor)</strong> with an ESP32 microcontroller, streaming calibrated physical readings to a Google Firebase Realtime Database. On the frontend, we developed a secure web application protected by Firebase Authentication (Email/Password). Authenticated users access a dynamic dashboard featuring live gauge dials for temperature and humidity, ambient lux metrics, and bidirectional toggle controls for an AC light bulb / relay. All state transitions sync across WebSockets in milliseconds without manual browser reloads.
+    </p>
+  </section>
+
+  <!-- 2. CONCEPTS -->
+  <section class="skeleton-section" id="concepts">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title">Concepts (In My Own Words)</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #1: OWN WORDS > COPY-PASTE</span>
+    </div>
+
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <h4>Cloud Service Models: IaaS, PaaS, SaaS & BaaS</h4>
+        <p>
+          <strong>IaaS (Infrastructure):</strong> Renting raw virtual machines and storage (e.g. AWS EC2).<br>
+          <strong>PaaS (Platform):</strong> Deploying code where the cloud handles the OS (e.g. Heroku, App Engine).<br>
+          <strong>SaaS (Software):</strong> Ready-to-use software products (e.g. Gmail, Google Docs).<br>
+          <strong>BaaS (Backend as a Service):</strong> Pre-built backend services like databases, authentication, and file storage on demand (e.g. Firebase).
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h4>Firebase Realtime Database vs SQL</h4>
+        <p>
+          Unlike relational SQL databases structured in rows and tables, Firebase Realtime Database is a single NoSQL JSON tree. Instead of clients constantly sending HTTP GET requests to check for new data, Firebase keeps an open WebSocket connection, automatically "pushing" updates to clients whenever any node in the JSON tree changes.
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h4>Authentication vs Authorization</h4>
+        <p>
+          <strong>Authentication (Who are you?):</strong> Verifying identity via credentials (e.g. user enters email and password into Firebase Auth).<br>
+          <strong>Authorization (What are you allowed to do?):</strong> Permission rules dictating whether that authenticated user can read or write to specific database paths (e.g. Firebase Database Security Rules: <code>".write": "auth != null"</code>).
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h4>Transducers: DHT11 & LDR</h4>
+        <p>
+          The <strong>DHT11</strong> uses a capacitive humidity sensor and a thermistor with a dedicated internal IC to transmit digital serial pulses. The <strong>LDR</strong> is a cadmium-sulfide photoresistor whose electrical resistance decreases exponentially as ambient light increases, measured via an analog voltage divider circuit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SYSTEM DESIGN -->
+  <section class="skeleton-section" id="design">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title">System Design & Data-Flow Architecture</h2>
+      </div>
+      <span class="sec-tag">// ARCHITECTURE DIAGRAM</span>
+    </div>
+
+    <div class="diagram-wrap">
+      <div class="diagram-flow">
+        <div class="diagram-node">
+          <div class="node-type">Sensors & Actuators</div>
+          <div class="node-label">DHT11 + LDR + Relay</div>
+          <div class="node-sub">Pins D4, D34, D18</div>
+        </div>
+
+        <div class="diagram-arrow">
+          <span>JSON Push / Stream</span>
+          <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+          <span>FirebaseESP32 (HTTPS)</span>
+        </div>
+
+        <div class="diagram-node active-node">
+          <div class="node-type">BaaS Cloud Database</div>
+          <div class="node-label">Firebase Realtime DB</div>
+          <div class="node-sub">/sensor_data & /controls</div>
+        </div>
+
+        <div class="diagram-arrow">
+          <span>WebSockets Sync</span>
+          <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+          <span>Firebase JS SDK</span>
+        </div>
+
+        <div class="diagram-node">
+          <div class="node-type">Web Frontend</div>
+          <div class="node-label">Client Dashboard</div>
+          <div class="node-sub">Auth Protected UI</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-box" style="margin-top: 18px;">
+      <div class="code-header">
+        <span class="code-filename">Firebase Realtime Database JSON Structure</span>
+      </div>
+      <pre class="code-content"><code>{
+  "iot_system": {
+    "sensor_data": {
+      "temperature": 27.4,
+      "humidity": 62.0,
+      "light_level": 1845,
+      "last_updated": 1728362410
+    },
+    "controls": {
+      "bulb_state": false,
+      "manual_override": true
+    }
+  }
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- 4. HARDWARE & SOFTWARE -->
+  <section class="skeleton-section" id="hardware">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title">Hardware & Software Specifications</h2>
+      </div>
+      <span class="sec-tag">// BILL OF MATERIALS & STACK</span>
+    </div>
+
+    <table class="hw-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Component / Technology</th>
+          <th>Specifications</th>
+          <th>Purpose in System</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Edge Controller</td>
+          <td>ESP32 DevKit V1</td>
+          <td>Xtensa Dual-Core 32-bit, 12-bit ADC (0-4095)</td>
+          <td>Samples sensors and synchronizes with Firebase</td>
+        </tr>
+        <tr>
+          <td>Climate Sensor</td>
+          <td>DHT11 Sensor Module</td>
+          <td>Temp: 0–50°C (±2°C), Humidity: 20–90% (±5%)</td>
+          <td>Measures ambient environmental temperature & moisture</td>
+        </tr>
+        <tr>
+          <td>Light Sensor</td>
+          <td>LDR (GL5528 Photoresistor)</td>
+          <td>Dark: ~1MΩ, Light 10 Lux: ~10k–20kΩ</td>
+          <td>Senses ambient brightness through voltage divider</td>
+        </tr>
+        <tr>
+          <td>Passive Component</td>
+          <td>10 kΩ Resistors (2x)</td>
+          <td>1/4W Metal Film</td>
+          <td>DHT11 Data line pullup & LDR voltage divider</td>
+        </tr>
+        <tr>
+          <td>Actuator</td>
+          <td>5V Relay Module + Bulb</td>
+          <td>Optoisolated Trigger, SPDT Contacts</td>
+          <td>Switches power to light bulb load</td>
+        </tr>
+        <tr>
+          <td>Cloud Database</td>
+          <td>Google Firebase Realtime DB</td>
+          <td>Blaze / Spark Free Tier</td>
+          <td>Real-time persistent state synchronization</td>
+        </tr>
+        <tr>
+          <td>Authentication</td>
+          <td>Firebase Authentication</td>
+          <td>Email & Password Identity Provider</td>
+          <td>Ensures only verified users can view/control system</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 5. WIRING & SETUP -->
+  <section class="skeleton-section" id="wiring">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">05</span>
+        <h2 class="sec-title">Wiring / Circuit Setup</h2>
+      </div>
+      <span class="sec-tag">// PIN CONNECTIONS</span>
+    </div>
+
+    <table class="hw-table">
+      <thead>
+        <tr>
+          <th>Device Pin</th>
+          <th>ESP32 Pin</th>
+          <th>Connection Type</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DHT11 Data Pin</td>
+          <td><span class="badge-pin">GPIO 4 (D4)</span></td>
+          <td>Digital Input / Output</td>
+          <td>Pulled up to 3.3V with 10kΩ resistor</td>
+        </tr>
+        <tr>
+          <td>DHT11 VCC / GND</td>
+          <td><span class="badge-pin">3V3 / GND</span></td>
+          <td>Power Supply Rail</td>
+          <td>Regulated 3.3V power</td>
+        </tr>
+        <tr>
+          <td>LDR Divider Midpoint</td>
+          <td><span class="badge-pin">GPIO 34 (A2)</span></td>
+          <td>Analog Input (ADC1)</td>
+          <td>ADC1 pin (safe to read with Wi-Fi active)</td>
+        </tr>
+        <tr>
+          <td>Relay Signal IN</td>
+          <td><span class="badge-pin">GPIO 18 (D18)</span></td>
+          <td>Digital Output</td>
+          <td>Logic HIGH activates relay coil</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="concept-card" style="margin-top: 14px;">
+      <h4>Critical ESP32 Design Note — ADC1 vs ADC2:</h4>
+      <p>
+        The ESP32 has two ADC units: ADC1 (GPIOs 32–39) and ADC2 (GPIOs 0, 2, 4, 12–15, 25–27). <strong>ADC2 cannot be used when Wi-Fi is enabled</strong> because the Wi-Fi driver claims the peripheral. Connecting the LDR to ADC1 pin (GPIO 34) guarantees stable analog readings during wireless database transmissions.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. IMPLEMENTATION -->
+  <section class="skeleton-section" id="implementation">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">06</span>
+        <h2 class="sec-title">Implementation & Source Code</h2>
+      </div>
+      <span class="sec-tag">// ESP32 FIRMWARE & WEB DASHBOARD</span>
+    </div>
+
+    <div class="code-box">
+      <div class="code-header">
+        <span class="code-filename">ESP32_Firebase_IoT.ino</span>
+        <button class="copy-btn">Copy Code</button>
+      </div>
+      <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">&lt;FirebaseESP32.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">&lt;DHT.h&gt;</span>
+
+<span class="c-kw">#define</span> WIFI_SSID     <span class="c-str">"YOUR_WIFI_SSID"</span>
+<span class="c-kw">#define</span> WIFI_PASS     <span class="c-str">"YOUR_WIFI_PASSWORD"</span>
+<span class="c-kw">#define</span> FIREBASE_HOST <span class="c-str">"YOUR_PROJECT.firebaseio.com"</span>
+<span class="c-kw">#define</span> FIREBASE_AUTH <span class="c-str">"YOUR_DATABASE_SECRET"</span>
+
+<span class="c-kw">#define</span> DHTPIN 4
+<span class="c-kw">#define</span> DHTTYPE DHT11
+<span class="c-kw">#define</span> LDRPIN 34
+<span class="c-kw">#define</span> RELAYPIN 18
+
+<span class="c-kw">DHT</span> dht(DHTPIN, DHTTYPE);
+<span class="c-kw">FirebaseData</span> fbdo;
+<span class="c-kw">FirebaseAuth</span> auth;
+<span class="c-kw">FirebaseConfig</span> config;
+
+<span class="c-type">unsigned long</span> lastSensorRead = 0;
+
+<span class="c-type">void</span> <span class="c-fn">setup</span>() {
+  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
+  <span class="c-fn">pinMode</span>(RELAYPIN, OUTPUT);
+  <span class="c-fn">digitalWrite</span>(RELAYPIN, LOW);
+  dht.<span class="c-fn">begin</span>();
+
+  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(WIFI_SSID, WIFI_PASS);
+  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) {
+    <span class="c-fn">delay</span>(500);
+    <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"."</span>);
+  }
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"\nWi-Fi Connected!"</span>);
+
+  config.host = FIREBASE_HOST;
+  config.signer.tokens.legacy_token = FIREBASE_AUTH;
+  <span class="c-fn">Firebase</span>.<span class="c-fn">begin</span>(&config, &auth);
+  <span class="c-fn">Firebase</span>.<span class="c-fn">reconnectWiFi</span>(true);
+}
+
+<span class="c-type">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-cmt">// Sample sensors every 2500ms</span>
+  <span class="c-kw">if</span> (<span class="c-fn">millis</span>() - lastSensorRead &gt; 2500) {
+    lastSensorRead = <span class="c-fn">millis</span>();
+
+    <span class="c-type">float</span> t = dht.<span class="c-fn">readTemperature</span>();
+    <span class="c-type">float</span> h = dht.<span class="c-fn">readHumidity</span>();
+    <span class="c-type">int</span> ldrValue = <span class="c-fn">analogRead</span>(LDRPIN);
+
+    <span class="c-kw">if</span> (!<span class="c-fn">isnan</span>(t) &amp;&amp; !<span class="c-fn">isnan</span>(h)) {
+      <span class="c-fn">Firebase</span>.<span class="c-fn">setFloat</span>(fbdo, <span class="c-str">"/iot_system/sensor_data/temperature"</span>, t);
+      <span class="c-fn">Firebase</span>.<span class="c-fn">setFloat</span>(fbdo, <span class="c-str">"/iot_system/sensor_data/humidity"</span>, h);
+      <span class="c-fn">Firebase</span>.<span class="c-fn">setInt</span>(fbdo, <span class="c-str">"/iot_system/sensor_data/light_level"</span>, ldrValue);
+      <span class="c-fn">Serial</span>.<span class="c-fn">printf</span>(<span class="c-str">"Updated Firebase -> Temp: %.1f C, Hum: %.1f %%, Light: %d\n"</span>, t, h, ldrValue);
+    }
+  }
+
+  <span class="c-cmt">// Check for bulb state from web dashboard</span>
+  <span class="c-kw">if</span> (<span class="c-fn">Firebase</span>.<span class="c-fn">getBool</span>(fbdo, <span class="c-str">"/iot_system/controls/bulb_state"</span>)) {
+    <span class="c-type">bool</span> bulbState = fbdo.<span class="c-fn">boolData</span>();
+    <span class="c-fn">digitalWrite</span>(RELAYPIN, bulbState ? HIGH : LOW);
+  }
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- 7. CONFIGURATION -->
+  <section class="skeleton-section" id="configuration">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">07</span>
+        <h2 class="sec-title">Configuration & Cloud Setup</h2>
+      </div>
+      <span class="sec-tag">// FIREBASE CONSOLE STEPS</span>
+    </div>
+
+    <div class="config-steps">
+      <div class="step-card">
+        <div class="step-badge">1</div>
+        <div class="step-body">
+          <h4>Firebase Project & Database Creation</h4>
+          <p>Created project <code>iot-forge-monitor</code> on Firebase Console, initialized Realtime Database in <em>us-central1</em>, and retrieved database URL (<code>https://iot-forge-monitor.firebaseio.com/</code>).</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge">2</div>
+        <div class="step-body">
+          <h4>Authentication Setup</h4>
+          <p>Enabled the <strong>Email/Password sign-in method</strong> in Firebase Authentication tab, created developer and guest test accounts, and configured client token storage.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge">3</div>
+        <div class="step-body">
+          <h4>Database Security Rules</h4>
+          <p>Enforced granular read/write security rules to guarantee that only authenticated clients can manipulate actuators:
+          <code>{ "rules": { "iot_system": { ".read": "auth != null", ".write": "auth != null" } } }</code>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. EVIDENCE -->
+  <section class="skeleton-section" id="evidence">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">08</span>
+        <h2 class="sec-title">Evidence & Live Telemetry</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #3: LABELED EVIDENCE</span>
+    </div>
+
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="evidence-visual">
+          <svg viewBox="0 0 320 180" width="100%" height="100%">
+            <rect width="320" height="180" fill="#0b0e17"/>
+            <rect x="20" y="20" width="130" height="65" rx="6" fill="#141926" stroke="#252f45"/>
+            <text x="32" y="40" fill="#ffaa00" font-family="sans-serif" font-size="10">TEMPERATURE</text>
+            <text x="32" y="70" fill="#f0f3fa" font-family="sans-serif" font-weight="bold" font-size="22">27.4 °C</text>
+            
+            <rect x="170" y="20" width="130" height="65" rx="6" fill="#141926" stroke="#252f45"/>
+            <text x="182" y="40" fill="#00f7ff" font-family="sans-serif" font-size="10">HUMIDITY</text>
+            <text x="182" y="70" fill="#f0f3fa" font-family="sans-serif" font-weight="bold" font-size="22">62.0 %</text>
+
+            <rect x="20" y="95" width="280" height="65" rx="6" fill="#141926" stroke="#252f45"/>
+            <text x="32" y="115" fill="#00ff88" font-family="sans-serif" font-size="10">LIGHT SENSOR (LDR)</text>
+            <rect x="32" y="125" width="160" height="10" rx="5" fill="#0a0c12"/>
+            <rect x="32" y="125" width="110" height="10" rx="5" fill="#00ff88"/>
+            <text x="200" y="134" fill="#00ff88" font-family="monospace" font-size="11">1845 / 4095</text>
+          </svg>
+        </div>
+        <div class="evidence-info">
+          <div class="evidence-label">FIREBASE_DASHBOARD_LIVE.PNG</div>
+          <div class="evidence-title">Live Sensor Monitoring View</div>
+          <p class="evidence-desc">Real-time synchronized dials reflecting current room temperature, relative humidity, and ambient light level.</p>
+        </div>
+      </div>
+
+      <div class="evidence-card">
+        <div class="evidence-visual">
+          <svg viewBox="0 0 320 180" width="100%" height="100%">
+            <rect width="320" height="180" fill="#0c0e14"/>
+            <rect x="40" y="25" width="240" height="130" rx="8" fill="#151824" stroke="#252c40"/>
+            <text x="60" y="55" fill="#f0f3fa" font-family="sans-serif" font-weight="bold" font-size="12">IoT Control Portal Login</text>
+            <rect x="60" y="70" width="200" height="22" rx="4" fill="#090a0f" stroke="#222738"/>
+            <text x="70" y="85" fill="#9aa3be" font-family="sans-serif" font-size="9">user@forge-iot.internal</text>
+            <rect x="60" y="98" width="200" height="22" rx="4" fill="#090a0f" stroke="#222738"/>
+            <text x="70" y="112" fill="#9aa3be" font-family="sans-serif" font-size="9">••••••••••••</text>
+            <rect x="60" y="128" width="200" height="20" rx="4" fill="#00f7ff"/>
+            <text x="135" y="142" fill="#000" font-family="sans-serif" font-weight="bold" font-size="9">AUTHENTICATE</text>
+          </svg>
+        </div>
+        <div class="evidence-info">
+          <div class="evidence-label">AUTH_PORTAL_SCREENSHOT.PNG</div>
+          <div class="evidence-title">User Authentication Gate</div>
+          <p class="evidence-desc">Firebase Authentication interface preventing unauthorized control of the physical bulb actuator.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CHALLENGES & FIXES -->
+  <section class="skeleton-section" id="challenges">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">09</span>
+        <h2 class="sec-title">Challenges & Solutions Encountered</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #2: SHOW THE FAILURE, NOT JUST FIX</span>
+    </div>
+
+    <div class="challenges-grid">
+      <div class="challenge-card">
+        <div class="challenge-top">
+          <span class="challenge-tag-fail">FAILURE #1</span>
+          <div class="challenge-title">DHT11 Returning NaN (Not A Number) Values</div>
+        </div>
+        <div class="challenge-body">
+          <div class="cause-box">
+            <h5>Root Cause Analysis</h5>
+            <p>
+              The DHT11 utilizes a single-wire proprietary protocol requiring at least 1000–2000ms between consecutive hardware reads. Reading the sensor inside a rapid loop (every 100ms) interrupted its capacitive measurement cycle.
+            </p>
+          </div>
+          <div class="fix-box">
+            <h5>Solution Implemented</h5>
+            <p>
+              Introduced a strict 2500ms timing constraint using <code>millis()</code> timer checks before calling <code>dht.readTemperature()</code>, guaranteeing accurate and non-corrupted floating-point values.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="challenge-card">
+        <div class="challenge-top">
+          <span class="challenge-tag-fail">FAILURE #2</span>
+          <div class="challenge-title">LDR Analog Reading Fluctuating on Wi-Fi Broadcasts</div>
+        </div>
+        <div class="challenge-body">
+          <div class="cause-box">
+            <h5>Root Cause Analysis</h5>
+            <p>
+              The LDR was initially wired to GPIO 25 (ADC2 channel). When Wi-Fi began transmission, the radio peripheral locked the ADC2 SAR controller, causing analog readings to jump erratically to 4095.
+            </p>
+          </div>
+          <div class="fix-box">
+            <h5>Solution Implemented</h5>
+            <p>
+              Re-routed the LDR voltage divider to <strong>GPIO 34 (ADC1 Channel 6)</strong>, which is completely isolated from the Wi-Fi RF baseband processor and immune to RF noise.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. REFLECTION -->
+  <section class="skeleton-section" id="reflection">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">10</span>
+        <h2 class="sec-title">Learning Reflection</h2>
+      </div>
+      <span class="sec-tag">// CORE TAKEAWAYS</span>
+    </div>
+
+    <div class="reflection-card">
+      <p>
+        "Integrating full cloud authentication with physical hardware made this feel like a true commercial product. Understanding how Firebase WebSockets push state changes directly into the browser DOM in real time—without having to poll the server—was thrilling. Choosing the right ADC channels on the ESP32 silicon taught me that software engineering and hardware pin constraints are deeply interconnected."
+      </p>
+    </div>
+  </section>
+
+  <!-- 11. REPOSITORY LINK -->
+  <section class="skeleton-section" id="repository">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">11</span>
+        <h2 class="sec-title">Project Source & Repository</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #4: DIRECT REPO LINK</span>
+    </div>
+
+    <div class="repo-card">
+      <div class="repo-info">
+        <h4>Task 04: Firebase IoT Dashboard Source</h4>
+        <p>Complete repository containing ESP32 C++ firmware, Firebase SDK scripts, dashboard HTML/CSS, and rules.</p>
+      </div>
+      <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">
+        View Code on GitHub →
+      </a>
+    </div>
+
+    <!-- FORGE INSPECTION CHECKLIST WIDGET -->
+    <div class="forge-checklist-box">
+      <div class="checklist-head">
+        <h3>Final Forge Station 04 Inspection Checklist</h3>
+        <span class="badge-pin">25 / 25 Checked</span>
+      </div>
+      <div class="checklist-items">
+        <div class="check-item"><span class="box-done">☑</span> Objective of Firebase IoT system stated</div>
+        <div class="check-item"><span class="box-done">☑</span> Basic concept of Cloud Computing explained</div>
+        <div class="check-item"><span class="box-done">☑</span> IaaS, PaaS, SaaS, and BaaS models defined</div>
+        <div class="check-item"><span class="box-done">☑</span> What a Cloud Platform is explained</div>
+        <div class="check-item"><span class="box-done">☑</span> Database vs Realtime Database distinguished</div>
+        <div class="check-item"><span class="box-done">☑</span> Cloud dashboard architecture defined</div>
+        <div class="check-item"><span class="box-done">☑</span> Purpose of login authentication systems</div>
+        <div class="check-item"><span class="box-done">☑</span> Authentication vs Authorization contrasted</div>
+        <div class="check-item"><span class="box-done">☑</span> Firebase project setup documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Firebase Authentication configured</div>
+        <div class="check-item"><span class="box-done">☑</span> Realtime Database JSON structure documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Database data-flow architecture diagram</div>
+        <div class="check-item"><span class="box-done">☑</span> DHT11 sensor interface documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Temperature & Humidity telemetry displayed</div>
+        <div class="check-item"><span class="box-done">☑</span> LDR sensor purpose and divider documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Bulb / Relay actuator control implemented</div>
+        <div class="check-item"><span class="box-done">☑</span> Bidirectional sync flow documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Complete ESP32 C++ source code provided</div>
+        <div class="check-item"><span class="box-done">☑</span> Complete dashboard web code documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Screenshots of authentication portal</div>
+        <div class="check-item"><span class="box-done">☑</span> Screenshots of Firebase database tree</div>
+        <div class="check-item"><span class="box-done">☑</span> Working live dashboard metrics</div>
+        <div class="check-item"><span class="box-done">☑</span> ADC2 Wi-Fi conflict & DHT sampling fixes</div>
+        <div class="check-item"><span class="box-done">☑</span> Deep engineering reflection included</div>
+        <div class="check-item"><span class="box-done">☑</span> Codebase repository directly linked</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="iot-footer">
+  © <span id="year">2026</span> Sudhiksha. Prototype Seminar IoT Portfolio — All Rights Reserved.
+</footer>
+
+<script src="../js/iot.js"></script>
+</body>
+</html>

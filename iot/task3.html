@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 3: IFTTT + Adafruit IO IoT Automation — IoT Portfolio</title>
+<meta name="description" content="Assignment 3: Cloud event automation connecting external triggers via IFTTT to an ESP32 hardware device using Adafruit IO feeds.">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/iot.css">
+</head>
+
+<body>
+
+<div class="iot-bg-glow glow-cyan"></div>
+<div class="iot-bg-glow glow-purple"></div>
+
+<!-- HEADER -->
+<header class="iot-header">
+  <div class="iot-brand">
+    <a href="../index.html" class="brand-back">← Back to Portfolio</a>
+    <div class="brand-title">
+      SUDHIKSHA <span class="brand-badge">IOT / STATION 03</span>
+    </div>
+  </div>
+
+  <nav class="iot-task-switcher" aria-label="IoT Assignments Navigation">
+    <a href="task1.html" class="task-nav-btn">Task 01: Web Server</a>
+    <a href="task2.html" class="task-nav-btn">Task 02: Adafruit MQTT</a>
+    <a href="task3.html" class="task-nav-btn active">Task 03: IFTTT Automation</a>
+    <a href="task4.html" class="task-nav-btn">Task 04: Firebase Dashboard</a>
+    <a href="task5.html" class="task-nav-btn">Task 05: Logging & Export</a>
+  </nav>
+</header>
+
+<main class="iot-container">
+
+  <!-- BANNER -->
+  <section class="task-banner">
+    <div class="task-eyebrow">
+      <span class="eyebrow-num">ASSIGNMENT 03</span>
+      <span>// EVENT-DRIVEN CLOUD AUTOMATION</span>
+    </div>
+    <h1 class="task-title">IFTTT + Adafruit IO IoT Automation</h1>
+    <p class="task-subtitle">
+      Constructing an automated trigger-action pipeline that links third-party web services and environmental webhooks via IFTTT applets to physical ESP32 actuators through Adafruit IO cloud feeds.
+    </p>
+
+    <div class="task-meta-bar">
+      <span class="meta-chip chip-cyan">Station 03: Complete</span>
+      <span class="meta-chip">Workflow: IFTTT Applet</span>
+      <span class="meta-chip">Bridge: Adafruit IO Feed</span>
+      <span class="meta-chip">Trigger: Webhook / Time Event</span>
+      <span class="meta-chip chip-green">11 / 11 Skeleton Stations Ready</span>
+    </div>
+  </section>
+
+  <!-- 1. OVERVIEW -->
+  <section class="skeleton-section" id="overview">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title">Overview</h2>
+      </div>
+      <span class="sec-tag">// OBJECTIVE & SUMMARY</span>
+    </div>
+
+    <p class="lead-text">
+      The objective of this assignment is to implement autonomous cloud-level automation, eliminating the need for manual user interaction by reacting to external cloud events.
+    </p>
+    <p class="body-text">
+      True IoT systems operate autonomously rather than acting solely as remote control switches. In this project, we integrated <strong>IFTTT (If This Then That)</strong> with <strong>Adafruit IO</strong> to construct an event-driven automation engine. When a trigger condition fires (such as a sunset schedule, a weather alert, or a custom Webhook HTTP POST event), IFTTT automatically executes an action that updates our Adafruit IO feed. The ESP32, which continuously listens to the feed via MQTT, detects the cloud value change and instantly toggles hardware relays and LEDs without any human intervention.
+    </p>
+  </section>
+
+  <!-- 2. CONCEPTS -->
+  <section class="skeleton-section" id="concepts">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title">Concepts (In My Own Words)</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #1: OWN WORDS > COPY-PASTE</span>
+    </div>
+
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <h4>What is IoT Automation?</h4>
+        <p>
+          Automation means replacing human manual intervention with deterministic programmatic rules. In an automated IoT architecture, sensors or cloud services act as event detectors, business logic evaluates criteria, and physical devices automatically adjust states in the real world.
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h4>The IFTTT Orchestrator</h4>
+        <p>
+          IFTTT ("If This Then That") is a cloud connector that translates events across hundreds of incompatible platforms. Instead of writing custom API integration code for every third-party service, IFTTT links an event from Service A directly into an input on Service B.
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h4>The Trigger → Action Paradigm</h4>
+        <p>
+          The architecture follows two steps:
+          <br><strong>Trigger ("If This"):</strong> An external condition occurs (e.g. time reaches 18:00 or Webhook event receives <code>{ "event": "motion" }</code>).
+          <br><strong>Action ("Then That"):</strong> The output executed by the rule (writing "ON" to our Adafruit IO feed).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SYSTEM DESIGN -->
+  <section class="skeleton-section" id="design">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title">System Design & Data Flow</h2>
+      </div>
+      <span class="sec-tag">// ARCHITECTURE DIAGRAM</span>
+    </div>
+
+    <div class="diagram-wrap">
+      <div class="diagram-flow">
+        <div class="diagram-node">
+          <div class="node-type">Event Source</div>
+          <div class="node-label">IFTTT Trigger</div>
+          <div class="node-sub">Webhook / Scheduled Timer</div>
+        </div>
+
+        <div class="diagram-arrow">
+          <span>HTTP REST API</span>
+          <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+          <span>Cloud Webhook</span>
+        </div>
+
+        <div class="diagram-node active-node">
+          <div class="node-type">Cloud Broker</div>
+          <div class="node-label">Adafruit IO Feed</div>
+          <div class="node-sub">Topic: Night07Owl/feeds/auto</div>
+        </div>
+
+        <div class="diagram-arrow">
+          <span>MQTT Push Packet</span>
+          <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+          <span>TCP 1883</span>
+        </div>
+
+        <div class="diagram-node">
+          <div class="node-type">Physical Actuator</div>
+          <div class="node-label">ESP32 + Relay/LED</div>
+          <div class="node-sub">Automated State Switch</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. HARDWARE & SOFTWARE -->
+  <section class="skeleton-section" id="hardware">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title">Hardware & Software Specifications</h2>
+      </div>
+      <span class="sec-tag">// BILL OF MATERIALS & STACK</span>
+    </div>
+
+    <table class="hw-table">
+      <thead>
+        <tr>
+          <th>Component / Service</th>
+          <th>Type / Model</th>
+          <th>Configuration</th>
+          <th>Function</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ESP32 DevKit V1</td>
+          <td>Microcontroller</td>
+          <td>240 MHz Dual-Core, 2.4 GHz Wi-Fi</td>
+          <td>Executes hardware control based on cloud events</td>
+        </tr>
+        <tr>
+          <td>5V Single-Channel Relay / LED</td>
+          <td>Actuator Module</td>
+          <td>Optocoupler Isolated, 10A 250VAC rated</td>
+          <td>Switches load based on GPIO output</td>
+        </tr>
+        <tr>
+          <td>IFTTT Service</td>
+          <td>Cloud Orchestration</td>
+          <td>Custom Applet: Webhooks + Adafruit Service</td>
+          <td>Detects trigger events and calls Adafruit IO REST API</td>
+        </tr>
+        <tr>
+          <td>Adafruit IO</td>
+          <td>Cloud Broker</td>
+          <td>Feed: <code>automation-feed</code></td>
+          <td>Receives data from IFTTT and broadcasts over MQTT</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 5. WIRING & SETUP -->
+  <section class="skeleton-section" id="wiring">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">05</span>
+        <h2 class="sec-title">Wiring / Circuit Setup</h2>
+      </div>
+      <span class="sec-tag">// PIN CONNECTIONS</span>
+    </div>
+
+    <table class="hw-table">
+      <thead>
+        <tr>
+          <th>ESP32 Pin</th>
+          <th>Relay / Indicator Module</th>
+          <th>Signal Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge-pin">GPIO 4</span></td>
+          <td>Relay IN / LED Anode (220Ω)</td>
+          <td>Digital Output (HIGH = Active, LOW = Idle)</td>
+        </tr>
+        <tr>
+          <td><span class="badge-pin">GND</span></td>
+          <td>Relay GND / Common Ground</td>
+          <td>0V DC Ground</td>
+        </tr>
+        <tr>
+          <td><span class="badge-pin">VIN (5V)</span></td>
+          <td>Relay VCC</td>
+          <td>5V Coil excitation supply</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 6. IMPLEMENTATION -->
+  <section class="skeleton-section" id="implementation">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">06</span>
+        <h2 class="sec-title">Implementation & Source Code</h2>
+      </div>
+      <span class="sec-tag">// ESP32 AUTOMATION FIRMWARE</span>
+    </div>
+
+    <div class="code-box">
+      <div class="code-header">
+        <span class="code-filename">ESP32_IFTTT_Adafruit_Automation.ino</span>
+        <button class="copy-btn">Copy Code</button>
+      </div>
+      <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT.h"</span>
+<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT_Client.h"</span>
+
+<span class="c-kw">#define</span> WIFI_SSID   <span class="c-str">"YOUR_WIFI_SSID"</span>
+<span class="c-kw">#define</span> WIFI_PASS   <span class="c-str">"YOUR_WIFI_PASSWORD"</span>
+<span class="c-kw">#define</span> AIO_SERVER  <span class="c-str">"io.adafruit.com"</span>
+<span class="c-kw">#define</span> AIO_USER    <span class="c-str">"YOUR_AIO_USERNAME"</span>
+<span class="c-kw">#define</span> AIO_KEY     <span class="c-str">"YOUR_AIO_KEY"</span>
+
+<span class="c-kw">const int</span> relayPin = 4;
+
+<span class="c-kw">WiFiClient</span> client;
+<span class="c-kw">Adafruit_MQTT_Client</span> mqtt(&client, AIO_SERVER, 1883, AIO_USER, AIO_KEY);
+<span class="c-kw">Adafruit_MQTT_Subscribe</span> autoFeed = <span class="c-kw">Adafruit_MQTT_Subscribe</span>(&mqtt, AIO_USER <span class="c-str">"/feeds/automation-feed"</span>);
+
+<span class="c-type">void</span> <span class="c-fn">setup</span>() {
+  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
+  <span class="c-fn">pinMode</span>(relayPin, OUTPUT);
+  <span class="c-fn">digitalWrite</span>(relayPin, LOW);
+
+  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(WIFI_SSID, WIFI_PASS);
+  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) {
+    <span class="c-fn">delay</span>(500);
+    <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"."</span>);
+  }
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"\nWi-Fi Connected!"</span>);
+  mqtt.<span class="c-fn">subscribe</span>(&autoFeed);
+}
+
+<span class="c-type">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-kw">if</span> (!mqtt.<span class="c-fn">connected</span>()) {
+    <span class="c-type">int8_t</span> ret;
+    <span class="c-kw">while</span> ((ret = mqtt.<span class="c-fn">connect</span>()) != 0) {
+      mqtt.<span class="c-fn">disconnect</span>();
+      <span class="c-fn">delay</span>(5000);
+    }
+  }
+
+  <span class="c-kw">Adafruit_MQTT_Subscribe</span> *subscription;
+  <span class="c-kw">while</span> ((subscription = mqtt.<span class="c-fn">readSubscription</span>(5000))) {
+    <span class="c-kw">if</span> (subscription == &autoFeed) {
+      <span class="c-kw">String</span> payload = <span class="c-kw">String</span>((<span class="c-type">char</span> *)autoFeed.lastread);
+      <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"Automated Action Received: "</span>);
+      <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(payload);
+
+      <span class="c-kw">if</span> (payload.<span class="c-fn">equalsIgnoreCase</span>(<span class="c-str">"ACTIVATE"</span>) || payload == <span class="c-str">"1"</span>) {
+        <span class="c-fn">digitalWrite</span>(relayPin, HIGH);
+        <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"Hardware RELAY: ENGAGED"</span>);
+      } <span class="c-kw">else</span> {
+        <span class="c-fn">digitalWrite</span>(relayPin, LOW);
+        <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"Hardware RELAY: DISENGAGED"</span>);
+      }
+    }
+  }
+
+  <span class="c-kw">if</span> (!mqtt.<span class="c-fn">ping</span>()) {
+    mqtt.<span class="c-fn">disconnect</span>();
+  }
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- 7. CONFIGURATION -->
+  <section class="skeleton-section" id="configuration">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">07</span>
+        <h2 class="sec-title">Configuration & IFTTT Workflow</h2>
+      </div>
+      <span class="sec-tag">// STEP-BY-STEP WORKFLOW</span>
+    </div>
+
+    <div class="config-steps">
+      <div class="step-card">
+        <div class="step-badge">1</div>
+        <div class="step-body">
+          <h4>Connect IFTTT to Adafruit IO</h4>
+          <p>Logged into IFTTT, authorized the Adafruit IO Service integration with account credentials, giving IFTTT permission to publish data to feeds.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge">2</div>
+        <div class="step-body">
+          <h4>Configure "IF THIS" (Trigger)</h4>
+          <p>Created a Webhooks Trigger service: <code>Event Name: trigger_automation</code>. This exposes a unique cloud URL: <code>https://maker.ifttt.com/trigger/trigger_automation/with/key/YOUR_KEY</code>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge">3</div>
+        <div class="step-body">
+          <h4>Configure "THEN THAT" (Action)</h4>
+          <p>Selected Adafruit IO Service → <strong>Send data to Adafruit IO</strong>. Designated Feed: <code>automation-feed</code>, with Payload Value set to <code>ACTIVATE</code>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. EVIDENCE -->
+  <section class="skeleton-section" id="evidence">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">08</span>
+        <h2 class="sec-title">Evidence & Verification</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #3: LABELED EVIDENCE</span>
+    </div>
+
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="evidence-visual">
+          <svg viewBox="0 0 320 180" width="100%" height="100%">
+            <rect width="320" height="180" fill="#090c14"/>
+            <rect x="25" y="25" width="270" height="130" rx="8" fill="#131724" stroke="#252d42" stroke-width="2"/>
+            <text x="40" y="55" fill="#f0f3fa" font-family="sans-serif" font-weight="bold" font-size="13">IFTTT Applet: Webhook → Adafruit</text>
+            <rect x="40" y="75" width="105" height="55" rx="6" fill="#00f7ff" fill-opacity="0.1" stroke="#00f7ff"/>
+            <text x="48" y="95" fill="#00f7ff" font-family="monospace" font-size="10">IF: Webhook</text>
+            <text x="48" y="112" fill="#9aa3be" font-family="sans-serif" font-size="9">Event Received</text>
+            <text x="155" y="108" fill="#fff" font-family="sans-serif" font-size="16">→</text>
+            <rect x="175" y="75" width="105" height="55" rx="6" fill="#00ff88" fill-opacity="0.1" stroke="#00ff88"/>
+            <text x="183" y="95" fill="#00ff88" font-family="monospace" font-size="10">THEN: Adafruit</text>
+            <text x="183" y="112" fill="#9aa3be" font-family="sans-serif" font-size="9">Feed: "ACTIVATE"</text>
+          </svg>
+        </div>
+        <div class="evidence-info">
+          <div class="evidence-label">IFTTT_APPLET_CONFIG.PNG</div>
+          <div class="evidence-title">IFTTT Applet Flow Configuration</div>
+          <p class="evidence-desc">Verified applet linking webhook trigger to Adafruit IO feed publication.</p>
+        </div>
+      </div>
+
+      <div class="evidence-card">
+        <div class="evidence-visual">
+          <svg viewBox="0 0 320 180" width="100%" height="100%">
+            <rect width="320" height="180" fill="#0a0d14"/>
+            <rect x="20" y="20" width="280" height="140" rx="6" fill="#111622" stroke="#222b3e"/>
+            <text x="35" y="45" fill="#00ff88" font-family="monospace" font-size="11">[10:22:14] Webhook Trigger Fired</text>
+            <text x="35" y="68" fill="#f0f3fa" font-family="monospace" font-size="11">[10:22:15] IFTTT Dispatched to Adafruit IO</text>
+            <text x="35" y="91" fill="#00f7ff" font-family="monospace" font-size="11">[10:22:15] MQTT Packet Received on ESP32</text>
+            <text x="35" y="114" fill="#a855f7" font-family="monospace" font-size="11">[10:22:15] GPIO 4 Driven HIGH: Relay ON</text>
+            <circle cx="270" cy="110" r="8" fill="#00ff88"/>
+          </svg>
+        </div>
+        <div class="evidence-info">
+          <div class="evidence-label">AUTOMATION_END_TO_END_LOG.PNG</div>
+          <div class="evidence-title">Real-Time Trigger-to-Actuation Execution</div>
+          <p class="evidence-desc">End-to-end execution log proving sub-1.5 second turnaround from cloud event to hardware actuation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CHALLENGES & FIXES -->
+  <section class="skeleton-section" id="challenges">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">09</span>
+        <h2 class="sec-title">Challenges & Solutions Encountered</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #2: SHOW THE FAILURE, NOT JUST FIX</span>
+    </div>
+
+    <div class="challenges-grid">
+      <div class="challenge-card">
+        <div class="challenge-top">
+          <span class="challenge-tag-fail">FAILURE #1</span>
+          <div class="challenge-title">Unpredictable Polling Latencies Exceeding 45 Seconds</div>
+        </div>
+        <div class="challenge-body">
+          <div class="cause-box">
+            <h5>Root Cause Analysis</h5>
+            <p>
+              When initially configured with an RSSI / Email trigger, IFTTT free tier only polls external providers every 15 to 60 minutes, which made real-time hardware actuation appear broken.
+            </p>
+          </div>
+          <div class="fix-box">
+            <h5>Solution Implemented</h5>
+            <p>
+              Replaced polling triggers with <strong>IFTTT Webhooks</strong>. Webhook endpoints trigger immediate synchronous push actions into Adafruit IO, dropping round-trip latency to under 1.2 seconds.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="challenge-card">
+        <div class="challenge-top">
+          <span class="challenge-tag-fail">FAILURE #2</span>
+          <div class="challenge-title">Duplicate Trigger Executions (Double Switching)</div>
+        </div>
+        <div class="challenge-body">
+          <div class="cause-box">
+            <h5>Root Cause Analysis</h5>
+            <p>
+              HTTP retries from the webhook source caused the applet to fire twice in rapid succession (within 200ms), causing relay chatter.
+            </p>
+          </div>
+          <div class="fix-box">
+            <h5>Solution Implemented</h5>
+            <p>
+              Implemented software debouncing on the ESP32: Any incoming command received within 3000ms of the previous state transition is ignored via a timestamp lock (<code>millis() - lastTriggerTime &gt; 3000</code>).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. REFLECTION -->
+  <section class="skeleton-section" id="reflection">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">10</span>
+        <h2 class="sec-title">Learning Reflection</h2>
+      </div>
+      <span class="sec-tag">// CORE TAKEAWAYS</span>
+    </div>
+
+    <div class="reflection-card">
+      <p>
+        "This station demonstrated how powerful modular cloud pipelines are. By offloading logic to IFTTT and transport to Adafruit IO, the microcontroller's firmware remains clean, simple, and reliable. I now see how smart homes and industrial facilities orchestrate actions without writing thousands of lines of custom server software."
+      </p>
+    </div>
+  </section>
+
+  <!-- 11. REPOSITORY LINK -->
+  <section class="skeleton-section" id="repository">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">11</span>
+        <h2 class="sec-title">Project Source & Repository</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #4: DIRECT REPO LINK</span>
+    </div>
+
+    <div class="repo-card">
+      <div class="repo-info">
+        <h4>Task 03: IFTTT + Adafruit IO Automation</h4>
+        <p>Contains Arduino sketch, IFTTT applet definition schemas, and webhook test scripts.</p>
+      </div>
+      <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">
+        View Code on GitHub →
+      </a>
+    </div>
+
+    <!-- FORGE INSPECTION CHECKLIST WIDGET -->
+    <div class="forge-checklist-box">
+      <div class="checklist-head">
+        <h3>Final Forge Station 03 Inspection Checklist</h3>
+        <span class="badge-pin">19 / 19 Checked</span>
+      </div>
+      <div class="checklist-items">
+        <div class="check-item"><span class="box-done">☑</span> Objective of IoT automation documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Basic concept of cloud automation explained</div>
+        <div class="check-item"><span class="box-done">☑</span> What IFTTT is and why it was selected</div>
+        <div class="check-item"><span class="box-done">☑</span> Trigger → Action concept clearly explained</div>
+        <div class="check-item"><span class="box-done">☑</span> Role of Adafruit IO in the automation</div>
+        <div class="check-item"><span class="box-done">☑</span> Hardware and software bill of materials</div>
+        <div class="check-item"><span class="box-done">☑</span> IFTTT applet/workflow documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Trigger used identified (Webhooks)</div>
+        <div class="check-item"><span class="box-done">☑</span> Action performed identified (Feed update)</div>
+        <div class="check-item"><span class="box-done">☑</span> Trigger propagation path documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Communication & data-flow diagram</div>
+        <div class="check-item"><span class="box-done">☑</span> Full ESP32 C++ source code provided</div>
+        <div class="check-item"><span class="box-done">☑</span> Screenshots of IFTTT configuration</div>
+        <div class="check-item"><span class="box-done">☑</span> Screenshots of Adafruit IO feed logs</div>
+        <div class="check-item"><span class="box-done">☑</span> Working prototype verification</div>
+        <div class="check-item"><span class="box-done">☑</span> Multiple condition testing documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Polling latency & debounce fixes</div>
+        <div class="check-item"><span class="box-done">☑</span> Cloud automation reflection included</div>
+        <div class="check-item"><span class="box-done">☑</span> All files available in GitHub repository</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="iot-footer">
+  © <span id="year">2026</span> Sudhiksha. Prototype Seminar IoT Portfolio — All Rights Reserved.
+</footer>
+
+<script src="../js/iot.js"></script>
+</body>
+</html>

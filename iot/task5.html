@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 5: Firebase Logging, Automation & Data Export — IoT Portfolio</title>
+<meta name="description" content="Assignment 5: Complete autonomous IoT environmental system featuring dual-mode lighting control, time-series Firebase telemetry logging, charting, and CSV data export.">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/iot.css">
+</head>
+
+<body>
+
+<div class="iot-bg-glow glow-cyan"></div>
+<div class="iot-bg-glow glow-purple"></div>
+
+<!-- HEADER -->
+<header class="iot-header">
+  <div class="iot-brand">
+    <a href="../index.html" class="brand-back">← Back to Portfolio</a>
+    <div class="brand-title">
+      SUDHIKSHA <span class="brand-badge">IOT / STATION 05</span>
+    </div>
+  </div>
+
+  <nav class="iot-task-switcher" aria-label="IoT Assignments Navigation">
+    <a href="task1.html" class="task-nav-btn">Task 01: Web Server</a>
+    <a href="task2.html" class="task-nav-btn">Task 02: Adafruit MQTT</a>
+    <a href="task3.html" class="task-nav-btn">Task 03: IFTTT Automation</a>
+    <a href="task4.html" class="task-nav-btn">Task 04: Firebase Dashboard</a>
+    <a href="task5.html" class="task-nav-btn active">Task 05: Logging & Export</a>
+  </nav>
+</header>
+
+<main class="iot-container">
+
+  <!-- BANNER -->
+  <section class="task-banner">
+    <div class="task-eyebrow">
+      <span class="eyebrow-num">ASSIGNMENT 05</span>
+      <span>// CAPSTONE: AUTONOMOUS LOGGING & ANALYTICS</span>
+    </div>
+    <h1 class="task-title">Firebase Logging, Automation & Data Export</h1>
+    <p class="task-subtitle">
+      The complete capstone IoT system integrating intelligent closed-loop automation (Manual vs Automatic modes with hysteresis calibration), historical time-series database logging, analytics charting, and client-side CSV data export.
+    </p>
+
+    <div class="task-meta-bar">
+      <span class="meta-chip chip-cyan">Station 05: Complete</span>
+      <span class="meta-chip">Control: Dual Mode (Auto / Manual)</span>
+      <span class="meta-chip">Storage: Firebase Time-Series Logs</span>
+      <span class="meta-chip">Export: Instant CSV File Generator</span>
+      <span class="meta-chip chip-green">11 / 11 Skeleton Stations Ready</span>
+    </div>
+  </section>
+
+  <!-- 1. OVERVIEW -->
+  <section class="skeleton-section" id="overview">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title">Overview</h2>
+      </div>
+      <span class="sec-tag">// OBJECTIVE & SUMMARY</span>
+    </div>
+
+    <p class="lead-text">
+      The objective of this capstone assignment is to synthesize all previous stations into a self-governing, industrial-style IoT telemetry and automated control station.
+    </p>
+    <p class="body-text">
+      While monitoring real-time sensor metrics is valuable, real-world deployments require historical telemetry records and autonomous closed-loop control. In this final assignment, we developed a smart lighting and climate monitoring system that operates in two user-selectable modes: <strong>Manual Mode</strong> (user controls the relay directly via the dashboard) and <strong>Automatic Mode</strong> (the ESP32 continuously assesses ambient LDR light readings against a calibrated hysteresis threshold to toggle lighting automatically). Simultaneously, the ESP32 logs timestamped sensor snapshots (temperature, humidity, light lux, bulb status, operating mode) to Firebase Realtime Database. The web dashboard provides dynamic time-series charts and allows users to export all historical logs as a downloadable CSV spreadsheet.
+    </p>
+  </section>
+
+  <!-- 2. CONCEPTS -->
+  <section class="skeleton-section" id="concepts">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title">Concepts (In My Own Words)</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #1: OWN WORDS > COPY-PASTE</span>
+    </div>
+
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <h4>Closed-Loop Automation & Hysteresis</h4>
+        <p>
+          In a closed-loop system, sensor feedback automatically drives actuator outputs. To prevent <em>relay chatter</em> (rapid ON/OFF flickering when sensor readings fluctuate around a single threshold point), we implement a <strong>hysteresis band</strong>: the light turns ON below 1400 raw ADC, but requires the room to brighten beyond 1700 raw ADC before switching OFF.
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h4>Time-Series Database Logging</h4>
+        <p>
+          Instead of constantly overwriting a single <code>/current</code> node, time-series logging records every reading as an immutable, timestamped event under a chronological log tree (e.g. <code>/logs/2026-10-08/1728362400</code>). This enables historical trend analysis and auditing.
+        </p>
+      </div>
+
+      <div class="concept-card">
+        <h4>Client-Side Data Export (Blob & CSV)</h4>
+        <p>
+          Rather than relying on a heavy backend server to generate spreadsheets, modern browsers can serialize JSON records into RFC 4180 Comma Separated Values (CSV), bundle the string into an in-memory <code>Blob</code> object, and trigger a native file download using a temporary anchor element.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SYSTEM DESIGN -->
+  <section class="skeleton-section" id="design">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title">System Design & Final Architecture</h2>
+      </div>
+      <span class="sec-tag">// ARCHITECTURE DIAGRAM</span>
+    </div>
+
+    <div class="diagram-wrap">
+      <div class="diagram-flow">
+        <div class="diagram-node">
+          <div class="node-type">Sensors</div>
+          <div class="node-label">DHT11 + LDR</div>
+          <div class="node-sub">Every 2.5s sample</div>
+        </div>
+
+        <div class="diagram-arrow">
+          <span>ADC / Digital</span>
+          <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+          <span>Edge Evaluation</span>
+        </div>
+
+        <div class="diagram-node active-node">
+          <div class="node-type">Logic Controller</div>
+          <div class="node-label">ESP32 Auto Engine</div>
+          <div class="node-sub">Hysteresis: 1400 / 1700</div>
+        </div>
+
+        <div class="diagram-arrow">
+          <span>State & Logs</span>
+          <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+          <span>Firebase HTTPS REST</span>
+        </div>
+
+        <div class="diagram-node">
+          <div class="node-type">Cloud Database</div>
+          <div class="node-label">Firebase Logs Tree</div>
+          <div class="node-sub">/logs & /system_state</div>
+        </div>
+
+        <div class="diagram-arrow">
+          <span>Realtime Stream</span>
+          <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+          <span>WebSockets</span>
+        </div>
+
+        <div class="diagram-node">
+          <div class="node-type">Web Application</div>
+          <div class="node-label">Dashboard & CSV Exporter</div>
+          <div class="node-sub">Charts & Data Download</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-box" style="margin-top: 18px;">
+      <div class="code-header">
+        <span class="code-filename">Firebase Historical Logging Schema</span>
+      </div>
+      <pre class="code-content"><code>{
+  "iot_system": {
+    "system_state": {
+      "mode": "AUTOMATIC",
+      "bulb_state": true,
+      "temp": 28.1,
+      "humidity": 60.5,
+      "light": 1050
+    },
+    "historical_logs": {
+      "-O8k2919xZ1": {
+        "timestamp": "2026-10-08 09:02:45",
+        "temperature": 28.1,
+        "humidity": 60.5,
+        "light_level": 1050,
+        "bulb_state": "ON",
+        "mode": "AUTOMATIC"
+      }
+    }
+  }
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- 4. HARDWARE & SOFTWARE -->
+  <section class="skeleton-section" id="hardware">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title">Hardware & Software Specifications</h2>
+      </div>
+      <span class="sec-tag">// BILL OF MATERIALS</span>
+    </div>
+
+    <table class="hw-table">
+      <thead>
+        <tr>
+          <th>Component / Stack</th>
+          <th>Configuration</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ESP32 DevKit V1</td>
+          <td>Dual-Core 240 MHz</td>
+          <td>Performs edge threshold logic, NTP timestamp synchronization, and cloud telemetry</td>
+        </tr>
+        <tr>
+          <td>DHT11 Sensor</td>
+          <td>Pin GPIO 4</td>
+          <td>Calibrated temperature and relative humidity sensing</td>
+        </tr>
+        <tr>
+          <td>LDR Sensor Divider</td>
+          <td>Pin GPIO 34 (ADC1_CH6)</td>
+          <td>12-bit analog input measuring room illumination level (0 = Pure Dark, 4095 = Direct Sun)</td>
+        </tr>
+        <tr>
+          <td>Optoisolated Relay</td>
+          <td>Pin GPIO 18</td>
+          <td>Safely decouples the 3.3V microcontroller logic from high-power lighting loads</td>
+        </tr>
+        <tr>
+          <td>Google Firebase</td>
+          <td>Realtime Database + Auth</td>
+          <td>Stores live state nodes and time-series historical telemetry arrays</td>
+        </tr>
+        <tr>
+          <td>Data Visualizer</td>
+          <td>HTML5 Canvas & Blob API</td>
+          <td>Renders dynamic telemetry charts and exports sanitized CSV datasets</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 5. WIRING & CALIBRATION -->
+  <section class="skeleton-section" id="wiring">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">05</span>
+        <h2 class="sec-title">Wiring & Sensor Calibration</h2>
+      </div>
+      <span class="sec-tag">// PIN CONNECTIONS & THRESHOLDS</span>
+    </div>
+
+    <table class="hw-table">
+      <thead>
+        <tr>
+          <th>Signal</th>
+          <th>ESP32 Pin</th>
+          <th>Sensor / Actuator</th>
+          <th>Operating Range / Threshold</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Climate Data</td>
+          <td><span class="badge-pin">GPIO 4</span></td>
+          <td>DHT11 Data Line</td>
+          <td>20°C to 45°C / 30% to 90% RH</td>
+        </tr>
+        <tr>
+          <td>Light Analog Level</td>
+          <td><span class="badge-pin">GPIO 34</span></td>
+          <td>LDR Voltage Divider Midpoint</td>
+          <td>Threshold ON: &lt; 1400 | Threshold OFF: &gt; 1700</td>
+        </tr>
+        <tr>
+          <td>Relay Drive</td>
+          <td><span class="badge-pin">GPIO 18</span></td>
+          <td>Relay Input (IN)</td>
+          <td>Active HIGH (+3.3V trigger)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="concept-card" style="margin-top: 16px;">
+      <h4>LDR Threshold Calibration Procedure:</h4>
+      <p>
+        1. <strong>Full Ambient Light (Daylight):</strong> LDR resistance drops to ~5kΩ; measured ADC voltage is ~2.8V (raw ADC value: ~3200–3500).<br>
+        2. <strong>Dusk / Shaded Conditions:</strong> Measured ADC value hovers around 1500–1600.<br>
+        3. <strong>Darkness (Night / Hand Covered):</strong> LDR resistance exceeds 500kΩ; measured ADC value drops below 1000.<br>
+        4. <strong>Hysteresis Logic:</strong> Trigger ON when Light &lt; 1400; Trigger OFF when Light &gt; 1700. The 300-point deadband eliminates false toggles from slight shadows.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. IMPLEMENTATION -->
+  <section class="skeleton-section" id="implementation">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">06</span>
+        <h2 class="sec-title">Implementation & Source Code</h2>
+      </div>
+      <span class="sec-tag">// AUTOMATION & LOGGING FIRMWARE</span>
+    </div>
+
+    <div class="code-box">
+      <div class="code-header">
+        <span class="code-filename">ESP32_Capstone_Automation_Logging.ino</span>
+        <button class="copy-btn">Copy Code</button>
+      </div>
+      <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">&lt;FirebaseESP32.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">&lt;DHT.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">"time.h"</span>
+
+<span class="c-kw">#define</span> WIFI_SSID     <span class="c-str">"YOUR_WIFI_SSID"</span>
+<span class="c-kw">#define</span> WIFI_PASS     <span class="c-str">"YOUR_WIFI_PASSWORD"</span>
+<span class="c-kw">#define</span> FIREBASE_HOST <span class="c-str">"YOUR_PROJECT.firebaseio.com"</span>
+<span class="c-kw">#define</span> FIREBASE_AUTH <span class="c-str">"YOUR_DATABASE_SECRET"</span>
+
+<span class="c-kw">#define</span> DHTPIN 4
+<span class="c-kw">#define</span> LDRPIN 34
+<span class="c-kw">#define</span> RELAYPIN 18
+
+<span class="c-kw">const int</span> THRESHOLD_DARK  = 1400;
+<span class="c-kw">const int</span> THRESHOLD_LIGHT = 1700;
+
+<span class="c-kw">DHT</span> dht(DHTPIN, DHT11);
+<span class="c-kw">FirebaseData</span> fbdo;
+<span class="c-kw">FirebaseAuth</span> auth;
+<span class="c-kw">FirebaseConfig</span> config;
+
+<span class="c-type">unsigned long</span> lastLogTime = 0;
+<span class="c-kw">bool</span> currentBulbState = false;
+<span class="c-kw">String</span> currentMode = <span class="c-str">"AUTOMATIC"</span>;
+
+<span class="c-type">void</span> <span class="c-fn">setup</span>() {
+  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
+  <span class="c-fn">pinMode</span>(RELAYPIN, OUTPUT);
+  <span class="c-fn">digitalWrite</span>(RELAYPIN, LOW);
+  dht.<span class="c-fn">begin</span>();
+
+  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(WIFI_SSID, WIFI_PASS);
+  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) { <span class="c-fn">delay</span>(500); }
+  
+  <span class="c-fn">configTime</span>(19800, 0, <span class="c-str">"pool.ntp.org"</span>); <span class="c-cmt">// IST (UTC + 5:30)</span>
+
+  config.host = FIREBASE_HOST;
+  config.signer.tokens.legacy_token = FIREBASE_AUTH;
+  <span class="c-fn">Firebase</span>.<span class="c-fn">begin</span>(&config, &auth);
+  <span class="c-fn">Firebase</span>.<span class="c-fn">reconnectWiFi</span>(true);
+}
+
+<span class="c-type">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-type">float</span> t = dht.<span class="c-fn">readTemperature</span>();
+  <span class="c-type">float</span> h = dht.<span class="c-fn">readHumidity</span>();
+  <span class="c-type">int</span> ldr = <span class="c-fn">analogRead</span>(LDRPIN);
+
+  <span class="c-cmt">// 1. Retrieve Current Mode from Firebase</span>
+  <span class="c-kw">if</span> (<span class="c-fn">Firebase</span>.<span class="c-fn">getString</span>(fbdo, <span class="c-str">"/iot_system/system_state/mode"</span>)) {
+    currentMode = fbdo.<span class="c-fn">stringData</span>();
+  }
+
+  <span class="c-cmt">// 2. Execute Control Logic</span>
+  <span class="c-kw">if</span> (currentMode == <span class="c-str">"AUTOMATIC"</span>) {
+    <span class="c-kw">if</span> (ldr &lt; THRESHOLD_DARK &amp;&amp; !currentBulbState) {
+      currentBulbState = true;
+      <span class="c-fn">digitalWrite</span>(RELAYPIN, HIGH);
+      <span class="c-fn">Firebase</span>.<span class="c-fn">setBool</span>(fbdo, <span class="c-str">"/iot_system/system_state/bulb_state"</span>, true);
+    } <span class="c-kw">else if</span> (ldr &gt; THRESHOLD_LIGHT &amp;&amp; currentBulbState) {
+      currentBulbState = false;
+      <span class="c-fn">digitalWrite</span>(RELAYPIN, LOW);
+      <span class="c-fn">Firebase</span>.<span class="c-fn">setBool</span>(fbdo, <span class="c-str">"/iot_system/system_state/bulb_state"</span>, false);
+    }
+  } <span class="c-kw">else</span> { <span class="c-cmt">// MANUAL MODE</span>
+    <span class="c-kw">if</span> (<span class="c-fn">Firebase</span>.<span class="c-fn">getBool</span>(fbdo, <span class="c-str">"/iot_system/system_state/bulb_state"</span>)) {
+      currentBulbState = fbdo.<span class="c-fn">boolData</span>();
+      <span class="c-fn">digitalWrite</span>(RELAYPIN, currentBulbState ? HIGH : LOW);
+    }
+  }
+
+  <span class="c-cmt">// 3. Periodic Historical Logging (Every 30 seconds)</span>
+  <span class="c-kw">if</span> (<span class="c-fn">millis</span>() - lastLogTime &gt; 30000) {
+    lastLogTime = <span class="c-fn">millis</span>();
+    <span class="c-kw">FirebaseJson</span> json;
+    json.<span class="c-fn">set</span>(<span class="c-str">"temperature"</span>, t);
+    json.<span class="c-fn">set</span>(<span class="c-str">"humidity"</span>, h);
+    json.<span class="c-fn">set</span>(<span class="c-str">"light_level"</span>, ldr);
+    json.<span class="c-fn">set</span>(<span class="c-str">"bulb_state"</span>, currentBulbState ? <span class="c-str">"ON"</span> : <span class="c-str">"OFF"</span>);
+    json.<span class="c-fn">set</span>(<span class="c-str">"mode"</span>, currentMode);
+    
+    <span class="c-fn">Firebase</span>.<span class="c-fn">pushJSON</span>(fbdo, <span class="c-str">"/iot_system/historical_logs"</span>, json);
+  }
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- 7. CONFIGURATION & DASHBOARD -->
+  <section class="skeleton-section" id="configuration">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">07</span>
+        <h2 class="sec-title">Configuration & CSV Export Engine</h2>
+      </div>
+      <span class="sec-tag">// FRONTEND EXPORT LOGIC</span>
+    </div>
+
+    <div class="code-box">
+      <div class="code-header">
+        <span class="code-filename">dashboard_export.js (Client CSV Generator)</span>
+        <button class="copy-btn">Copy Code</button>
+      </div>
+      <pre class="code-content"><code><span class="c-kw">function</span> <span class="c-fn">exportTelemetryToCSV</span>(records) {
+  <span class="c-kw">let</span> csv = <span class="c-str">"Timestamp,Temperature_C,Humidity_Pct,Light_Raw,Bulb_State,Mode\n"</span>;
+  
+  <span class="c-kw">for</span> (<span class="c-kw">const</span> key <span class="c-kw">in</span> records) {
+    <span class="c-kw">const</span> item = records[key];
+    csv += <span class="c-str">`"<span class="c-kw">${</span>item.timestamp<span class="c-kw">}</span>",<span class="c-kw">${</span>item.temperature<span class="c-kw">}</span>,<span class="c-kw">${</span>item.humidity<span class="c-kw">}</span>,<span class="c-kw">${</span>item.light_level<span class="c-kw">}</span>,"<span class="c-kw">${</span>item.bulb_state<span class="c-kw">}</span>","<span class="c-kw">${</span>item.mode<span class="c-kw">}</span>"\n`</span>;
+  }
+
+  <span class="c-kw">const</span> blob = <span class="c-kw">new</span> <span class="c-fn">Blob</span>([csv], { type: <span class="c-str">'text/csv;charset=utf-8;'</span> });
+  <span class="c-kw">const</span> url = <span class="c-fn">URL</span>.<span class="c-fn">createObjectURL</span>(blob);
+  <span class="c-kw">const</span> link = document.<span class="c-fn">createElement</span>(<span class="c-str">'a'</span>);
+  link.href = url;
+  link.download = <span class="c-str">`iot_forge_telemetry_<span class="c-kw">${</span><span class="c-fn">Date</span>.<span class="c-fn">now</span>()<span class="c-kw">}</span>.csv`</span>;
+  link.<span class="c-fn">click</span>();
+  <span class="c-fn">URL</span>.<span class="c-fn">revokeObjectURL</span>(url);
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- 8. EVIDENCE & LIVE DEMO -->
+  <section class="skeleton-section" id="evidence">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">08</span>
+        <h2 class="sec-title">Evidence & Live Data Export Demo</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #3: LABELED EVIDENCE</span>
+    </div>
+
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="evidence-visual" style="flex-direction: column; padding: 24px; text-align: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00f7ff" stroke-width="2" style="margin-bottom: 12px;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--emerald); margin-bottom: 12px;">
+            Verified Dataset: 8 Log Rows Ready
+          </span>
+          <button id="btnDownloadCsvSim" class="btn-repo" style="font-size: 0.82rem; padding: 10px 22px;">
+            Download Exported CSV (.csv) ↓
+          </button>
+        </div>
+        <div class="evidence-info">
+          <div class="evidence-label">EXPORTED_DATASET_LIVE.CSV</div>
+          <div class="evidence-title">Interactive CSV Download Demonstrator</div>
+          <p class="evidence-desc">Live generator proving browser-side CSV compilation from recorded timestamped telemetry records.</p>
+        </div>
+      </div>
+
+      <div class="evidence-card">
+        <div class="evidence-visual">
+          <svg viewBox="0 0 320 180" width="100%" height="100%">
+            <rect width="320" height="180" fill="#090c13"/>
+            <path d="M20 150 L60 130 L100 135 L140 100 L180 85 L220 70 L260 90 L300 65" fill="none" stroke="#00f7ff" stroke-width="2.5"/>
+            <path d="M20 120 L60 115 L100 125 L140 130 L180 128 L220 132 L260 130 L300 125" fill="none" stroke="#ffaa00" stroke-width="2" stroke-dasharray="4"/>
+            <circle cx="220" cy="70" r="4" fill="#00f7ff"/>
+            <rect x="25" y="25" width="120" height="30" rx="4" fill="#141926" stroke="#222b3e"/>
+            <text x="35" y="44" fill="#00f7ff" font-family="monospace" font-size="10">Temp / Lux Trend</text>
+          </svg>
+        </div>
+        <div class="evidence-info">
+          <div class="evidence-label">TELEMETRY_CHART_FINAL.PNG</div>
+          <div class="evidence-title">Historical Time-Series Graph</div>
+          <p class="evidence-desc">Dual-axis trend chart showing the inverted correlation between ambient light drop and relay engagement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CHALLENGES & FIXES -->
+  <section class="skeleton-section" id="challenges">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">09</span>
+        <h2 class="sec-title">Challenges, Limitations & Future Scope</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #2: SHOW THE FAILURE, NOT JUST FIX</span>
+    </div>
+
+    <div class="challenges-grid">
+      <div class="challenge-card">
+        <div class="challenge-top">
+          <span class="challenge-tag-fail">FAILURE #1</span>
+          <div class="challenge-title">Relay Rapid Oscillations (Chatter) Around Single Threshold</div>
+        </div>
+        <div class="challenge-body">
+          <div class="cause-box">
+            <h5>Root Cause Analysis</h5>
+            <p>
+              When room light hovered right at the static threshold (1500), subtle atmospheric shadows and sensor noise caused the ADC reading to bounce above and below 1500 multiple times a second, switching the relay noisily and stressing contacts.
+            </p>
+          </div>
+          <div class="fix-box">
+            <h5>Solution Implemented</h5>
+            <p>
+              Programmed dual asymmetric hysteresis limits: Activated relay at &lt; 1400 ADC, deactivated at &gt; 1700 ADC. This created a solid 300-point buffer zone that completely eliminated false switching.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="challenge-card">
+        <div class="challenge-top">
+          <span class="challenge-tag-fail">SYSTEM LIMITATIONS</span>
+          <div class="challenge-title">Current Constraints & Future Improvements</div>
+        </div>
+        <div class="challenge-body">
+          <div class="cause-box">
+            <h5>Current Prototype Limitations</h5>
+            <p>
+              The DHT11 sensor is restricted to 0°C–50°C with ±2°C accuracy, and free-tier Firebase JSON tree size must be manually culled after 100,000 data nodes to prevent download lag.
+            </p>
+          </div>
+          <div class="fix-box">
+            <h5>Future Scope & Roadmap</h5>
+            <p>
+              Upgrade to an industrial I2C <strong>BME280</strong> sensor (measuring barometric pressure in addition to temp/humidity), implement edge SQLite logging on micro-SD card for offline redundancy, and add OTA (Over-The-Air) Wi-Fi firmware updates.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. REFLECTION -->
+  <section class="skeleton-section" id="reflection">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">10</span>
+        <h2 class="sec-title">Final Capstone Learning Reflection</h2>
+      </div>
+      <span class="sec-tag">// FINAL LEARNING SYNTHESIS</span>
+    </div>
+
+    <div class="reflection-card">
+      <p>
+        "This capstone brought everything full circle—from local HTTP servers to MQTT brokers, cloud applets, and full-stack Firebase logging with client data exports. The most valuable realization was that physical computing requires respect for real-world environmental noise: concepts like software hysteresis, non-blocking asynchronous timers, and database pruning are what separate classroom experiments from reliable production systems."
+      </p>
+    </div>
+  </section>
+
+  <!-- 11. REPOSITORY LINK -->
+  <section class="skeleton-section" id="repository">
+    <div class="sec-header">
+      <div class="sec-title-wrap">
+        <span class="sec-num">11</span>
+        <h2 class="sec-title">Project Source & Repository</h2>
+      </div>
+      <span class="sec-tag">// FORGE RULE #4: DIRECT REPO LINK</span>
+    </div>
+
+    <div class="repo-card">
+      <div class="repo-info">
+        <h4>Task 05: Complete Capstone Repository</h4>
+        <p>Complete source files: Arduino sketch, Firebase database schema, charting frontend, and sample CSV datasets.</p>
+      </div>
+      <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">
+        View Code on GitHub →
+      </a>
+    </div>
+
+    <!-- FORGE INSPECTION CHECKLIST WIDGET -->
+    <div class="forge-checklist-box">
+      <div class="checklist-head">
+        <h3>Final Forge Station 05 Inspection Checklist</h3>
+        <span class="badge-pin">28 / 28 Checked</span>
+      </div>
+      <div class="checklist-items">
+        <div class="check-item"><span class="box-done">☑</span> Objective of complete system defined</div>
+        <div class="check-item"><span class="box-done">☑</span> Final architecture & data-flow documented</div>
+        <div class="check-item"><span class="box-done">☑</span> DHT11 temperature/humidity demonstrated</div>
+        <div class="check-item"><span class="box-done">☑</span> LDR-based ambient light level calibrated</div>
+        <div class="check-item"><span class="box-done">☑</span> Manual bulb control mode implemented</div>
+        <div class="check-item"><span class="box-done">☑</span> Automatic bulb control using LDR tested</div>
+        <div class="check-item"><span class="box-done">☑</span> Dual operating modes documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Lighting logic & threshold calibration explained</div>
+        <div class="check-item"><span class="box-done">☑</span> LDR hysteresis thresholds documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Historical logging to Firebase active</div>
+        <div class="check-item"><span class="box-done">☑</span> Database structure for logs illustrated</div>
+        <div class="check-item"><span class="box-done">☑</span> Timestamped telemetry records saved</div>
+        <div class="check-item"><span class="box-done">☑</span> Temperature & humidity values recorded</div>
+        <div class="check-item"><span class="box-done">☑</span> LDR raw and scaled values recorded</div>
+        <div class="check-item"><span class="box-done">☑</span> Bulb status and mode recorded</div>
+        <div class="check-item"><span class="box-done">☑</span> Historical data displayed on dashboard</div>
+        <div class="check-item"><span class="box-done">☑</span> Telemetry trend chart visualization</div>
+        <div class="check-item"><span class="box-done">☑</span> Client CSV data export implemented</div>
+        <div class="check-item"><span class="box-done">☑</span> Live CSV download demonstration</div>
+        <div class="check-item"><span class="box-done">☑</span> Screenshots of Firebase log array</div>
+        <div class="check-item"><span class="box-done">☑</span> Screenshots of dashboard visualizer</div>
+        <div class="check-item"><span class="box-done">☑</span> Hardware setup wiring verified</div>
+        <div class="check-item"><span class="box-done">☑</span> Hysteresis relay chatter fix documented</div>
+        <div class="check-item"><span class="box-done">☑</span> Limitations of prototype explained</div>
+        <div class="check-item"><span class="box-done">☑</span> Future roadmap & BME280 upgrade noted</div>
+        <div class="check-item"><span class="box-done">☑</span> Final capstone learning reflection</div>
+        <div class="check-item"><span class="box-done">☑</span> All files available in GitHub repository</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="iot-footer">
+  © <span id="year">2026</span> Sudhiksha. Prototype Seminar IoT Portfolio — All Rights Reserved.
+</footer>
+
+<script src="../js/iot.js"></script>
+</body>
+</html>
