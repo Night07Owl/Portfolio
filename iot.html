@@ -1411,7 +1411,7 @@
             <span class="pill-badge pill-t2">ASSIGNMENT 02</span>
             <span class="eyebrow-text">// CLOUD TELEMETRY &amp; ADAFRUIT IO MQTT</span>
           </div>
-          <h1 class="task-title title-t2">Cloud MQTT LED / Bulb Control with Adafruit IO</h1>
+          <h1 class="task-title title-t2">Adafruit IO Dashboard &amp; MQTT</h1>
           <p class="task-lead">
             Connecting an ESP32 to the cloud using the lightweight MQTT protocol and Adafruit IO for bidirectional, worldwide device control without local network boundaries.
           </p>
@@ -1432,13 +1432,6 @@
               </div>
             </div>
             <div class="stat-card">
-              <span class="stat-icon">📂</span>
-              <div class="stat-content">
-                <h4>Topic / Feed</h4>
-                <p>sudhiksha/feeds/bulb</p>
-              </div>
-            </div>
-            <div class="stat-card">
               <span class="stat-icon">⚡</span>
               <div class="stat-content">
                 <h4>Actuator</h4>
@@ -1453,7 +1446,7 @@
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t2">01</span>
-              <h2>Core Architecture, Problem Statement &amp; System Summary</h2>
+              <h2>Statement and system summary</h2>
             </div>
             <span class="block-tag">// SYSTEM SCOPE &amp; HIGH-LEVEL TOPOLOGY</span>
           </div>
@@ -1569,12 +1562,8 @@
           <div class="learnt-formula-card">
             <div class="formula-card-top">
               <div class="formula-badges">
-                <span class="pill-badge pill-t2">IN SIMPLE WORDS</span>
                 <span class="formula-tagline">// PUB/SUB CLOUD ARCHITECTURE</span>
               </div>
-              <span class="status-pill-badge">
-                <span class="dot-online"></span> Global Sub-100ms Control
-              </span>
             </div>
 
             <div class="formula-pipeline-track">
@@ -1643,11 +1632,10 @@
                   <p class="lifecycle-subtitle">Step-by-step linear data exchange from user click on Adafruit IO to physical relay actuation</p>
                 </div>
               </div>
-              <span class="pill-badge pill-t2">LINEAR EVENT FLOW</span>
             </div>
 
             <div class="cycle-graphic-wrap">
-              <svg viewBox="0 0 940 240" class="cycle-svg" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 1020 280" class="cycle-svg" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <filter id="flowGlowT2" x="-20%" y="-20%" width="140%" height="140%">
                     <feGaussianBlur stdDeviation="4" result="blur" />
@@ -1666,63 +1654,67 @@
                 </defs>
 
                 <!-- Background Grid Canvas -->
-                <rect width="940" height="240" fill="#08080f" rx="10" />
+                <rect width="1020" height="280" fill="#08080f" rx="10" />
 
                 <!-- Connecting Flow Track -->
-                <line x1="220" y1="120" x2="250" y2="120" stroke="#00f2fe" stroke-width="3" marker-end="url(#flowArrowT2)" filter="url(#flowGlowT2)" />
-                <line x1="450" y1="120" x2="480" y2="120" stroke="#00f2fe" stroke-width="3" marker-end="url(#flowArrowT2)" filter="url(#flowGlowT2)" />
-                <line x1="680" y1="120" x2="710" y2="120" stroke="#00f2fe" stroke-width="3" marker-end="url(#flowArrowT2)" filter="url(#flowGlowT2)" />
+                <line x1="240" y1="140" x2="265" y2="140" stroke="#00f2fe" stroke-width="3.5" marker-end="url(#flowArrowT2)" filter="url(#flowGlowT2)" />
+                <line x1="495" y1="140" x2="520" y2="140" stroke="#00f2fe" stroke-width="3.5" marker-end="url(#flowArrowT2)" filter="url(#flowGlowT2)" />
+                <line x1="750" y1="140" x2="775" y2="140" stroke="#00f2fe" stroke-width="3.5" marker-end="url(#flowArrowT2)" filter="url(#flowGlowT2)" />
 
                 <!-- Stage 1: Dashboard Publisher -->
-                <g transform="translate(30, 40)">
-                  <rect x="0" y="0" width="190" height="160" rx="10" fill="#0d1824" stroke="#00f2fe" stroke-width="1.8" filter="url(#flowGlowT2)" />
-                  <rect x="12" y="12" width="65" height="20" rx="4" fill="rgba(0, 242, 254, 0.15)" />
-                  <text x="44" y="26" fill="#00f2fe" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" text-anchor="middle">STAGE 01</text>
-                  <text x="160" y="28" font-size="16">🖥️</text>
-                  <text x="14" y="55" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700">1. User Toggle Click</text>
-                  <text x="14" y="74" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="9">Adafruit IO Dashboard</text>
-                  <text x="14" y="96" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• User clicks ON or OFF</text>
-                  <text x="14" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• Browser formats MQTT message</text>
-                  <text x="14" y="128" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• Acts as MQTT Publisher</text>
+                <g transform="translate(20, 35)">
+                  <rect x="0" y="0" width="220" height="205" rx="12" fill="#0d1824" stroke="#00f2fe" stroke-width="2" filter="url(#flowGlowT2)" />
+                  <rect x="14" y="14" width="75" height="22" rx="4" fill="rgba(0, 242, 254, 0.18)" />
+                  <text x="51" y="29" fill="#00f2fe" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" text-anchor="middle">STAGE 01</text>
+                  <text x="185" y="32" font-size="20">🖥️</text>
+                  <text x="14" y="65" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700">1. User Toggle Click</text>
+                  <text x="14" y="86" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10.5">Adafruit IO Dashboard</text>
+                  <text x="14" y="114" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• User clicks ON or OFF</text>
+                  <text x="14" y="134" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• Browser formats MQTT packet</text>
+                  <text x="14" y="154" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• Acts as MQTT Publisher</text>
+                  <text x="14" y="174" fill="#67e8f9" font-family="'JetBrains Mono', monospace" font-size="9.5">sudhiksha/dashboards/bulb</text>
                 </g>
 
                 <!-- Stage 2: Broker Routing -->
-                <g transform="translate(260, 40)">
-                  <rect x="0" y="0" width="190" height="160" rx="10" fill="#0d1824" stroke="#00f2fe" stroke-width="1.8" filter="url(#flowGlowT2)" />
-                  <rect x="12" y="12" width="65" height="20" rx="4" fill="rgba(0, 242, 254, 0.15)" />
-                  <text x="44" y="26" fill="#00f2fe" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" text-anchor="middle">STAGE 02</text>
-                  <text x="160" y="28" font-size="16">☁️</text>
-                  <text x="14" y="55" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700">2. Cloud Broker Queue</text>
-                  <text x="14" y="74" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="9">io.adafruit.com:1883</text>
-                  <text x="14" y="96" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• Receives payload on feed</text>
-                  <text x="14" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• Topic: sudhiksha/feeds/bulb</text>
-                  <text x="14" y="128" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• Dispatches to active client</text>
+                <g transform="translate(275, 35)">
+                  <rect x="0" y="0" width="220" height="205" rx="12" fill="#0d1824" stroke="#00f2fe" stroke-width="2" filter="url(#flowGlowT2)" />
+                  <rect x="14" y="14" width="75" height="22" rx="4" fill="rgba(0, 242, 254, 0.18)" />
+                  <text x="51" y="29" fill="#00f2fe" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" text-anchor="middle">STAGE 02</text>
+                  <text x="185" y="32" font-size="20">☁️</text>
+                  <text x="14" y="65" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700">2. Cloud Broker Queue</text>
+                  <text x="14" y="86" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10.5">io.adafruit.com:1883</text>
+                  <text x="14" y="114" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• Receives payload on feed</text>
+                  <text x="14" y="134" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• Topic: sudhiksha/feeds/bulb</text>
+                  <text x="14" y="154" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• Dispatches to active client</text>
+                  <text x="14" y="174" fill="#67e8f9" font-family="'JetBrains Mono', monospace" font-size="9.5">QoS 0 Minimal Overhead</text>
                 </g>
 
                 <!-- Stage 3: ESP32 Subscriber -->
-                <g transform="translate(490, 40)">
-                  <rect x="0" y="0" width="190" height="160" rx="10" fill="#0d1824" stroke="#00f2fe" stroke-width="1.8" filter="url(#flowGlowT2)" />
-                  <rect x="12" y="12" width="65" height="20" rx="4" fill="rgba(0, 242, 254, 0.15)" />
-                  <text x="44" y="26" fill="#00f2fe" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" text-anchor="middle">STAGE 03</text>
-                  <text x="160" y="28" font-size="16">⚡</text>
-                  <text x="14" y="55" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700">3. ESP32 Subscription</text>
-                  <text x="14" y="74" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="9">readSubscription(1000)</text>
-                  <text x="14" y="96" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• Listens to bulb subscription</text>
-                  <text x="14" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• Parses value.toUpperCase()</text>
-                  <text x="14" y="128" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• Acts as MQTT Subscriber</text>
+                <g transform="translate(530, 35)">
+                  <rect x="0" y="0" width="220" height="205" rx="12" fill="#0d1824" stroke="#00f2fe" stroke-width="2" filter="url(#flowGlowT2)" />
+                  <rect x="14" y="14" width="75" height="22" rx="4" fill="rgba(0, 242, 254, 0.18)" />
+                  <text x="51" y="29" fill="#00f2fe" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" text-anchor="middle">STAGE 03</text>
+                  <text x="185" y="32" font-size="20">⚡</text>
+                  <text x="14" y="65" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700">3. ESP32 Subscription</text>
+                  <text x="14" y="86" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10.5">readSubscription(1000)</text>
+                  <text x="14" y="114" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• Listens to bulb subscription</text>
+                  <text x="14" y="134" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• Parses value.toUpperCase()</text>
+                  <text x="14" y="154" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• Acts as MQTT Subscriber</text>
+                  <text x="14" y="174" fill="#67e8f9" font-family="'JetBrains Mono', monospace" font-size="9.5">TCP Socket Port 1883</text>
                 </g>
 
                 <!-- Stage 4: Physical Relay Actuation -->
-                <g transform="translate(720, 40)">
-                  <rect x="0" y="0" width="190" height="160" rx="10" fill="#0d1824" stroke="#00f2fe" stroke-width="1.8" filter="url(#flowGlowT2)" />
-                  <rect x="12" y="12" width="65" height="20" rx="4" fill="rgba(0, 242, 254, 0.15)" />
-                  <text x="44" y="26" fill="#00f2fe" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" text-anchor="middle">STAGE 04</text>
-                  <text x="160" y="28" font-size="16">💡</text>
-                  <text x="14" y="55" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700">4. Physical Actuation</text>
-                  <text x="14" y="74" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="9">GPIO 26 Relay Trigger</text>
-                  <text x="14" y="96" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• ON: digitalWrite(26, LOW)</text>
-                  <text x="14" y="112" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• OFF: digitalWrite(26, HIGH)</text>
-                  <text x="14" y="128" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="8.5">• AC 230V Bulb illuminated</text>
+                <g transform="translate(785, 35)">
+                  <rect x="0" y="0" width="220" height="205" rx="12" fill="#0d1824" stroke="#00f2fe" stroke-width="2" filter="url(#flowGlowT2)" />
+                  <rect x="14" y="14" width="75" height="22" rx="4" fill="rgba(0, 242, 254, 0.18)" />
+                  <text x="51" y="29" fill="#00f2fe" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" text-anchor="middle">STAGE 04</text>
+                  <text x="185" y="32" font-size="20">💡</text>
+                  <text x="14" y="65" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700">4. Physical Actuation</text>
+                  <text x="14" y="86" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10.5">GPIO 26 Relay Trigger</text>
+                  <text x="14" y="114" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• ON: digitalWrite(26, LOW)</text>
+                  <text x="14" y="134" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• OFF: digitalWrite(26, HIGH)</text>
+                  <text x="14" y="154" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10">• 230V AC Bulb Switched</text>
+                  <text x="14" y="174" fill="#67e8f9" font-family="'JetBrains Mono', monospace" font-size="9.5">Active-LOW Isolation</text>
                 </g>
               </svg>
             </div>
@@ -1831,13 +1823,6 @@
               </div>
 
               <div class="commercial-card">
-                <span class="commercial-card-icon">🏭</span>
-                <h5>Industrial Remote Switching</h5>
-                <p>Remotely energizing high-voltage contactors, industrial pumps, and safety shut-off valves across factory floors.</p>
-                <span class="commercial-tag">Industry 4.0</span>
-              </div>
-
-              <div class="commercial-card">
                 <span class="commercial-card-icon">🌾</span>
                 <h5>Smart Agriculture &amp; Irrigation</h5>
                 <p>Actuating solenoid water valves and greenhouse ventilation fans over MQTT from central farm control portals.</p>
@@ -1904,16 +1889,15 @@
             </div>
           </div>
 
-          <!-- PHOTOGRAPHS OF HARDWARE SETUP & DASHBOARD (FROM USER UPLOADS) -->
+          <!-- HARDWARE SETUP & ADAFRUIT IO DASHBOARD -->
           <div class="evidence-sub-header">
             <div class="sub-title-group">
               <span class="sub-icon">📸</span>
               <div>
-                <h3>Photographs of Hardware Setup &amp; Adafruit IO Dashboard</h3>
-                <p>Photographic proof of the physical test bench, optoisolated relay wiring, and live cloud dashboard</p>
+                <h3>Hardware Setup &amp; Adafruit IO Dashboard</h3>
+                <p>Photographic proof of the physical test bench, optoisolated relay wiring, and live cloud dashboard telemetry</p>
               </div>
             </div>
-            <span class="pill-badge pill-t2">4 VERIFIED ARTIFACTS</span>
           </div>
 
           <div class="evidence-photos-grid">
@@ -1941,37 +1925,88 @@
               </div>
             </div>
 
-            <!-- Photo 3: Relay Module Close-Up -->
+            <!-- Photo 3: Relay Module Close-Up (Unzoomed Contain Mode) -->
             <div class="evidence-photo-card">
-              <div class="photo-img-wrap">
+              <div class="photo-img-wrap contain-mode">
                 <img src="images/iot/task2_relay_module.jpg" alt="Tongling single channel optoisolated relay module showing VCC GND IN pins and indicator LEDs" loading="lazy">
-                <span class="photo-state-badge state-on">● TONGLING 10A RELAY MODULE</span>
+                <span class="photo-state-badge state-on">● 5V RELAY MODULE</span>
               </div>
               <div class="photo-card-info">
-                <h4>3. Optoisolated 10A 250VAC Relay Module</h4>
-                <p class="photo-simple-explain">Close-up photograph of the Tongling single-channel electromechanical relay. Features optocoupled galvanic isolation between ESP32 3.3V logic (GPIO 26) and 230V AC mains load, with power and trigger indicator LEDs.</p>
+                <h4>3. 5V Optoisolated Relay Module</h4>
+                <p class="photo-simple-explain">A relay module is a device used to control high-power devices using a low-power signal. It works like an automatic switch. When we give a signal to the relay, it turns the connected device ON or OFF. It is commonly used with Arduino, sensors, and other electronic projects.</p>
               </div>
             </div>
 
-            <!-- Photo 4: ESP32 Board Close-Up -->
+            <!-- Photo 4: ESP32 Board Close-Up (Unzoomed Contain Mode) -->
             <div class="evidence-photo-card">
-              <div class="photo-img-wrap">
+              <div class="photo-img-wrap contain-mode">
                 <img src="images/iot/task2_esp32_board.jpg" alt="ESP-32 DevKit board powered via micro-USB with onboard power LED illuminated" loading="lazy">
-                <span class="photo-state-badge state-on">● ESP-32 DEVKIT V1 POWERED</span>
+                <span class="photo-state-badge state-on">● ESP-32 MODULE</span>
               </div>
               <div class="photo-card-info">
                 <h4>4. ESP-32 Microcontroller Module</h4>
-                <p class="photo-simple-explain">Close-up photograph of the ESP32 DevKit board powered via micro-USB cable with the onboard red power LED illuminated, actively maintaining its Wi-Fi and Adafruit IO MQTT subscription socket.</p>
+                <p class="photo-simple-explain">The ESP-32 is a small microcontroller module used to control electronic devices. It has built-in Wi-Fi and Bluetooth, so it can connect to the internet and other devices. It is commonly used in IoT projects, sensors, automation, and smart devices.</p>
+              </div>
+            </div>
+
+            <!-- Photo 5: Adafruit IO Feeds Management List -->
+            <div class="evidence-photo-card">
+              <div class="photo-img-wrap">
+                <img src="images/iot/task2_feeds_list.png" alt="Adafruit IO feeds console showing sudhiksha / Feeds with feed bulb active" loading="lazy">
+                <span class="photo-state-badge state-ide">● ADAFRUIT IO : FEEDS CONSOLE</span>
+              </div>
+              <div class="photo-card-info">
+                <h4>5. Adafruit IO Feeds Management (sudhiksha / Feeds)</h4>
+                <p class="photo-simple-explain">Cloud console view confirming the creation and status of feed <code>bulb</code>. Serves as the dedicated MQTT publish/subscribe communication endpoint for device telemetry.</p>
+              </div>
+            </div>
+
+            <!-- Photo 6: Adafruit IO Feed History Table -->
+            <div class="evidence-photo-card">
+              <div class="photo-img-wrap">
+                <img src="images/iot/task2_feed_history.png" alt="Adafruit IO Feed History table showing logged ON and OFF values with timestamps" loading="lazy">
+                <span class="photo-state-badge state-ide">● CLOUD FEED HISTORY LOG</span>
+              </div>
+              <div class="photo-card-info">
+                <h4>6. Adafruit IO Feed Telemetry History Table</h4>
+                <p class="photo-simple-explain">Live timestamped event history showing the <code>bulb</code> feed records: <code>OFF</code> at 12:36:17PM and <code>ON</code> at 12:24:51PM, demonstrating verified cloud persistence.</p>
+              </div>
+            </div>
+
+            <!-- Photo 7: Arduino IDE Wi-Fi & Broker Connection -->
+            <div class="evidence-photo-card">
+              <div class="photo-img-wrap">
+                <img src="images/iot/task2_ide_connect.png" alt="Arduino IDE 2.2.1 Serial Monitor showing WiFi connected! ESP32 IP: 192.168.56.202 Connecting to Adafruit IO... connected!" loading="lazy">
+                <span class="photo-state-badge state-http">● ARDUINO IDE : CONNECT</span>
+              </div>
+              <div class="photo-card-info">
+                <h4>7. Serial Monitor Wi-Fi &amp; MQTT Connection</h4>
+                <p class="photo-simple-explain">Terminal output verifying successful Wi-Fi link, DHCP IP assignment (<code>192.168.56.202</code>), and TCP socket connection to <code>io.adafruit.com:1883</code>.</p>
+              </div>
+            </div>
+
+            <!-- Photo 8: Arduino IDE Telemetry & Actuation -->
+            <div class="evidence-photo-card">
+              <div class="photo-img-wrap">
+                <img src="images/iot/task2_ide_telemetry.png" alt="Arduino IDE Serial Monitor showing Received: OFF, GPIO = HIGH -> BULB OFF, Received: ON, GPIO = LOW -> BULB ON" loading="lazy">
+                <span class="photo-state-badge state-http">● ARDUINO IDE : TELEMETRY</span>
+              </div>
+              <div class="photo-card-info">
+                <h4>8. Real-Time Telemetry &amp; Actuation Output</h4>
+                <p class="photo-simple-explain">Live serial monitor capturing incoming MQTT packets (<code>Received: OFF</code>, <code>Received: ON</code>) and executing active-LOW relay commands on the GPIO pin.</p>
               </div>
             </div>
           </div>
 
-          <!-- CLOUD DASHBOARD TELEMETRY VERIFICATION -->
+          <!-- CLOUD DASHBOARD TELEMETRY VERIFICATION (IMPROVED & NEAT) -->
           <div class="telemetry-verification-box">
             <div class="telemetry-header">
               <div class="telemetry-title-group">
                 <span class="node-icon">☁️</span>
-                <h4>Communication &amp; Telemetry Details (Adafruit IO → ESP32)</h4>
+                <div>
+                  <h4 style="margin: 0; font-size: 1.05rem; color: #f8fafc;">Communication &amp; Telemetry Details (Adafruit IO → ESP32)</h4>
+                  <p style="margin: 2px 0 0 0; font-size: 0.78rem; color: #94a3b8;">End-to-end data transmission telemetry across cloud WebSockets, MQTT broker, and ESP32 hardware</p>
+                </div>
               </div>
               <span class="pill-badge pill-t2">MQTT PORT 1883</span>
             </div>
@@ -1980,25 +2015,25 @@
               <div class="telemetry-step">
                 <span class="step-num">1</span>
                 <div class="step-details">
-                  <h5>How It Works</h5>
-                  <p>The Adafruit IO dashboard connects to <code>io.adafruit.com</code> via WebSockets. When the user flips the toggle, the cloud server publishes an MQTT packet to the <code>sudhiksha/feeds/bulb</code> topic.</p>
+                  <h5>User Cloud Trigger</h5>
+                  <p>When the user flips the toggle button on <code>io.adafruit.com/sudhiksha/dashboards/bulb</code>, the browser initiates a WebSocket event to the Adafruit IO server, publishing the payload <code>"ON"</code> or <code>"OFF"</code> to the <code>bulb</code> feed.</p>
                 </div>
               </div>
 
               <div class="telemetry-step">
                 <span class="step-num">2</span>
                 <div class="step-details">
-                  <h5>Working</h5>
-                  <p>The ESP32 maintains an open TCP socket to <code>io.adafruit.com:1883</code>. Inside <code>loop()</code>, <code>mqtt.readSubscription(1000)</code> detects the incoming packet, extracts the string payload (<code>"ON"</code> or <code>"OFF"</code>), and drives GPIO 26 accordingly.</p>
+                  <h5>Broker Queue &amp; Push</h5>
+                  <p>The Adafruit IO MQTT broker (<code>io.adafruit.com:1883</code>) receives the packet on topic <code>sudhiksha/feeds/bulb</code> and instantly pushes it over the active TCP connection to all authenticated subscribers.</p>
                 </div>
               </div>
 
               <div class="telemetry-step">
                 <span class="step-num">3</span>
                 <div class="step-details">
-                  <h5>Network &amp; Actuation Result</h5>
+                  <h5>ESP32 Subscription &amp; Actuation</h5>
+                  <p>The ESP32 runs <code>mqtt.readSubscription(1000)</code> inside <code>loop()</code>. When a packet arrives, it extracts <code>bulb.lastread</code>, verifies the command, and drives the optocoupled relay via active-LOW logic in under 100ms.</p>
                   <div class="network-detail-block">
-                    <p>Sub-100ms response time from button press to physical relay contact click. Zero router port forwarding needed because the connection is outbound from the ESP32.</p>
                     <h5>MQTT Topic Structure:</h5>
                     <span class="pipeline-inline-text">AIO_USERNAME/feeds/feed_name → sudhiksha/feeds/bulb</span>
                   </div>
@@ -2007,50 +2042,60 @@
             </div>
           </div>
 
-          <!-- WORKING DEMONSTRATION & VIDEO MEDIA SHOWCASE -->
-          <div class="video-demo-card">
-            <div class="video-demo-header">
+          <!-- OPERATIONAL EXECUTION FLOW CHART (REPLACING VIDEO TIMESTAMPS) -->
+          <div class="flow-chart-card">
+            <div class="flow-chart-header">
               <div class="sub-title-group">
-                <span class="sub-icon">🎬</span>
+                <span class="sub-icon">⚡</span>
                 <div>
-                  <h4 style="margin: 0; font-size: 1.05rem; color: #f8fafc;">Working Demonstration Video &amp; Cloud Control</h4>
-                  <p style="margin: 2px 0 0 0; font-size: 0.78rem; color: #94a3b8;">Physical AC bulb actuation synchronized with Adafruit IO dashboard toggles over MQTT</p>
+                  <h4 style="margin: 0; font-size: 1.05rem; color: #f8fafc;">Operational Execution Flow Chart</h4>
+                  <p style="margin: 2px 0 0 0; font-size: 0.78rem; color: #94a3b8;">Step-by-step end-to-end signal flow from web dashboard toggle to physical relay switching</p>
                 </div>
               </div>
-              <span class="pill-badge pill-t2">VERIFIED DEMO</span>
+              <span class="pill-badge pill-t2">SYSTEM FLOW</span>
             </div>
 
-            <div class="video-demo-body">
-              <div class="video-player-frame">
-                <img src="images/iot/task2_hardware_setup.jpg" alt="Working Demonstration Preview: ESP32 controlling AC bulb via Adafruit IO" class="video-preview-img">
-                <div class="video-play-overlay">
-                  <div class="play-circle-btn" title="Watch Hardware Demonstration">▶</div>
-                  <span style="font-family: var(--font-mono); font-size: 0.76rem; color: #e2e8f0; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">CLOUD MQTT ACTUATION DEMO</span>
-                </div>
+            <div class="flow-chart-grid">
+              <div class="flow-chart-step">
+                <span class="flow-step-num">STEP 01</span>
+                <div class="flow-step-icon">🖥️</div>
+                <h5 class="flow-step-title">Dashboard Toggle</h5>
+                <p class="flow-step-desc">User toggles ON / OFF on Adafruit IO dashboard.</p>
               </div>
 
-              <div class="video-timestamps-list">
-                <h5 style="margin: 0 0 4px 0; font-size: 0.88rem; color: #38bdf8; font-family: var(--font-mono);">DEMONSTRATION TIMELINE &amp; BEHAVIOR:</h5>
-                <div class="timestamp-item">
-                  <span class="ts-tag">00:01</span>
-                  <span><strong>Dashboard Trigger:</strong> User clicks the toggle switch to <strong>ON</strong> on <code>io.adafruit.com/sudhiksha/dashboards/bulb</code>.</span>
-                </div>
-                <div class="timestamp-item">
-                  <span class="ts-tag">00:02</span>
-                  <span><strong>Cloud Broker Push:</strong> Broker sends payload <code>"ON"</code> to the ESP32 subscriber TCP socket on port 1883 in under 100ms.</span>
-                </div>
-                <div class="timestamp-item">
-                  <span class="ts-tag">00:03</span>
-                  <span><strong>Active-LOW Relay Trigger:</strong> ESP32 executes <code>digitalWrite(26, LOW)</code>. The Tongling relay clicks closed and the red trigger LED lights up.</span>
-                </div>
-                <div class="timestamp-item">
-                  <span class="ts-tag">00:04</span>
-                  <span><strong>Bulb Illuminated:</strong> 230V AC current flows through the Normally Open contact, turning on the physical Eveready lamp bulb.</span>
-                </div>
-                <div class="timestamp-item">
-                  <span class="ts-tag">00:07</span>
-                  <span><strong>Remote Deactivation:</strong> User clicks <strong>OFF</strong>; broker publishes <code>"OFF"</code>, ESP32 drives GPIO 26 <strong>HIGH</strong>, immediately cutting AC power to the bulb.</span>
-                </div>
+              <div class="flow-chart-step">
+                <span class="flow-step-num">STEP 02</span>
+                <div class="flow-step-icon">📤</div>
+                <h5 class="flow-step-title">MQTT Publish</h5>
+                <p class="flow-step-desc">Browser publishes packet to <code>sudhiksha/feeds/bulb</code>.</p>
+              </div>
+
+              <div class="flow-chart-step">
+                <span class="flow-step-num">STEP 03</span>
+                <div class="flow-step-icon">☁️</div>
+                <h5 class="flow-step-title">Broker Routing</h5>
+                <p class="flow-step-desc">Broker at <code>io.adafruit.com:1883</code> dispatches payload.</p>
+              </div>
+
+              <div class="flow-chart-step">
+                <span class="flow-step-num">STEP 04</span>
+                <div class="flow-step-icon">⚡</div>
+                <h5 class="flow-step-title">ESP32 Reception</h5>
+                <p class="flow-step-desc">ESP32 reads packet via <code>readSubscription(1000)</code>.</p>
+              </div>
+
+              <div class="flow-chart-step">
+                <span class="flow-step-num">STEP 05</span>
+                <div class="flow-step-icon">🔄</div>
+                <h5 class="flow-step-title">Active-LOW Drive</h5>
+                <p class="flow-step-desc">Firmware drives GPIO LOW (ON) or HIGH (OFF).</p>
+              </div>
+
+              <div class="flow-chart-step">
+                <span class="flow-step-num">STEP 06</span>
+                <div class="flow-step-icon">💡</div>
+                <h5 class="flow-step-title">Relay &amp; Bulb</h5>
+                <p class="flow-step-desc">Contacts close/open, switching 230V AC lamp load.</p>
               </div>
             </div>
           </div>
@@ -2260,34 +2305,66 @@
             </div>
           </div>
 
-          <!-- HARDWARE & SOFTWARE USED (CHECKLIST COMPLIANT) -->
+          <!-- COMPONENT SPECIFICATIONS & HARDWARE OVERVIEW -->
           <div class="hardware-spec-cards">
+            <!-- ESP32 Development Module -->
             <div class="hw-card">
               <span class="hw-chip">MICROCONTROLLER</span>
-              <h4>ESP32 DevKit V1</h4>
-              <ul class="bullet-list-sm">
-                <li>Dual-Core Tensilica Xtensa LX6 @ 240 MHz</li>
-                <li>Integrated 2.4 GHz 802.11 b/g/n Wi-Fi transceiver</li>
-                <li>Executes Adafruit MQTT Client over persistent TCP port 1883</li>
-              </ul>
+              <h4>ESP32 Development Module</h4>
+              <p style="font-size: 0.78rem; color: #38bdf8; font-family: var(--font-mono); margin-bottom: 8px;">Espressif Systems · DevKit V4 · Microcontroller</p>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; margin-bottom: 12px;">The brain of all four tasks — WiFi client, HTTP/MQTT client, and GPIO controller.</p>
+              
+              <table class="component-specs-table">
+                <tbody>
+                  <tr><td><strong>Processor</strong></td><td>Xtensa Dual-Core 32-bit</td></tr>
+                  <tr><td><strong>Clock Speed</strong></td><td>160 MHz</td></tr>
+                  <tr><td><strong>RAM</strong></td><td>520 KB SRAM</td></tr>
+                  <tr><td><strong>Flash</strong></td><td>4 MB</td></tr>
+                  <tr><td><strong>WiFi</strong></td><td>802.11 b/g/n (2.4 GHz)</td></tr>
+                  <tr><td><strong>GPIO Pins</strong></td><td>34 total (25 usable)</td></tr>
+                  <tr><td><strong>ADC</strong></td><td>12-bit (0–4095)</td></tr>
+                </tbody>
+              </table>
             </div>
+
+            <!-- SRD-05VDC-SL-C Relay Module -->
             <div class="hw-card">
-              <span class="hw-chip">ACTUATOR MODULE</span>
-              <h4>Tongling 10A Relay Module</h4>
-              <ul class="bullet-list-sm">
-                <li>JQC-3FF-S-Z single-channel electromechanical relay</li>
-                <li>Rated for 10A @ 250VAC / 15A @ 125VAC loads</li>
-                <li>Optocoupled galvanic isolation with active-LOW logic</li>
-              </ul>
+              <span class="hw-chip">ACTUATOR / SWITCHING</span>
+              <h4>SRD-05VDC-SL-C Relay Module</h4>
+              <p style="font-size: 0.78rem; color: #38bdf8; font-family: var(--font-mono); margin-bottom: 8px;">Songle · SRD-05VDC-SL-C · Actuator / Switching</p>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; margin-bottom: 12px;">Safely isolates 230V mains from the ESP32's 3.3V logic in Tasks 2 and 4.</p>
+              
+              <table class="component-specs-table">
+                <tbody>
+                  <tr><td><strong>Coil Voltage</strong></td><td>5V DC</td></tr>
+                  <tr><td><strong>Coil Current</strong></td><td>~70 mA</td></tr>
+                  <tr><td><strong>Contact Rating</strong></td><td>250V AC / 10A</td></tr>
+                  <tr><td><strong>Type</strong></td><td>SPDT (Single Pole Double Throw)</td></tr>
+                  <tr><td><strong>Switching Time</strong></td><td>~10 ms</td></tr>
+                  <tr><td><strong>Logic</strong></td><td>Active-LOW (this batch)</td></tr>
+                  <tr><td><strong>Dimensions</strong></td><td>49 × 26 × 13 mm</td></tr>
+                  <tr><td><strong>Pins</strong></td><td><strong>VCC:</strong> 5V power for coil<br><strong>GND:</strong> Ground reference<br><strong>IN:</strong> Control signal (GPIO26)<br><strong>COM:</strong> Mains Live contact<br><strong>NO:</strong> Normally Open contact</td></tr>
+                </tbody>
+              </table>
             </div>
+
+            <!-- AC Bulb Appliance -->
             <div class="hw-card">
-              <span class="hw-chip">SOFTWARE &amp; CLOUD</span>
-              <h4>Adafruit IO &amp; Arduino IDE</h4>
-              <ul class="bullet-list-sm">
-                <li>Adafruit IO Cloud Broker (<code>io.adafruit.com</code>)</li>
-                <li>Libraries: <code>Adafruit_MQTT.h</code>, <code>Adafruit_MQTT_Client.h</code></li>
-                <li>Feed Path: <code>sudhiksha/feeds/bulb</code> with toggle dashboard</li>
-              </ul>
+              <span class="hw-chip">ELECTRICAL LOAD</span>
+              <h4>230V AC Lamp Bulb Load</h4>
+              <p style="font-size: 0.78rem; color: #38bdf8; font-family: var(--font-mono); margin-bottom: 8px;">Standard AC Load · 60W, 230V, E27 socket</p>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; margin-bottom: 12px;">Switched 230V mains incandescent / LED appliance wired through the relay's COM and NO contacts.</p>
+              
+              <table class="component-specs-table">
+                <tbody>
+                  <tr><td><strong>Power Rating</strong></td><td>60W</td></tr>
+                  <tr><td><strong>Voltage</strong></td><td>230V AC (50 Hz Mains)</td></tr>
+                  <tr><td><strong>Socket</strong></td><td>E27 socket</td></tr>
+                  <tr><td><strong>Mains Interface</strong></td><td>2-Pin AC wall plug line</td></tr>
+                  <tr><td><strong>Isolation</strong></td><td>Galvanic air-gap isolation</td></tr>
+                  <tr><td><strong>Switching</strong></td><td>Direct SPDT contact relay</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
@@ -2661,7 +2738,7 @@
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t2">08</span>
-              <h2>Challenges Faced &amp; Solutions</h2>
+              <h2>Challenges Faced</h2>
             </div>
             <span class="block-tag">// TROUBLESHOOTING LOG</span>
           </div>
@@ -2672,184 +2749,52 @@
                 <span class="debug-icon">⚠️</span>
                 <h4>Problem 1 — Active-LOW Relay Inversion Logic</h4>
               </div>
-              <p class="challenge-text"><strong>Issue:</strong> Initially, writing <code>digitalWrite(RELAY_PIN, HIGH)</code> when receiving the "ON" command kept the relay OFF, while "OFF" turned it ON.<br><strong>Solution:</strong> Investigated the optocoupled Tongling relay schematic and identified its active-LOW design. Inverted the firmware logic so writing <code>LOW</code> (0V) completes the circuit to energize the relay, and writing <code>HIGH</code> shuts it off.</p>
+              <p class="challenge-text"><strong>Issue:</strong> Initially, writing <code>digitalWrite(RELAY_PIN, HIGH)</code> when receiving the "ON" MQTT payload kept the relay de-energized, while receiving "OFF" turned the bulb ON. The optocoupled relay circuit operates on inverted active-LOW switching logic rather than active-HIGH logic.</p>
             </div>
 
             <div class="debug-card bug-side">
               <div class="debug-head head-bug">
                 <span class="debug-icon">⚠️</span>
-                <h4>Problem 2 — MQTT Socket Timeout &amp; Wi-Fi Drops</h4>
+                <h4>Problem 2 — Inactive MQTT TCP Socket Timeout &amp; Drops</h4>
               </div>
-              <p class="challenge-text"><strong>Issue:</strong> If the ESP32 remained idle for several minutes without receiving dashboard toggle events, Adafruit IO occasionally closed the inactive TCP socket, causing the ESP32 to miss subsequent commands.<br><strong>Solution:</strong> Added a non-blocking <code>if (!mqtt.connected()) { connectMQTT(); }</code> check at the top of <code>loop()</code>, enabling the microcontroller to automatically reconnect within 5 seconds without requiring a manual hardware reset.</p>
+              <p class="challenge-text"><strong>Issue:</strong> During idle periods with no toggle clicks from the dashboard, the cloud MQTT broker closed the inactive TCP socket due to keep-alive expiry. The ESP32 missed subsequent toggle packets until power was manually cycled.</p>
             </div>
           </div>
+        </section>
 
-          <!-- 18-POINT REQUIREMENTS & SUBMISSION VERIFICATION CHECKLIST -->
-          <div class="audit-checklist-card">
-            <div class="audit-checklist-header">
-              <div class="sub-title-group">
-                <span class="sub-icon">✅</span>
-                <div>
-                  <h4 style="margin: 0; font-size: 1.05rem; color: #f8fafc;">Task 2 Submission &amp; Requirements Checklist</h4>
-                  <p style="margin: 2px 0 0 0; font-size: 0.78rem; color: #94a3b8;">Comprehensive verification of all required theoretical concepts, hardware evidence, and firmware components</p>
-                </div>
+        <!-- 9. SOLUTIONS IMPLEMENTED -->
+        <section class="content-block">
+          <div class="block-header">
+            <div class="title-with-num">
+              <span class="badge-num num-t2">09</span>
+              <h2>Solutions for Given Challenges</h2>
+            </div>
+            <span class="block-tag">// TECHNICAL FIXES &amp; HARDENING</span>
+          </div>
+
+          <div class="solutions-grid">
+            <div class="solution-card">
+              <div class="solution-head">
+                <span style="font-size: 1.25rem;">✅</span>
+                <h4>Solution 1 — Firmware Inverted Logic Calibration</h4>
               </div>
-              <span class="pill-badge pill-t2">18 / 18 COMPLETED</span>
+              <p class="challenge-text">Mapped the received <code>"ON"</code> payload to <code>digitalWrite(RELAY_PIN, LOW)</code> (driving 0V to complete the optocoupler circuit) and <code>"OFF"</code> to <code>digitalWrite(RELAY_PIN, HIGH)</code> (driving 3.3V to open the relay contact). This aligned firmware logic with the physical active-LOW relay module.</p>
             </div>
 
-            <div class="audit-checklist-grid">
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Purpose of Adafruit IO in an IoT system</strong>
-                  <p>Documented in Section 01 &amp; Section 02 as the central cloud broker eliminating local Wi-Fi boundaries.</p>
-                </div>
+            <div class="solution-card">
+              <div class="solution-head">
+                <span style="font-size: 1.25rem;">✅</span>
+                <h4>Solution 2 — Self-Healing Non-Blocking Auto-Reconnect Loop</h4>
               </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Basic concept of MQTT</strong>
-                  <p>Documented in Section 02 as a lightweight pub/sub binary protocol with minimal 2-byte header overhead.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>MQTT Publisher, Subscriber, and Broker identified</strong>
-                  <p>Identified in Section 02: Dashboard (Publisher), io.adafruit.com (Broker), and ESP32 (Subscriber).</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Role of an MQTT Topic / Feed</strong>
-                  <p>Documented in Section 02 as an addressable communication channel for directed event streams.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Hardware and software used</strong>
-                  <p>Cataloged in Section 05: ESP32 DevKit V1, Tongling 1-ch Relay, Arduino IDE, Adafruit IO, and Adafruit_MQTT library.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Adafruit IO account created and documented</strong>
-                  <p>Documented in Section 06 with account username <code>sudhiksha</code> and authenticated cloud credentials.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Dashboard and feed configuration documented</strong>
-                  <p>Documented at <code>sudhiksha/dashboards/bulb</code> with toggle block bound to feed <code>bulb</code>.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Communication flow between ESP32, MQTT, and Adafruit IO</strong>
-                  <p>Rendered in Section 02 as a directional 4-stage linear event flow diagram.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>MQTT topic/feed structure used</strong>
-                  <p>Documented in Section 03 &amp; 06: formatted as <code>sudhiksha/feeds/bulb</code>.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Complete ESP32 source code</strong>
-                  <p>Full C++ firmware sketch with active-LOW logic and auto-reconnect loop embedded in Section 06.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Explanation of important code sections</strong>
-                  <p>5-part code breakdown in Section 06 explaining setup, client config, callbacks, and GPIO driving.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Photographs of the hardware setup</strong>
-                  <p>3 verified lab photos in Section 03 showing test bench, Tongling relay module, and ESP32 DevKit board.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Screenshots of the Adafruit IO dashboard</strong>
-                  <p>Verified screenshot in Section 03 showing the live toggle dashboard under <code>sudhiksha/dashboards/bulb</code>.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>LED / Bulb control through cloud dashboard demonstrated</strong>
-                  <p>Documented in Section 03 with Active State (ON) and Inactive State (OFF) verification procedures.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Working demonstration video &amp; timeline</strong>
-                  <p>Showcased in Section 03 with video player frame, play trigger, and second-by-second operation timeline.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Problems encountered during MQTT/cloud setup</strong>
-                  <p>Detailed in Section 08: Active-LOW relay logic inversion and inactive TCP socket timeouts.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Solutions implemented</strong>
-                  <p>Documented in Section 08: Software logic inversion (LOW=ON) and auto-reconnect loop in <code>loop()</code>.</p>
-                </div>
-              </div>
-
-              <div class="audit-check-item verified">
-                <span class="check-icon-badge">☑</span>
-                <div class="check-text-group">
-                  <strong>Brief learning reflection &amp; files in repository</strong>
-                  <p>Personal student reflection in Section 07 and direct GitHub repository link in Section 08.</p>
-                </div>
-              </div>
+              <p class="challenge-text">Implemented an automated watchdog check at the start of <code>loop()</code>: <code>if (!mqtt.connected()) { connectMQTT(); }</code>. When a socket drop occurs, the ESP32 automatically logs the disconnection and reconnects to Adafruit IO within 5 seconds without requiring a manual hardware restart.</p>
             </div>
           </div>
 
           <div class="repo-banner-box">
             <div class="repo-text">
-              <h4>Source Repository</h4>
-              <p>All required project files, firmware, schematics, and assets are available on GitHub.</p>
+              <h4>Source repository</h4>
             </div>
-            <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer"
+            <a href="https://github.com/Night07Owl/Task2---Adafruit-IO-Dashboard-MQTT" target="_blank" rel="noopener noreferrer"
               class="btn-repo btn-t2">
               View on GitHub ↗
             </a>
