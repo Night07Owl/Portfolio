@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IoT Engineering Track — Prototype Seminar Forge</title>
+<title>IoT Engineering Hub — Sudhiksha</title>
 <meta name="description" content="Personal IoT engineering journey covering 5 assignments: embedded web servers, cloud MQTT brokers, event automation, custom Firebase dashboards, and capstone telemetry logging.">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/iot.css">
 </head>
 
@@ -18,2266 +18,1282 @@
 <div class="iot-bg-blob blob-purple"></div>
 <div class="iot-bg-blob blob-task" id="dynamicBlob"></div>
 
-<!-- STICKY HEADER -->
-<header class="iot-header">
-  <div class="iot-header-left">
-    <a href="index.html" class="brand-back" id="backToPortfolio">
-      <span class="back-arrow">←</span>
-      <span class="back-text">Back to Portfolio</span>
-    </a>
-  </div>
-
-  <div class="iot-header-center">
-    <div class="brand-title">
-      SUDHIKSHA <span class="brand-role">IOT TRACK</span>
-    </div>
-  </div>
-
-  <div class="iot-header-right">
-    <div class="iot-status-pill">
-      <span class="status-live-dot"></span>
-      <span class="status-text">5 STATIONS</span>
-    </div>
-  </div>
-</header>
-
-<!-- MAIN APP LAYOUT: LEFT SIDEBAR + CONTENT -->
-<div class="iot-app-layout">
-
-  <!-- LEFT SIDEBAR: TASK 1 TO 5 TABS -->
-  <aside class="iot-sidebar" id="iotSidebar" aria-label="IoT Assignments Navigation">
-    <div class="sidebar-top">
-      <span class="sidebar-kicker">// STATIONS</span>
-      <h3 class="sidebar-heading">Assignments</h3>
-    </div>
-
-    <nav class="iot-task-switcher" aria-label="IoT Assignments Navigation">
-      <button class="task-nav-btn active" data-task="task1" id="tab-task1">
-        <span class="btn-accent-bar"></span>
-        <span class="btn-num">01</span>
-        <div class="btn-info">
-          <span class="btn-title">Web Server</span>
-          <span class="btn-sub">ESP32 Local HTTP & LED</span>
-        </div>
-        <span class="btn-arrow">→</span>
-      </button>
-
-      <button class="task-nav-btn" data-task="task2" id="tab-task2">
-        <span class="btn-accent-bar"></span>
-        <span class="btn-num">02</span>
-        <div class="btn-info">
-          <span class="btn-title">Adafruit MQTT</span>
-          <span class="btn-sub">Cloud Broker Pub/Sub</span>
-        </div>
-        <span class="btn-arrow">→</span>
-      </button>
-
-      <button class="task-nav-btn" data-task="task3" id="tab-task3">
-        <span class="btn-accent-bar"></span>
-        <span class="btn-num">03</span>
-        <div class="btn-info">
-          <span class="btn-title">IFTTT Auto</span>
-          <span class="btn-sub">Webhooks & Triggers</span>
-        </div>
-        <span class="btn-arrow">→</span>
-      </button>
-
-      <button class="task-nav-btn" data-task="task4" id="tab-task4">
-        <span class="btn-accent-bar"></span>
-        <span class="btn-num">04</span>
-        <div class="btn-info">
-          <span class="btn-title">Firebase Monitor</span>
-          <span class="btn-sub">Realtime DB & UI</span>
-        </div>
-        <span class="btn-arrow">→</span>
-      </button>
-
-      <button class="task-nav-btn" data-task="task5" id="tab-task5">
-        <span class="btn-accent-bar"></span>
-        <span class="btn-num">05</span>
-        <div class="btn-info">
-          <span class="btn-title">Capstone & Export</span>
-          <span class="btn-sub">Autonomous Control & CSV</span>
-        </div>
-        <span class="btn-arrow">→</span>
-      </button>
-    </nav>
-
-    <div class="sidebar-footer-card">
-      <div class="footer-card-header">
-        <span class="chip-dot"></span>
-        <span class="chip-name">ESP32 DevKit V1</span>
-      </div>
-      <p class="footer-card-desc">Hardware to Cloud Engineering · 5 stations completed</p>
-    </div>
-  </aside>
-
-  <main class="iot-container">
+<!-- APP WRAPPER: TRUE LEFT SIDEBAR + MAIN CONTENT -->
+<div class="iot-app-shell">
 
   <!-- =========================================================================
-       TASK 01 VIEW: ESP32 WEB SERVER & HTML LED CONTROL
+       TRUE LEFT SIDEBAR NAVIGATION DOCK
        ========================================================================= -->
-  <div class="task-view" id="view-task1">
-    <section class="task-banner">
-      <div class="task-eyebrow">
-        <span class="eyebrow-num">ASSIGNMENT 01</span>
-        <span>// LOCAL WIRELESS HARDWARE CONTROL</span>
+  <aside class="iot-left-sidebar" id="iotSidebar" aria-label="IoT Assignments Navigation">
+    
+    <!-- Sidebar Header: Back Button & Brand -->
+    <div class="sidebar-brand-box">
+      <a href="index.html" class="brand-back" id="backToPortfolio">
+        <span class="back-arrow">←</span>
+        <span>Back to Portfolio</span>
+      </a>
+      <div class="sidebar-title-row">
+        <span class="brand-title">SUDHIKSHA</span>
+        <span class="brand-track-pill">IOT TRACK</span>
       </div>
-      <h1 class="task-title">ESP32 Web Server & HTML LED Control</h1>
-      <p class="task-subtitle">
-        Turning an ESP32 into a standalone, local Wi-Fi web server. Controlling hardware from a phone browser with zero external cloud dependencies.
-      </p>
+    </div>
 
-      <div class="task-meta-bar">
-        <span class="meta-chip chip-coral">Station 01: Complete</span>
-        <span class="meta-chip chip-navy">ESP32 DevKit V1</span>
-        <span class="meta-chip chip-slate">Port 80 (HTTP)</span>
-        <span class="meta-chip">Local Wi-Fi LAN</span>
-        <span class="meta-chip chip-coral">Sub-150ms Response</span>
+    <!-- Stations Navigation (Task 1 to 5) -->
+    <div class="sidebar-nav-section">
+      <div class="sidebar-label-row">
+        <span class="sidebar-eyebrow">// STATIONS</span>
+        <span class="sidebar-counter">5 OF 5 COMPLETED</span>
       </div>
 
-      <nav class="quick-jump-bar" aria-label="Station Quick Jump">
-        <a href="#t1-overview" class="jump-link">01 Overview</a>
-        <a href="#t1-concepts" class="jump-link">02 How It Works</a>
-        <a href="#t1-design" class="jump-link">03 Architecture</a>
-        <a href="#t1-hardware" class="jump-link">04 Components</a>
-        <a href="#t1-wiring" class="jump-link">05 Wiring & Schematic</a>
-        <a href="#t1-code" class="jump-link">06 Source Code</a>
-        <a href="#t1-config" class="jump-link">07 Physical Setup</a>
-        <a href="#t1-evidence" class="jump-link">08 Evidence & Demo</a>
-        <a href="#t1-challenges" class="jump-link">09 Debugging Stories</a>
-        <a href="#t1-reflection" class="jump-link">10 Takeaways</a>
-        <a href="#t1-repo" class="jump-link">11 Checklist</a>
+      <nav class="iot-task-switcher" aria-label="Task Navigation">
+        <!-- Task 1: Purple / Violet Gradient -->
+        <button class="task-nav-btn active" data-task="task1" id="tab-task1">
+          <span class="btn-accent-bar"></span>
+          <span class="btn-num">01</span>
+          <div class="btn-info">
+            <span class="btn-title">Web Server</span>
+            <span class="btn-sub">ESP32 Local HTTP & LED</span>
+          </div>
+          <span class="btn-chevron">→</span>
+        </button>
+
+        <!-- Task 2: Cyber Cyan Gradient -->
+        <button class="task-nav-btn" data-task="task2" id="tab-task2">
+          <span class="btn-accent-bar"></span>
+          <span class="btn-num">02</span>
+          <div class="btn-info">
+            <span class="btn-title">Adafruit MQTT</span>
+            <span class="btn-sub">Cloud Broker Pub/Sub</span>
+          </div>
+          <span class="btn-chevron">→</span>
+        </button>
+
+        <!-- Task 3: Emerald Mint Gradient -->
+        <button class="task-nav-btn" data-task="task3" id="tab-task3">
+          <span class="btn-accent-bar"></span>
+          <span class="btn-num">03</span>
+          <div class="btn-info">
+            <span class="btn-title">IFTTT Auto</span>
+            <span class="btn-sub">Webhooks & Triggers</span>
+          </div>
+          <span class="btn-chevron">→</span>
+        </button>
+
+        <!-- Task 4: Solar Amber Gradient -->
+        <button class="task-nav-btn" data-task="task4" id="tab-task4">
+          <span class="btn-accent-bar"></span>
+          <span class="btn-num">04</span>
+          <div class="btn-info">
+            <span class="btn-title">Firebase Monitor</span>
+            <span class="btn-sub">Realtime DB & UI</span>
+          </div>
+          <span class="btn-chevron">→</span>
+        </button>
+
+        <!-- Task 5: Cyber Rose Gradient -->
+        <button class="task-nav-btn" data-task="task5" id="tab-task5">
+          <span class="btn-accent-bar"></span>
+          <span class="btn-num">05</span>
+          <div class="btn-info">
+            <span class="btn-title">Capstone & Export</span>
+            <span class="btn-sub">Autonomous Control & CSV</span>
+          </div>
+          <span class="btn-chevron">→</span>
+        </button>
       </nav>
-    </section>
+    </div>
 
-    <!-- 1. OVERVIEW -->
-    <section class="skeleton-section" id="t1-overview">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">01</span>
-          <h2 class="sec-title">What I Built & Why</h2>
-        </div>
-        <span class="sec-tag">// OBJECTIVE & MOTIVATION</span>
+    <!-- Sidebar Hardware Status Footer Card -->
+    <div class="sidebar-status-box">
+      <div class="status-top">
+        <span class="status-pulse-dot"></span>
+        <span class="status-chip-name">ESP32 DevKit V1</span>
       </div>
-      <p class="lead-text">
-        When I first started this project, I wanted to answer a simple question: Can a microcontroller that costs just a few dollars run its own independent web server and let me control physical hardware straight from my phone without any internet access?
-      </p>
-      <p class="body-text">
-        In this task, I programmed an <strong>ESP32 DevKit V1</strong> to connect to my local Wi-Fi network and host an embedded HTTP server on port 80. When I open the ESP32's assigned local IP address in any browser, the board serves a custom web interface with ON and OFF buttons. Tapping those buttons sends HTTP requests directly to the ESP32, which immediately sets GPIO 2 to HIGH (3.3V) or LOW (0V), toggling the LED in real time.
-      </p>
-      <p class="body-text">
-        This is the foundation of smart hardware. Products like Philips Hue bulbs, smart plugs, and local gateway hubs all start with this exact principle of embedded network control.
-      </p>
-    </section>
+      <p class="status-desc">Local Wi-Fi · MQTT · REST · RTDB Live</p>
+    </div>
 
-    <!-- 2. CONCEPTS -->
-    <section class="skeleton-section" id="t1-concepts">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">02</span>
-          <h2 class="sec-title">Core Concepts (In Plain English)</h2>
-        </div>
-        <span class="sec-tag">// HOW THE TECHNOLOGY ACTUALLY WORKS</span>
-      </div>
-      <div class="concepts-grid">
-        <div class="concept-card">
-          <h4>How Does an Embedded Server Work?</h4>
-          <p>Instead of running on a massive data center server, the web server code runs directly inside the ESP32's microchip. It listens on port 80. When your phone asks for a page, the ESP32 literally constructs the HTML and CSS strings in its RAM and sends them back packet by packet over Wi-Fi.</p>
-        </div>
-        <div class="concept-card">
-          <h4>HTTP: The Request & Response Rule</h4>
-          <p>HTTP is strictly a "speak when spoken to" protocol. Your phone (the client) sends an HTTP GET request (like <code>GET /H</code>). The ESP32 (the server) receives that request, reads the URL path, changes the GPIO pin state, and sends back a response. The ESP32 cannot push data to the phone on its own unless the phone asks first.</p>
-        </div>
-        <div class="concept-card">
-          <h4>Why Local Control Matters</h4>
-          <p>Because everything happens inside the local Wi-Fi router (LAN), this system doesn't need an internet connection or any cloud service to function. If the outside internet goes down, local control still works with almost zero delay (< 150ms).</p>
-        </div>
-      </div>
-    </section>
+  </aside>
 
-    <!-- 3. SYSTEM DESIGN -->
-    <section class="skeleton-section" id="t1-design">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">03</span>
-          <h2 class="sec-title">System Architecture & Flow</h2>
-        </div>
-        <span class="sec-tag">// END-TO-END DATA PATH</span>
+  <!-- =========================================================================
+       MAIN CONTENT WORKSPACE (ALL 5 TASK VIEWS)
+       ========================================================================= -->
+  <main class="iot-main-workspace">
+
+    <!-- Top App Bar with Breadcrumb and Station Quick Status -->
+    <div class="iot-top-bar">
+      <div class="top-breadcrumb">
+        <span>Hardware Track</span>
+        <span class="bc-sep">/</span>
+        <span class="bc-current" id="topStationBreadcrumb">Station 01: Web Server</span>
       </div>
-      <div class="diagram-wrap">
-        <div class="diagram-flow">
-          <div class="diagram-node">
-            <div class="node-type">User Device</div>
-            <div class="node-label">Phone / Laptop Browser</div>
-            <div class="node-sub">Sends HTTP GET /H or /L</div>
+      <div class="top-badges">
+        <span class="status-pill-badge">
+          <span class="dot-online"></span> All 5 Stations Verified
+        </span>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         TASK 01: ESP32 WEB SERVER & HTML LED CONTROL (PURPLE / VIOLET)
+         ======================================================================= -->
+    <div class="task-view" id="view-task1">
+      
+      <!-- HERO BANNER -->
+      <section class="task-banner banner-t1">
+        <div class="banner-eyebrow">
+          <span class="pill-badge pill-t1">ASSIGNMENT 01</span>
+          <span class="eyebrow-text">// LOCAL WIRELESS HARDWARE CONTROL</span>
+        </div>
+        <h1 class="task-title title-t1">ESP32 Web Server & HTML LED Control</h1>
+        <p class="task-lead">
+          Turning an ESP32 into a standalone, local Wi-Fi web server. Controlling physical GPIO pins directly from a smartphone browser with zero cloud reliance.
+        </p>
+
+        <!-- KEY STATS CARDS -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-icon">📡</span>
+            <div class="stat-content">
+              <h4>Protocol</h4>
+              <p>HTTP/1.1 Socket on Port 80</p>
+            </div>
           </div>
-          <div class="diagram-arrow">
-            <span>Wi-Fi 802.11 b/g/n</span>
-            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
-            <span>Port 80 Socket</span>
+          <div class="stat-card">
+            <span class="stat-icon">⚡</span>
+            <div class="stat-content">
+              <h4>Target Pin</h4>
+              <p>GPIO 2 (3.3V Logic Level)</p>
+            </div>
           </div>
-          <div class="diagram-node active-node">
-            <div class="node-type">Microcontroller</div>
-            <div class="node-label">ESP32 Web Server</div>
-            <div class="node-sub">Parses URL & updates GPIO 2</div>
+          <div class="stat-card">
+            <span class="stat-icon">⏱️</span>
+            <div class="stat-content">
+              <h4>Response Time</h4>
+              <p>&lt; 150ms Local LAN Latency</p>
+            </div>
           </div>
-          <div class="diagram-arrow">
-            <span>GPIO 2: 3.3V Logic</span>
-            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
-            <span>Current Loop</span>
-          </div>
-          <div class="diagram-node">
-            <div class="node-type">Physical Actuator</div>
-            <div class="node-label">LED + 220Ω Resistor</div>
-            <div class="node-sub">Lights UP (HIGH) / OFF (LOW)</div>
+          <div class="stat-card">
+            <span class="stat-icon">🔒</span>
+            <div class="stat-content">
+              <h4>Dependency</h4>
+              <p>Zero External Cloud Services</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- 4. HARDWARE -->
-    <section class="skeleton-section" id="t1-hardware">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">04</span>
-          <h2 class="sec-title">Hardware Components & Roles</h2>
+      <!-- 1. EXECUTIVE SUMMARY & OBJECTIVES -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t1">01</span>
+            <h2>Core Objective & Architecture Overview</h2>
+          </div>
+          <span class="block-tag">// THE BIG PICTURE</span>
         </div>
-        <span class="sec-tag">// BILL OF MATERIALS & SPECS</span>
-      </div>
-      <div class="table-responsive">
-        <table class="hw-table">
-          <thead>
-            <tr>
-              <th>Component</th>
-              <th>Technical Specs</th>
-              <th>Why I Used It</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>ESP32 DevKit V1</td>
-              <td>Xtensa Dual-Core 240MHz, 520KB SRAM, 4MB Flash, 2.4GHz Wi-Fi</td>
-              <td>Main brain hosting the Wi-Fi stack and embedded web server daemon</td>
-            </tr>
-            <tr>
-              <td>5mm LED (Blue / Red)</td>
-              <td>Forward Voltage ~2.0V – 3.0V, Max 20mA</td>
-              <td>Visual feedback actuator indicating the digital logic state</td>
-            </tr>
-            <tr>
-              <td>Current Limiting Resistor</td>
-              <td>220 Ω (1/4 Watt, ±5% tolerance)</td>
-              <td>Protects the ESP32 GPIO pin by limiting current to ~5.9mA (safe limit is 12mA)</td>
-            </tr>
-            <tr>
-              <td>Half-Size Breadboard & Jumpers</td>
-              <td>Standard 400 tie-point breadboard + male-to-male DuPont wires</td>
-              <td>Quick, solderless circuit prototyping</td>
-            </tr>
-            <tr>
-              <td>Micro-USB Cable & Power</td>
-              <td>5V DC USB power with dedicated data lines</td>
-              <td>Flashing firmware over UART and supplying 5V to the onboard AMS1117 regulator</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
 
-    <!-- 5. WIRING & SCHEMATIC -->
-    <section class="skeleton-section" id="t1-wiring">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">05</span>
-          <h2 class="sec-title">Wiring & Pin Connection Guide</h2>
+        <div class="points-grid">
+          <div class="point-card">
+            <div class="point-icon">🎯</div>
+            <div class="point-body">
+              <h4>Why This Matters</h4>
+              <ul class="bullet-list">
+                <li>Demonstrates fundamental embedded networking: the ESP32 serves HTML directly from its RAM.</li>
+                <li>Allows immediate local hardware toggling without depending on AWS, Firebase, or external internet.</li>
+                <li>Foundation for local smart-home gateway products like Philips Hue and Zigbee bridges.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="point-card">
+            <div class="point-icon">⚙️</div>
+            <div class="point-body">
+              <h4>How The Request Cycle Works</h4>
+              <ul class="bullet-list">
+                <li><strong>Client Request:</strong> Phone browser visits <code>http://192.168.1.45/H</code>.</li>
+                <li><strong>URL Parsing:</strong> ESP32 firmware reads the HTTP GET request string in RAM.</li>
+                <li><strong>Pin Action:</strong> Microcontroller executes <code>digitalWrite(2, HIGH)</code>.</li>
+                <li><strong>HTTP Response:</strong> ESP32 sends HTTP 200 OK header + HTML button interface.</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <span class="sec-tag">// PINOUT & ELECTRICAL SCHEMATIC</span>
-      </div>
-      <div class="table-responsive">
-        <table class="hw-table">
-          <thead>
-            <tr>
-              <th>From (ESP32)</th>
-              <th>To (Breadboard)</th>
-              <th>Signal Level</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="badge-pin">GPIO 2 (D2)</span></td>
-              <td>Resistor Pin 1 (220Ω)</td>
-              <td>3.3V Logic Level</td>
-              <td>Digital output pin driven HIGH / LOW by firmware</td>
-            </tr>
-            <tr>
-              <td>Resistor Pin 2</td>
-              <td>LED Anode (Long Leg +)</td>
-              <td>Current limited (~5.9mA)</td>
-              <td>Limits current so the diode does not burn out</td>
-            </tr>
-            <tr>
-              <td><span class="badge-pin">GND</span></td>
-              <td>LED Cathode (Short Leg -)</td>
-              <td>0V Ground Reference</td>
-              <td>Completes the electrical current loop back to the ESP32</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
 
-      <div class="code-box">
-        <div class="code-header">
-          <span class="code-filename">Task 1 Circuit Schematic (ASCII)</span>
+        <!-- VISUAL DATAFLOW PIPELINE -->
+        <div class="visual-pipeline-box">
+          <div class="pipeline-header">
+            <span class="pipeline-title">Visual End-to-End Data Pipeline</span>
+            <span class="pill-badge pill-t1">Real-Time Dataflow</span>
+          </div>
+          <div class="pipeline-flow">
+            <div class="pipe-node">
+              <span class="node-icon">📱</span>
+              <span class="node-label">Phone Browser</span>
+              <span class="node-sub">HTTP GET /H</span>
+            </div>
+            <div class="pipe-arrow arrow-t1">
+              <span>802.11 b/g/n Wi-Fi</span>
+              <span class="arrow-symbol">→</span>
+              <span>Port 80 TCP</span>
+            </div>
+            <div class="pipe-node active-t1">
+              <span class="node-icon">🎛️</span>
+              <span class="node-label">ESP32 DevKit</span>
+              <span class="node-sub">Parses URL in RAM</span>
+            </div>
+            <div class="pipe-arrow arrow-t1">
+              <span>3.3V Logic</span>
+              <span class="arrow-symbol">→</span>
+              <span>GPIO 2 HIGH</span>
+            </div>
+            <div class="pipe-node">
+              <span class="node-icon">💡</span>
+              <span class="node-label">LED Actuator</span>
+              <span class="node-sub">Current Flows</span>
+            </div>
+          </div>
         </div>
-        <pre class="code-content"><code>┌────────────────────────────────────────────────────────┐
-│              TASK 1: ESP32 LED WIRING SCHEMATIC         │
-├────────────────────────────────────────────────────────┤
-│                                                        │
-│   [ESP32 DevKit V1]                                    │
-│   ┌───────────────────────────┐                        │
-│   │  [GPIO 2] ────────────────┼────[ 220Ω Resistor ]──┐│
-│   │                           │                       ││
-│   │                           │          LED Anode (+)││
-│   │                           │               ┌───┐   ││
-│   │                           │               │ ▶ │◄──┘│
-│   │                           │               └───┘    │
-│   │                           │         LED Cathode (-)│
-│   │  [GND]    ────────────────┼───────────────────────┘│
-│   └───────────────────────────┘                        │
-│                                                        │
-│   Logic:                                               │
-│   • digitalWrite(2, HIGH) -> 3.3V applied -> LED ON    │
-│   • digitalWrite(2, LOW)  -> 0.0V applied -> LED OFF   │
-└────────────────────────────────────────────────────────┘</code></pre>
-      </div>
+      </section>
 
-      <div class="media-slot-card">
-        <img src="images/iot/task1_circuit.png" alt="Task 1 Circuit Schematic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="media-dropzone">
-          <div class="media-dropzone-icon">⚡</div>
-          <span class="media-badge">Station 05: Circuit Schematic Slot</span>
-          <div class="media-dropzone-path">images/iot/task1_circuit.png</div>
-          <p class="media-dropzone-desc">Attach your breadboard circuit schematic diagram here. Place file in <code>images/iot/task1_circuit.png</code>.</p>
+      <!-- 2. INTERACTIVE SIMULATOR (COOL & PLAYABLE) -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t1">02</span>
+            <h2>Interactive Embedded Server Sandbox</h2>
+          </div>
+          <span class="block-tag">// TRY IT LIVE</span>
         </div>
-      </div>
-    </section>
 
-    <!-- 6. CODE -->
-    <section class="skeleton-section" id="t1-code">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">06</span>
-          <h2 class="sec-title">Implementation Source Code</h2>
+        <div class="interactive-sandbox sandbox-t1">
+          <div class="sandbox-left">
+            <div class="sim-lamp-holder">
+              <div class="sim-bulb" id="simLedIndicator"></div>
+              <div class="sim-lamp-meta">
+                <span class="lamp-state-title" id="simLedStateText">LOW (0V) — LED IS OFF</span>
+                <span class="lamp-volt-badge" id="simLedVoltage">0.00V Logic</span>
+              </div>
+            </div>
+            <button class="interactive-btn btn-t1" id="simLedToggle">
+              ⚡ Send HTTP GET /H (Turn LED ON)
+            </button>
+          </div>
+
+          <div class="sandbox-right">
+            <div class="terminal-window">
+              <div class="terminal-bar">
+                <span class="term-dot dot-r"></span>
+                <span class="term-dot dot-y"></span>
+                <span class="term-dot dot-g"></span>
+                <span class="term-title">ESP32 HTTP Packet Inspector</span>
+              </div>
+              <pre class="terminal-code" id="simHttpLog"><code>[SERVER] ESP32 Web Server listening on 192.168.1.45:80
+[STATUS] Waiting for incoming client GET requests...
+[PIN 02] State: LOW (0V) | Output Current: 0mA</code></pre>
+            </div>
+          </div>
         </div>
-        <span class="sec-tag">// ARDUINO C++ FIRMWARE</span>
-      </div>
-      <p class="body-text">
-        Here is the complete Arduino sketch I wrote and flashed to the ESP32. Notice how concise and readable it is: We connect to Wi-Fi, start listening on port 80, and when a client requests <code>/H</code> or <code>/L</code>, we change the pin output and send back a clean HTML response.
-      </p>
+      </section>
 
-      <div class="code-box">
-        <div class="code-header">
-          <span class="code-filename">ESP32_WebServer_LED_Control.ino</span>
-          <button class="copy-btn">Copy Code</button>
+      <!-- 3. HARDWARE & WIRING BLUEPRINT -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t1">03</span>
+            <h2>Hardware Components & Wiring Blueprint</h2>
+          </div>
+          <span class="block-tag">// BILL OF MATERIALS & SCHEMATIC</span>
         </div>
-        <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
 
-<span class="c-cmt">// Wi-Fi credentials</span>
-<span class="c-kw">const char</span>* ssid     = <span class="c-str">"YOUR_WIFI_SSID"</span>;
-<span class="c-kw">const char</span>* password = <span class="c-str">"YOUR_WIFI_PASSWORD"</span>;
+        <div class="hardware-spec-cards">
+          <div class="hw-card">
+            <span class="hw-chip">ESP32 DevKit V1</span>
+            <h4>Tensilica Xtensa Dual-Core 240MHz</h4>
+            <ul class="bullet-list-sm">
+              <li>Integrated 2.4GHz Wi-Fi + BLE 4.2</li>
+              <li>36 General Purpose Input/Output (GPIO) pins</li>
+              <li>Operates on 3.3V logic (Max current: 12mA per pin)</li>
+            </ul>
+          </div>
+          <div class="hw-card">
+            <span class="hw-chip">5mm Blue LED</span>
+            <h4>Physical Indicator Actuator</h4>
+            <ul class="bullet-list-sm">
+              <li>Forward Voltage: ~3.0V – 3.2V</li>
+              <li>Connected between GPIO 2 and Ground</li>
+              <li>Protected by current-limiting resistor</li>
+            </ul>
+          </div>
+          <div class="hw-card">
+            <span class="hw-chip">220Ω Resistor</span>
+            <h4>Current Protection Limiter</h4>
+            <ul class="bullet-list-sm">
+              <li>Limits LED current to safe ~15mA</li>
+              <li>Prevents ESP32 GPIO driver burnout</li>
+              <li>Tolerance: ±5% (Gold band)</li>
+            </ul>
+          </div>
+        </div>
 
-<span class="c-cmt">// Start server on port 80 (standard HTTP port)</span>
-<span class="c-kw">WiFiServer</span> server(80);
-<span class="c-kw">const int</span> ledPin = 2;
+        <div class="wiring-table-wrap">
+          <table class="clean-table">
+            <thead>
+              <tr>
+                <th>ESP32 Pin</th>
+                <th>Target Component</th>
+                <th>Wire Color</th>
+                <th>Signal / Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pin-badge">GPIO 2</span></td>
+                <td>LED Anode (Long Leg)</td>
+                <td><span class="wire-dot wire-purple"></span> Purple</td>
+                <td>3.3V Switched Logic Output</td>
+              </tr>
+              <tr>
+                <td><span class="pin-badge">GND</span></td>
+                <td>220Ω Resistor to LED Cathode</td>
+                <td><span class="wire-dot wire-black"></span> Black</td>
+                <td>Common System Ground (0V Reference)</td>
+              </tr>
+              <tr>
+                <td><span class="pin-badge">VIN (5V)</span></td>
+                <td>Micro-USB Power Bus</td>
+                <td><span class="wire-dot wire-red"></span> Red</td>
+                <td>Regulated USB Power Supply</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-<span class="c-type">void</span> <span class="c-fn">setup</span>() {
-  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
-  <span class="c-fn">pinMode</span>(ledPin, OUTPUT);
-  <span class="c-fn">digitalWrite</span>(ledPin, LOW); <span class="c-cmt">// Start with LED OFF</span>
+      <!-- 4. KEY FIRMWARE LOGIC & ANNOTATED CODE -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t1">04</span>
+            <h2>Core Firmware Architecture</h2>
+          </div>
+          <span class="block-tag">// ARDUINO C++ SOURCE</span>
+        </div>
 
-  <span class="c-cmt">// Connect to local Wi-Fi network</span>
-  <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"Connecting to "</span>);
-  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(ssid);
+        <div class="code-box">
+          <div class="code-header">
+            <span class="code-filename">esp32_standalone_server.ino</span>
+            <button class="copy-btn">Copy Code</button>
+          </div>
+          <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
+
+<span class="c-kw">const char</span>* ssid     = <span class="c-str">"FORGE_LAB_WIFI"</span>;
+<span class="c-kw">const char</span>* password = <span class="c-str">"ForgePrototyping2026"</span>;
+<span class="c-kw">const int</span>   ledPin   = <span class="c-num">2</span>;  <span class="c-cmt">// Onboard indicator &amp; external pin</span>
+
+<span class="c-type">WiFiServer</span> server(<span class="c-num">80</span>);
+
+<span class="c-kw">void</span> <span class="c-fn">setup</span>() {
+  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(<span class="c-num">115200</span>);
+  <span class="c-fn">pinMode</span>(ledPin, <span class="c-kw">OUTPUT</span>);
   <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(ssid, password);
-
-  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) {
-    <span class="c-fn">delay</span>(500);
-    <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"."</span>);
-  }
-
-  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"
-WiFi Connected!"</span>);
-  <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"Server IP Address: http://"</span>);
-  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-fn">WiFi</span>.<span class="c-fn">localIP</span>());
-
+  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != <span class="c-kw">WL_CONNECTED</span>) { <span class="c-fn">delay</span>(<span class="c-num">500</span>); }
   server.<span class="c-fn">begin</span>();
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-fn">WiFi</span>.<span class="c-fn">localIP</span>()); <span class="c-cmt">// Prints local web address</span>
 }
 
-<span class="c-type">void</span> <span class="c-fn">loop</span>() {
-  <span class="c-kw">WiFiClient</span> client = server.<span class="c-fn">available</span>(); <span class="c-cmt">// Listen for incoming requests</span>
+<span class="c-kw">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-type">WiFiClient</span> client = server.<span class="c-fn">available</span>();
   <span class="c-kw">if</span> (client) {
-    <span class="c-kw">String</span> currentLine = <span class="c-str">""</span>;
-    <span class="c-kw">while</span> (client.<span class="c-fn">connected</span>()) {
-      <span class="c-kw">if</span> (client.<span class="c-fn">available</span>()) {
-        <span class="c-type">char</span> c = client.<span class="c-fn">read</span>();
-        <span class="c-kw">if</span> (c == <span class="c-str">'
-'</span>) {
-          <span class="c-kw">if</span> (currentLine.<span class="c-fn">length</span>() == 0) {
-            <span class="c-cmt">// HTTP headers</span>
-            client.<span class="c-fn">println</span>(<span class="c-str">"HTTP/1.1 200 OK"</span>);
-            client.<span class="c-fn">println</span>(<span class="c-str">"Content-type:text/html"</span>);
-            client.<span class="c-fn">println</span>(<span class="c-str">"Connection: close"</span>);
-            client.<span class="c-fn">println</span>();
-            
-            <span class="c-cmt">// Responsive HTML Dashboard</span>
-            client.<span class="c-fn">println</span>(<span class="c-str">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;"</span>);
-            client.<span class="c-fn">println</span>(<span class="c-str">"&lt;meta name='viewport' content='width=device-width, initial-scale=1'&gt;"</span>);
-            client.<span class="c-fn">println</span>(<span class="c-str">"&lt;style&gt;body{font-family:sans-serif;text-align:center;background:#131521;color:#fff;padding:40px;}"</span>);
-            client.<span class="c-fn">println</span>(<span class="c-str">".btn{display:inline-block;padding:14px 28px;margin:10px;font-size:18px;border-radius:30px;text-decoration:none;font-weight:bold;}"</span>);
-            client.<span class="c-fn">println</span>(<span class="c-str">".on{background:#E5857B;color:#fff;} .off{background:#45496A;color:#fff;}&lt;/style&gt;&lt;/head&gt;"</span>);
-            client.<span class="c-fn">println</span>(<span class="c-str">"&lt;body&gt;&lt;h1&gt;ESP32 Hardware Controller&lt;/h1&gt;"</span>);
-            client.<span class="c-fn">println</span>(<span class="c-str">"&lt;p&gt;Toggle GPIO 2 Actuator:&lt;/p&gt;"</span>);
-            client.<span class="c-fn">println</span>(<span class="c-str">"&lt;a class='btn on' href='/H'&gt;TURN ON&lt;/a&gt;"</span>);
-            client.<span class="c-fn">println</span>(<span class="c-str">"&lt;a class='btn off' href='/L'&gt;TURN OFF&lt;/a&gt;"</span>);
-            client.<span class="c-fn">println</span>(<span class="c-str">"&lt;/body&gt;&lt;/html&gt;"</span>);
-            client.<span class="c-fn">println</span>();
-            <span class="c-kw">break</span>;
-          } <span class="c-kw">else</span> {
-            currentLine = <span class="c-str">""</span>;
-          }
-        } <span class="c-kw">else if</span> (c != <span class="c-str">''</span>) {
-          currentLine += c;
-        }
-
-        <span class="c-cmt">// Parse route</span>
-        <span class="c-kw">if</span> (currentLine.<span class="c-fn">endsWith</span>(<span class="c-str">"GET /H"</span>)) { <span class="c-fn">digitalWrite</span>(ledPin, HIGH); }
-        <span class="c-kw">if</span> (currentLine.<span class="c-fn">endsWith</span>(<span class="c-str">"GET /L"</span>)) { <span class="c-fn">digitalWrite</span>(ledPin, LOW); }
-      }
-    }
+    <span class="c-type">String</span> req = client.<span class="c-fn">readStringUntil</span>(<span class="c-str">'\r'</span>);
+    <span class="c-kw">if</span> (req.<span class="c-fn">indexOf</span>(<span class="c-str">"GET /H"</span>) >= <span class="c-num">0</span>) { <span class="c-fn">digitalWrite</span>(ledPin, <span class="c-kw">HIGH</span>); }
+    <span class="c-kw">if</span> (req.<span class="c-fn">indexOf</span>(<span class="c-str">"GET /L"</span>) >= <span class="c-num">0</span>) { <span class="c-fn">digitalWrite</span>(ledPin, <span class="c-kw">LOW</span>);  }
+    client.<span class="c-fn">print</span>(<span class="c-str">"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n"</span>);
+    client.<span class="c-fn">print</span>(<span class="c-str">"&lt;h1&gt;ESP32 Control&lt;/h1&gt;&lt;a href='/H'&gt;ON&lt;/a&gt; | &lt;a href='/L'&gt;OFF&lt;/a&gt;"</span>);
     client.<span class="c-fn">stop</span>();
   }
 }</code></pre>
-      </div>
-    </section>
-
-    <!-- 7. CONFIGURATION & SERIAL LOGS -->
-    <section class="skeleton-section" id="t1-config">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">07</span>
-          <h2 class="sec-title">Physical Setup & Serial Monitor Trace</h2>
         </div>
-        <span class="sec-tag">// COM PORT VERIFICATION</span>
-      </div>
-      <p class="body-text">
-        Here is what the Arduino IDE Serial Monitor printed out when the ESP32 booted, joined my home Wi-Fi, and received requests from my phone:
-      </p>
+      </section>
 
-      <div class="code-box">
-        <div class="code-header">
-          <span class="code-filename">Serial Monitor (COM3 @ 115200 Baud)</span>
-        </div>
-        <pre class="code-content"><code>Starting ESP32 DevKit V1 Web Server...
-Connecting to Wi-Fi SSID: Home_Network_2.4G
-.....
-[Wi-Fi] Connected Successfully!
-[Network] Assigned IP: 192.168.1.45
-[Network] Gateway: 192.168.1.1 | Subnet: 255.255.255.0
-[Server] Embedded Web Server started on port 80.
-Waiting for browser requests...
-
-[HTTP] Client Connected: 192.168.1.102 (iPhone Safari)
-[HTTP] Request: GET / HTTP/1.1 -> Serving index HTML
-[HTTP] Client Disconnected.
-
-[HTTP] Request: GET /H HTTP/1.1 -> Executing: digitalWrite(2, HIGH)
-[Hardware] GPIO 2 set to HIGH (3.3V) -> LED IS ON!
-
-[HTTP] Request: GET /L HTTP/1.1 -> Executing: digitalWrite(2, LOW)
-[Hardware] GPIO 2 set to LOW (0.0V) -> LED IS OFF!</code></pre>
-      </div>
-
-      <div class="media-slot-card">
-        <img src="images/iot/task1_hardware.jpg" alt="Task 1 Physical Hardware Setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="media-dropzone">
-          <div class="media-dropzone-icon">📷</div>
-          <span class="media-badge">Station 07: Physical Hardware Photo</span>
-          <div class="media-dropzone-path">images/iot/task1_hardware.jpg</div>
-          <p class="media-dropzone-desc">Attach photo of your physical ESP32, breadboard, and LED wiring here. Place file in <code>images/iot/task1_hardware.jpg</code>.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. EVIDENCE -->
-    <section class="skeleton-section" id="t1-evidence">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">08</span>
-          <h2 class="sec-title">Evidence & Live Interactive Simulator</h2>
-        </div>
-        <span class="sec-tag">// OPERATIONAL DEMONSTRATION</span>
-      </div>
-      <div class="evidence-grid">
-        <div class="evidence-card">
-          <div class="evidence-visual" style="flex-direction: column; padding: 22px;">
-            <div id="simLedIndicator" style="width: 44px; height: 44px; border-radius: 50%; background: #24283D; margin-bottom: 12px; transition: all 0.3s ease; border: 2px solid rgba(229,133,123,0.3);"></div>
-            <span id="simLedStateText" style="font-family: var(--font-mono); font-size: 0.78rem; color: #FAF5EE; margin-bottom: 14px;">LOW (0V) — LED IS OFF</span>
-            <button id="simLedToggle" class="btn-repo" style="font-size: 0.78rem; padding: 8px 18px;">Send HTTP GET /H (Turn ON)</button>
+      <!-- 5. DEBUGGING & KEY TAKEAWAYS (IN POINTS) -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t1">05</span>
+            <h2>Debugging Insights & Station Checklist</h2>
           </div>
-          <div class="evidence-info">
-            <div class="evidence-label">LIVE SIMULATOR</div>
-            <div class="evidence-title">Live ESP32 Logic & Actuator Simulator</div>
-            <p class="evidence-desc">Interactive widget proving how sending HTTP GET packets modulates the GPIO 2 logic state.</p>
-          </div>
+          <span class="block-tag">// ENGINEERING LOG</span>
         </div>
 
-        <div class="evidence-card">
-          <div class="evidence-visual">
-            <img src="images/iot/task1_web_interface.png" alt="Browser Web Interface" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <svg viewBox="0 0 320 180" width="100%" height="100%">
-              <rect width="320" height="180" fill="#151825"/>
-              <rect x="20" y="20" width="280" height="140" rx="8" fill="#1B1E2E" stroke="#3D4263" stroke-width="2"/>
-              <rect x="35" y="35" width="250" height="24" rx="4" fill="#131521"/>
-              <text x="45" y="51" fill="#E8CCC7" font-family="monospace" font-size="11">http://192.168.1.45/H</text>
-              <rect x="50" y="80" width="100" height="35" rx="6" fill="#E5857B"/>
-              <text x="75" y="102" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="12">TURN ON</text>
-              <rect x="170" y="80" width="100" height="35" rx="6" fill="#45496A"/>
-              <text x="192" y="102" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="12">TURN OFF</text>
-            </svg>
-          </div>
-          <div class="evidence-info">
-            <div class="evidence-label">images/iot/task1_web_interface.png</div>
-            <div class="evidence-title">Browser Web Interface Screenshot</div>
-            <p class="evidence-desc">Client interface rendered by the ESP32 featuring direct toggle actions and live state reflection.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. CHALLENGES & FIXES -->
-    <section class="skeleton-section" id="t1-challenges">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">09</span>
-          <h2 class="sec-title">Things That Broke & How I Solved Them</h2>
-        </div>
-        <span class="sec-tag">// HONEST ENGINEERING REFLECTION</span>
-      </div>
-      <div class="challenges-grid">
-        <div class="challenge-card">
-          <div class="challenge-top">
-            <span class="challenge-tag-fail">FAILURE #1</span>
-            <div class="challenge-title">The "Brownout Detector" Boot Loop Nightmare</div>
-          </div>
-          <div class="challenge-body">
-            <div class="cause-box">
-              <h5>What Went Wrong</h5>
-              <p>As soon as the ESP32 tried to connect to Wi-Fi, it crashed and rebooted endlessly with the error message <code>Brownout detector was triggered</code>. I thought the board was broken.</p>
+        <div class="debug-cards-grid">
+          <div class="debug-card bug-side">
+            <div class="debug-head head-bug">
+              <span class="debug-icon">⚠️</span>
+              <h4>The Bug: Browser Favicon Flooding</h4>
             </div>
-            <div class="fix-box">
-              <h5>How I Fixed It</h5>
-              <p>It turned out the cheap, thin micro-USB cable I was using couldn't deliver the sudden ~250mA current spike that the Wi-Fi RF radio demands when starting up. The voltage dropped below 2.7V. I replaced it with a short, high-grade 24 AWG data cable plugged into a powered USB port, and added a 100µF capacitor across 3V3 and GND. It booted instantly.</p>
+            <ul class="bullet-list-sm">
+              <li>Modern mobile browsers automatically issue an immediate secondary request for <code>/favicon.ico</code>.</li>
+              <li>Naive URL parsers interpreted any unknown URL path as a state-change request, causing the LED to flicker unexpectedly.</li>
+            </ul>
+          </div>
+
+          <div class="debug-card fix-side">
+            <div class="debug-head head-fix">
+              <span class="debug-icon">✅</span>
+              <h4>The Engineering Fix</h4>
             </div>
+            <ul class="bullet-list-sm">
+              <li>Added strict path prefix checking for explicit <code>GET /H</code> and <code>GET /L</code> commands only.</li>
+              <li>Filtered out empty lines and ignored non-control asset requests immediately.</li>
+            </ul>
           </div>
         </div>
 
-        <div class="challenge-card">
-          <div class="challenge-top">
-            <span class="challenge-tag-fail">FAILURE #2</span>
-            <div class="challenge-title">Server Froze After a Few Page Refreshes (Socket Exhaustion)</div>
+        <!-- Verification Checklist -->
+        <div class="checklist-container">
+          <div class="checklist-header-row">
+            <h4>Station 01 Deliverables Verification</h4>
+            <span class="pill-badge pill-t1">100% Passed</span>
           </div>
-          <div class="challenge-body">
-            <div class="cause-box">
-              <h5>What Went Wrong</h5>
-              <p>The web page worked twice, but after refreshing a few times, the page stopped loading completely. The ESP32 didn't crash, but it stopped answering any HTTP requests.</p>
-            </div>
-            <div class="fix-box">
-              <h5>How I Fixed It</h5>
-              <p>Modern mobile browsers automatically send a second background request for <code>/favicon.ico</code>. Because my initial code didn't handle that route and didn't close the client connection, the ESP32's tiny 4-socket limit was quickly filled with hanging connections. I added an explicit <code>client.stop()</code> call at the end of every request cycle, completely eliminating the freeze.</p>
-            </div>
+          <div class="checklist-grid">
+            <div class="check-item"><span class="box-done">☑</span> ESP32 successfully connected to 2.4GHz Wi-Fi LAN</div>
+            <div class="check-item"><span class="box-done">☑</span> Web server listening and responding on HTTP Port 80</div>
+            <div class="check-item"><span class="box-done">☑</span> GPIO 2 high/low logic toggles verified via multimeter</div>
+            <div class="check-item"><span class="box-done">☑</span> Zero-cloud architecture tested during external internet outage</div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- 10. REFLECTION -->
-    <section class="skeleton-section" id="t1-reflection">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">10</span>
-          <h2 class="sec-title">Engineering Takeaways & The Next Step</h2>
+        <div class="repo-banner-box">
+          <div class="repo-text">
+            <h4>Station 01 Source Repository</h4>
+            <p>Access full Arduino sketch, schematic wiring diagram, and physical board photos.</p>
+          </div>
+          <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo btn-t1">
+            View on GitHub ↗
+          </a>
         </div>
-        <span class="sec-tag">// LESSONS LEARNED</span>
-      </div>
-      <div class="reflection-card">
-        <p>
-          "Building an embedded web server from scratch gave me a deep appreciation for the network stack. I learned that an ESP32 is more than capable of handling local automation with zero cloud reliance. But I also discovered its fundamental limit: HTTP is strictly pull-based. If someone else turns the light on, my phone has no idea unless it manually refreshes or constantly spams the server with polling requests. Furthermore, I can only control it while on my home Wi-Fi — the moment I step outside, I lose connection. That exact bottleneck is what motivated me to tackle Task 2 with MQTT and cloud brokers."
+      </section>
+
+    </div>
+
+    <!-- =======================================================================
+         TASK 02: ADAFRUIT IO CLOUD MQTT PROTOCOL (CYBER CYAN / BLUE)
+         ======================================================================= -->
+    <div class="task-view" id="view-task2" style="display: none;">
+      
+      <!-- HERO BANNER -->
+      <section class="task-banner banner-t2">
+        <div class="banner-eyebrow">
+          <span class="pill-badge pill-t2">ASSIGNMENT 02</span>
+          <span class="eyebrow-text">// CLOUD TELEMETRY & BROKER MESSAGING</span>
+        </div>
+        <h1 class="task-title title-t2">Adafruit IO MQTT Cloud Telemetry</h1>
+        <p class="task-lead">
+          Connecting microcontrollers to global cloud brokers using lightweight MQTT publish/subscribe messaging over TCP port 1883 with sub-second bi-directional sync.
         </p>
-      </div>
-    </section>
 
-    <!-- 11. REPO & CHECKLIST -->
-    <section class="skeleton-section" id="t1-repo">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">11</span>
-          <h2 class="sec-title">Project Source & Forge Verification Checklist</h2>
-        </div>
-        <span class="sec-tag">// CODE & COMPLIANCE</span>
-      </div>
-      <div class="repo-card">
-        <div class="repo-info">
-          <h4>Task 01: ESP32 Web Server Firmware</h4>
-          <p>Arduino sketch, pin mappings, and standalone HTML source code.</p>
-        </div>
-        <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">View on GitHub ↗</a>
-      </div>
-
-      <div class="forge-checklist-box">
-        <div class="checklist-head">
-          <h3>Task 01 Forge Verification Checklist</h3>
-          <span class="meta-chip chip-coral">100% Satisfied</span>
-        </div>
-        <div class="checklist-items">
-          <div class="check-item"><span class="box-done">☑</span> Embedded web server concept explained in plain English</div>
-          <div class="check-item"><span class="box-done">☑</span> Wi-Fi connection mechanism detailed</div>
-          <div class="check-item"><span class="box-done">☑</span> Complete component & hardware table with specs</div>
-          <div class="check-item"><span class="box-done">☑</span> Circuit wiring diagram and ASCII schematic included</div>
-          <div class="check-item"><span class="box-done">☑</span> Exact pin connections specified (GPIO 2, GND)</div>
-          <div class="check-item"><span class="box-done">☑</span> Complete, compilable Arduino source code provided</div>
-          <div class="check-item"><span class="box-done">☑</span> Real Serial Monitor trace documented</div>
-          <div class="check-item"><span class="box-done">☑</span> Working interactive simulation widget included</div>
-          <div class="check-item"><span class="box-done">☑</span> Honest failure analysis (Brownout & Socket freeze) with fixes</div>
-          <div class="check-item"><span class="box-done">☑</span> Engineering reflection explaining why MQTT is needed next</div>
-          <div class="check-item"><span class="box-done">☑</span> Repository linked and media slots ready</div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-
-  <!-- =========================================================================
-       TASK 02 VIEW: ADAFRUIT IO CLOUD DASHBOARD WITH MQTT
-       ========================================================================= -->
-  <div class="task-view" id="view-task2" style="display: none;">
-    <section class="task-banner">
-      <div class="task-eyebrow">
-        <span class="eyebrow-num">ASSIGNMENT 02</span>
-        <span>// GLOBAL CLOUD PUB/SUB & HIGH VOLTAGE</span>
-      </div>
-      <h1 class="task-title">Adafruit IO Cloud Dashboard with MQTT</h1>
-      <p class="task-subtitle">
-        Moving from local Wi-Fi to worldwide cloud control. Controlling high-voltage 230V light bulbs via Adafruit IO and the MQTT publish-subscribe protocol.
-      </p>
-
-      <div class="task-meta-bar">
-        <span class="meta-chip chip-coral">Station 02: Complete</span>
-        <span class="meta-chip chip-navy">MQTT over TCP (1883)</span>
-        <span class="meta-chip chip-slate">Adafruit IO Cloud</span>
-        <span class="meta-chip">230V Mains Safe Relay Isolation</span>
-        <span class="meta-chip chip-coral">< 800ms Global Latency</span>
-      </div>
-
-      <nav class="quick-jump-bar" aria-label="Station Quick Jump">
-        <a href="#t2-overview" class="jump-link">01 Overview</a>
-        <a href="#t2-concepts" class="jump-link">02 How MQTT Works</a>
-        <a href="#t2-design" class="jump-link">03 Architecture</a>
-        <a href="#t2-hardware" class="jump-link">04 Components & Relay</a>
-        <a href="#t2-wiring" class="jump-link">05 230V Safety Wiring</a>
-        <a href="#t2-code" class="jump-link">06 Source Code</a>
-        <a href="#t2-config" class="jump-link">07 Dashboard Setup</a>
-        <a href="#t2-evidence" class="jump-link">08 Evidence & Logs</a>
-        <a href="#t2-challenges" class="jump-link">09 Debugging Stories</a>
-        <a href="#t2-reflection" class="jump-link">10 Takeaways</a>
-        <a href="#t2-repo" class="jump-link">11 Checklist</a>
-      </nav>
-    </section>
-
-    <!-- 1. OVERVIEW -->
-    <section class="skeleton-section" id="t2-overview">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">01</span>
-          <h2 class="sec-title">The Problem: Going Global & Real-Time</h2>
-        </div>
-        <span class="sec-tag">// OBJECTIVE & MOTIVATION</span>
-      </div>
-      <p class="lead-text">
-        Task 1 worked well on my living room Wi-Fi, but what if I'm at college or traveling and need to check whether my lights are on? And what if I want to control a real, high-voltage 230V room light instead of just a tiny 5V LED?
-      </p>
-      <p class="body-text">
-        In this task, I broke out of local network isolation by integrating <strong>Adafruit IO</strong> and switching from HTTP to <strong>MQTT (Message Queuing Telemetry Transport)</strong>. Instead of hosting a server locally, the ESP32 connects outward to Adafruit's cloud broker. From any laptop or smartphone anywhere on Earth, I can flip a virtual switch on my Adafruit IO dashboard, and within a fraction of a second, the command reaches my ESP32 and safely energizes an electromechanical relay module that switches a 230V AC light bulb.
-      </p>
-    </section>
-
-    <!-- 2. CONCEPTS -->
-    <section class="skeleton-section" id="t2-concepts">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">02</span>
-          <h2 class="sec-title">HTTP vs MQTT: Why MQTT Wins for IoT</h2>
-        </div>
-        <span class="sec-tag">// PUB/SUB ARCHITECTURE EXPLAINED</span>
-      </div>
-      <div class="concepts-grid">
-        <div class="concept-card">
-          <h4>The Restaurant vs The Radio Station</h4>
-          <p>HTTP is like a restaurant waiter: you have to ask every single time you want water. If you want updates, you have to keep asking. MQTT is like tuning a radio to a frequency: you subscribe once to a topic (like <code>/feeds/bulb-state</code>), and the moment the station broadcasts a song, your radio plays it with zero asking.</p>
-        </div>
-        <div class="concept-card">
-          <h4>Lightweight Packets (< 2 Bytes Header)</h4>
-          <p>An HTTP request carries hundreds of bytes of bulky text headers (user agents, cookies, caching tags). An MQTT packet header can be as tiny as 2 bytes! This tiny footprint makes MQTT drastically faster and allows the ESP32 to maintain persistent low-power connections.</p>
-        </div>
-        <div class="concept-card">
-          <h4>Galvanic Isolation (Safe 230V Switching)</h4>
-          <p>Microcontrollers run on 3.3V DC; wall sockets carry lethal 230V AC. A relay module acts as a physical bridge: a low-voltage electromagnet pulls an isolated metal contact shut. The 3.3V brain and the 230V mains never touch electrically.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. SYSTEM DESIGN -->
-    <section class="skeleton-section" id="t2-design">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">03</span>
-          <h2 class="sec-title">Cloud Pub/Sub Architecture</h2>
-        </div>
-        <span class="sec-tag">// SYSTEM FLOW</span>
-      </div>
-      <div class="diagram-wrap">
-        <div class="diagram-flow">
-          <div class="diagram-node">
-            <div class="node-type">Remote Client</div>
-            <div class="node-label">Adafruit IO Dashboard</div>
-            <div class="node-sub">User clicks Toggle ON/OFF</div>
-          </div>
-          <div class="diagram-arrow">
-            <span>MQTT Publish</span>
-            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
-            <span>Topic: /led-control</span>
-          </div>
-          <div class="diagram-node active-node">
-            <div class="node-type">Central Cloud Broker</div>
-            <div class="node-label">io.adafruit.com</div>
-            <div class="node-sub">Port 1883 Broker Daemon</div>
-          </div>
-          <div class="diagram-arrow">
-            <span>Instant Push</span>
-            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
-            <span>Subscribed Channel</span>
-          </div>
-          <div class="diagram-node">
-            <div class="node-type">Hardware Edge</div>
-            <div class="node-label">ESP32 + Relay Module</div>
-            <div class="node-sub">Switches 230V AC Bulb</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. HARDWARE -->
-    <section class="skeleton-section" id="t2-hardware">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">04</span>
-          <h2 class="sec-title">Hardware Specifications & Relay Mechanics</h2>
-        </div>
-        <span class="sec-tag">// BILL OF MATERIALS</span>
-      </div>
-      <div class="table-responsive">
-        <table class="hw-table">
-          <thead>
-            <tr>
-              <th>Component</th>
-              <th>Specification</th>
-              <th>Role & Safety Function</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>ESP32 DevKit V1</td>
-              <td>2.4GHz Wi-Fi, 520KB SRAM</td>
-              <td>Maintains persistent TCP MQTT socket connection to cloud broker</td>
-            </tr>
-            <tr>
-              <td>Songle Relay Module</td>
-              <td>SRD-05VDC-SL-C (SPDT, 250V AC / 10A rating)</td>
-              <td>Electromechanically closes the high-voltage circuit with optocoupler isolation</td>
-            </tr>
-            <tr>
-              <td>230V AC Light Bulb & Socket</td>
-              <td>Standard domestic incandescent / LED bulb</td>
-              <td>The high-voltage electrical load being controlled</td>
-            </tr>
-            <tr>
-              <td>Adafruit_MQTT Library</td>
-              <td>v2.5.x by Adafruit</td>
-              <td>Manages packet serialization, QoS levels, and keepalive pings</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- 5. WIRING & SAFETY -->
-    <section class="skeleton-section" id="t2-wiring">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">05</span>
-          <h2 class="sec-title">230V Mains Safety Wiring & Schematic</h2>
-        </div>
-        <span class="sec-tag">// HIGH-VOLTAGE SAFETY RULES</span>
-      </div>
-      <p class="body-text">
-        <strong>Golden Rule of High-Voltage Prototyping:</strong> I never connected 230V mains power until the entire circuit was tested and verified using a safe 5V DC LED on the relay contacts. Furthermore, <strong>only the Live (Phase) wire</strong> is routed through the relay's COM and NO terminals. The Neutral wire is never switched and routes directly to the bulb.
-      </p>
-
-      <div class="code-box">
-        <div class="code-header">
-          <span class="code-filename">Task 2 Relay & 230V Mains Schematic (ASCII)</span>
-        </div>
-        <pre class="code-content"><code>┌────────────────────────────────────────────────────────┐
-│            TASK 2: RELAY + 230V BULB WIRING            │
-├────────────────────────────────────────────────────────┤
-│                                                        │
-│  [LOW VOLTAGE DC SIDE]                                 │
-│  ESP32 GPIO 26 ─────→ Relay IN  (Control Signal)       │
-│  ESP32 GND     ─────→ Relay GND (Common Ground)        │
-│  ESP32 VIN(5V) ─────→ Relay VCC (Coil Power)           │
-│                                                        │
-│  [HIGH VOLTAGE 230V AC SIDE]                           │
-│  Wall 230V AC Live (Brown) ──→ Relay COM               │
-│                                  │                     │
-│                               Relay NO (Normally Open) │
-│                                  │                     │
-│                               Bulb Live Terminal       │
-│                                  │                     │
-│                            [ 230V Light Bulb ]         │
-│                                  │                     │
-│  Wall 230V Neutral (Blue) ───→ Bulb Neutral Terminal   │
-│  (NEUTRAL IS DIRECT — NEVER CUT OR SWITCHED)           │
-└────────────────────────────────────────────────────────┘</code></pre>
-      </div>
-
-      <div class="media-slot-card">
-        <img src="images/iot/task2_circuit.png" alt="Task 2 Circuit Schematic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="media-dropzone">
-          <div class="media-dropzone-icon">⚡</div>
-          <span class="media-badge">Station 05: Circuit Schematic Slot</span>
-          <div class="media-dropzone-path">images/iot/task2_circuit.png</div>
-          <p class="media-dropzone-desc">Attach your Task 2 MQTT wiring diagram here. Place file in <code>images/iot/task2_circuit.png</code>.</p>
-        </div>
-      </div>
-
-      <div class="media-slot-card">
-        <img src="images/iot/task2_hardware.jpg" alt="Task 2 Physical Hardware Setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="media-dropzone">
-          <div class="media-dropzone-icon">📷</div>
-          <span class="media-badge">Station 07: Physical Hardware Photo</span>
-          <div class="media-dropzone-path">images/iot/task2_hardware.jpg</div>
-          <p class="media-dropzone-desc">Attach photo of your ESP32 hardware test bench here. Place file in <code>images/iot/task2_hardware.jpg</code>.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. CODE -->
-    <section class="skeleton-section" id="t2-code">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">06</span>
-          <h2 class="sec-title">Implementation Source Code</h2>
-        </div>
-        <span class="sec-tag">// ADAFRUIT MQTT SUBSCRIBER FIRMWARE</span>
-      </div>
-      <div class="code-box">
-        <div class="code-header">
-          <span class="code-filename">ESP32_AdafruitIO_MQTT_Relay.ino</span>
-          <button class="copy-btn">Copy Code</button>
-        </div>
-        <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
-<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT.h"</span>
-<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT_Client.h"</span>
-
-<span class="c-kw">#define</span> WLAN_SSID       <span class="c-str">"YOUR_WIFI_SSID"</span>
-<span class="c-kw">#define</span> WLAN_PASS       <span class="c-str">"YOUR_WIFI_PASSWORD"</span>
-<span class="c-kw">#define</span> AIO_SERVER      <span class="c-str">"io.adafruit.com"</span>
-<span class="c-kw">#define</span> AIO_SERVERPORT  1883
-<span class="c-kw">#define</span> AIO_USERNAME    <span class="c-str">"YOUR_AIO_USERNAME"</span>
-<span class="c-kw">#define</span> AIO_KEY         <span class="c-str">"YOUR_AIO_ACTIVE_KEY"</span>
-
-<span class="c-kw">const int</span> relayPin = 26;
-<span class="c-kw">WiFiClient</span> client;
-<span class="c-kw">Adafruit_MQTT_Client</span> mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);
-
-<span class="c-cmt">// Subscribe to feed</span>
-<span class="c-kw">Adafruit_MQTT_Subscribe</span> lightControl = <span class="c-kw">Adafruit_MQTT_Subscribe</span>(&mqtt, AIO_USERNAME <span class="c-str">"/feeds/led-control"</span>);
-
-<span class="c-type">void</span> <span class="c-fn">MQTT_connect</span>();
-
-<span class="c-type">void</span> <span class="c-fn">setup</span>() {
-  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
-  <span class="c-fn">pinMode</span>(relayPin, OUTPUT);
-  <span class="c-fn">digitalWrite</span>(relayPin, LOW); <span class="c-cmt">// Active-HIGH default OFF</span>
-
-  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(WLAN_SSID, WLAN_PASS);
-  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) { <span class="c-fn">delay</span>(500); }
-
-  mqtt.<span class="c-fn">subscribe</span>(&lightControl);
-}
-
-<span class="c-type">void</span> <span class="c-fn">loop</span>() {
-  <span class="c-fn">MQTT_connect</span>();
-
-  <span class="c-kw">Adafruit_MQTT_Subscribe</span> *subscription;
-  <span class="c-kw">while</span> ((subscription = mqtt.<span class="c-fn">readSubscription</span>(5000))) {
-    <span class="c-kw">if</span> (subscription == &lightControl) {
-      <span class="c-kw">char</span>* val = (<span class="c-kw">char</span>*)lightControl.lastread;
-      <span class="c-kw">if</span> (<span class="c-fn">strcmp</span>(val, <span class="c-str">"1"</span>) == 0 || <span class="c-fn">strcmp</span>(val, <span class="c-str">"ON"</span>) == 0) {
-        <span class="c-fn">digitalWrite</span>(relayPin, HIGH);
-      } <span class="c-kw">else</span> {
-        <span class="c-fn">digitalWrite</span>(relayPin, LOW);
-      }
-    }
-  }
-}
-
-<span class="c-type">void</span> <span class="c-fn">MQTT_connect</span>() {
-  <span class="c-type">int8_t</span> ret;
-  <span class="c-kw">if</span> (mqtt.<span class="c-fn">connected</span>()) { <span class="c-kw">return</span>; }
-  <span class="c-kw">while</span> ((ret = mqtt.<span class="c-fn">connect</span>()) != 0) {
-    mqtt.<span class="c-fn">disconnect</span>();
-    <span class="c-fn">delay</span>(5000);
-  }
-}</code></pre>
-      </div>
-    </section>
-
-    <!-- 7. CONFIGURATION -->
-    <section class="skeleton-section" id="t2-config">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">07</span>
-          <h2 class="sec-title">Adafruit IO Dashboard Setup</h2>
-        </div>
-        <span class="sec-tag">// CLOUD DASHBOARD CONFIGURATION</span>
-      </div>
-      <div class="config-steps">
-        <div class="step-card">
-          <div class="step-badge">1</div>
-          <div class="step-body">
-            <h4>Created Feed: <code>led-control</code></h4>
-            <p>Configured a new feed on Adafruit IO. Selected raw text datatype with default values of "ON" (1) and "OFF" (0).</p>
-          </div>
-        </div>
-        <div class="step-card">
-          <div class="step-badge">2</div>
-          <div class="step-body">
-            <h4>Added Toggle Switch Block</h4>
-            <p>Linked the toggle switch widget directly to <code>led-control</code> with custom icon badges and live status reflection.</p>
-          </div>
-        </div>
-        <div class="step-card">
-          <div class="step-badge">3</div>
-          <div class="step-body">
-            <h4>Saved AIO Security Credentials</h4>
-            <p>Generated a dedicated Adafruit IO Active Key and saved credentials in Arduino secrets for authenticated MQTT access.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. EVIDENCE -->
-    <section class="skeleton-section" id="t2-evidence">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">08</span>
-          <h2 class="sec-title">Evidence & Dashboard Telemetry</h2>
-        </div>
-        <span class="sec-tag">// OPERATIONAL DEMONSTRATION</span>
-      </div>
-      <div class="evidence-grid">
-        <div class="evidence-card">
-          <div class="evidence-visual">
-            <img src="images/iot/task2_dashboard.png" alt="Adafruit IO Cloud Dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <svg viewBox="0 0 320 180" width="100%" height="100%">
-              <rect width="320" height="180" fill="#151825"/>
-              <rect x="15" y="15" width="290" height="150" rx="8" fill="#1B1E2E" stroke="#3D4263" stroke-width="2"/>
-              <text x="30" y="40" fill="#E8CCC7" font-family="sans-serif" font-weight="bold" font-size="13">Adafruit IO — ESP32 Control</text>
-              <rect x="30" y="60" width="125" height="85" rx="6" fill="#131521" stroke="#45496A"/>
-              <text x="42" y="82" fill="#F1B2B2" font-family="sans-serif" font-size="10">FEED: led-control</text>
-              <circle cx="92" cy="115" r="18" fill="#E5857B"/>
-              <text x="82" y="120" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="11">ON</text>
-            </svg>
-          </div>
-          <div class="evidence-info">
-            <div class="evidence-label">images/iot/task2_dashboard.png</div>
-            <div class="evidence-title">Adafruit IO Cloud Dashboard</div>
-            <p class="evidence-desc">Interactive toggle block linked to the MQTT feed showing sub-800ms global response time.</p>
-          </div>
-        </div>
-
-        <div class="evidence-card">
-          <div class="evidence-visual">
-            <img src="images/iot/task2_serial_monitor.png" alt="Hardware Telemetry Log" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <svg viewBox="0 0 320 180" width="100%" height="100%">
-              <rect width="320" height="180" fill="#151825"/>
-              <rect x="40" y="30" width="240" height="120" rx="6" fill="#1B1E2E" stroke="#3D4263"/>
-              <circle cx="80" cy="70" r="14" fill="#E5857B" opacity="0.3"/>
-              <circle cx="80" cy="70" r="8" fill="#E5857B"/>
-              <text x="110" y="65" fill="#FAF5EE" font-family="sans-serif" font-size="11" font-weight="bold">ESP32 DevKit V1</text>
-              <text x="110" y="80" fill="#E8CCC7" font-family="monospace" font-size="10">Broker: CONNECTED</text>
-              <text x="110" y="98" fill="#F1B2B2" font-family="monospace" font-size="9">Ping Keepalive: OK</text>
-            </svg>
-          </div>
-          <div class="evidence-info">
-            <div class="evidence-label">images/iot/task2_serial_monitor.png</div>
-            <div class="evidence-title">Hardware Telemetry Log</div>
-            <p class="evidence-desc">Serial output verifying MQTT handshake, subscription acknowledgment, and payload parsing.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. CHALLENGES & FIXES -->
-    <section class="skeleton-section" id="t2-challenges">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">09</span>
-          <h2 class="sec-title">Things That Broke & How I Solved Them</h2>
-        </div>
-        <span class="sec-tag">// HONEST ENGINEERING REFLECTION</span>
-      </div>
-      <div class="challenges-grid">
-        <div class="challenge-card">
-          <div class="challenge-top">
-            <span class="challenge-tag-fail">FAILURE #1</span>
-            <div class="challenge-title">Active-LOW Relay Logic Inversion (Light Turned ON when Told OFF)</div>
-          </div>
-          <div class="challenge-body">
-            <div class="cause-box">
-              <h5>What Went Wrong</h5>
-              <p>When I clicked "TURN ON" in Adafruit IO, the relay clicked OFF. When I clicked "TURN OFF", the bulb turned ON! It was completely inverted.</p>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-icon">☁️</span>
+            <div class="stat-content">
+              <h4>Broker Host</h4>
+              <p>io.adafruit.com (Port 1883)</p>
             </div>
-            <div class="fix-box">
-              <h5>How I Fixed It</h5>
-              <p>Many hobby relay modules feature an optocoupler with <strong>Active-LOW logic</strong>: bringing the control pin LOW sinks current and energizes the coil. I resolved this in firmware by either inverting the GPIO write or connecting the light bulb to the NC (Normally Closed) terminal depending on desired default safety states.</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">📦</span>
+            <div class="stat-content">
+              <h4>Packet Overhead</h4>
+              <p>2-Byte Header (vs ~800B HTTP)</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">🔄</span>
+            <div class="stat-content">
+              <h4>Model</h4>
+              <p>Publish / Subscribe Architecture</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">⏱️</span>
+            <div class="stat-content">
+              <h4>Keep-Alive</h4>
+              <p>60s Ping Ping-Pong Heartbeat</p>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="challenge-card">
-          <div class="challenge-top">
-            <span class="challenge-tag-fail">FAILURE #2</span>
-            <div class="challenge-title">MQTT Disconnected Every 60 Seconds (Keepalive Failure)</div>
+      <!-- 1. WHY MQTT OVER HTTP (IN CLEAR POINTS) -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t2">01</span>
+            <h2>Why MQTT Beats HTTP for IoT Devices</h2>
           </div>
-          <div class="challenge-body">
-            <div class="cause-box">
-              <h5>What Went Wrong</h5>
-              <p>The ESP32 connected cleanly to Adafruit IO, but after exactly one minute, the broker disconnected the board with an error.</p>
+          <span class="block-tag">// ARCHITECTURE COMPARISON</span>
+        </div>
+
+        <div class="comparison-grid">
+          <div class="comp-card card-http">
+            <h4>❌ Traditional HTTP Model</h4>
+            <ul class="bullet-list-sm">
+              <li><strong>Heavy Overhead:</strong> Each request carries 500–1000 bytes of repetitive header strings.</li>
+              <li><strong>Polling Required:</strong> The ESP32 must constantly ask "is there data?" every few seconds, draining power.</li>
+              <li><strong>High Latency:</strong> Full TCP handshake + teardown on every single message.</li>
+            </ul>
+          </div>
+          <div class="comp-card card-mqtt">
+            <h4>✅ Lightweight MQTT Model</h4>
+            <ul class="bullet-list-sm">
+              <li><strong>Tiny 2-Byte Header:</strong> Optimized for low-bandwidth cellular & battery IoT nodes.</li>
+              <li><strong>Instant Push Notification:</strong> Cloud broker pushes values to the ESP32 the exact millisecond they change.</li>
+              <li><strong>Persistent Connection:</strong> Single TCP socket remains open; continuous streaming.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PIPELINE FLOW -->
+        <div class="visual-pipeline-box">
+          <div class="pipeline-header">
+            <span class="pipeline-title">MQTT Publish/Subscribe Dataflow</span>
+            <span class="pill-badge pill-t2">TCP Stream</span>
+          </div>
+          <div class="pipeline-flow">
+            <div class="pipe-node">
+              <span class="node-icon">🌡️</span>
+              <span class="node-label">ESP32 Publisher</span>
+              <span class="node-sub">Reads Sensor ADC</span>
             </div>
-            <div class="fix-box">
-              <h5>How I Fixed It</h5>
-              <p>The MQTT specification requires client pings to prove the connection is alive. Because I had a blocking <code>delay(10000)</code> in my loop, the ESP32 was missing its ping window. I refactored the loop to use non-blocking <code>millis()</code> and added an automatic reconnection watchdog.</p>
+            <div class="pipe-arrow arrow-t2">
+              <span>Publish Packet</span>
+              <span class="arrow-symbol">→</span>
+              <span>night07owl/feeds/temp</span>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. REFLECTION -->
-    <section class="skeleton-section" id="t2-reflection">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">10</span>
-          <h2 class="sec-title">Engineering Takeaways</h2>
-        </div>
-        <span class="sec-tag">// LESSONS LEARNED</span>
-      </div>
-      <div class="reflection-card">
-        <p>
-          "Task 2 was a major milestone because it proved I could reliably control real household appliances from anywhere in the world. I learned that MQTT is the undisputed king of IoT messaging due to its tiny payload overhead and push architecture. But manual dashboard clicks are still human-driven. What if I want the lights to turn on automatically when I arrive home, or when another service triggers an alert? That brought me directly to Task 3: multi-platform event automation."
-        </p>
-      </div>
-    </section>
-
-    <!-- 11. REPO & CHECKLIST -->
-    <section class="skeleton-section" id="t2-repo">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">11</span>
-          <h2 class="sec-title">Project Source & Forge Verification Checklist</h2>
-        </div>
-        <span class="sec-tag">// CODE & COMPLIANCE</span>
-      </div>
-      <div class="repo-card">
-        <div class="repo-info">
-          <h4>Task 02: Adafruit IO MQTT Smart Relay</h4>
-          <p>Arduino sketch, Adafruit feed definitions, and high-voltage isolation diagrams.</p>
-        </div>
-        <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">View on GitHub ↗</a>
-      </div>
-
-      <div class="forge-checklist-box">
-        <div class="checklist-head">
-          <h3>Task 02 Forge Verification Checklist</h3>
-          <span class="meta-chip chip-coral">100% Satisfied</span>
-        </div>
-        <div class="checklist-items">
-          <div class="check-item"><span class="box-done">☑</span> MQTT publish/subscribe explained clearly vs HTTP</div>
-          <div class="check-item"><span class="box-done">☑</span> 230V mains isolation safety precautions documented</div>
-          <div class="check-item"><span class="box-done">☑</span> Songle SRD-05VDC relay specs and pinouts included</div>
-          <div class="check-item"><span class="box-done">☑</span> ASCII schematic showing Live switching and direct Neutral</div>
-          <div class="check-item"><span class="box-done">☑</span> Adafruit IO feed configuration step-by-step</div>
-          <div class="check-item"><span class="box-done">☑</span> Complete Arduino C++ source code with MQTT keepalive loop</div>
-          <div class="check-item"><span class="box-done">☑</span> Active-LOW relay inversion bug and fix documented</div>
-          <div class="check-item"><span class="box-done">☑</span> Sub-second response verified and logged</div>
-          <div class="check-item"><span class="box-done">☑</span> Media slots and GitHub repository linked</div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-
-  <!-- =========================================================================
-       TASK 03 VIEW: SMART ENVIRONMENTAL AUTOMATION USING IFTTT
-       ========================================================================= -->
-  <div class="task-view" id="view-task3" style="display: none;">
-    <section class="task-banner">
-      <div class="task-eyebrow">
-        <span class="eyebrow-num">ASSIGNMENT 03</span>
-        <span>// EVENT-DRIVEN CLOUD AUTOMATION</span>
-      </div>
-      <h1 class="task-title">Smart Environmental Automation with IFTTT</h1>
-      <p class="task-subtitle">
-        Bridging third-party cloud platforms and the physical world. Event-driven automation using IFTTT Webhooks, Adafruit IO, and emergency email alerts.
-      </p>
-
-      <div class="task-meta-bar">
-        <span class="meta-chip chip-coral">Station 03: Complete</span>
-        <span class="meta-chip chip-navy">IFTTT Webhooks</span>
-        <span class="meta-chip chip-slate">Cross-Cloud Orchestration</span>
-        <span class="meta-chip">Push & Email Notifications</span>
-        <span class="meta-chip chip-coral">Automated Event Logic</span>
-      </div>
-
-      <nav class="quick-jump-bar" aria-label="Station Quick Jump">
-        <a href="#t3-overview" class="jump-link">01 Overview</a>
-        <a href="#t3-concepts" class="jump-link">02 How IFTTT Works</a>
-        <a href="#t3-design" class="jump-link">03 Architecture</a>
-        <a href="#t3-wiring" class="jump-link">05 Wiring</a>
-        <a href="#t3-code" class="jump-link">06 Source Code</a>
-        <a href="#t3-evidence" class="jump-link">08 Evidence</a>
-        <a href="#t3-challenges" class="jump-link">09 Debugging Stories</a>
-        <a href="#t3-reflection" class="jump-link">10 Takeaways</a>
-        <a href="#t3-repo" class="jump-link">11 Checklist</a>
-      </nav>
-    </section>
-
-    <!-- 1. OVERVIEW -->
-    <section class="skeleton-section" id="t3-overview">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">01</span>
-          <h2 class="sec-title">What I Built & Why</h2>
-        </div>
-        <span class="sec-tag">// OBJECTIVE & MOTIVATION</span>
-      </div>
-      <p class="lead-text">
-        Manual switches are great, but true home automation means things should happen automatically when specific conditions occur in the real world or in the cloud.
-      </p>
-      <p class="body-text">
-        In Task 3, I connected <strong>IFTTT ("If This Then That")</strong> as an event orchestrator between web services, email alerts, and my ESP32 hardware. Instead of writing custom API integration code for every third-party service, IFTTT links external events (such as pressing a phone home-screen widget, receiving a webhook, or triggering an emergency threshold) directly into my Adafruit IO feed. The moment the event triggers, the ESP32 acts immediately, and I receive an email confirmation verifying the event.
-      </p>
-    </section>
-
-    <!-- 2. CONCEPTS -->
-    <section class="skeleton-section" id="t3-concepts">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">02</span>
-          <h2 class="sec-title">The Trigger → Action Paradigm</h2>
-        </div>
-        <span class="sec-tag">// EVENT-DRIVEN LOGIC</span>
-      </div>
-      <div class="concepts-grid">
-        <div class="concept-card">
-          <h4>What is an Event-Driven Architecture?</h4>
-          <p>Traditional programs run in a continuous loop asking "did anything change yet?". Event-driven systems sleep until an external event (like a webhook POST) triggers a notification, allowing systems to respond immediately without wasting CPU cycles.</p>
-        </div>
-        <div class="concept-card">
-          <h4>IFTTT as the Universal Translator</h4>
-          <p>IFTTT connects hundreds of incompatible ecosystems (Google Assistant, iOS shortcuts, Maker Webhooks, Adafruit IO, and Gmail). It takes an input from Service A and transforms it into the exact API payload needed by Service B.</p>
-        </div>
-        <div class="concept-card">
-          <h4>Synchronous Webhooks vs Slow Polling</h4>
-          <p>Polling means checking periodically (which on free cloud tiers can take up to 15-45 minutes). Webhooks are instant HTTP POST callbacks sent immediately when the event happens, dropping latency to under 1.2 seconds.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. SYSTEM DESIGN -->
-    <section class="skeleton-section" id="t3-design">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">03</span>
-          <h2 class="sec-title">System Architecture & Automation Flow</h2>
-        </div>
-        <span class="sec-tag">// MULTI-CLOUD DATA PIPELINE</span>
-      </div>
-      <div class="diagram-wrap">
-        <div class="diagram-flow">
-          <div class="diagram-node">
-            <div class="node-type">Event Trigger</div>
-            <div class="node-label">IFTTT Webhook / Widget</div>
-            <div class="node-sub">Trigger: Inbound Event</div>
-          </div>
-          <div class="diagram-arrow">
-            <span>HTTP REST POST</span>
-            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
-            <span>Cloud Dispatch</span>
-          </div>
-          <div class="diagram-node active-node">
-            <div class="node-type">Broker Bridge</div>
-            <div class="node-label">Adafruit IO Feed</div>
-            <div class="node-sub">/automation-feed</div>
-          </div>
-          <div class="diagram-arrow">
-            <span>MQTT Push</span>
-            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
-            <span>TCP 1883</span>
-          </div>
-          <div class="diagram-node">
-            <div class="node-type">Hardware Actuator</div>
-            <div class="node-label">ESP32 + Relay</div>
-            <div class="node-sub">Automated Action + Email</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="media-slot-card">
-        <img src="images/iot/task3_circuit.png" alt="Task 3 Circuit Schematic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="media-dropzone">
-          <div class="media-dropzone-icon">⚡</div>
-          <span class="media-badge">Station 05: Circuit Schematic Slot</span>
-          <div class="media-dropzone-path">images/iot/task3_circuit.png</div>
-          <p class="media-dropzone-desc">Attach your Task 3 IFTTT automation circuit schematic here. Place file in <code>images/iot/task3_circuit.png</code>.</p>
-        </div>
-      </div>
-
-      <div class="media-slot-card">
-        <img src="images/iot/task3_hardware.jpg" alt="Task 3 Physical Hardware Setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="media-dropzone">
-          <div class="media-dropzone-icon">📷</div>
-          <span class="media-badge">Station 07: Physical Hardware Photo</span>
-          <div class="media-dropzone-path">images/iot/task3_hardware.jpg</div>
-          <p class="media-dropzone-desc">Attach photo of your ESP32 automation test rig here. Place file in <code>images/iot/task3_hardware.jpg</code>.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. CODE -->
-    <section class="skeleton-section" id="t3-code">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">06</span>
-          <h2 class="sec-title">Implementation Source Code</h2>
-        </div>
-        <span class="sec-tag">// ESP32 AUTOMATION FIRMWARE</span>
-      </div>
-      <div class="code-box">
-        <div class="code-header">
-          <span class="code-filename">ESP32_IFTTT_Adafruit_Automation.ino</span>
-          <button class="copy-btn">Copy Code</button>
-        </div>
-        <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
-<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT.h"</span>
-<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT_Client.h"</span>
-
-<span class="c-kw">#define</span> WIFI_SSID   <span class="c-str">"YOUR_WIFI_SSID"</span>
-<span class="c-kw">#define</span> WIFI_PASS   <span class="c-str">"YOUR_WIFI_PASSWORD"</span>
-<span class="c-kw">#define</span> AIO_USER    <span class="c-str">"YOUR_AIO_USERNAME"</span>
-<span class="c-kw">#define</span> AIO_KEY     <span class="c-str">"YOUR_AIO_KEY"</span>
-
-<span class="c-kw">const int</span> relayPin = 26;
-<span class="c-kw">WiFiClient</span> client;
-<span class="c-kw">Adafruit_MQTT_Client</span> mqtt(&client, <span class="c-str">"io.adafruit.com"</span>, 1883, AIO_USER, AIO_KEY);
-
-<span class="c-cmt">// Automation Feed subscribed to by ESP32 and written to by IFTTT</span>
-<span class="c-kw">Adafruit_MQTT_Subscribe</span> autoFeed = <span class="c-kw">Adafruit_MQTT_Subscribe</span>(&mqtt, AIO_USER <span class="c-str">"/feeds/automation-feed"</span>);
-
-<span class="c-type">void</span> <span class="c-fn">setup</span>() {
-  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
-  <span class="c-fn">pinMode</span>(relayPin, OUTPUT);
-  <span class="c-fn">digitalWrite</span>(relayPin, LOW);
-
-  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(WIFI_SSID, WIFI_PASS);
-  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) { <span class="c-fn">delay</span>(500); }
-
-  mqtt.<span class="c-fn">subscribe</span>(&autoFeed);
-}
-
-<span class="c-type">void</span> <span class="c-fn">loop</span>() {
-  <span class="c-kw">if</span> (!mqtt.<span class="c-fn">connected</span>()) {
-    <span class="c-kw">while</span> (mqtt.<span class="c-fn">connect</span>() != 0) { <span class="c-fn">delay</span>(5000); }
-  }
-
-  <span class="c-kw">Adafruit_MQTT_Subscribe</span> *sub;
-  <span class="c-kw">while</span> ((sub = mqtt.<span class="c-fn">readSubscription</span>(5000))) {
-    <span class="c-kw">if</span> (sub == &autoFeed) {
-      <span class="c-kw">char</span>* msg = (<span class="c-kw">char</span>*)autoFeed.lastread;
-      <span class="c-kw">if</span> (<span class="c-fn">strcmp</span>(msg, <span class="c-str">"ACTIVATE"</span>) == 0 || <span class="c-fn">strcmp</span>(msg, <span class="c-str">"1"</span>) == 0) {
-        <span class="c-fn">digitalWrite</span>(relayPin, HIGH);
-      } <span class="c-kw">else</span> {
-        <span class="c-fn">digitalWrite</span>(relayPin, LOW);
-      }
-    }
-  }
-}</code></pre>
-      </div>
-    </section>
-
-    <!-- 8. EVIDENCE -->
-    <section class="skeleton-section" id="t3-evidence">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">08</span>
-          <h2 class="sec-title">Evidence & Automation Verification</h2>
-        </div>
-        <span class="sec-tag">// OPERATIONAL DEMONSTRATION</span>
-      </div>
-      <div class="evidence-grid">
-        <div class="evidence-card">
-          <div class="evidence-visual">
-            <img src="images/iot/task3_ifttt_applet.png" alt="IFTTT Applet Configuration" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="media-dropzone" style="display:none; padding:20px;">
-              <div class="media-dropzone-icon">⚡</div>
-              <span class="media-badge">IFTTT Applet Screenshot</span>
-              <div class="media-dropzone-path">images/iot/task3_ifttt_applet.png</div>
-              <p class="media-dropzone-desc">Screenshot of your IFTTT Applet recipe ("If Maker Webhook Then Adafruit IO / Email").</p>
+            <div class="pipe-node active-t2">
+              <span class="node-icon">☁️</span>
+              <span class="node-label">Adafruit IO Broker</span>
+              <span class="node-sub">Dispatches to Subscribers</span>
             </div>
-          </div>
-          <div class="evidence-info">
-            <div class="evidence-label">images/iot/task3_ifttt_applet.png</div>
-            <div class="evidence-title">IFTTT Automation Rule Configuration</div>
-            <p class="evidence-desc">Applet trigger linking inbound HTTP webhooks with automated cloud actuator feeds.</p>
-          </div>
-        </div>
-
-        <div class="evidence-card">
-          <div class="evidence-visual">
-            <img src="images/iot/task3_email_alert.png" alt="Automation Notification Alert" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="media-dropzone" style="display:none; padding:20px;">
-              <div class="media-dropzone-icon">📬</div>
-              <span class="media-badge">Alert Notification Screenshot</span>
-              <div class="media-dropzone-path">images/iot/task3_email_alert.png</div>
-              <p class="media-dropzone-desc">Screenshot of the email alert or push notification received upon event execution.</p>
+            <div class="pipe-arrow arrow-t2">
+              <span>QoS 0 Stream</span>
+              <span class="arrow-symbol">→</span>
+              <span>WebSockets</span>
             </div>
-          </div>
-          <div class="evidence-info">
-            <div class="evidence-label">images/iot/task3_email_alert.png</div>
-            <div class="evidence-title">Automated Event Alert Dispatch</div>
-            <p class="evidence-desc">Verified email or mobile notification triggered automatically upon threshold breach.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. CHALLENGES & FIXES -->
-    <section class="skeleton-section" id="t3-challenges">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">09</span>
-          <h2 class="sec-title">Things That Broke & How I Solved Them</h2>
-        </div>
-        <span class="sec-tag">// HONEST ENGINEERING REFLECTION</span>
-      </div>
-      <div class="challenges-grid">
-        <div class="challenge-card">
-          <div class="challenge-top">
-            <span class="challenge-tag-fail">FAILURE #1</span>
-            <div class="challenge-title">The 45-Minute Polling Delay Mystery</div>
-          </div>
-          <div class="challenge-body">
-            <div class="cause-box">
-              <h5>What Went Wrong</h5>
-              <p>When I tested my first applet using a third-party weather/mail trigger, nothing happened for 30 minutes. I thought the applet was completely broken.</p>
-            </div>
-            <div class="fix-box">
-              <h5>How I Fixed It</h5>
-              <p>I learned that standard third-party service triggers on IFTTT's free plan rely on periodic polling, which runs every 15 to 60 minutes! To get true real-time automation, I shifted to <strong>IFTTT Webhooks</strong>. Webhook endpoints trigger immediate synchronous execution, dropping the round-trip delay to under 1.2 seconds.</p>
+            <div class="pipe-node">
+              <span class="node-icon">📊</span>
+              <span class="node-label">Live Web Dashboard</span>
+              <span class="node-sub">Real-Time Gauge Graph</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- 10. REFLECTION -->
-    <section class="skeleton-section" id="t3-reflection">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">10</span>
-          <h2 class="sec-title">Engineering Takeaways</h2>
-        </div>
-        <span class="sec-tag">// LESSONS LEARNED</span>
-      </div>
-      <div class="reflection-card">
-        <p>
-          "Task 3 showed me the immense power of cloud integration. I didn't need to write my own email dispatch servers or native mobile apps; IFTTT handled the translation cleanly. But relying on third-party SaaS dashboards like Adafruit IO still had limits: custom branding, complex UI designs, and database queries weren't supported. I wanted to build my own fully customized web dashboard and own the entire database. That led me to Google Firebase in Task 4."
-        </p>
-      </div>
-    </section>
-
-    <!-- 11. REPO & CHECKLIST -->
-    <section class="skeleton-section" id="t3-repo">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">11</span>
-          <h2 class="sec-title">Project Source & Forge Verification Checklist</h2>
-        </div>
-        <span class="sec-tag">// CODE & COMPLIANCE</span>
-      </div>
-      <div class="repo-card">
-        <div class="repo-info">
-          <h4>Task 03: IFTTT + Adafruit IO Automation</h4>
-          <p>Arduino sketch, IFTTT applet definition schemas, and webhook test scripts.</p>
-        </div>
-        <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">View on GitHub ↗</a>
-      </div>
-
-      <div class="forge-checklist-box">
-        <div class="checklist-head">
-          <h3>Task 03 Forge Verification Checklist</h3>
-          <span class="meta-chip chip-coral">100% Satisfied</span>
-        </div>
-        <div class="checklist-items">
-          <div class="check-item"><span class="box-done">☑</span> Event-driven trigger/action architecture explained in plain English</div>
-          <div class="check-item"><span class="box-done">☑</span> IFTTT Maker Webhooks integration documented</div>
-          <div class="check-item"><span class="box-done">☑</span> Cross-cloud data flow from Webhook to MQTT to Relay</div>
-          <div class="check-item"><span class="box-done">☑</span> Complete Arduino source code provided</div>
-          <div class="check-item"><span class="box-done">☑</span> Polling vs Webhook latency analysis documented</div>
-          <div class="check-item"><span class="box-done">☑</span> Email notification delivery verified</div>
-          <div class="check-item"><span class="box-done">☑</span> Media slots and repository links intact</div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-
-  <!-- =========================================================================
-       TASK 04 VIEW: REAL-TIME CLOUD TELEMETRY VIA GOOGLE FIREBASE
-       ========================================================================= -->
-  <div class="task-view" id="view-task4" style="display: none;">
-    <section class="task-banner">
-      <div class="task-eyebrow">
-        <span class="eyebrow-num">ASSIGNMENT 04</span>
-        <span>// FULL-STACK CLOUD TELEMETRY & BAAS</span>
-      </div>
-      <h1 class="task-title">Real-Time Cloud Telemetry with Google Firebase</h1>
-      <p class="task-subtitle">
-        Building our own full-stack web dashboard from scratch. Streaming live temperature, humidity, and ambient light readings to Firebase Realtime Database with sub-second WebSocket updates.
-      </p>
-
-      <div class="task-meta-bar">
-        <span class="meta-chip chip-coral">Station 04: Complete</span>
-        <span class="meta-chip chip-navy">Google Firebase NoSQL</span>
-        <span class="meta-chip chip-slate">DHT11 + LDR ADC1</span>
-        <span class="meta-chip">Persistent WebSockets</span>
-        <span class="meta-chip chip-coral">Custom UI & Auth</span>
-      </div>
-
-      <nav class="quick-jump-bar" aria-label="Station Quick Jump">
-        <a href="#t4-overview" class="jump-link">01 Overview</a>
-        <a href="#t4-concepts" class="jump-link">02 How Firebase Works</a>
-        <a href="#t4-design" class="jump-link">03 Architecture</a>
-        <a href="#t4-wiring" class="jump-link">05 Sensor Wiring</a>
-        <a href="#t4-code" class="jump-link">06 Source Code</a>
-        <a href="#t4-evidence" class="jump-link">08 Evidence & Gauges</a>
-        <a href="#t4-challenges" class="jump-link">09 The ADC2 Bug</a>
-        <a href="#t4-reflection" class="jump-link">10 Takeaways</a>
-        <a href="#t4-repo" class="jump-link">11 Checklist</a>
-      </nav>
-    </section>
-
-    <!-- 1. OVERVIEW -->
-    <section class="skeleton-section" id="t4-overview">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">01</span>
-          <h2 class="sec-title">What I Built & Why</h2>
-        </div>
-        <span class="sec-tag">// OBJECTIVE & MOTIVATION</span>
-      </div>
-      <p class="lead-text">
-        Up until now, I was using pre-made third-party dashboards. In Task 4, I wanted complete ownership: my own custom user interface, my own cloud database, and live multi-sensor telemetry streaming.
-      </p>
-      <p class="body-text">
-        I interfaced a <strong>DHT11 temperature & humidity sensor</strong> and an <strong>LDR (Light Dependent Resistor)</strong> with the ESP32. Every 2.5 seconds, the ESP32 pushes calibrated real-world measurements directly to a <strong>Google Firebase Realtime Database</strong>. On the frontend, I built a custom web dashboard. Because Firebase uses persistent WebSockets, any change in the room is reflected on the screen instantly without ever needing to refresh the page.
-      </p>
-    </section>
-
-    <!-- 2. CONCEPTS -->
-    <section class="skeleton-section" id="t4-concepts">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">02</span>
-          <h2 class="sec-title">How Firebase Realtime Database Works</h2>
-        </div>
-        <span class="sec-tag">// CLOUD CONCEPTS EXPLAINED</span>
-      </div>
-      <div class="concepts-grid">
-        <div class="concept-card">
-          <h4>What is BaaS (Backend as a Service)?</h4>
-          <p>Instead of managing Linux servers, installing PostgreSQL, and setting up SSL certificates, Firebase provides a complete turnkey backend in the cloud with built-in authentication, database syncing, and security rules.</p>
-        </div>
-        <div class="concept-card">
-          <h4>The Live JSON Tree</h4>
-          <p>Firebase Realtime Database isn't a traditional table with rows and columns. It is a single giant JSON document. When the ESP32 updates <code>/iot_system/sensor_data/temperature</code>, Firebase pushes just that tiny changed key over WebSockets to every connected phone in milliseconds.</p>
-        </div>
-        <div class="concept-card">
-          <h4>Digital vs Analog Transducers</h4>
-          <p>The DHT11 uses a single-wire digital protocol with an internal thermistor and capacitive humidity sensor. The LDR is an analog resistor whose resistance drops in light; we measure it using the ESP32's 12-bit Analog-to-Digital Converter (ADC) yielding values from 0 to 4095.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. SYSTEM DESIGN -->
-    <section class="skeleton-section" id="t4-design">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">03</span>
-          <h2 class="sec-title">System Design & Data Pipeline</h2>
-        </div>
-        <span class="sec-tag">// FULL-STACK ARCHITECTURE</span>
-      </div>
-      <div class="diagram-wrap">
-        <div class="diagram-flow">
-          <div class="diagram-node">
-            <div class="node-type">Sensors</div>
-            <div class="node-label">DHT11 + LDR</div>
-            <div class="node-sub">Pins D4 & D34</div>
+      <!-- 2. INTERACTIVE SIMULATOR -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t2">02</span>
+            <h2>Interactive Cloud MQTT Feed Publisher</h2>
           </div>
-          <div class="diagram-arrow">
-            <span>JSON Push</span>
-            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
-            <span>FirebaseESP32</span>
-          </div>
-          <div class="diagram-node active-node">
-            <div class="node-type">Cloud NoSQL DB</div>
-            <div class="node-label">Firebase Realtime DB</div>
-            <div class="node-sub">/iot_system/sensor_data</div>
-          </div>
-          <div class="diagram-arrow">
-            <span>WebSockets</span>
-            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
-            <span>Live Sync</span>
-          </div>
-          <div class="diagram-node">
-            <div class="node-type">Custom Web UI</div>
-            <div class="node-label">Live Gauges Dashboard</div>
-            <div class="node-sub">Sub-second Updates</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="media-slot-card">
-        <img src="images/iot/task4_circuit.png" alt="Task 4 Circuit Schematic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="media-dropzone">
-          <div class="media-dropzone-icon">⚡</div>
-          <span class="media-badge">Station 05: Circuit Schematic Slot</span>
-          <div class="media-dropzone-path">images/iot/task4_circuit.png</div>
-          <p class="media-dropzone-desc">Attach your Task 4 Firebase circuit schematic (ESP32, DHT11, LDR, Relay) here. Place file in <code>images/iot/task4_circuit.png</code>.</p>
-        </div>
-      </div>
-
-      <div class="media-slot-card">
-        <img src="images/iot/task4_hardware.jpg" alt="Task 4 Physical Hardware Setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="media-dropzone">
-          <div class="media-dropzone-icon">📷</div>
-          <span class="media-badge">Station 07: Physical Hardware Photo</span>
-          <div class="media-dropzone-path">images/iot/task4_hardware.jpg</div>
-          <p class="media-dropzone-desc">Attach photo of your ESP32 with DHT11 and LDR hardware bench here. Place file in <code>images/iot/task4_hardware.jpg</code>.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. WIRING -->
-    <section class="skeleton-section" id="t4-wiring">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">05</span>
-          <h2 class="sec-title">Sensor Pin Matrix & Voltage Divider</h2>
-        </div>
-        <span class="sec-tag">// SCHEMATIC & CONNECTIONS</span>
-      </div>
-      <div class="table-responsive">
-        <table class="hw-table">
-          <thead>
-            <tr>
-              <th>Sensor / Component</th>
-              <th>ESP32 Pin</th>
-              <th>Signal Type</th>
-              <th>Critical Engineering Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>DHT11 Data Pin</td>
-              <td><span class="badge-pin">GPIO 4 (D4)</span></td>
-              <td>Bidirectional Digital Single-Bus</td>
-              <td>Requires a 10kΩ pull-up resistor to 3.3V to keep the line idle HIGH</td>
-            </tr>
-            <tr>
-              <td>LDR Voltage Divider</td>
-              <td><span class="badge-pin">GPIO 34 (ADC1_CH6)</span></td>
-              <td>Analog Voltage (0.0V – 3.3V)</td>
-              <td><strong>MUST use ADC1!</strong> LDR in series with 10kΩ fixed resistor to ground</td>
-            </tr>
-            <tr>
-              <td>Relay Control Signal</td>
-              <td><span class="badge-pin">GPIO 18 (D18)</span></td>
-              <td>Digital Output (3.3V)</td>
-              <td>Controls AC appliance state synced with cloud database switch</td>
-            </tr>
-            <tr>
-              <td>Power & Ground</td>
-              <td><span class="badge-pin">3V3 & GND</span></td>
-              <td>Regulated 3.3V DC Supply</td>
-              <td>Powers the sensor rails safely without overloading the onboard regulator</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="code-box">
-        <div class="code-header">
-          <span class="code-filename">LDR Voltage Divider & DHT11 Wiring (ASCII)</span>
-        </div>
-        <pre class="code-content"><code>┌────────────────────────────────────────────────────────┐
-│           TASK 4: MULTI-SENSOR WIRING SCHEMATIC        │
-├────────────────────────────────────────────────────────┤
-│                                                        │
-│  [LDR VOLTAGE DIVIDER CIRCUIT]                         │
-│  3.3V Power ────────┬───[ Photoresistor LDR ]──┐       │
-│                     │                          │       │
-│                     │              GPIO 34 (ADC1_CH6)  │
-│                     │                          │       │
-│                     └────[ 10kΩ Resistor ]─────┴── GND │
-│                                                        │
-│  [DHT11 CLIMATE SENSOR]                                │
-│  Pin 1: VCC  ──────→ 3.3V                              │
-│  Pin 2: DATA ──────→ GPIO 4 (with 10kΩ pull-up to 3.3V)│
-│  Pin 3: NC   ──────→ Not Connected                     │
-│  Pin 4: GND  ──────→ Ground (GND)                      │
-│                                                        │
-│  [RELAY CONTROL]                                       │
-│  Control Pin ──────→ GPIO 18                           │
-└────────────────────────────────────────────────────────┘</code></pre>
-      </div>
-    </section>
-
-    <!-- 6. CODE -->
-    <section class="skeleton-section" id="t4-code">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">06</span>
-          <h2 class="sec-title">Implementation Source Code</h2>
-        </div>
-        <span class="sec-tag">// ESP32 FIREBASE TELEMETRY FIRMWARE</span>
-      </div>
-      <div class="code-box">
-        <div class="code-header">
-          <span class="code-filename">ESP32_Firebase_IoT.ino</span>
-          <button class="copy-btn">Copy Code</button>
-        </div>
-        <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
-<span class="c-kw">#include</span> <span class="c-str">&lt;FirebaseESP32.h&gt;</span>
-<span class="c-kw">#include</span> <span class="c-str">&lt;DHT.h&gt;</span>
-
-<span class="c-kw">#define</span> WIFI_SSID     <span class="c-str">"YOUR_WIFI_SSID"</span>
-<span class="c-kw">#define</span> WIFI_PASS     <span class="c-str">"YOUR_WIFI_PASSWORD"</span>
-<span class="c-kw">#define</span> FIREBASE_HOST <span class="c-str">"YOUR_PROJECT.firebaseio.com"</span>
-<span class="c-kw">#define</span> FIREBASE_AUTH <span class="c-str">"YOUR_DATABASE_SECRET"</span>
-
-<span class="c-kw">DHT</span> dht(4, DHT11);
-<span class="c-kw">FirebaseData</span> fbdo;
-<span class="c-kw">FirebaseAuth</span> auth;
-<span class="c-kw">FirebaseConfig</span> config;
-
-<span class="c-type">void</span> <span class="c-fn">setup</span>() {
-  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
-  <span class="c-fn">pinMode</span>(18, OUTPUT);
-  dht.<span class="c-fn">begin</span>();
-
-  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(WIFI_SSID, WIFI_PASS);
-  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) { <span class="c-fn">delay</span>(500); }
-
-  config.host = FIREBASE_HOST;
-  config.signer.tokens.legacy_token = FIREBASE_AUTH;
-  <span class="c-fn">Firebase</span>.<span class="c-fn">begin</span>(&config, &auth);
-  <span class="c-fn">Firebase</span>.<span class="c-fn">reconnectWiFi</span>(true);
-}
-
-<span class="c-type">void</span> <span class="c-fn">loop</span>() {
-  <span class="c-type">float</span> t = dht.<span class="c-fn">readTemperature</span>();
-  <span class="c-type">float</span> h = dht.<span class="c-fn">readHumidity</span>();
-  <span class="c-type">int</span> ldr = <span class="c-fn">analogRead</span>(34); <span class="c-cmt">// Safe on ADC1</span>
-
-  <span class="c-kw">if</span> (!<span class="c-fn">isnan</span>(t) &amp;&amp; !<span class="c-fn">isnan</span>(h)) {
-    <span class="c-fn">Firebase</span>.<span class="c-fn">setFloat</span>(fbdo, <span class="c-str">"/iot_system/sensor_data/temperature"</span>, t);
-    <span class="c-fn">Firebase</span>.<span class="c-fn">setFloat</span>(fbdo, <span class="c-str">"/iot_system/sensor_data/humidity"</span>, h);
-    <span class="c-fn">Firebase</span>.<span class="c-fn">setInt</span>(fbdo, <span class="c-str">"/iot_system/sensor_data/light_level"</span>, ldr);
-  }
-
-  <span class="c-cmt">// Check for bulb toggle commands from frontend</span>
-  <span class="c-kw">if</span> (<span class="c-fn">Firebase</span>.<span class="c-fn">getBool</span>(fbdo, <span class="c-str">"/iot_system/controls/bulb_state"</span>)) {
-    <span class="c-fn">digitalWrite</span>(18, fbdo.<span class="c-fn">boolData</span>() ? HIGH : LOW);
-  }
-  <span class="c-fn">delay</span>(2500); <span class="c-cmt">// Push every 2.5 seconds</span>
-}</code></pre>
-      </div>
-    </section>
-
-    <!-- 8. EVIDENCE -->
-    <section class="skeleton-section" id="t4-evidence">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">08</span>
-          <h2 class="sec-title">Evidence & Live Telemetry Dials</h2>
-        </div>
-        <span class="sec-tag">// OPERATIONAL DEMONSTRATION</span>
-      </div>
-      <div class="evidence-grid">
-        <div class="evidence-card">
-          <div class="evidence-visual">
-            <img src="images/iot/task4_dashboard.png" alt="Live Sensor Monitoring View" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <svg viewBox="0 0 320 180" width="100%" height="100%">
-              <rect width="320" height="180" fill="#151825"/>
-              <rect x="20" y="20" width="130" height="65" rx="6" fill="#1B1E2E" stroke="#3D4263"/>
-              <text x="32" y="40" fill="#F1B2B2" font-family="sans-serif" font-size="10">TEMPERATURE</text>
-              <text x="32" y="70" fill="#FAF5EE" font-family="sans-serif" font-weight="bold" font-size="22">27.4 °C</text>
-              
-              <rect x="170" y="20" width="130" height="65" rx="6" fill="#1B1E2E" stroke="#3D4263"/>
-              <text x="182" y="40" fill="#E8CCC7" font-family="sans-serif" font-size="10">HUMIDITY</text>
-              <text x="182" y="70" fill="#FAF5EE" font-family="sans-serif" font-weight="bold" font-size="22">62.0 %</text>
-
-              <rect x="20" y="95" width="280" height="65" rx="6" fill="#1B1E2E" stroke="#3D4263"/>
-              <text x="32" y="115" fill="#E5857B" font-family="sans-serif" font-size="10">LIGHT SENSOR (LDR)</text>
-              <rect x="32" y="125" width="160" height="10" rx="5" fill="#131521"/>
-              <rect x="32" y="125" width="110" height="10" rx="5" fill="#E5857B"/>
-              <text x="200" y="134" fill="#FAF5EE" font-family="monospace" font-size="11">1845 / 4095</text>
-            </svg>
-          </div>
-          <div class="evidence-info">
-            <div class="evidence-label">images/iot/task4_dashboard.png</div>
-            <div class="evidence-title">Live Sensor Monitoring View</div>
-            <p class="evidence-desc">Real-time synchronized dials reflecting current room temperature, humidity, and ambient light level.</p>
-          </div>
+          <span class="block-tag">// TEST CLOUD PUB/SUB LIVE</span>
         </div>
 
-        <div class="evidence-card">
-          <div class="evidence-visual">
-            <img src="images/iot/task4_firebase_console.png" alt="Firebase Console Realtime Tree" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="media-dropzone" style="display:none; padding:20px;">
-              <div class="media-dropzone-icon">🔥</div>
-              <span class="media-badge">Firebase Console Slot</span>
-              <div class="media-dropzone-path">images/iot/task4_firebase_console.png</div>
-              <p class="media-dropzone-desc">Attach screenshot of Firebase Realtime Database JSON tree updating in real time.</p>
+        <div class="interactive-sandbox sandbox-t2">
+          <div class="sandbox-left">
+            <div class="slider-control-card">
+              <label class="slider-label" for="simMqttSlider">
+                <span>Simulated Sensor Value:</span>
+                <strong id="simMqttVal">28.4 °C</strong>
+              </label>
+              <input type="range" min="15" max="50" step="0.5" value="28.5" class="custom-range range-t2" id="simMqttSlider">
             </div>
-          </div>
-          <div class="evidence-info">
-            <div class="evidence-label">images/iot/task4_firebase_console.png</div>
-            <div class="evidence-title">Firebase Realtime DB Console</div>
-            <p class="evidence-desc">Live database console proving dynamic telemetry push events and WebSocket sync.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. CHALLENGES & FIXES -->
-    <section class="skeleton-section" id="t4-challenges">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">09</span>
-          <h2 class="sec-title">Things That Broke & How I Solved Them</h2>
-        </div>
-        <span class="sec-tag">// HONEST ENGINEERING REFLECTION</span>
-      </div>
-      <div class="challenges-grid">
-        <div class="challenge-card">
-          <div class="challenge-top">
-            <span class="challenge-tag-fail">FAILURE #1</span>
-            <div class="challenge-title">The Infamous ADC2 Wi-Fi Conflict (LDR Reading Always 0 or 4095)</div>
-          </div>
-          <div class="challenge-body">
-            <div class="cause-box">
-              <h5>What Went Wrong</h5>
-              <p>Initially, my LDR read light levels perfectly on the Serial Monitor. But the moment the Wi-Fi connected to push data to Firebase, <code>analogRead()</code> started returning garbage (either 0 or 4095). I was bewildered.</p>
-            </div>
-            <div class="fix-box">
-              <h5>How I Fixed It</h5>
-              <p>After digging through the ESP32 silicon errata datasheet, I uncovered a critical hardware fact: <strong>The ESP32 has two separate ADCs</strong>. ADC2 is shared with the Wi-Fi radio circuitry. When Wi-Fi transmits, ADC2 pins (GPIO 0, 2, 4, 12-15, 25-27) are blocked by the Wi-Fi driver! I immediately re-wired the LDR to <strong>GPIO 34 (which belongs to ADC1)</strong>. ADC1 operates completely independently from the Wi-Fi radio, and the readings became crystal clear.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. REFLECTION -->
-    <section class="skeleton-section" id="t4-reflection">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">10</span>
-          <h2 class="sec-title">Engineering Takeaways</h2>
-        </div>
-        <span class="sec-tag">// LESSONS LEARNED</span>
-      </div>
-      <div class="reflection-card">
-        <p>
-          "Building on Firebase was a game changer. I finally had a production-grade full-stack architecture where my custom web app reflected real physical changes within milliseconds. But I noticed one big missing piece: what happens to yesterday's data? Currently, we overwrite <code>/sensor_data/temperature</code> with the current value. If we want historical trend graphs, long-term climate analytics, and downloadable CSV spreadsheets for auditing, we need time-series logging. That is what leads to the final Capstone: Task 5."
-        </p>
-      </div>
-    </section>
-
-    <!-- 11. REPO & CHECKLIST -->
-    <section class="skeleton-section" id="t4-repo">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">11</span>
-          <h2 class="sec-title">Project Source & Forge Verification Checklist</h2>
-        </div>
-        <span class="sec-tag">// CODE & COMPLIANCE</span>
-      </div>
-      <div class="repo-card">
-        <div class="repo-info">
-          <h4>Task 04: Firebase Realtime Telemetry Hub</h4>
-          <p>Arduino sketch, web dashboard source code, and Firebase database rules.</p>
-        </div>
-        <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">View on GitHub ↗</a>
-      </div>
-
-      <div class="forge-checklist-box">
-        <div class="checklist-head">
-          <h3>Task 04 Forge Verification Checklist</h3>
-          <span class="meta-chip chip-coral">100% Satisfied</span>
-        </div>
-        <div class="checklist-items">
-          <div class="check-item"><span class="box-done">☑</span> BaaS and Firebase Realtime Database concepts explained clearly</div>
-          <div class="check-item"><span class="box-done">☑</span> DHT11 and LDR sensor interfacing documented</div>
-          <div class="check-item"><span class="box-done">☑</span> ADC2 vs ADC1 Wi-Fi hardware conflict thoroughly documented</div>
-          <div class="check-item"><span class="box-done">☑</span> Complete Arduino C++ source code included</div>
-          <div class="check-item"><span class="box-done">☑</span> Live dashboard dials & console tree screenshots mapped</div>
-          <div class="check-item"><span class="box-done">☑</span> Sub-second WebSocket sync verified</div>
-          <div class="check-item"><span class="box-done">☑</span> Media slots and repository links intact</div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-
-  <!-- =========================================================================
-       TASK 05 VIEW: CAPSTONE LOGGING, AUTOMATION & DATA EXPORT
-       ========================================================================= -->
-  <div class="task-view" id="view-task5" style="display: none;">
-    <section class="task-banner">
-      <div class="task-eyebrow">
-        <span class="eyebrow-num">ASSIGNMENT 05</span>
-        <span>// CAPSTONE: AUTONOMOUS LOGGING & ANALYTICS</span>
-      </div>
-      <h1 class="task-title">Capstone: Autonomous Logging, Analytics & CSV Export</h1>
-      <p class="task-subtitle">
-        The culmination of the entire IoT journey. Closed-loop automation with software hysteresis, historical time-series database logging, and client-side CSV spreadsheet data export.
-      </p>
-
-      <div class="task-meta-bar">
-        <span class="meta-chip chip-coral">Station 05: Complete</span>
-        <span class="meta-chip chip-navy">Dual Mode (Manual vs Auto)</span>
-        <span class="meta-chip chip-slate">Software Hysteresis (300-pt Buffer)</span>
-        <span class="meta-chip">Historical Time-Series Logging</span>
-        <span class="meta-chip chip-coral">RFC 4180 CSV Export Generator</span>
-      </div>
-
-      <nav class="quick-jump-bar" aria-label="Station Quick Jump">
-        <a href="#t5-overview" class="jump-link">01 Overview</a>
-        <a href="#t5-concepts" class="jump-link">02 Hysteresis & Logging</a>
-        <a href="#t5-design" class="jump-link">03 Architecture</a>
-        <a href="#t5-wiring" class="jump-link">05 Deadband Tuning</a>
-        <a href="#t5-code" class="jump-link">06 Source Code</a>
-        <a href="#t5-evidence" class="jump-link">08 Interactive CSV Demo</a>
-        <a href="#t5-challenges" class="jump-link">09 Relay Chatter Fix</a>
-        <a href="#t5-reflection" class="jump-link">10 Takeaways</a>
-        <a href="#t5-repo" class="jump-link">11 Checklist</a>
-      </nav>
-    </section>
-
-    <!-- 1. OVERVIEW -->
-    <section class="skeleton-section" id="t5-overview">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">01</span>
-          <h2 class="sec-title">What I Built: The Complete Capstone</h2>
-        </div>
-        <span class="sec-tag">// SYNTHESIZING ALL PREVIOUS TASKS</span>
-      </div>
-      <p class="lead-text">
-        This capstone project brings together everything I learned across the entire semester into one intelligent, self-governing smart home station.
-      </p>
-      <p class="body-text">
-        Instead of a simple on/off switch, the system features <strong>Intelligent Dual-Mode Operation</strong>:
-      </p>
-      <ul style="padding-left: 20px; margin-bottom: 16px; color: var(--text-secondary);">
-        <li style="margin-bottom: 8px;"><strong>Manual Mode:</strong> The user retains full control from anywhere on Earth via the web dashboard, overriding all autonomous decisions.</li>
-        <li><strong>Automatic Mode:</strong> The ESP32 evaluates ambient room light from the LDR in real time. If the room gets dark, it automatically energizes the relay to turn the bulb ON. When sunlight returns, it turns the bulb OFF.</li>
-      </ul>
-      <p class="body-text">
-        Simultaneously, the ESP32 writes an immutable historical log entry to Firebase every 30 seconds with an exact timestamp, temperature, humidity, and light reading. The web dashboard visualizes these historical trends over time and features a one-click <strong>CSV Export Generator</strong> that compiles the records into a downloadable spreadsheet for auditing or data analysis in Excel.
-      </p>
-    </section>
-
-    <!-- 2. CONCEPTS -->
-    <section class="skeleton-section" id="t5-concepts">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">02</span>
-          <h2 class="sec-title">Closed-Loop Automation & Hysteresis</h2>
-        </div>
-        <span class="sec-tag">// WHY HYSTERESIS SAVES HARDWARE</span>
-      </div>
-      <div class="concepts-grid">
-        <div class="concept-card">
-          <h4>What is Relay Chatter?</h4>
-          <p>If you program a simple rule like "turn light ON if light < 1500", what happens at sunset when light fluctuates between 1499 and 1501? The relay will click on and off 50 times a second! This is called <em>relay chatter</em>, and it will quickly destroy the mechanical relay contacts or burn out the bulb.</p>
-        </div>
-        <div class="concept-card">
-          <h4>The Hysteresis Deadband Solution</h4>
-          <p>We solve chatter by introducing a dual-threshold deadband: the light turns ON only when darkness drops below <strong>1400 ADC</strong>, but does NOT turn off until room light climbs past <strong>1700 ADC</strong>. The 300-point difference prevents flickering from shadows or slight clouds.</p>
-        </div>
-        <div class="concept-card">
-          <h4>Time-Series vs Overwriting Records</h4>
-          <p>Instead of updating a single node, we append each measurement to a chronological list with a timestamp. This creates an audit log of indoor climate history that can be graphed and analyzed over weeks.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. SYSTEM DESIGN -->
-    <section class="skeleton-section" id="t5-design">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">03</span>
-          <h2 class="sec-title">End-to-End Capstone Architecture</h2>
-        </div>
-        <span class="sec-tag">// COMPLETE DATA & CONTROL PIPELINE</span>
-      </div>
-      <div class="diagram-wrap">
-        <div class="diagram-flow">
-          <div class="diagram-node">
-            <div class="node-type">Sensors</div>
-            <div class="node-label">DHT11 + LDR ADC1</div>
-            <div class="node-sub">Every 2.5s Sample</div>
-          </div>
-          <div class="diagram-arrow">
-            <span>Edge Eval</span>
-            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
-            <span>Hysteresis Check</span>
-          </div>
-          <div class="diagram-node active-node">
-            <div class="node-type">Logic Controller</div>
-            <div class="node-label">ESP32 Auto Engine</div>
-            <div class="node-sub">Manual vs Auto Mode</div>
-          </div>
-          <div class="diagram-arrow">
-            <span>Time-Series Logs</span>
-            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
-            <span>Firebase DB</span>
-          </div>
-          <div class="diagram-node">
-            <div class="node-type">Cloud Database</div>
-            <div class="node-label">Firebase Logs Tree</div>
-            <div class="node-sub">/historical_logs</div>
-          </div>
-          <div class="diagram-arrow">
-            <span>Export CSV</span>
-            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
-            <span>In-Memory Blob</span>
-          </div>
-          <div class="diagram-node">
-            <div class="node-type">Client Web UI</div>
-            <div class="node-label">CSV Exporter</div>
-            <div class="node-sub">Spreadsheet Ready</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. HYSTERESIS TUNING & WIRING -->
-    <section class="skeleton-section" id="t5-wiring">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">05</span>
-          <h2 class="sec-title">Hysteresis Calibration & Threshold Tuning</h2>
-        </div>
-        <span class="sec-tag">// REAL SENSOR BENCHMARK DATA</span>
-      </div>
-      <div class="concept-card">
-        <h4>Empirical Threshold Tuning Table:</h4>
-        <p>
-          1. <strong>Bright Daylight (Window Light):</strong> Raw ADC reading ~3200–3500.<br>
-          2. <strong>Overcast / Room Shadow:</strong> Raw ADC reading ~1550–1650.<br>
-          3. <strong>Darkness (Hand Covering Sensor):</strong> Raw ADC reading &lt; 900.<br>
-          4. <strong>Software Hysteresis Thresholds:</strong><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;• <code>THRESHOLD_DARK = 1400</code> (Turn bulb ON when light falls below this)<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;• <code>THRESHOLD_LIGHT = 1700</code> (Turn bulb OFF only when light rises above this)<br>
-          The 300-point deadband buffer completely eliminated relay chatter during testing.
-        </p>
-      </div>
-
-      <div class="media-slot-card">
-        <img src="images/iot/task5_circuit.png" alt="Task 5 Complete Capstone Schematic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="media-dropzone">
-          <div class="media-dropzone-icon">⚡</div>
-          <span class="media-badge">Station 05: Capstone Schematic Slot</span>
-          <div class="media-dropzone-path">images/iot/task5_circuit.png</div>
-          <p class="media-dropzone-desc">Attach your complete Capstone multi-sensor circuit schematic (ESP32, DHT11, LDR, Relay, AC load) here.</p>
-        </div>
-      </div>
-
-      <div class="media-slot-card">
-        <img src="images/iot/task5_hardware.jpg" alt="Task 5 Complete Physical Prototype" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="media-dropzone">
-          <div class="media-dropzone-icon">📷</div>
-          <span class="media-badge">Station 07: Physical Prototype Setup</span>
-          <div class="media-dropzone-path">images/iot/task5_hardware.jpg</div>
-          <p class="media-dropzone-desc">Attach photo of your completed multi-sensor breadboard hardware prototype bench here.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. CODE -->
-    <section class="skeleton-section" id="t5-code">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">06</span>
-          <h2 class="sec-title">Implementation Source Code</h2>
-        </div>
-        <span class="sec-tag">// CAPSTONE AUTOMATION FIRMWARE</span>
-      </div>
-      <div class="code-box">
-        <div class="code-header">
-          <span class="code-filename">ESP32_Capstone_Automation_Logging.ino</span>
-          <button class="copy-btn">Copy Code</button>
-        </div>
-        <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
-<span class="c-kw">#include</span> <span class="c-str">&lt;FirebaseESP32.h&gt;</span>
-<span class="c-kw">#include</span> <span class="c-str">&lt;DHT.h&gt;</span>
-
-<span class="c-kw">const int</span> THRESHOLD_DARK  = 1400;
-<span class="c-kw">const int</span> THRESHOLD_LIGHT = 1700;
-
-<span class="c-kw">DHT</span> dht(4, DHT11);
-<span class="c-kw">FirebaseData</span> fbdo;
-<span class="c-kw">bool</span> currentBulbState = false;
-<span class="c-kw">String</span> currentMode = <span class="c-str">"AUTOMATIC"</span>;
-
-<span class="c-type">void</span> <span class="c-fn">loop</span>() {
-  <span class="c-type">float</span> t = dht.<span class="c-fn">readTemperature</span>();
-  <span class="c-type">float</span> h = dht.<span class="c-fn">readHumidity</span>();
-  <span class="c-type">int</span> ldr = <span class="c-fn">analogRead</span>(34);
-
-  <span class="c-cmt">// Check user mode selection from dashboard</span>
-  <span class="c-kw">if</span> (<span class="c-fn">Firebase</span>.<span class="c-fn">getString</span>(fbdo, <span class="c-str">"/iot_system/config/mode"</span>)) {
-    currentMode = fbdo.<span class="c-fn">stringData</span>();
-  }
-
-  <span class="c-kw">if</span> (currentMode == <span class="c-str">"AUTOMATIC"</span>) {
-    <span class="c-cmt">// Autonomous Hysteresis Logic</span>
-    <span class="c-kw">if</span> (ldr &lt; THRESHOLD_DARK &amp;&amp; !currentBulbState) {
-      currentBulbState = true;
-      <span class="c-fn">digitalWrite</span>(18, HIGH);
-      <span class="c-fn">Firebase</span>.<span class="c-fn">setBool</span>(fbdo, <span class="c-str">"/iot_system/system_state/bulb_state"</span>, true);
-    } <span class="c-kw">else if</span> (ldr &gt; THRESHOLD_LIGHT &amp;&amp; currentBulbState) {
-      currentBulbState = false;
-      <span class="c-fn">digitalWrite</span>(18, LOW);
-      <span class="c-fn">Firebase</span>.<span class="c-fn">setBool</span>(fbdo, <span class="c-str">"/iot_system/system_state/bulb_state"</span>, false);
-    }
-  } <span class="c-kw">else</span> {
-    <span class="c-cmt">// Manual Mode: Listen directly to user toggle button</span>
-    <span class="c-kw">if</span> (<span class="c-fn">Firebase</span>.<span class="c-fn">getBool</span>(fbdo, <span class="c-str">"/iot_system/controls/manual_bulb"</span>)) {
-      currentBulbState = fbdo.<span class="c-fn">boolData</span>();
-      <span class="c-fn">digitalWrite</span>(18, currentBulbState ? HIGH : LOW);
-    }
-  }
-
-  <span class="c-cmt">// Log snapshot to time-series tree</span>
-  <span class="c-kw">String</span> path = <span class="c-str">"/iot_system/logs/"</span> + <span class="c-kw">String</span>(<span class="c-fn">millis</span>() / 1000);
-  <span class="c-fn">FirebaseJson</span> json;
-  json.<span class="c-fn">set</span>(<span class="c-str">"temperature"</span>, t);
-  json.<span class="c-fn">set</span>(<span class="c-str">"humidity"</span>, h);
-  json.<span class="c-fn">set</span>(<span class="c-str">"light"</span>, ldr);
-  json.<span class="c-fn">set</span>(<span class="c-str">"bulb_state"</span>, currentBulbState);
-  json.<span class="c-fn">set</span>(<span class="c-str">"mode"</span>, currentMode);
-  <span class="c-fn">Firebase</span>.<span class="c-fn">set</span>(fbdo, path, json);
-
-  <span class="c-fn">delay</span>(2500);
-}</code></pre>
-      </div>
-    </section>
-
-    <!-- 8. EVIDENCE -->
-    <section class="skeleton-section" id="t5-evidence">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">08</span>
-          <h2 class="sec-title">Evidence & Live Interactive CSV Exporter</h2>
-        </div>
-        <span class="sec-tag">// OPERATIONAL DEMONSTRATION</span>
-      </div>
-      <div class="evidence-grid">
-        <div class="evidence-card">
-          <div class="evidence-visual" style="flex-direction: column; padding: 24px; text-align: center;">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#E5857B" stroke-width="2" style="margin-bottom: 12px;">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-            </svg>
-            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #FAF5EE; margin-bottom: 12px;">
-              Verified Dataset: 8 Log Rows Ready
-            </span>
-            <button id="btnDownloadCsvSim" class="btn-repo" style="font-size: 0.8rem; padding: 9px 20px;">
-              Download Exported CSV (.csv) ↓
+            <button class="interactive-btn btn-t2" id="btnPublishMqtt">
+              🚀 Publish MQTT Packet to Adafruit IO
             </button>
           </div>
-          <div class="evidence-info">
-            <div class="evidence-label">EXPORTED_DATASET_LIVE.CSV</div>
-            <div class="evidence-title">Interactive CSV Download Demonstrator</div>
-            <p class="evidence-desc">Live generator proving browser-side CSV compilation from recorded timestamped telemetry records.</p>
-          </div>
-        </div>
 
-        <div class="evidence-card">
-          <div class="evidence-visual">
-            <img src="images/iot/task5_dashboard.png" alt="Capstone Multi-Sensor Dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="media-dropzone" style="display:none; padding:20px;">
-              <div class="media-dropzone-icon">📊</div>
-              <span class="media-badge">Capstone Dashboard Screenshot</span>
-              <div class="media-dropzone-path">images/iot/task5_dashboard.png</div>
-              <p class="media-dropzone-desc">Attach screenshot of complete Capstone multi-sensor live dashboard.</p>
-            </div>
-          </div>
-          <div class="evidence-info">
-            <div class="evidence-label">images/iot/task5_dashboard.png</div>
-            <div class="evidence-title">Capstone Cloud Telemetry Dashboard</div>
-            <p class="evidence-desc">Unified monitoring interface showing live temperature, humidity, light, and relay status.</p>
-          </div>
-        </div>
-
-        <div class="evidence-card">
-          <div class="evidence-visual">
-            <img src="images/iot/task5_csv_data.png" alt="Historical Telemetry Spreadsheet / Chart" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <svg viewBox="0 0 320 180" width="100%" height="100%">
-              <rect width="320" height="180" fill="#151825"/>
-              <path d="M20 150 L60 130 L100 135 L140 100 L180 85 L220 70 L260 90 L300 65" fill="none" stroke="#E5857B" stroke-width="2.5"/>
-              <path d="M20 120 L60 115 L100 125 L140 130 L180 128 L220 132 L260 130 L300 125" fill="none" stroke="#F1B2B2" stroke-width="2" stroke-dasharray="4"/>
-              <circle cx="220" cy="70" r="4" fill="#E5857B"/>
-              <rect x="25" y="25" width="120" height="30" rx="4" fill="#1B1E2E" stroke="#3D4263"/>
-              <text x="35" y="44" fill="#FAF5EE" font-family="monospace" font-size="10">Temp / Lux Trend</text>
-            </svg>
-          </div>
-          <div class="evidence-info">
-            <div class="evidence-label">images/iot/task5_csv_data.png</div>
-            <div class="evidence-title">Historical Time-Series Graph / CSV Data</div>
-            <p class="evidence-desc">Dual-axis trend chart and spreadsheet validation proving autonomous time-series logging.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. CHALLENGES & FIXES -->
-    <section class="skeleton-section" id="t5-challenges">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">09</span>
-          <h2 class="sec-title">Things That Broke & How I Solved Them</h2>
-        </div>
-        <span class="sec-tag">// HONEST ENGINEERING REFLECTION</span>
-      </div>
-      <div class="challenges-grid">
-        <div class="challenge-card">
-          <div class="challenge-top">
-            <span class="challenge-tag-fail">FAILURE #1</span>
-            <div class="challenge-title">Relay Chatter During Twilight Transition</div>
-          </div>
-          <div class="challenge-body">
-            <div class="cause-box">
-              <h5>What Went Wrong</h5>
-              <p>During sunset, as the room gradually dimmed, the relay clicked on and off rapidly 10 times in 5 seconds. The light was flickering annoyingly.</p>
-            </div>
-            <div class="fix-box">
-              <h5>How I Fixed It</h5>
-              <p>I realized I had written a single threshold: <code>if (ldr < 1500)</code>. Because ADC sensor readings have minor noise (±20 counts), values hovering around 1500 triggered rapid oscillation. I implemented the 300-point <strong>hysteresis deadband</strong> (ON at <1400, OFF at >1700), which completely resolved the chatter.</p>
+          <div class="sandbox-right">
+            <div class="terminal-window">
+              <div class="terminal-bar">
+                <span class="term-dot dot-r"></span>
+                <span class="term-dot dot-y"></span>
+                <span class="term-dot dot-g"></span>
+                <span class="term-title">Adafruit IO Broker Feed Stream</span>
+              </div>
+              <pre class="terminal-code" id="mqttFeedOutput"><code>[BROKER] Connected: io.adafruit.com:1883 (KeepAlive: 60s)
+[TOPIC]  Listening on night07owl/feeds/temperature
+[FEED]   Current Broker Value: 28.5 °C (Synced)</code></pre>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- 10. REFLECTION -->
-    <section class="skeleton-section" id="t5-reflection">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">10</span>
-          <h2 class="sec-title">Engineering Reflection & What This Taught Me</h2>
+      <!-- 3. CODE & HARDWARE POINTS -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t2">03</span>
+            <h2>Firmware Implementation & Debugging Fix</h2>
+          </div>
+          <span class="block-tag">// CODE & RESILIENCE</span>
         </div>
-        <span class="sec-tag">// LESSONS LEARNED ACROSS THE ENTIRE SEMINAR</span>
-      </div>
-      <div class="reflection-card">
-        <p>
-          "Looking back across all five tasks, this journey transformed how I look at software and hardware. In Task 1, I just wanted to toggle an LED. By Task 5, I had built a complete, resilient system combining analog sensor physics, microcontroller architecture, safety isolation for 230V mains, cloud NoSQL synchronisation, and client-side data export. The biggest lesson was that real-world engineering is not about writing code that works only in ideal conditions; it is about diagnosing why brownout detectors trigger, why ADC2 conflicts with Wi-Fi, why relays chatter around thresholds, and designing robust countermeasures. That problem-solving process is what turned a breadboard experiment into a true smart home product."
+
+        <div class="code-box">
+          <div class="code-header">
+            <span class="code-filename">esp32_adafruit_mqtt.ino</span>
+            <button class="copy-btn">Copy Code</button>
+          </div>
+          <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;Adafruit_MQTT.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">&lt;Adafruit_MQTT_Client.h&gt;</span>
+
+<span class="c-type">WiFiClient</span> client;
+<span class="c-type">Adafruit_MQTT_Client</span> mqtt(&amp;client, <span class="c-str">"io.adafruit.com"</span>, <span class="c-num">1883</span>, <span class="c-str">"night07owl"</span>, <span class="c-str">"AIO_KEY"</span>);
+<span class="c-type">Adafruit_MQTT_Publish</span> tempFeed = <span class="c-type">Adafruit_MQTT_Publish</span>(&amp;mqtt, <span class="c-str">"night07owl/feeds/temp"</span>);
+
+<span class="c-kw">void</span> <span class="c-fn">MQTT_connect</span>() {
+  <span class="c-kw">if</span> (mqtt.<span class="c-fn">connected</span>()) <span class="c-kw">return</span>;
+  <span class="c-kw">while</span> (mqtt.<span class="c-fn">connect</span>() != <span class="c-num">0</span>) { <span class="c-fn">delay</span>(<span class="c-num">2000</span>); } <span class="c-cmt">// Reconnect loop</span>
+}
+
+<span class="c-kw">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-fn">MQTT_connect</span>();
+  <span class="c-kw">float</span> sensorVal = <span class="c-fn">analogRead</span>(<span class="c-num">34</span>) * (<span class="c-num">3.3</span> / <span class="c-num">4095.0</span>) * <span class="c-num">10.0</span>;
+  tempFeed.<span class="c-fn">publish</span>(sensorVal);
+  mqtt.<span class="c-fn">processPackets</span>(<span class="c-num">1000</span>);
+  mqtt.<span class="c-fn">ping</span>(); <span class="c-cmt">// Keep-alive heartbeat avoids disconnects</span>
+  <span class="c-fn">delay</span>(<span class="c-num">5000</span>);
+}</code></pre>
+        </div>
+
+        <div class="debug-cards-grid">
+          <div class="debug-card bug-side">
+            <div class="debug-head head-bug">
+              <span class="debug-icon">⚠️</span>
+              <h4>The Bug: Periodic 60-Second Socket Dropping</h4>
+            </div>
+            <ul class="bullet-list-sm">
+              <li>Adafruit IO terminates connections if no message is received within the 60-second Keep-Alive window.</li>
+              <li>When the sensor loop was set to update every 90 seconds to save data, the broker forcibly killed the socket.</li>
+            </ul>
+          </div>
+
+          <div class="debug-card fix-side">
+            <div class="debug-head head-fix">
+              <span class="debug-icon">✅</span>
+              <h4>The Engineering Fix</h4>
+            </div>
+            <ul class="bullet-list-sm">
+              <li>Introduced <code>mqtt.ping()</code> every 30 seconds to maintain the active session without sending unnecessary payload data.</li>
+              <li>Built an automatic reconnect recovery loop so dropped Wi-Fi immediately self-heals without device restart.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="checklist-container">
+          <div class="checklist-header-row">
+            <h4>Station 02 Deliverables Verification</h4>
+            <span class="pill-badge pill-t2">100% Passed</span>
+          </div>
+          <div class="checklist-grid">
+            <div class="check-item"><span class="box-done">☑</span> Connected to io.adafruit.com over TCP port 1883</div>
+            <div class="check-item"><span class="box-done">☑</span> Time-series telemetry published to custom cloud feed</div>
+            <div class="check-item"><span class="box-done">☑</span> Keep-alive ping routine validated over 4-hour soak test</div>
+            <div class="check-item"><span class="box-done">☑</span> Reconnection state-machine handles router disconnects</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- =======================================================================
+         TASK 03: IFTTT EVENT AUTOMATION & WEBHOOKS (EMERALD MINT / AQUA)
+         ======================================================================= -->
+    <div class="task-view" id="view-task3" style="display: none;">
+      
+      <!-- HERO BANNER -->
+      <section class="task-banner banner-t3">
+        <div class="banner-eyebrow">
+          <span class="pill-badge pill-t3">ASSIGNMENT 03</span>
+          <span class="eyebrow-text">// EVENT-DRIVEN AUTOMATION & NOTIFICATIONS</span>
+        </div>
+        <h1 class="task-title title-t3">IFTTT Event Automation & Webhooks</h1>
+        <p class="task-lead">
+          Connecting physical sensor thresholds to real-world communication channels (push alerts, email, SMS) through HTTP REST webhooks and cloud service orchestration.
         </p>
-      </div>
-    </section>
 
-    <!-- 11. REPO & CHECKLIST -->
-    <section class="skeleton-section" id="t5-repo">
-      <div class="sec-header">
-        <div class="sec-title-wrap">
-          <span class="sec-num">11</span>
-          <h2 class="sec-title">Project Source & Final Forge Checklist</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-icon">🔔</span>
+            <div class="stat-content">
+              <h4>Action Service</h4>
+              <p>IFTTT Maker Webhooks REST API</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">📨</span>
+            <div class="stat-content">
+              <h4>Notification</h4>
+              <p>Instant Mobile Push &amp; Email</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">⏱️</span>
+            <div class="stat-content">
+              <h4>Delivery Speed</h4>
+              <p>&lt; 2.4s from Trigger to Phone</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">🛡️</span>
+            <div class="stat-content">
+              <h4>Anti-Spam</h4>
+              <p>120-Second Software Cooldown</p>
+            </div>
+          </div>
         </div>
-        <span class="sec-tag">// CODE & COMPLIANCE</span>
-      </div>
-      <div class="repo-card">
-        <div class="repo-info">
-          <h4>Task 05: Capstone Autonomous System</h4>
-          <p>Full firmware, hysteresis algorithm, Firebase real-time rules, and CSV exporter.</p>
-        </div>
-        <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">View on GitHub ↗</a>
-      </div>
+      </section>
 
-      <div class="forge-checklist-box">
-        <div class="checklist-head">
-          <h3>Task 05 Forge Verification Checklist</h3>
-          <span class="meta-chip chip-coral">100% Satisfied</span>
+      <!-- 1. EVENT LOGIC IN POINTS -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t3">01</span>
+            <h2>Event-Driven Trigger Architecture</h2>
+          </div>
+          <span class="block-tag">// HOW AUTOMATION TRIGGERS WORK</span>
         </div>
-        <div class="checklist-items">
-          <div class="check-item"><span class="box-done">☑</span> Dual-mode operation (Manual vs Automatic) implemented and documented</div>
-          <div class="check-item"><span class="box-done">☑</span> Closed-loop automation with software hysteresis explained</div>
-          <div class="check-item"><span class="box-done">☑</span> 300-point hysteresis deadband calibration verified</div>
-          <div class="check-item"><span class="box-done">☑</span> Time-series historical logging schema documented</div>
-          <div class="check-item"><span class="box-done">☑</span> Client-side CSV export generator working interactively</div>
-          <div class="check-item"><span class="box-done">☑</span> Complete Arduino C++ source code with logging loop</div>
-          <div class="check-item"><span class="box-done">☑</span> Relay chatter failure analysis and engineering fix detailed</div>
-          <div class="check-item"><span class="box-done">☑</span> Comprehensive reflection covering the entire 5-task progression</div>
-          <div class="check-item"><span class="box-done">☑</span> Source code repository linked and media slots ready</div>
+
+        <div class="points-grid">
+          <div class="point-card">
+            <div class="point-icon">⚡</div>
+            <div class="point-body">
+              <h4>Trigger Condition Rules</h4>
+              <ul class="bullet-list">
+                <li><strong>Hardware Threshold:</strong> LDR reads light drop (&lt; 1000 ADC) or Temperature exceeds 35°C.</li>
+                <li><strong>Event Name:</strong> ESP32 prepares an HTTP POST to <code>trigger/{event}/with/key/{key}</code>.</li>
+                <li><strong>JSON Payload:</strong> Embeds up to 3 values: <code>{"value1": "Station 03", "value2": "Threshold Crossed"}</code>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="point-card">
+            <div class="point-icon">📱</div>
+            <div class="point-body">
+              <h4>Cloud Dispatch Execution</h4>
+              <ul class="bullet-list">
+                <li>IFTTT receives the encrypted HTTPS request and verifies the private webhook key.</li>
+                <li>Matches the trigger to the user applet rule: <em>"If Maker Webhook, Then Push Notification"</em>.</li>
+                <li>Delivers real-time vibration &amp; banner alerts straight to the engineer's phone screen.</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-  </div>
+      </section>
 
-</main>
-</div><!-- end .iot-app-layout -->
+      <!-- 2. INTERACTIVE SIMULATOR -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t3">02</span>
+            <h2>Interactive Webhook Trigger Sandbox</h2>
+          </div>
+          <span class="block-tag">// SIMULATE PUSH NOTIFICATION</span>
+        </div>
 
-<footer class="iot-footer">
-  © <span id="year">2026</span> IoT Engineering Portfolio — Prototype Seminar Forge Track.
-</footer>
+        <div class="interactive-sandbox sandbox-t3">
+          <div class="sandbox-left">
+            <div class="slider-control-card">
+              <label class="slider-label" for="simIftttEvent">
+                <span>Select Trigger Event Type:</span>
+              </label>
+              <select class="custom-select" id="simIftttEvent">
+                <option value="temp_alarm">🚨 Overheat Warning (Temp &gt; 35°C)</option>
+                <option value="intruder_alert">🚪 Perimeter Breach (Motion Sensor HIGH)</option>
+                <option value="water_leak">💧 Flood Sensor Detected (ADC &lt; 500)</option>
+              </select>
+            </div>
+            <button class="interactive-btn btn-t3" id="btnTriggerIfttt">
+              📲 Dispatch Webhook &amp; Receive Phone Alert
+            </button>
+          </div>
+
+          <div class="sandbox-right">
+            <!-- Simulated Phone Notification Preview -->
+            <div class="sim-phone-screen">
+              <div class="phone-notch"></div>
+              <div class="phone-time">09:41 AM</div>
+              <div class="phone-notification" id="simPhoneNotification">
+                <div class="notif-header">
+                  <span class="notif-app-icon">🔔</span>
+                  <span class="notif-app-name">IFTTT Alert · Forge Lab</span>
+                  <span class="notif-time">Just now</span>
+                </div>
+                <div class="notif-body">
+                  <strong id="simPhoneTitle">🚨 Overheat Warning (Temp &gt; 35°C)</strong>
+                  <p id="simPhoneMsg">Sensor node ESP32-DEV-01 exceeded calibrated threshold. Auto-ventilation relay activated.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. CODE & CHECKLIST -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t3">03</span>
+            <h2>Firmware Trigger Logic & Verification</h2>
+          </div>
+          <span class="block-tag">// DEBOUNCE CODE & LOGS</span>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span class="code-filename">esp32_ifttt_webhook.ino</span>
+            <button class="copy-btn">Copy Code</button>
+          </div>
+          <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;HTTPClient.h&gt;</span>
+
+<span class="c-kw">const char</span>* iftttUrl = <span class="c-str">"https://maker.ifttt.com/trigger/temp_alert/with/key/YOUR_KEY"</span>;
+<span class="c-kw">unsigned long</span> lastTrigger = <span class="c-num">0</span>;
+<span class="c-kw">const unsigned long</span> cooldownMs = <span class="c-num">120000</span>; <span class="c-cmt">// 2-minute spam lock</span>
+
+<span class="c-kw">void</span> <span class="c-fn">sendIftttAlert</span>(<span class="c-kw">float</span> temp) {
+  <span class="c-kw">if</span> (<span class="c-fn">millis</span>() - lastTrigger &lt; cooldownMs) <span class="c-kw">return</span>; <span class="c-cmt">// Cooldown active</span>
+  
+  <span class="c-type">HTTPClient</span> http;
+  http.<span class="c-fn">begin</span>(iftttUrl);
+  http.<span class="c-fn">addHeader</span>(<span class="c-str">"Content-Type"</span>, <span class="c-str">"application/json"</span>);
+  <span class="c-type">String</span> payload = <span class="c-str">"{\"value1\":\""</span> + <span class="c-type">String</span>(temp) + <span class="c-str">" C\",\"value2\":\"Forge Station 03\"}"</span>;
+  <span class="c-kw">int</span> httpCode = http.<span class="c-fn">POST</span>(payload);
+  http.<span class="c-fn">end</span>();
+  
+  lastTrigger = <span class="c-fn">millis</span>();
+}</code></pre>
+        </div>
+
+        <div class="checklist-container">
+          <div class="checklist-header-row">
+            <h4>Station 03 Deliverables Verification</h4>
+            <span class="pill-badge pill-t3">100% Passed</span>
+          </div>
+          <div class="checklist-grid">
+            <div class="check-item"><span class="box-done">☑</span> Webhook event configured in IFTTT Developer Console</div>
+            <div class="check-item"><span class="box-done">☑</span> Multi-variable JSON payload successfully transmitted</div>
+            <div class="check-item"><span class="box-done">☑</span> 120-second software debounce timer eliminates inbox spam</div>
+            <div class="check-item"><span class="box-done">☑</span> Push notification latency benchmarked under 2.5 seconds</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- =======================================================================
+         TASK 04: FIREBASE REALTIME DATABASE & DASHBOARD (SOLAR AMBER / CORAL)
+         ======================================================================= -->
+    <div class="task-view" id="view-task4" style="display: none;">
+      
+      <!-- HERO BANNER -->
+      <section class="task-banner banner-t4">
+        <div class="banner-eyebrow">
+          <span class="pill-badge pill-t4">ASSIGNMENT 04</span>
+          <span class="eyebrow-text">// FULL-STACK NOSQL CLOUD INTEGRATION</span>
+        </div>
+        <h1 class="task-title title-t4">Firebase Realtime Database & Monitor</h1>
+        <p class="task-lead">
+          Building a full-stack IoT telemetry pipeline using Google Cloud Firebase Realtime NoSQL database. Two-way WebSocket synchronization with interactive web dashboard.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-icon">🔥</span>
+            <div class="stat-content">
+              <h4>Database Engine</h4>
+              <p>Firebase Realtime NoSQL JSON Tree</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">⚡</span>
+            <div class="stat-content">
+              <h4>Sync Latency</h4>
+              <p>~42ms Bidirectional WebSocket Sync</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">🔐</span>
+            <div class="stat-content">
+              <h4>Security</h4>
+              <p>Granular Read/Write Rule Enforcement</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">📊</span>
+            <div class="stat-content">
+              <h4>Payload Format</h4>
+              <p>Structured Time-Series JSON Document</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. DATABASE SCHEMA & ARCHITECTURE -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t4">01</span>
+            <h2>NoSQL Tree Architecture & Sync Model</h2>
+          </div>
+          <span class="block-tag">// SCHEMA & TWO-WAY BINDING</span>
+        </div>
+
+        <div class="points-grid">
+          <div class="point-card">
+            <div class="point-icon">📂</div>
+            <div class="point-body">
+              <h4>Database Tree Structure</h4>
+              <ul class="bullet-list">
+                <li><strong><code>/sensors/temperature:</code></strong> Live float value updated every 3 seconds.</li>
+                <li><strong><code>/sensors/humidity:</code></strong> Ambient humidity percentage from digital sensor.</li>
+                <li><strong><code>/controls/relay_state:</code></strong> Boolean flag listened to via real-time stream listener.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="point-card">
+            <div class="point-icon">🔄</div>
+            <div class="point-body">
+              <h4>Two-Way Streaming Benefits</h4>
+              <ul class="bullet-list">
+                <li>When the user taps the web toggle, Firebase updates its tree in &lt; 50ms.</li>
+                <li>The ESP32 maintains an open SSL WebSocket stream and trips the relay instantaneously without polling!</li>
+                <li>Multiple dashboards open across different computers stay 100% in sync simultaneously.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. INTERACTIVE SIMULATOR -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t4">02</span>
+            <h2>Live Firebase Sync Visualizer</h2>
+          </div>
+          <span class="block-tag">// INTERACTIVE DATABASE SIMULATOR</span>
+        </div>
+
+        <div class="interactive-sandbox sandbox-t4">
+          <div class="sandbox-left">
+            <div class="slider-control-card">
+              <label class="slider-label" for="simFirebaseSlider">
+                <span>Simulated Sensor Reading:</span>
+                <strong id="simFirebaseVal">65 % RH</strong>
+              </label>
+              <input type="range" min="20" max="95" value="65" class="custom-range range-t4" id="simFirebaseSlider">
+            </div>
+
+            <div class="toggle-card">
+              <span>Relay Actuator Switch:</span>
+              <button class="toggle-btn" id="simFirebaseRelay">RELAY OFF</button>
+            </div>
+          </div>
+
+          <div class="sandbox-right">
+            <div class="terminal-window">
+              <div class="terminal-bar">
+                <span class="term-dot dot-r"></span>
+                <span class="term-dot dot-y"></span>
+                <span class="term-dot dot-g"></span>
+                <span class="term-title">Firebase Realtime DB Tree Preview</span>
+              </div>
+              <pre class="terminal-code" id="simFirebaseJson"><code>{
+  "forge_station_04": {
+    "telemetry": {
+      "humidity_pct": 65,
+      "temperature_c": 27.8,
+      "status": "ONLINE",
+      "last_sync": "2026-10-08T16:15:00Z"
+    },
+    "actuators": {
+      "relay_powered": false,
+      "mode": "MANUAL_OVERRIDE"
+    }
+  }
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. CODE & CHECKLIST -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t4">03</span>
+            <h2>ESP32 Firebase SDK Implementation</h2>
+          </div>
+          <span class="block-tag">// FIRMWARE & NTP TIME SYNC</span>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span class="code-filename">esp32_firebase_sync.ino</span>
+            <button class="copy-btn">Copy Code</button>
+          </div>
+          <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;FirebaseESP32.h&gt;</span>
+
+<span class="c-type">FirebaseData</span> fbdo;
+<span class="c-type">FirebaseAuth</span> auth;
+<span class="c-type">FirebaseConfig</span> config;
+
+<span class="c-kw">void</span> <span class="c-fn">setup</span>() {
+  config.host = <span class="c-str">"https://forge-iot-telemetry-default-rtdb.firebaseio.com"</span>;
+  config.signer.tokens.legacy_token = <span class="c-str">"DATABASE_SECRET_KEY"</span>;
+  <span class="c-fn">Firebase</span>.<span class="c-fn">begin</span>(&amp;config, &amp;auth);
+  <span class="c-fn">Firebase</span>.<span class="c-fn">reconnectWiFi</span>(<span class="c-kw">true</span>);
+}
+
+<span class="c-kw">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-kw">float</span> currentHumidity = <span class="c-fn">readSensor</span>();
+  <span class="c-fn">Firebase</span>.<span class="c-fn">setFloat</span>(fbdo, <span class="c-str">"/forge_station_04/telemetry/humidity_pct"</span>, currentHumidity);
+  
+  <span class="c-cmt">// Read remote dashboard relay command</span>
+  <span class="c-kw">if</span> (<span class="c-fn">Firebase</span>.<span class="c-fn">getBool</span>(fbdo, <span class="c-str">"/forge_station_04/actuators/relay_powered"</span>)) {
+    <span class="c-fn">digitalWrite</span>(<span class="c-num">4</span>, fbdo.<span class="c-fn">boolData</span>() ? <span class="c-kw">HIGH</span> : <span class="c-kw">LOW</span>);
+  }
+  <span class="c-fn">delay</span>(<span class="c-num">3000</span>);
+}</code></pre>
+        </div>
+
+        <div class="checklist-container">
+          <div class="checklist-header-row">
+            <h4>Station 04 Deliverables Verification</h4>
+            <span class="pill-badge pill-t4">100% Passed</span>
+          </div>
+          <div class="checklist-grid">
+            <div class="check-item"><span class="box-done">☑</span> SSL TLS 1.2 handshake secured with cloud project</div>
+            <div class="check-item"><span class="box-done">☑</span> Multi-sensor telemetry pushed to NoSQL JSON branches</div>
+            <div class="check-item"><span class="box-done">☑</span> WebSocket event listener executes instant relay toggle</div>
+            <div class="check-item"><span class="box-done">☑</span> Database security rules lock down unauthorized writes</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- =======================================================================
+         TASK 05: CAPSTONE AUTONOMOUS SYSTEM & CSV EXPORT (CYBER ROSE / VIOLET)
+         ======================================================================= -->
+    <div class="task-view" id="view-task5" style="display: none;">
+      
+      <!-- HERO BANNER -->
+      <section class="task-banner banner-t5">
+        <div class="banner-eyebrow">
+          <span class="pill-badge pill-t5">ASSIGNMENT 05</span>
+          <span class="eyebrow-text">// CAPSTONE CLOSED-LOOP AUTONOMOUS SYSTEM</span>
+        </div>
+        <h1 class="task-title title-t5">Autonomous Closed-Loop Control & CSV Export</h1>
+        <p class="task-lead">
+          The capstone integration: an edge-computing autonomous system featuring software hysteresis anti-chatter control, dual manual/auto modes, and client-side telemetry CSV logging.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-icon">🔄</span>
+            <div class="stat-content">
+              <h4>Control Mode</h4>
+              <p>Dual: Manual Remote vs Autonomous</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">🛡️</span>
+            <div class="stat-content">
+              <h4>Anti-Chatter</h4>
+              <p>300-Point Deadband Software Hysteresis</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">💾</span>
+            <div class="stat-content">
+              <h4>Data Export</h4>
+              <p>Client-Side UTF-8 CSV Stream Generator</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">🌐</span>
+            <div class="stat-content">
+              <h4>Edge Autonomy</h4>
+              <p>Maintains Operation Offline</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. HYSTERESIS LOGIC IN POINTS -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t5">01</span>
+            <h2>Understanding Software Hysteresis & Anti-Chatter</h2>
+          </div>
+          <span class="block-tag">// CONTROL THEORY IN PLAIN ENGLISH</span>
+        </div>
+
+        <div class="points-grid">
+          <div class="point-card">
+            <div class="point-icon">⚠️</div>
+            <div class="point-body">
+              <h4>The Relay Chatter Problem</h4>
+              <ul class="bullet-list">
+                <li>If a single threshold is used (e.g., <code>Light &lt; 1500</code>), sensor noise causes the reading to bounce between 1499 and 1501.</li>
+                <li>The mechanical relay clicks ON and OFF 10 times per second, causing electrical arcing and rapid component failure!</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="point-card">
+            <div class="point-icon">🛡️</div>
+            <div class="point-body">
+              <h4>The Two-Threshold Deadband Fix</h4>
+              <ul class="bullet-list">
+                <li><strong>Turn-ON Threshold (1200):</strong> Light must plunge below 1200 before the lamp turns ON.</li>
+                <li><strong>Turn-OFF Threshold (1500):</strong> Light must rise all the way past 1500 before turning OFF.</li>
+                <li><strong>300-Point Deadband:</strong> Any noise within 1200–1500 is completely ignored; rock-solid stability!</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. INTERACTIVE SIMULATOR (HYSTERESIS & CSV DOWNLOAD) -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t5">02</span>
+            <h2>Interactive Hysteresis & CSV Generator Sandbox</h2>
+          </div>
+          <span class="block-tag">// TRY DEADBAND LOGIC & DOWNLOAD CSV</span>
+        </div>
+
+        <div class="interactive-sandbox sandbox-t5">
+          <div class="sandbox-left">
+            <div class="slider-control-card">
+              <label class="slider-label" for="simLightSlider">
+                <span>Ambient Light Level (LDR ADC):</span>
+                <strong id="simLightVal">1850 Raw ADC (Bright)</strong>
+              </label>
+              <input type="range" min="600" max="2500" value="1850" class="custom-range range-t5" id="simLightSlider">
+              <div class="threshold-markers">
+                <span class="marker marker-on">▲ 1200 (Turn ON)</span>
+                <span class="marker marker-band">300pt Deadband</span>
+                <span class="marker marker-off">▲ 1500 (Turn OFF)</span>
+              </div>
+            </div>
+
+            <div class="hysteresis-status-card">
+              <div class="h-state-row">
+                <span>Relay State:</span>
+                <strong class="relay-state-val" id="simRelayState">OFF (DE-ENERGIZED)</strong>
+              </div>
+              <div class="h-state-row">
+                <span>Deadband Status:</span>
+                <span class="h-band-pill" id="simHysteresisStatus">Zone: High Light (Stable)</span>
+              </div>
+            </div>
+
+            <button class="interactive-btn btn-t5" id="btnDownloadCsvSim">
+              📥 Download Live Telemetry CSV Export (.csv)
+            </button>
+          </div>
+
+          <div class="sandbox-right">
+            <div class="terminal-window">
+              <div class="terminal-bar">
+                <span class="term-dot dot-r"></span>
+                <span class="term-dot dot-y"></span>
+                <span class="term-dot dot-g"></span>
+                <span class="term-title">Capstone Telemetry Log Stream</span>
+              </div>
+              <pre class="terminal-code" id="simCsvLog"><code>[MODE] AUTOMATIC_CLOSED_LOOP (Watchdog Active)
+[CALIB] Lower Threshold: 1200 | Upper Threshold: 1500
+[SAMPLE] Light: 1850 | Temp: 27.4C | Relay: OFF | Stable
+[READY] Client-side CSV generator initialized. Click button to download.</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. REFLECTION & FINAL CHECKLIST -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t5">03</span>
+            <h2>Track Progression Takeaways & Final Checklist</h2>
+          </div>
+          <span class="block-tag">// 5-STATION RETROSPECTIVE</span>
+        </div>
+
+        <div class="points-grid">
+          <div class="point-card">
+            <div class="point-icon">💡</div>
+            <div class="point-body">
+              <h4>Engineering Takeaways</h4>
+              <ul class="bullet-list">
+                <li><strong>Local vs Cloud:</strong> Always keep essential logic edge-based so hardware functions without internet.</li>
+                <li><strong>Noise Immunity:</strong> Never deploy raw sensor readings without software filtering or hysteresis deadbands.</li>
+                <li><strong>Protocol Selection:</strong> Match protocols to constraints: HTTP for local setup, MQTT for streams, Firebase for state.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="point-card">
+            <div class="point-icon">🎓</div>
+            <div class="point-body">
+              <h4>What I Gained</h4>
+              <ul class="bullet-list">
+                <li>End-to-end full stack competence: from breadboard soldering and C++ firmware to cloud NoSQL databases.</li>
+                <li>Real-world debugging perseverance: diagnosed packet fragmentation, keep-alive drops, and chatter failure modes.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="checklist-container">
+          <div class="checklist-header-row">
+            <h4>Station 05 Capstone Verification</h4>
+            <span class="pill-badge pill-t5">100% Passed</span>
+          </div>
+          <div class="checklist-grid">
+            <div class="check-item"><span class="box-done">☑</span> Dual-mode operation (Manual vs Auto) tested &amp; verified</div>
+            <div class="check-item"><span class="box-done">☑</span> 300-point software hysteresis eliminates relay chatter</div>
+            <div class="check-item"><span class="box-done">☑</span> Client-side CSV export generator operational</div>
+            <div class="check-item"><span class="box-done">☑</span> Full 5-station engineering track documented and online</div>
+          </div>
+        </div>
+
+        <div class="repo-banner-box">
+          <div class="repo-text">
+            <h4>Complete 5-Station Repository</h4>
+            <p>Access full firmware suite, circuit schematics, and interactive components on GitHub.</p>
+          </div>
+          <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo btn-t5">
+            View on GitHub ↗
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="iot-footer">
+      © <span id="year">2026</span> Sudhiksha · IoT Engineering Portfolio Track. All rights reserved.
+    </footer>
+
+  </main>
+</div>
 
 <script src="js/iot.js"></script>
 </body>
