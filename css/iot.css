@@ -1539,58 +1539,318 @@ pre.code-content code {
 .head-fix h4 { color: #34d399; }
 
 /* ==========================================================================
-   CHECKLIST & REPOSITORY BANNER
+   PHOTO EVIDENCE GALLERY
    ========================================================================== */
-.checklist-container {
+.evidence-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.evidence-photo-card {
   background: var(--surface-muted);
-  border: 1px dashed var(--border-strong);
-  border-radius: var(--radius-md);
-  padding: 22px;
-  margin-bottom: 20px;
-}
-
-.checklist-header-row {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
+  flex-direction: column;
 }
 
-.checklist-header-row h4 {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
+.evidence-photo-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--t1-accent);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+}
+
+.photo-img-wrap {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #08080c;
+  overflow: hidden;
+}
+
+.photo-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+  display: block;
+}
+
+.evidence-photo-card:hover .photo-img-wrap img {
+  transform: scale(1.04);
+}
+
+.photo-state-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
   font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.state-on {
+  background: rgba(16, 185, 129, 0.9);
+  color: #FFFFFF;
+  border: 1px solid rgba(16, 185, 129, 0.5);
+}
+
+.state-off {
+  background: rgba(239, 68, 68, 0.9);
+  color: #FFFFFF;
+  border: 1px solid rgba(239, 68, 68, 0.5);
+}
+
+.state-ide {
+  background: rgba(139, 92, 246, 0.9);
+  color: #FFFFFF;
+  border: 1px solid rgba(139, 92, 246, 0.5);
+}
+
+.photo-card-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.photo-card-info h4 {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
   color: #FFFFFF;
 }
 
-.checklist-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 10px;
-}
-
-.check-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.85rem;
+.photo-card-info p {
+  font-size: 0.84rem;
   color: var(--text-secondary);
-  padding: 8px 12px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   CIRCUIT SCHEMATIC DIAGRAM & SVG
+   ========================================================================== */
+.schematic-card {
+  background: var(--surface-navy);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 22px;
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.schematic-svg-wrap {
+  width: 100%;
+  overflow-x: auto;
+  background: #08080c;
+  border-radius: 10px;
+  border: 1px solid #1a1a24;
+  padding: 14px;
+}
+
+.schematic-svg {
+  width: 100%;
+  min-width: 640px;
+  height: auto;
+  display: block;
+}
+
+.schematic-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 6px;
-  background: var(--surface);
-  user-select: none;
-  cursor: pointer;
-  transition: background 0.15s ease;
+  border: 1px solid var(--border-subtle);
 }
 
-.check-item:hover {
-  background: rgba(40, 40, 52, 0.9);
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
 }
 
-.check-item .box-done {
-  font-size: 0.95rem;
+/* ==========================================================================
+   SIMULATED WEB SERVER BROWSER SANDBOX
+   ========================================================================== */
+.sim-browser-card {
+  background: #0d0d12;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #15151c;
+  border-bottom: 1px solid #22222c;
+}
+
+.sim-nav-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.sim-nav-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.sim-url-bar {
+  flex: 1;
+  background: #08080c;
+  border: 1px solid #282834;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: #a3a3af;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sim-browser-viewport {
+  background: #ffffff;
+  color: #111111;
+  padding: 32px 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.sim-browser-viewport h1 {
+  font-size: 26px;
+  margin-bottom: 16px;
+  color: #111111;
+}
+
+.sim-web-btn-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+.sim-web-btn {
+  width: 110px;
+  height: 48px;
+  font-size: 18px;
   font-weight: bold;
-  color: #34d399;
+  cursor: pointer;
+  border: 2px solid #333333;
+  border-radius: 6px;
+  background: #f0f0f0;
+  color: #111111;
+  transition: all 0.15s ease;
+}
+
+.sim-web-btn:hover {
+  background: #dddddd;
+  transform: scale(1.03);
+}
+
+.sim-web-back-link {
+  font-size: 18px;
+  color: #0000ee;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.sim-hardware-board {
+  background: #111116;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.board-chip-visual {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.virtual-esp32-ic {
+  width: 90px;
+  height: 50px;
+  background: #1a1a24;
+  border: 1px solid #3b3b4f;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: #a5a5b5;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.virtual-leds-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.v-led-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.v-bulb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.v-bulb-red {
+  background: #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+}
+
+.v-bulb-blue {
+  background: #222230;
+}
+
+.v-bulb-blue.lit {
+  background: #3b82f6;
+  box-shadow: 0 0 16px #3b82f6, 0 0 30px #60a5fa;
+  border-color: #93c5fd;
 }
 
 .repo-banner-box {

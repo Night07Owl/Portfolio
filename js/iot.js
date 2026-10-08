@@ -28,7 +28,6 @@ const TASK_META = {
 document.addEventListener('DOMContentLoaded', () => {
   setupTaskTabSwitcher();
   setupCopyButtons();
-  setupChecklistInteractivity();
 
   // Initialize all 5 interactive demonstration sandboxes
   setupTask1Sandbox();
@@ -113,57 +112,113 @@ function setupTaskTabSwitcher() {
 }
 
 // ==========================================================================
-// 2. TASK 1 SANDBOX: ESP32 EMBEDDED WEB SERVER LED CONTROL
+// 2. TASK 1 SANDBOX: ESP32 EMBEDDED WEB SERVER LED CONTROL (PORT 80)
 // ==========================================================================
 function setupTask1Sandbox() {
-  const toggleBtn = document.getElementById('simLedToggle');
-  const bulb = document.getElementById('simLedIndicator');
-  const stateText = document.getElementById('simLedStateText');
+  const btnOn = document.getElementById('btnWebOn');
+  const btnOff = document.getElementById('btnWebOff');
+  const btnBack = document.getElementById('btnWebBack');
+  const urlEl = document.getElementById('simBrowserUrl');
+  const headingEl = document.getElementById('simWebHeading');
+  const btnRow = document.getElementById('simWebBtnRow');
+  const virtualBlueLed = document.getElementById('simVirtualBlueLed');
+  const blueLedLabel = document.getElementById('simBlueLedLabel');
   const voltageBadge = document.getElementById('simLedVoltage');
   const logEl = document.getElementById('simHttpLog');
 
-  if (!toggleBtn || !bulb || !stateText) return;
+  if (!btnOn || !btnOff || !btnBack) return;
 
-  let isOn = false;
-
-  toggleBtn.addEventListener('click', () => {
-    isOn = !isOn;
+  function setLedState(isOn) {
     const now = new Date().toLocaleTimeString();
 
     if (isOn) {
-      bulb.style.background = '#ec4899';
-      bulb.style.boxShadow = '0 0 25px rgba(236, 72, 153, 0.9), 0 0 50px rgba(139, 92, 246, 0.5)';
-      bulb.style.borderColor = '#f472b6';
-      stateText.textContent = 'HIGH (3.3V) — LED IS ON';
-      stateText.style.color = '#f472b6';
-      if (voltageBadge) voltageBadge.textContent = '3.30V Logic (HIGH)';
-      toggleBtn.textContent = '⚡ Send HTTP GET /L (Turn LED OFF)';
-      toggleBtn.style.background = 'linear-gradient(135deg, #4b5563, #374151)';
+      if (urlEl) urlEl.textContent = '192.168.56.202/on';
+      if (headingEl) {
+        headingEl.textContent = 'LED is ON';
+        headingEl.style.color = '#111111';
+      }
+      if (btnRow) btnRow.style.display = 'none';
+      if (btnBack) btnBack.style.display = 'inline-block';
+
+      if (virtualBlueLed) virtualBlueLed.classList.add('lit');
+      if (blueLedLabel) {
+        blueLedLabel.textContent = 'GPIO 2 (HIGH / ON)';
+        blueLedLabel.style.color = '#60a5fa';
+      }
+      if (voltageBadge) {
+        voltageBadge.textContent = '3.30V Logic (HIGH)';
+        voltageBadge.style.color = '#60a5fa';
+        voltageBadge.style.borderColor = '#3b82f6';
+      }
 
       if (logEl) {
-        logEl.textContent = `[${now}] CLIENT: 192.168.1.102 -> GET /H HTTP/1.1
-[${now}] SERVER: Parsed command 'GET /H'
-[${now}] GPIO 2: State changed LOW -> HIGH (3.30V)
-[${now}] RESP: HTTP/1.1 200 OK (Content-Length: 148 bytes)
-[${now}] RTT: 18ms (Local Wi-Fi LAN)`;
+        logEl.textContent = `[${now}] CLIENT: 192.168.56.105 -> GET /on HTTP/1.1
+[${now}] SERVER: Route matched -> handleLEDOn()
+[${now}] GPIO 2: digitalWrite(2, HIGH) -> Logic 3.30V (15mA)
+[${now}] ONBOARD: Blue SMD LED illuminated
+[${now}] RESP: HTTP/1.1 200 OK (Content-Type: text/html)
+[${now}] BODY: <h1>LED is ON</h1><a href='/'>Back</a>
+[${now}] RTT: 9ms (protosem Wi-Fi LAN)`;
       }
     } else {
-      bulb.style.background = '#1c1c24';
-      bulb.style.boxShadow = 'none';
-      bulb.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-      stateText.textContent = 'LOW (0V) — LED IS OFF';
-      stateText.style.color = 'var(--text-muted)';
-      if (voltageBadge) voltageBadge.textContent = '0.00V Logic (LOW)';
-      toggleBtn.textContent = '⚡ Send HTTP GET /H (Turn LED ON)';
-      toggleBtn.style.background = 'var(--t1-gradient)';
+      if (urlEl) urlEl.textContent = '192.168.56.202/off';
+      if (headingEl) {
+        headingEl.textContent = 'LED is OFF';
+        headingEl.style.color = '#111111';
+      }
+      if (btnRow) btnRow.style.display = 'none';
+      if (btnBack) btnBack.style.display = 'inline-block';
+
+      if (virtualBlueLed) virtualBlueLed.classList.remove('lit');
+      if (blueLedLabel) {
+        blueLedLabel.textContent = 'GPIO 2 (LOW / OFF)';
+        blueLedLabel.style.color = 'var(--text-secondary)';
+      }
+      if (voltageBadge) {
+        voltageBadge.textContent = '0.00V Logic (LOW)';
+        voltageBadge.style.color = 'var(--text-muted)';
+        voltageBadge.style.borderColor = 'var(--border-subtle)';
+      }
 
       if (logEl) {
-        logEl.textContent = `[${now}] CLIENT: 192.168.1.102 -> GET /L HTTP/1.1
-[${now}] SERVER: Parsed command 'GET /L'
-[${now}] GPIO 2: State changed HIGH -> LOW (0.00V)
-[${now}] RESP: HTTP/1.1 200 OK (Content-Length: 148 bytes)
-[${now}] RTT: 14ms (Local Wi-Fi LAN)`;
+        logEl.textContent = `[${now}] CLIENT: 192.168.56.105 -> GET /off HTTP/1.1
+[${now}] SERVER: Route matched -> handleLEDOff()
+[${now}] GPIO 2: digitalWrite(2, LOW) -> Logic 0.00V (0mA)
+[${now}] ONBOARD: Blue SMD LED turned OFF
+[${now}] RESP: HTTP/1.1 200 OK (Content-Type: text/html)
+[${now}] BODY: <h1>LED is OFF</h1><a href='/'>Back</a>
+[${now}] RTT: 8ms (protosem Wi-Fi LAN)`;
       }
+    }
+  }
+
+  btnOn.addEventListener('click', (e) => {
+    e.preventDefault();
+    setLedState(true);
+  });
+
+  btnOff.addEventListener('click', (e) => {
+    e.preventDefault();
+    setLedState(false);
+  });
+
+  btnBack.addEventListener('click', (e) => {
+    e.preventDefault();
+    const now = new Date().toLocaleTimeString();
+    if (urlEl) urlEl.textContent = '192.168.56.202/';
+    if (headingEl) {
+      headingEl.textContent = 'ESP32 LED Control';
+      headingEl.style.color = '#111111';
+    }
+    if (btnRow) btnRow.style.display = 'flex';
+    if (btnBack) btnBack.style.display = 'none';
+
+    if (logEl) {
+      logEl.textContent = `[${now}] CLIENT: 192.168.56.105 -> GET / HTTP/1.1
+[${now}] SERVER: Route matched -> handleRoot()
+[${now}] RESP: HTTP/1.1 200 OK (Content-Type: text/html)
+[${now}] BODY: Served interactive HTML control buttons
+[${now}] PIN 2: Current state retained without disruption`;
     }
   });
 }
@@ -375,7 +430,7 @@ function setupTask5Sandbox() {
 }
 
 // ==========================================================================
-// 7. COMMON UTILITIES: COPY BUTTONS & CHECKLIST
+// 7. COMMON UTILITIES: COPY BUTTONS
 // ==========================================================================
 function setupCopyButtons() {
   document.querySelectorAll('.copy-btn').forEach(btn => {
@@ -398,23 +453,6 @@ function setupCopyButtons() {
         }, 2000);
       } catch (err) {
         console.error('Failed to copy: ', err);
-      }
-    });
-  });
-}
-
-function setupChecklistInteractivity() {
-  document.querySelectorAll('.check-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const icon = item.querySelector('.box-done');
-      if (icon) {
-        if (icon.textContent === '☑') {
-          icon.textContent = '☐';
-          icon.style.opacity = '0.35';
-        } else {
-          icon.textContent = '☑';
-          icon.style.opacity = '1';
-        }
       }
     });
   });

@@ -142,11 +142,11 @@
       <section class="task-banner banner-t1">
         <div class="banner-eyebrow">
           <span class="pill-badge pill-t1">ASSIGNMENT 01</span>
-          <span class="eyebrow-text">// LOCAL WIRELESS HARDWARE CONTROL</span>
+          <span class="eyebrow-text">// LOCAL EMBEDDED WEB SERVER &amp; HARDWARE CONTROL</span>
         </div>
-        <h1 class="task-title title-t1">ESP32 Web Server & HTML LED Control</h1>
+        <h1 class="task-title title-t1">ESP32 Web Server &amp; HTML LED Control</h1>
         <p class="task-lead">
-          Turning an ESP32 into a standalone, local Wi-Fi web server. Controlling physical GPIO pins directly from a smartphone browser with zero cloud reliance.
+          Deploying an autonomous HTTP web server on the ESP32 microcontroller using <code>WebServer.h</code>. Serving dynamic HTML control pages over local Wi-Fi (<code>protosem</code>) and actuating GPIO 2 to toggle the onboard blue LED via RESTful endpoints (<code>/on</code>, <code>/off</code>, <code>/</code>).
         </p>
 
         <!-- KEY STATS CARDS -->
@@ -155,28 +155,28 @@
             <span class="stat-icon">📡</span>
             <div class="stat-content">
               <h4>Protocol</h4>
-              <p>HTTP/1.1 Socket on Port 80</p>
+              <p>HTTP/1.1 WebServer on Port 80</p>
             </div>
           </div>
           <div class="stat-card">
             <span class="stat-icon">⚡</span>
             <div class="stat-content">
               <h4>Target Pin</h4>
-              <p>GPIO 2 (3.3V Logic Level)</p>
+              <p>GPIO 2 (Onboard Blue LED)</p>
             </div>
           </div>
           <div class="stat-card">
-            <span class="stat-icon">⏱️</span>
+            <span class="stat-icon">🌐</span>
             <div class="stat-content">
-              <h4>Response Time</h4>
-              <p>&lt; 150ms Local LAN Latency</p>
+              <h4>Local IP</h4>
+              <p>192.168.56.202 (DHCP)</p>
             </div>
           </div>
           <div class="stat-card">
             <span class="stat-icon">🔒</span>
             <div class="stat-content">
-              <h4>Dependency</h4>
-              <p>Zero External Cloud Services</p>
+              <h4>Cloud Dependency</h4>
+              <p>Zero (100% Offline LAN)</p>
             </div>
           </div>
         </div>
@@ -187,7 +187,7 @@
         <div class="block-header">
           <div class="title-with-num">
             <span class="badge-num num-t1">01</span>
-            <h2>Core Objective & Architecture Overview</h2>
+            <h2>Core Objective &amp; Architecture Overview</h2>
           </div>
           <span class="block-tag">// THE BIG PICTURE</span>
         </div>
@@ -196,11 +196,11 @@
           <div class="point-card">
             <div class="point-icon">🎯</div>
             <div class="point-body">
-              <h4>Why This Matters</h4>
+              <h4>Embedded Micro-Server Paradigm</h4>
               <ul class="bullet-list">
-                <li>Demonstrates fundamental embedded networking: the ESP32 serves HTML directly from its RAM.</li>
-                <li>Allows immediate local hardware toggling without depending on AWS, Firebase, or external internet.</li>
-                <li>Foundation for local smart-home gateway products like Philips Hue and Zigbee bridges.</li>
+                <li>Transforms the ESP32 into a self-contained local web server hosting responsive HTML directly from program flash.</li>
+                <li>Zero external dependency on internet, AWS, or third-party cloud brokers; functions flawlessly in isolated air-gapped networks.</li>
+                <li>Forms the core baseline for commercial edge IoT devices (e.g., smart plugs, localized device gateways, and industrial HMIs).</li>
               </ul>
             </div>
           </div>
@@ -208,12 +208,11 @@
           <div class="point-card">
             <div class="point-icon">⚙️</div>
             <div class="point-body">
-              <h4>How The Request Cycle Works</h4>
+              <h4>Request Routing &amp; GPIO Dispatch</h4>
               <ul class="bullet-list">
-                <li><strong>Client Request:</strong> Phone browser visits <code>http://192.168.1.45/H</code>.</li>
-                <li><strong>URL Parsing:</strong> ESP32 firmware reads the HTTP GET request string in RAM.</li>
-                <li><strong>Pin Action:</strong> Microcontroller executes <code>digitalWrite(2, HIGH)</code>.</li>
-                <li><strong>HTTP Response:</strong> ESP32 sends HTTP 200 OK header + HTML button interface.</li>
+                <li><strong>Endpoint <code>GET /</code>:</strong> Returns main control console with large styled touch-friendly ON and OFF buttons.</li>
+                <li><strong>Endpoint <code>GET /on</code>:</strong> Executes <code>digitalWrite(LED_PIN, HIGH)</code>, illuminates the onboard blue LED, and returns confirmation with Back link.</li>
+                <li><strong>Endpoint <code>GET /off</code>:</strong> Executes <code>digitalWrite(LED_PIN, LOW)</code>, de-energizes the blue LED, and renders state feedback.</li>
               </ul>
             </div>
           </div>
@@ -228,109 +227,436 @@
           <div class="pipeline-flow">
             <div class="pipe-node">
               <span class="node-icon">📱</span>
-              <span class="node-label">Phone Browser</span>
-              <span class="node-sub">HTTP GET /H</span>
+              <span class="node-label">Client Browser</span>
+              <span class="node-sub">192.168.56.202</span>
             </div>
             <div class="pipe-arrow arrow-t1">
-              <span>802.11 b/g/n Wi-Fi</span>
+              <span>Wi-Fi: protosem</span>
               <span class="arrow-symbol">→</span>
-              <span>Port 80 TCP</span>
+              <span>HTTP Port 80</span>
             </div>
             <div class="pipe-node active-t1">
               <span class="node-icon">🎛️</span>
-              <span class="node-label">ESP32 DevKit</span>
-              <span class="node-sub">Parses URL in RAM</span>
+              <span class="node-label">ESP32 WebServer</span>
+              <span class="node-sub">server.handleClient()</span>
             </div>
             <div class="pipe-arrow arrow-t1">
-              <span>3.3V Logic</span>
+              <span>Route Dispatch</span>
               <span class="arrow-symbol">→</span>
-              <span>GPIO 2 HIGH</span>
+              <span>/on or /off</span>
             </div>
             <div class="pipe-node">
               <span class="node-icon">💡</span>
-              <span class="node-label">LED Actuator</span>
-              <span class="node-sub">Current Flows</span>
+              <span class="node-label">Onboard Blue LED</span>
+              <span class="node-sub">GPIO 2 (HIGH/LOW)</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 2. INTERACTIVE SIMULATOR (COOL & PLAYABLE) -->
+      <!-- 2. HARDWARE LAB VERIFICATION & PHOTO EVIDENCE -->
       <section class="content-block">
         <div class="block-header">
           <div class="title-with-num">
             <span class="badge-num num-t1">02</span>
+            <h2>Physical Hardware Lab Testing &amp; Visual Evidence</h2>
+          </div>
+          <span class="block-tag">// LAB VERIFICATION PROOF</span>
+        </div>
+
+        <div class="evidence-photos-grid">
+          <!-- Photo 1: LED ON -->
+          <div class="evidence-photo-card">
+            <div class="photo-img-wrap">
+              <img src="images/iot/task1_led_on.jpg" alt="ESP32 running web server with GPIO 2 blue LED turned ON" loading="lazy">
+              <span class="photo-state-badge state-on">● GPIO 2 : HIGH (ON)</span>
+            </div>
+            <div class="photo-card-info">
+              <h4>Active State: /on Route Verification</h4>
+              <p>Laptop browser visits <code>192.168.56.202/on</code>. The ESP32 executes <code>handleLEDOn()</code>, driving GPIO 2 HIGH. The bright onboard blue SMD LED illuminates brilliantly while the screen renders "LED is ON" with a return link.</p>
+            </div>
+          </div>
+
+          <!-- Photo 2: LED OFF -->
+          <div class="evidence-photo-card">
+            <div class="photo-img-wrap">
+              <img src="images/iot/task1_led_off.jpg" alt="ESP32 running web server with GPIO 2 blue LED turned OFF" loading="lazy">
+              <span class="photo-state-badge state-off">○ GPIO 2 : LOW (OFF)</span>
+            </div>
+            <div class="photo-card-info">
+              <h4>Inactive State: /off Route Verification</h4>
+              <p>Accessing <code>192.168.56.202/off</code> triggers <code>handleLEDOff()</code>, driving GPIO 2 LOW. The blue indicator LED immediately shuts down while the red power rail LED remains active.</p>
+            </div>
+          </div>
+
+          <!-- Photo 3: Arduino IDE -->
+          <div class="evidence-photo-card">
+            <div class="photo-img-wrap">
+              <img src="images/iot/task1_ide_code.jpg" alt="Arduino IDE flashing task1esp32.ino over COM7 with Serial Monitor" loading="lazy">
+              <span class="photo-state-badge state-ide">⚙ COM7 @ 115200 Baud</span>
+            </div>
+            <div class="photo-card-info">
+              <h4>Firmware Flashing &amp; Serial Telemetry</h4>
+              <p>Arduino IDE uploading <code>task1esp32.ino</code> to ESP32 Dev Module via COM7. Serial monitor tracks connection handshake to SSID <code>protosem</code> and confirms the assigned IP <code>192.168.56.202</code>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. INTERACTIVE EMBEDDED SERVER SIMULATOR -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t1">03</span>
             <h2>Interactive Embedded Server Sandbox</h2>
           </div>
-          <span class="block-tag">// TRY IT LIVE</span>
+          <span class="block-tag">// TEST THE LIVE ENDPOINTS</span>
         </div>
 
         <div class="interactive-sandbox sandbox-t1">
+          <!-- Left: Simulated Browser Running ESP32 HTML -->
           <div class="sandbox-left">
-            <div class="sim-lamp-holder">
-              <div class="sim-bulb" id="simLedIndicator"></div>
-              <div class="sim-lamp-meta">
-                <span class="lamp-state-title" id="simLedStateText">LOW (0V) — LED IS OFF</span>
+            <div class="sim-browser-card">
+              <div class="sim-browser-bar">
+                <div class="sim-nav-dots">
+                  <span style="background: #ef4444;"></span>
+                  <span style="background: #f59e0b;"></span>
+                  <span style="background: #10b981;"></span>
+                </div>
+                <div class="sim-url-bar">
+                  <span style="opacity: 0.5;">🔒 http://</span>
+                  <span id="simBrowserUrl" style="color: #60a5fa; font-weight: bold;">192.168.56.202/</span>
+                </div>
+              </div>
+
+              <!-- Viewport mirroring exact HTML served by ESP32 -->
+              <div class="sim-browser-viewport" id="simBrowserViewport">
+                <h1 id="simWebHeading" style="font-size: 26px; color: #111; margin-bottom: 16px;">ESP32 LED Control</h1>
+                <div class="sim-web-btn-row" id="simWebBtnRow">
+                  <button class="sim-web-btn" id="btnWebOn">ON</button>
+                  <button class="sim-web-btn" id="btnWebOff">OFF</button>
+                </div>
+                <a class="sim-web-back-link" id="btnWebBack" style="display: none;">Back</a>
+              </div>
+            </div>
+
+            <!-- Hardware State Dock Under Browser -->
+            <div class="sim-hardware-board" style="margin-top: 14px;">
+              <div class="board-chip-visual">
+                <div class="virtual-esp32-ic">ESP32 DevKit</div>
+                <div class="virtual-leds-col">
+                  <div class="v-led-item">
+                    <span class="v-bulb v-bulb-red"></span>
+                    <span>PWR (3.3V)</span>
+                  </div>
+                  <div class="v-led-item">
+                    <span class="v-bulb v-bulb-blue" id="simVirtualBlueLed"></span>
+                    <span id="simBlueLedLabel">GPIO 2 (LOW / OFF)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="sim-lamp-meta" style="text-align: right;">
                 <span class="lamp-volt-badge" id="simLedVoltage">0.00V Logic</span>
               </div>
             </div>
-            <button class="interactive-btn btn-t1" id="simLedToggle">
-              ⚡ Send HTTP GET /H (Turn LED ON)
-            </button>
           </div>
 
+          <!-- Right: Serial Terminal & Packet Inspector -->
           <div class="sandbox-right">
             <div class="terminal-window">
               <div class="terminal-bar">
                 <span class="term-dot dot-r"></span>
                 <span class="term-dot dot-y"></span>
                 <span class="term-dot dot-g"></span>
-                <span class="term-title">ESP32 HTTP Packet Inspector</span>
+                <span class="term-title">ESP32 COM7 Serial Monitor (115200 Baud)</span>
               </div>
-              <pre class="terminal-code" id="simHttpLog"><code>[SERVER] ESP32 Web Server listening on 192.168.1.45:80
-[STATUS] Waiting for incoming client GET requests...
-[PIN 02] State: LOW (0V) | Output Current: 0mA</code></pre>
+              <pre class="terminal-code" id="simHttpLog"><code>[BOOT] ESP32 Dev Module Initialized
+[WIFI] Connecting to WiFi: protosem .....
+[WIFI] WiFi connected!
+[NET]  ESP32 IP address: 192.168.56.202
+[HTTP] Web server started on Port 80!
+[PIN]  pinMode(2, OUTPUT) | Initial State: LOW (0.0V)
+[READY] Awaiting client HTTP GET requests...</code></pre>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 3. HARDWARE & WIRING BLUEPRINT -->
+      <!-- 4. HARDWARE CIRCUIT SCHEMATIC & WIRING BLUEPRINT -->
       <section class="content-block">
         <div class="block-header">
           <div class="title-with-num">
-            <span class="badge-num num-t1">03</span>
-            <h2>Hardware Components & Wiring Blueprint</h2>
+            <span class="badge-num num-t1">04</span>
+            <h2>Precision Circuit Schematic &amp; Hardware Blueprint</h2>
           </div>
-          <span class="block-tag">// BILL OF MATERIALS & SCHEMATIC</span>
+          <span class="block-tag">// VECTOR HARDWARE SCHEMATIC</span>
+        </div>
+
+        <div class="schematic-card">
+          <div class="schematic-svg-wrap">
+            <svg viewBox="0 0 940 450" class="schematic-svg" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- Subtle grid background -->
+                <pattern id="schemGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#171724" stroke-width="0.8"/>
+                </pattern>
+                <!-- Gradients -->
+                <linearGradient id="pcbGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#14151f"/>
+                  <stop offset="100%" stop-color="#0e0f17"/>
+                </linearGradient>
+                <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#2c3040"/>
+                  <stop offset="50%" stop-color="#3c4257"/>
+                  <stop offset="100%" stop-color="#232634"/>
+                </linearGradient>
+                <!-- Glow Filters -->
+                <filter id="glowBlueLed" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="6" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <filter id="glowRedLed" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <filter id="glowWire" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- Schematic Canvas Background -->
+              <rect width="940" height="450" fill="#08080f" rx="10"/>
+              <rect width="940" height="450" fill="url(#schemGrid)" rx="10"/>
+
+              <!-- ==============================================
+                   ESP32 DEVKIT V1 MODULE (LEFT SECTION)
+                   ============================================== -->
+              <g id="esp32Board" transform="translate(40, 25)">
+                <!-- PCB Body -->
+                <rect x="0" y="0" width="280" height="395" rx="12" fill="url(#pcbGrad)" stroke="#373c54" stroke-width="2"/>
+                
+                <!-- Mounting Holes -->
+                <circle cx="15" cy="15" r="4.5" fill="#08080f" stroke="#525977" stroke-width="1.5"/>
+                <circle cx="265" cy="15" r="4.5" fill="#08080f" stroke="#525977" stroke-width="1.5"/>
+                <circle cx="15" cy="380" r="4.5" fill="#08080f" stroke="#525977" stroke-width="1.5"/>
+                <circle cx="265" cy="380" r="4.5" fill="#08080f" stroke="#525977" stroke-width="1.5"/>
+
+                <!-- Wi-Fi Inverted-F Meander Antenna -->
+                <path d="M 85 8 L 85 38 L 105 38 L 105 18 L 125 18 L 125 38 L 145 38 L 145 18 L 165 18 L 165 38 L 185 38 L 185 8" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round"/>
+
+                <!-- ESP-WROOM-32 RF Shield Can -->
+                <rect x="45" y="48" width="190" height="150" rx="6" fill="url(#shieldGrad)" stroke="#525977" stroke-width="1.5"/>
+                <text x="140" y="85" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" text-anchor="middle">ESP-WROOM-32</text>
+                <text x="140" y="105" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Wi-Fi + BT SoC Module</text>
+                <text x="140" y="125" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Tensilica Xtensa Dual 240MHz</text>
+                <rect x="90" y="145" width="100" height="26" rx="4" fill="#171924" stroke="#3b3f54" stroke-width="1"/>
+                <text x="140" y="162" fill="#cbd5e1" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">FCC / CE / RoHS</text>
+
+                <!-- Micro-USB Jack (Bottom) -->
+                <rect x="110" y="380" width="60" height="25" rx="3" fill="#475569" stroke="#94a3b8" stroke-width="1.5"/>
+                <text x="140" y="396" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" text-anchor="middle">USB 5V</text>
+
+                <!-- Tactile Buttons -->
+                <rect x="25" y="350" width="22" height="22" rx="3" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+                <text x="36" y="364" fill="#94a3b8" font-family="monospace" font-size="7" text-anchor="middle">EN</text>
+                <rect x="233" y="350" width="22" height="22" rx="3" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+                <text x="244" y="364" fill="#94a3b8" font-family="monospace" font-size="7" text-anchor="middle">BOOT</text>
+
+                <!-- Power Red Indicator LED -->
+                <circle cx="80" cy="235" r="5" fill="#ef4444" filter="url(#glowRedLed)"/>
+                <text x="92" y="238" fill="#fca5a5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="600">PWR (3.3V)</text>
+
+                <!-- Built-in GPIO 2 Blue SMD LED (Tested in Lab Photos!) -->
+                <rect x="68" y="260" width="144" height="32" rx="6" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="1.2" stroke-dasharray="3,3"/>
+                <circle cx="80" cy="276" r="6" fill="#3b82f6" filter="url(#glowBlueLed)" stroke="#93c5fd" stroke-width="1.5"/>
+                <text x="94" y="275" fill="#93c5fd" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">ONBOARD BLUE LED</text>
+                <text x="94" y="287" fill="#60a5fa" font-family="'JetBrains Mono', monospace" font-size="7.5">Hardwired to GPIO 2 internally</text>
+
+                <!-- Left Pin Header (Pins 1 - 15) -->
+                <g id="leftPins" transform="translate(6, 25)">
+                  <!-- 15 pin slots -->
+                  <rect x="0" y="0" width="18" height="340" rx="3" fill="#181a26" stroke="#2d3248" stroke-width="1"/>
+                  <!-- Pin Labels -->
+                  <text x="25" y="22" fill="#94a3b8" font-family="monospace" font-size="8">3V3</text>
+                  <text x="25" y="44" fill="#64748b" font-family="monospace" font-size="8">EN</text>
+                  <text x="25" y="66" fill="#64748b" font-family="monospace" font-size="8">VP</text>
+                  <text x="25" y="88" fill="#64748b" font-family="monospace" font-size="8">VN</text>
+                  <text x="25" y="110" fill="#64748b" font-family="monospace" font-size="8">D34</text>
+                  <text x="25" y="132" fill="#64748b" font-family="monospace" font-size="8">D35</text>
+                  <text x="25" y="154" fill="#64748b" font-family="monospace" font-size="8">D32</text>
+                  <text x="25" y="176" fill="#64748b" font-family="monospace" font-size="8">D33</text>
+                  <text x="25" y="198" fill="#64748b" font-family="monospace" font-size="8">D25</text>
+                  <text x="25" y="220" fill="#64748b" font-family="monospace" font-size="8">D26</text>
+                  <text x="25" y="242" fill="#64748b" font-family="monospace" font-size="8">D27</text>
+                  <text x="25" y="264" fill="#64748b" font-family="monospace" font-size="8">D14</text>
+                  <text x="25" y="286" fill="#64748b" font-family="monospace" font-size="8">D12</text>
+                  <text x="25" y="308" fill="#64748b" font-family="monospace" font-size="8">D13</text>
+                  <text x="25" y="330" fill="#06b6d4" font-family="monospace" font-size="8" font-weight="bold">GND</text>
+                  <text x="25" y="342" fill="#ef4444" font-family="monospace" font-size="7.5" font-weight="bold">VIN (5V)</text>
+                </g>
+
+                <!-- Right Pin Header (Pins 16 - 30) -->
+                <g id="rightPins" transform="translate(256, 25)">
+                  <rect x="0" y="0" width="18" height="340" rx="3" fill="#181a26" stroke="#2d3248" stroke-width="1"/>
+                  <!-- Pin Labels -->
+                  <text x="-8" y="22" fill="#06b6d4" font-family="monospace" font-size="8" font-weight="bold" text-anchor="end">GND</text>
+                  <circle cx="9" cy="18" r="4.5" fill="#06b6d4" stroke="#22d3ee" stroke-width="1.5"/>
+                  <text x="-8" y="44" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">D23</text>
+                  <text x="-8" y="66" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">D22</text>
+                  <text x="-8" y="88" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">TX0</text>
+                  <text x="-8" y="110" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">RX0</text>
+                  <text x="-8" y="132" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">D21</text>
+                  <text x="-8" y="154" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">D19</text>
+                  <text x="-8" y="176" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">D18</text>
+                  <text x="-8" y="198" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">D5</text>
+                  <text x="-8" y="220" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">TX2</text>
+                  <text x="-8" y="242" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">RX2</text>
+                  <text x="-8" y="264" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">D4</text>
+                  <!-- GPIO 2 PIN HIGHLIGHTED -->
+                  <text x="-8" y="286" fill="#c084fc" font-family="monospace" font-size="9" font-weight="bold" text-anchor="end">D2 (GPIO 2)</text>
+                  <circle cx="9" cy="282" r="5" fill="#a855f7" stroke="#e879f9" stroke-width="2" filter="url(#glowWire)"/>
+                  <text x="-8" y="308" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">D15</text>
+                  <text x="-8" y="330" fill="#64748b" font-family="monospace" font-size="8" text-anchor="end">D0</text>
+                </g>
+              </g>
+
+              <!-- ==============================================
+                   SCHEMATIC TRACES & EXTERNAL BREADBOARD CIRCUIT
+                   ============================================== -->
+              <!-- Internal Trace Link callout -->
+              <path d="M 230 300 C 270 300, 270 307, 305 307" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4,4"/>
+              
+              <!-- External GPIO 2 PURPLE SIGNAL WIRE -->
+              <path d="M 315 307 L 440 307 L 440 180 L 520 180" fill="none" stroke="#c084fc" stroke-width="3" stroke-linecap="round" filter="url(#glowWire)"/>
+              <text x="380" y="300" fill="#d8b4fe" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold">GPIO 2 (3.3V Switch)</text>
+
+              <!-- 220Ω RESISTOR (R1) -->
+              <g id="resistorR1" transform="translate(520, 165)">
+                <line x1="0" y1="15" x2="25" y2="15" stroke="#c084fc" stroke-width="3"/>
+                <!-- Resistor Body -->
+                <rect x="25" y="4" width="70" height="22" rx="4" fill="#1e1b2e" stroke="#c084fc" stroke-width="2"/>
+                <!-- Color Bands (Red, Red, Brown, Gold = 220Ω) -->
+                <rect x="36" y="4" width="4" height="22" fill="#ef4444"/>
+                <rect x="46" y="4" width="4" height="22" fill="#ef4444"/>
+                <rect x="56" y="4" width="4" height="22" fill="#854d0e"/>
+                <rect x="76" y="4" width="4" height="22" fill="#eab308"/>
+                <line x1="95" y1="15" x2="120" y2="15" stroke="#c084fc" stroke-width="3"/>
+                <text x="60" y="-4" fill="#e9d5ff" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" text-anchor="middle">R1: 220Ω (1/4W)</text>
+                <text x="60" y="38" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="7.5" text-anchor="middle">Current Limiter (~15mA)</text>
+              </g>
+
+              <!-- BLUE 5MM LED (D1) -->
+              <g id="ledD1" transform="translate(640, 165)">
+                <line x1="0" y1="15" x2="30" y2="15" stroke="#c084fc" stroke-width="3"/>
+                
+                <!-- Schematic Diode Symbol -->
+                <path d="M 30 5 L 30 25 L 50 15 Z" fill="#3b82f6" stroke="#93c5fd" stroke-width="1.8"/>
+                <line x1="50" y1="5" x2="50" y2="25" stroke="#93c5fd" stroke-width="2.5"/>
+                <!-- Photonic Emission Rays -->
+                <line x1="42" y1="3" x2="50" y2="-5" stroke="#60a5fa" stroke-width="1.5"/>
+                <line x1="48" y1="6" x2="56" y2="-2" stroke="#60a5fa" stroke-width="1.5"/>
+                
+                <!-- Physical 5mm Bulb Illustration beside it -->
+                <path d="M 75 8 C 75 -2, 95 -2, 95 8 L 95 22 L 75 22 Z" fill="#3b82f6" stroke="#93c5fd" stroke-width="1.5" filter="url(#glowBlueLed)"/>
+                <rect x="73" y="22" width="24" height="4" rx="1" fill="#60a5fa"/>
+                <line x1="50" y1="15" x2="73" y2="15" stroke="#38bdf8" stroke-width="2"/>
+                <line x1="97" y1="15" x2="130" y2="15" stroke="#06b6d4" stroke-width="3"/>
+
+                <text x="60" y="-8" fill="#93c5fd" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" text-anchor="middle">LED1: 5mm Blue</text>
+                <text x="60" y="42" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="7.5" text-anchor="middle">Vf ≈ 3.0V | Anode (+) to Cathode (-)</text>
+              </g>
+
+              <!-- COMMON GROUND RETURN WIRE (CYAN / BLACK) -->
+              <path d="M 770 180 L 820 180 L 820 43 L 315 43" fill="none" stroke="#06b6d4" stroke-width="3" stroke-linecap="round" filter="url(#glowWire)"/>
+              <text x="600" y="35" fill="#67e8f9" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold">Common System GND (0V Rail)</text>
+
+              <!-- Schematic Ground Symbol at Top Right corner -->
+              <g transform="translate(820, 180)">
+                <circle cx="0" cy="0" r="4" fill="#06b6d4"/>
+                <line x1="0" y1="0" x2="0" y2="25" stroke="#06b6d4" stroke-width="2"/>
+                <line x1="-12" y1="25" x2="12" y2="25" stroke="#06b6d4" stroke-width="2"/>
+                <line x1="-8" y1="30" x2="8" y2="30" stroke="#06b6d4" stroke-width="2"/>
+                <line x1="-4" y1="35" x2="4" y2="35" stroke="#06b6d4" stroke-width="2"/>
+              </g>
+
+              <!-- ==============================================
+                   TECHNICAL CALLOUT PANELS (BOTTOM RIGHT)
+                   ============================================== -->
+              <g transform="translate(460, 260)">
+                <!-- Card 1: Direct Built-in Path (Lab Verified) -->
+                <rect x="0" y="0" width="440" height="74" rx="8" fill="#0f111a" stroke="#25283b" stroke-width="1.2"/>
+                <circle cx="20" cy="22" r="6" fill="#3b82f6" filter="url(#glowBlueLed)"/>
+                <text x="36" y="26" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">LAB BENCH SETUP: ZERO-WIRE EMBEDDED PATH</text>
+                <text x="20" y="48" fill="#94a3b8" font-family="sans-serif" font-size="8.5">As shown in the lab photos, the ESP32 DevKit V1 hardwires GPIO 2 directly to an</text>
+                <text x="20" y="62" fill="#94a3b8" font-family="sans-serif" font-size="8.5">onboard Blue SMD LED via internal resistor. No breadboard or external wiring is required.</text>
+
+                <!-- Card 2: External Breadboard Expansion -->
+                <rect x="0" y="86" width="440" height="74" rx="8" fill="#0f111a" stroke="#25283b" stroke-width="1.2"/>
+                <circle cx="20" cy="108" r="6" fill="#a855f7" filter="url(#glowWire)"/>
+                <text x="36" y="112" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">EXTERNAL EXPANSION CIRCUIT</text>
+                <text x="20" y="134" fill="#94a3b8" font-family="sans-serif" font-size="8.5">For driving external appliances or discrete 5mm LEDs: Connect Pin D2 -> 220Ω resistor</text>
+                <text x="20" y="148" fill="#94a3b8" font-family="sans-serif" font-size="8.5">-> Anode (long leg) -> Cathode (flat edge) -> ESP32 Ground pin.</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Color-Coded Schematic Legend -->
+          <div class="schematic-legend">
+            <div class="legend-item">
+              <span class="wire-dot" style="background: #a855f7; box-shadow: 0 0 8px #a855f7;"></span>
+              <span>GPIO 2 / D2: 3.3V Logic Control Output</span>
+            </div>
+            <div class="legend-item">
+              <span class="wire-dot" style="background: #06b6d4; box-shadow: 0 0 8px #06b6d4;"></span>
+              <span>GND: Common Ground Reference (0V)</span>
+            </div>
+            <div class="legend-item">
+              <span class="wire-dot" style="background: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
+              <span>VIN / Micro-USB: 5V DC Power Bus</span>
+            </div>
+            <div class="legend-item">
+              <span class="wire-dot" style="background: #3b82f6; box-shadow: 0 0 8px #3b82f6;"></span>
+              <span>Onboard SMD LED: Built-in to ESP32 PCB</span>
+            </div>
+          </div>
         </div>
 
         <div class="hardware-spec-cards">
           <div class="hw-card">
             <span class="hw-chip">ESP32 DevKit V1</span>
-            <h4>Tensilica Xtensa Dual-Core 240MHz</h4>
+            <h4>Dual-Core 240MHz SoC</h4>
             <ul class="bullet-list-sm">
-              <li>Integrated 2.4GHz Wi-Fi + BLE 4.2</li>
-              <li>36 General Purpose Input/Output (GPIO) pins</li>
-              <li>Operates on 3.3V logic (Max current: 12mA per pin)</li>
+              <li>Integrated 2.4GHz 802.11 b/g/n Wi-Fi transceiver</li>
+              <li>Dual 32-bit Xtensa LX6 microprocessors</li>
+              <li>Built-in blue indicator SMD LED tied directly to GPIO 2</li>
             </ul>
           </div>
           <div class="hw-card">
-            <span class="hw-chip">5mm Blue LED</span>
-            <h4>Physical Indicator Actuator</h4>
+            <span class="hw-chip">Target Output Pin</span>
+            <h4>GPIO 2 (Digital Pin D2)</h4>
             <ul class="bullet-list-sm">
-              <li>Forward Voltage: ~3.0V – 3.2V</li>
-              <li>Connected between GPIO 2 and Ground</li>
-              <li>Protected by current-limiting resistor</li>
+              <li>Operating logic level: 3.30V (HIGH) / 0.00V (LOW)</li>
+              <li>Maximum source current: 12mA per GPIO</li>
+              <li>Supports boot strapping (pulled low during flash upload)</li>
             </ul>
           </div>
           <div class="hw-card">
-            <span class="hw-chip">220Ω Resistor</span>
-            <h4>Current Protection Limiter</h4>
+            <span class="hw-chip">Discrete 220Ω Resistor</span>
+            <h4>Optional External Protection</h4>
             <ul class="bullet-list-sm">
-              <li>Limits LED current to safe ~15mA</li>
-              <li>Prevents ESP32 GPIO driver burnout</li>
-              <li>Tolerance: ±5% (Gold band)</li>
+              <li>Current calculation: I = (3.3V - 3.0V) / 220Ω ≈ 1.4mA</li>
+              <li>Prevents excess current draw from the ESP32 IO driver</li>
+              <li>Tolerance: ±5% (Gold band) 1/4 Watt</li>
             </ul>
           </div>
         </div>
@@ -347,119 +673,160 @@
             </thead>
             <tbody>
               <tr>
-                <td><span class="pin-badge">GPIO 2</span></td>
-                <td>LED Anode (Long Leg)</td>
+                <td><span class="pin-badge">GPIO 2 (D2)</span></td>
+                <td>Onboard Blue LED (Internal) OR External Anode</td>
                 <td><span class="wire-dot wire-purple"></span> Purple</td>
-                <td>3.3V Switched Logic Output</td>
+                <td>3.3V Switched Digital Logic Output</td>
               </tr>
               <tr>
                 <td><span class="pin-badge">GND</span></td>
-                <td>220Ω Resistor to LED Cathode</td>
-                <td><span class="wire-dot wire-black"></span> Black</td>
+                <td>Common Ground Rail to LED Cathode</td>
+                <td><span class="wire-dot" style="background: #06b6d4;"></span> Cyan / Black</td>
                 <td>Common System Ground (0V Reference)</td>
               </tr>
               <tr>
-                <td><span class="pin-badge">VIN (5V)</span></td>
-                <td>Micro-USB Power Bus</td>
+                <td><span class="pin-badge">Micro-USB</span></td>
+                <td>Laptop / USB Charger Power Bus</td>
                 <td><span class="wire-dot wire-red"></span> Red</td>
-                <td>Regulated USB Power Supply</td>
+                <td>Regulated 5V DC Supply to Onboard AMS1117 LDO</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <!-- 4. KEY FIRMWARE LOGIC & ANNOTATED CODE -->
-      <section class="content-block">
-        <div class="block-header">
-          <div class="title-with-num">
-            <span class="badge-num num-t1">04</span>
-            <h2>Core Firmware Architecture</h2>
-          </div>
-          <span class="block-tag">// ARDUINO C++ SOURCE</span>
-        </div>
-
-        <div class="code-box">
-          <div class="code-header">
-            <span class="code-filename">esp32_standalone_server.ino</span>
-            <button class="copy-btn">Copy Code</button>
-          </div>
-          <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
-
-<span class="c-kw">const char</span>* ssid     = <span class="c-str">"FORGE_LAB_WIFI"</span>;
-<span class="c-kw">const char</span>* password = <span class="c-str">"ForgePrototyping2026"</span>;
-<span class="c-kw">const int</span>   ledPin   = <span class="c-num">2</span>;  <span class="c-cmt">// Onboard indicator &amp; external pin</span>
-
-<span class="c-type">WiFiServer</span> server(<span class="c-num">80</span>);
-
-<span class="c-kw">void</span> <span class="c-fn">setup</span>() {
-  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(<span class="c-num">115200</span>);
-  <span class="c-fn">pinMode</span>(ledPin, <span class="c-kw">OUTPUT</span>);
-  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(ssid, password);
-  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != <span class="c-kw">WL_CONNECTED</span>) { <span class="c-fn">delay</span>(<span class="c-num">500</span>); }
-  server.<span class="c-fn">begin</span>();
-  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-fn">WiFi</span>.<span class="c-fn">localIP</span>()); <span class="c-cmt">// Prints local web address</span>
-}
-
-<span class="c-kw">void</span> <span class="c-fn">loop</span>() {
-  <span class="c-type">WiFiClient</span> client = server.<span class="c-fn">available</span>();
-  <span class="c-kw">if</span> (client) {
-    <span class="c-type">String</span> req = client.<span class="c-fn">readStringUntil</span>(<span class="c-str">'\r'</span>);
-    <span class="c-kw">if</span> (req.<span class="c-fn">indexOf</span>(<span class="c-str">"GET /H"</span>) >= <span class="c-num">0</span>) { <span class="c-fn">digitalWrite</span>(ledPin, <span class="c-kw">HIGH</span>); }
-    <span class="c-kw">if</span> (req.<span class="c-fn">indexOf</span>(<span class="c-str">"GET /L"</span>) >= <span class="c-num">0</span>) { <span class="c-fn">digitalWrite</span>(ledPin, <span class="c-kw">LOW</span>);  }
-    client.<span class="c-fn">print</span>(<span class="c-str">"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n"</span>);
-    client.<span class="c-fn">print</span>(<span class="c-str">"&lt;h1&gt;ESP32 Control&lt;/h1&gt;&lt;a href='/H'&gt;ON&lt;/a&gt; | &lt;a href='/L'&gt;OFF&lt;/a&gt;"</span>);
-    client.<span class="c-fn">stop</span>();
-  }
-}</code></pre>
-        </div>
-      </section>
-
-      <!-- 5. DEBUGGING & KEY TAKEAWAYS (IN POINTS) -->
+      <!-- 5. KEY FIRMWARE LOGIC & ANNOTATED CODE -->
       <section class="content-block">
         <div class="block-header">
           <div class="title-with-num">
             <span class="badge-num num-t1">05</span>
-            <h2>Debugging Insights & Station Checklist</h2>
+            <h2>Core Firmware Architecture</h2>
           </div>
-          <span class="block-tag">// ENGINEERING LOG</span>
+          <span class="block-tag">// ARDUINO C++ SOURCE: task1esp32.ino</span>
+        </div>
+
+        <div class="code-box">
+          <div class="code-header">
+            <span class="code-filename">task1esp32.ino</span>
+            <button class="copy-btn">Copy Code</button>
+          </div>
+          <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">&lt;WebServer.h&gt;</span>
+
+<span class="c-kw">const char</span>* ssid     = <span class="c-str">"protosem"</span>;
+<span class="c-kw">const char</span>* password = <span class="c-str">"Proto#123"</span>;
+
+<span class="c-kw">#define</span> LED_PIN <span class="c-num">2</span>
+
+<span class="c-type">WebServer</span> server(<span class="c-num">80</span>);
+
+<span class="c-kw">void</span> <span class="c-fn">handleRoot</span>()
+{
+  <span class="c-type">String</span> html = <span class="c-str">R"rawliteral(
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;ESP32 LED Control&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;style&gt;
+    body { font-family: Arial; text-align: center; margin-top: 80px; }
+    h1 { font-size: 35px; }
+    button { width: 150px; height: 60px; font-size: 22px; margin: 15px; cursor: pointer; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;ESP32 LED Control&lt;/h1&gt;
+  &lt;a href="/on"&gt;&lt;button&gt;ON&lt;/button&gt;&lt;/a&gt;
+  &lt;a href="/off"&gt;&lt;button&gt;OFF&lt;/button&gt;&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+)rawliteral"</span>;
+
+  server.<span class="c-fn">send</span>(<span class="c-num">200</span>, <span class="c-str">"text/html"</span>, html);
+}
+
+<span class="c-kw">void</span> <span class="c-fn">handleLEDOn</span>()
+{
+  <span class="c-fn">digitalWrite</span>(LED_PIN, <span class="c-kw">HIGH</span>);
+  server.<span class="c-fn">send</span>(<span class="c-num">200</span>, <span class="c-str">"text/html"</span>, <span class="c-str">"&lt;h1&gt;LED is ON&lt;/h1&gt;&lt;a href='/'&gt;Back&lt;/a&gt;"</span>);
+}
+
+<span class="c-kw">void</span> <span class="c-fn">handleLEDOff</span>()
+{
+  <span class="c-fn">digitalWrite</span>(LED_PIN, <span class="c-kw">LOW</span>);
+  server.<span class="c-fn">send</span>(<span class="c-num">200</span>, <span class="c-str">"text/html"</span>, <span class="c-str">"&lt;h1&gt;LED is OFF&lt;/h1&gt;&lt;a href='/'&gt;Back&lt;/a&gt;"</span>);
+}
+
+<span class="c-kw">void</span> <span class="c-fn">setup</span>()
+{
+  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(<span class="c-num">115200</span>);
+
+  <span class="c-fn">pinMode</span>(LED_PIN, <span class="c-kw">OUTPUT</span>);
+  <span class="c-fn">digitalWrite</span>(LED_PIN, <span class="c-kw">LOW</span>);
+
+  <span class="c-cmt">// Connect to Wi-Fi</span>
+  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(ssid, password);
+  <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"Connecting to WiFi"</span>);
+
+  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != <span class="c-kw">WL_CONNECTED</span>)
+  {
+    <span class="c-fn">delay</span>(<span class="c-num">500</span>);
+    <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"."</span>);
+  }
+
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>();
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"WiFi connected!"</span>);
+
+  <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"ESP32 IP address: "</span>);
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-fn">WiFi</span>.<span class="c-fn">localIP</span>());
+
+  <span class="c-cmt">// Web server routes</span>
+  server.<span class="c-fn">on</span>(<span class="c-str">"/"</span>, handleRoot);
+  server.<span class="c-fn">on</span>(<span class="c-str">"/on"</span>, handleLEDOn);
+  server.<span class="c-fn">on</span>(<span class="c-str">"/off"</span>, handleLEDOff);
+
+  server.<span class="c-fn">begin</span>();
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"Web server started!"</span>);
+}
+
+<span class="c-kw">void</span> <span class="c-fn">loop</span>()
+{
+  server.<span class="c-fn">handleClient</span>();
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- 6. DEBUGGING & KEY TAKEAWAYS (IN POINTS) -->
+      <section class="content-block">
+        <div class="block-header">
+          <div class="title-with-num">
+            <span class="badge-num num-t1">06</span>
+            <h2>Debugging Insights &amp; Engineering Takeaways</h2>
+          </div>
+          <span class="block-tag">// PRACTICAL BENCH LOG</span>
         </div>
 
         <div class="debug-cards-grid">
           <div class="debug-card bug-side">
             <div class="debug-head head-bug">
               <span class="debug-icon">⚠️</span>
-              <h4>The Bug: Browser Favicon Flooding</h4>
+              <h4>The Challenge: Mobile Browser Favicon Requests</h4>
             </div>
             <ul class="bullet-list-sm">
-              <li>Modern mobile browsers automatically issue an immediate secondary request for <code>/favicon.ico</code>.</li>
-              <li>Naive URL parsers interpreted any unknown URL path as a state-change request, causing the LED to flicker unexpectedly.</li>
+              <li>Modern smartphones running Chrome or Safari automatically send an immediate auxiliary request to <code>/favicon.ico</code> immediately following the main document.</li>
+              <li>In naive custom TCP stream socket parsers, any unexpected URI string can cause unintended state changes or client buffer hangs.</li>
             </ul>
           </div>
 
           <div class="debug-card fix-side">
             <div class="debug-head head-fix">
               <span class="debug-icon">✅</span>
-              <h4>The Engineering Fix</h4>
+              <h4>The Engineering Solution: Explicit Routing via WebServer</h4>
             </div>
             <ul class="bullet-list-sm">
-              <li>Added strict path prefix checking for explicit <code>GET /H</code> and <code>GET /L</code> commands only.</li>
-              <li>Filtered out empty lines and ignored non-control asset requests immediately.</li>
+              <li>Leveraging ESP32's native <code>WebServer.h</code> library with strict route registrations (<code>server.on("/", ...)</code>, <code>server.on("/on", ...)</code>, <code>server.on("/off", ...)</code>).</li>
+              <li>Unregistered auxiliary requests like <code>/favicon.ico</code> are cleanly dropped with 404 without altering GPIO state or blocking the loop.</li>
             </ul>
-          </div>
-        </div>
-
-        <!-- Verification Checklist -->
-        <div class="checklist-container">
-          <div class="checklist-header-row">
-            <h4>Station 01 Deliverables Verification</h4>
-            <span class="pill-badge pill-t1">100% Passed</span>
-          </div>
-          <div class="checklist-grid">
-            <div class="check-item"><span class="box-done">☑</span> ESP32 successfully connected to 2.4GHz Wi-Fi LAN</div>
-            <div class="check-item"><span class="box-done">☑</span> Web server listening and responding on HTTP Port 80</div>
-            <div class="check-item"><span class="box-done">☑</span> GPIO 2 high/low logic toggles verified via multimeter</div>
-            <div class="check-item"><span class="box-done">☑</span> Zero-cloud architecture tested during external internet outage</div>
           </div>
         </div>
 
@@ -689,19 +1056,6 @@
             </ul>
           </div>
         </div>
-
-        <div class="checklist-container">
-          <div class="checklist-header-row">
-            <h4>Station 02 Deliverables Verification</h4>
-            <span class="pill-badge pill-t2">100% Passed</span>
-          </div>
-          <div class="checklist-grid">
-            <div class="check-item"><span class="box-done">☑</span> Connected to io.adafruit.com over TCP port 1883</div>
-            <div class="check-item"><span class="box-done">☑</span> Time-series telemetry published to custom cloud feed</div>
-            <div class="check-item"><span class="box-done">☑</span> Keep-alive ping routine validated over 4-hour soak test</div>
-            <div class="check-item"><span class="box-done">☑</span> Reconnection state-machine handles router disconnects</div>
-          </div>
-        </div>
       </section>
 
     </div>
@@ -839,7 +1193,7 @@
         </div>
       </section>
 
-      <!-- 3. CODE & CHECKLIST -->
+      <!-- 3. FIRMWARE & WEBHOOK TRIGGER -->
       <section class="content-block">
         <div class="block-header">
           <div class="title-with-num">
@@ -872,19 +1226,6 @@
   
   lastTrigger = <span class="c-fn">millis</span>();
 }</code></pre>
-        </div>
-
-        <div class="checklist-container">
-          <div class="checklist-header-row">
-            <h4>Station 03 Deliverables Verification</h4>
-            <span class="pill-badge pill-t3">100% Passed</span>
-          </div>
-          <div class="checklist-grid">
-            <div class="check-item"><span class="box-done">☑</span> Webhook event configured in IFTTT Developer Console</div>
-            <div class="check-item"><span class="box-done">☑</span> Multi-variable JSON payload successfully transmitted</div>
-            <div class="check-item"><span class="box-done">☑</span> 120-second software debounce timer eliminates inbox spam</div>
-            <div class="check-item"><span class="box-done">☑</span> Push notification latency benchmarked under 2.5 seconds</div>
-          </div>
         </div>
       </section>
 
@@ -1028,7 +1369,7 @@
         </div>
       </section>
 
-      <!-- 3. CODE & CHECKLIST -->
+      <!-- 3. FIRMWARE IMPLEMENTATION -->
       <section class="content-block">
         <div class="block-header">
           <div class="title-with-num">
@@ -1066,19 +1407,6 @@
   }
   <span class="c-fn">delay</span>(<span class="c-num">3000</span>);
 }</code></pre>
-        </div>
-
-        <div class="checklist-container">
-          <div class="checklist-header-row">
-            <h4>Station 04 Deliverables Verification</h4>
-            <span class="pill-badge pill-t4">100% Passed</span>
-          </div>
-          <div class="checklist-grid">
-            <div class="check-item"><span class="box-done">☑</span> SSL TLS 1.2 handshake secured with cloud project</div>
-            <div class="check-item"><span class="box-done">☑</span> Multi-sensor telemetry pushed to NoSQL JSON branches</div>
-            <div class="check-item"><span class="box-done">☑</span> WebSocket event listener executes instant relay toggle</div>
-            <div class="check-item"><span class="box-done">☑</span> Database security rules lock down unauthorized writes</div>
-          </div>
         </div>
       </section>
 
@@ -1226,12 +1554,12 @@
         </div>
       </section>
 
-      <!-- 3. REFLECTION & FINAL CHECKLIST -->
+      <!-- 3. REFLECTION & ENGINEERING SYNTHESIS -->
       <section class="content-block">
         <div class="block-header">
           <div class="title-with-num">
             <span class="badge-num num-t5">03</span>
-            <h2>Track Progression Takeaways & Final Checklist</h2>
+            <h2>Track Progression Takeaways &amp; Engineering Synthesis</h2>
           </div>
           <span class="block-tag">// 5-STATION RETROSPECTIVE</span>
         </div>
@@ -1258,19 +1586,6 @@
                 <li>Real-world debugging perseverance: diagnosed packet fragmentation, keep-alive drops, and chatter failure modes.</li>
               </ul>
             </div>
-          </div>
-        </div>
-
-        <div class="checklist-container">
-          <div class="checklist-header-row">
-            <h4>Station 05 Capstone Verification</h4>
-            <span class="pill-badge pill-t5">100% Passed</span>
-          </div>
-          <div class="checklist-grid">
-            <div class="check-item"><span class="box-done">☑</span> Dual-mode operation (Manual vs Auto) tested &amp; verified</div>
-            <div class="check-item"><span class="box-done">☑</span> 300-point software hysteresis eliminates relay chatter</div>
-            <div class="check-item"><span class="box-done">☑</span> Client-side CSV export generator operational</div>
-            <div class="check-item"><span class="box-done">☑</span> Full 5-station engineering track documented and online</div>
           </div>
         </div>
 
