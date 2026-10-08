@@ -296,10 +296,16 @@ section.inner{
 
 .game-info{
     margin-top:0;
-    margin-bottom:10px;
-    padding:25px;
+    margin-bottom:24px;
+    padding:28px;
+    background:rgb(var(--surface));
     border:1px solid rgba(var(--border),1);
     border-radius:14px;
+}
+
+.game-info .hero-actions{
+    margin-top:22px;
+    margin-bottom:0;
 }
 
 

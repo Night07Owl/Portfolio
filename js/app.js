@@ -237,6 +237,18 @@ function setupRail(){
           card.style.borderColor = '';
           card.style.boxShadow = '';
         }, 1500);
+      } else {
+        const note = document.getElementById('lockedNote');
+        if (note) {
+          note.scrollIntoView({ behavior:'smooth', block:'center' });
+          note.style.transition = 'box-shadow 0.3s ease, border-color 0.3s ease';
+          note.style.borderColor = 'rgb(var(--accent))';
+          note.style.boxShadow = '0 0 20px rgba(var(--accent),0.4)';
+          setTimeout(() => {
+            note.style.borderColor = '';
+            note.style.boxShadow = '';
+          }, 1500);
+        }
       }
     });
     rail.appendChild(node);
@@ -323,21 +335,32 @@ setupVideoFullscreen();
 const video = document.getElementById("ghostVideo");
 
 if (video) {
-
     const start = 10;
     const end = 32;
 
-    video.addEventListener("loadedmetadata", () => {
-        video.currentTime = start;
-    });
+    const setStart = () => {
+        if (video.currentTime < start || video.currentTime >= end) {
+            video.currentTime = start;
+        }
+    };
+
+    if (video.readyState >= 1) {
+        setStart();
+    } else {
+        video.addEventListener("loadedmetadata", setStart, { once: true });
+    }
 
     video.addEventListener("timeupdate", () => {
         if (video.currentTime >= end) {
             video.currentTime = start;
-            video.play();
+            video.play().catch(() => {});
         }
     });
 
+    video.addEventListener("ended", () => {
+        video.currentTime = start;
+        video.play().catch(() => {});
+    });
 }
 
 updateOnScroll();
@@ -442,91 +465,80 @@ if(featuredTop > trigger){
   // NAV
   const headerOffset = 90;
   const line = window.scrollY + headerOffset;
+  const isBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60);
 
   let activeIdx = 0;
 
-  sectionEls.forEach((el, idx)=>{
-      if(el.offsetTop <= line) activeIdx = idx;
-  });
+  if (isBottom) {
+      activeIdx = sectionEls.length - 1;
+  } else {
+      sectionEls.forEach((el, idx)=>{
+          if(el && el.offsetTop <= line) activeIdx = idx;
+      });
+  }
 
   navButtons.forEach((b,idx)=>{
       b.classList.toggle("active",idx===activeIdx);
   });
 
+  updateCursorColor();
+
   ticking = false;
 }
 
+const isFinePointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-updateCursorColor();
+if (isFinePointer) {
+    setInterval(() => {
+        if(!cursor || !cursor.classList.contains("featured-mode"))
+            return;
 
-setInterval(() => {
+        const trail = document.createElement("div");
+        trail.className = "cursor-trail";
+        trail.style.left = x + "px";
+        trail.style.top = y + "px";
+        document.body.appendChild(trail);
 
-    if(!cursor.classList.contains("featured-mode"))
-        return;
-
-    const trail = document.createElement("div");
-
-    trail.className = "cursor-trail";
-
-    trail.style.left = x + "px";
-    trail.style.top = y + "px";
-
-    document.body.appendChild(trail);
-
-    setTimeout(() => trail.remove(), 450);
-
-}, 40); // ~60 FPS
+        setTimeout(() => trail.remove(), 450);
+    }, 40);
+}
 
 function updateCursorColor(){
+    if(!blob) return;
 
     const sections = document.querySelectorAll(".panel");
-
     let active = null;
 
     sections.forEach(section=>{
-
         const rect = section.getBoundingClientRect();
-
         if(rect.top <= window.innerHeight/2 &&
            rect.bottom >= window.innerHeight/2){
-
             active = section.id;
-
         }
-
     });
 
-    if(!active){
-        requestAnimationFrame(updateCursorColor);
-        return;
-    }
+    if(!active) return;
 
     // FEATURED MODE
     if(active === "page-featured"){
-
-        cursor.classList.add("featured-mode");
+        if (cursor) cursor.classList.add("featured-mode");
 
         blob.style.background = "#fff";
-
         blob.style.boxShadow = `
             0 0 8px rgba(255,255,255,.95),
             0 0 18px rgba(120,180,255,.8),
             0 0 35px rgba(120,180,255,.45)
         `;
-
     } else {
+        if (cursor) cursor.classList.remove("featured-mode");
 
-        cursor.classList.remove("featured-mode");
-
-        blob.style.background = colors[active];
-
-        blob.style.boxShadow = `
-            0 0 20px ${colors[active]},
-            0 0 45px ${colors[active]}
-        `;
-
+        if (colors[active]) {
+            blob.style.background = colors[active];
+            blob.style.boxShadow = `
+                0 0 20px ${colors[active]},
+                0 0 45px ${colors[active]}
+            `;
+        }
     }
-
-    requestAnimationFrame(updateCursorColor);
 }
 
