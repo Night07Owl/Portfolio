@@ -79,15 +79,15 @@ nav button.active{
 nav button.active::before{content:'● '; color:rgb(var(--accent)); font-size:0.6rem;}
 
 .nav-iot-btn{
-  border-color:rgba(0, 247, 255, 0.4);
-  background:rgba(0, 247, 255, 0.08);
+  border-color:rgba(229, 133, 123, 0.45);
+  background:rgba(229, 133, 123, 0.12);
   color:rgb(var(--ink));
 }
 .nav-iot-btn:hover{
-  border-color:#00f7ff;
-  color:#00f7ff;
-  background:rgba(0, 247, 255, 0.2);
-  box-shadow:0 0 14px rgba(0, 247, 255, 0.35);
+  border-color:#E5857B;
+  color:#FAF5EE;
+  background:#E5857B;
+  box-shadow:0 0 16px rgba(229, 133, 123, 0.4);
   transform:translateY(-1px);
 }
 

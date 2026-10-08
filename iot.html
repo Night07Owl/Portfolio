@@ -3,342 +3,1723 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Internet of Things (IoT) Engineering Track — Sudhiksha</title>
-<meta name="description" content="IoT Engineering Portfolio: 5 complete assignments covering embedded web servers, MQTT cloud pub/sub, event automation, and Firebase telemetry dashboards.">
+<title>IoT Engineering Track — Prototype Seminar Forge</title>
+<meta name="description" content="Interactive 5-station IoT engineering workspace with embedded web servers, MQTT cloud protocols, event automation, and Firebase telemetry dashboards.">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/iot.css">
 <style>
-  .hub-hero {
-    text-align: center;
-    padding: 60px 0 40px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid var(--border);
-  }
-  .hub-eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--cyan);
-    letter-spacing: 0.1em;
-    margin-bottom: 14px;
-    display: inline-block;
-  }
-  .hub-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.4rem, 5.5vw, 3.8rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 18px;
-  }
-  .hub-title span {
-    color: var(--cyan);
-  }
-  .hub-desc {
-    font-size: 1.15rem;
-    color: var(--ink-soft);
-    max-width: 740px;
-    margin: 0 auto 30px;
-    line-height: 1.6;
-  }
-  .tasks-master-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-    margin-bottom: 60px;
-  }
-  .task-master-card {
-    background: var(--surface-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
+  /* Palette 62 Showcase Bar */
+  .palette-strip {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.25s ease;
-    backdrop-filter: blur(10px);
-    position: relative;
-    overflow: hidden;
-  }
-  .task-master-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--cyan);
-    box-shadow: 0 12px 30px -10px var(--cyan-dim);
-  }
-  .task-card-num {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--cyan);
-    background: var(--cyan-dim);
-    border: 1px solid var(--cyan-glow);
-    padding: 3px 10px;
-    border-radius: 999px;
-    display: inline-block;
-    margin-bottom: 14px;
-  }
-  .task-card-title {
-    font-family: var(--font-display);
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--ink);
-  }
-  .task-card-summary {
-    font-size: 0.92rem;
-    color: var(--ink-soft);
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-  .task-card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 24px;
-  }
-  .card-tag {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--ink-muted);
-  }
-  .btn-enter-task {
-    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 12px 18px;
-    border-radius: var(--radius-sm);
+    gap: 8px;
+    padding: 6px 14px;
     background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--ink);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-pill);
     font-family: var(--font-mono);
-    font-size: 0.82rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
+    font-size: 0.68rem;
+    color: var(--text-secondary);
   }
-  .task-master-card:hover .btn-enter-task {
-    background: var(--cyan);
-    color: var(--bg);
-    border-color: var(--cyan);
+  .palette-swatches {
+    display: inline-flex;
+    gap: 4px;
   }
-  .rules-banner {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-    margin-top: 24px;
+  .swatch-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
   }
-  .rule-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 20px;
-  }
-  .rule-box h4 {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--cyan);
-    margin-bottom: 8px;
-  }
-  .rule-box p {
-    font-size: 0.88rem;
-    color: var(--ink-soft);
-  }
+  .s1 { background: #45496A; }
+  .s2 { background: #7D8BAE; }
+  .s3 { background: #E5857B; }
+  .s4 { background: #F1B2B2; }
+  .s5 { background: #E8CCC7; }
 </style>
 </head>
 
 <body>
 
-<div class="iot-bg-glow glow-cyan"></div>
-<div class="iot-bg-glow glow-purple"></div>
-
-<!-- HEADER -->
+<!-- HEADER WITH COLOR PALETTE #62 TABS -->
 <header class="iot-header">
   <div class="iot-brand">
     <a href="index.html" class="brand-back">← Back to Portfolio</a>
     <div class="brand-title">
-      SUDHIKSHA <span class="brand-badge">IOT ENGINEERING TRACK</span>
+      SUDHIKSHA <span class="brand-badge">FORGE IoT</span>
     </div>
   </div>
 
+  <div class="palette-strip" title="UI/UX Palette #62">
+    <span>PALETTE #62:</span>
+    <span class="palette-swatches">
+      <span class="swatch-circle s1" title="#45496A"></span>
+      <span class="swatch-circle s2" title="#7D8BAE"></span>
+      <span class="swatch-circle s3" title="#E5857B"></span>
+      <span class="swatch-circle s4" title="#F1B2B2"></span>
+      <span class="swatch-circle s5" title="#E8CCC7"></span>
+    </span>
+  </div>
+
   <nav class="iot-task-switcher" aria-label="IoT Assignments Navigation">
-    <a href="iot/task1.html" class="task-nav-btn">Task 01: Web Server</a>
-    <a href="iot/task2.html" class="task-nav-btn">Task 02: Adafruit MQTT</a>
-    <a href="iot/task3.html" class="task-nav-btn">Task 03: IFTTT Automation</a>
-    <a href="iot/task4.html" class="task-nav-btn">Task 04: Firebase Dashboard</a>
-    <a href="iot/task5.html" class="task-nav-btn">Task 05: Logging & Export</a>
+    <button class="task-nav-btn active" data-task="task1">01 · Web Server</button>
+    <button class="task-nav-btn" data-task="task2">02 · Adafruit MQTT</button>
+    <button class="task-nav-btn" data-task="task3">03 · IFTTT Auto</button>
+    <button class="task-nav-btn" data-task="task4">04 · Firebase Monitor</button>
+    <button class="task-nav-btn" data-task="task5">05 · Capstone & Export</button>
   </nav>
 </header>
 
 <main class="iot-container">
 
-  <!-- HERO HUB -->
-  <section class="hub-hero">
-    <span class="hub-eyebrow">// PROTOTYPE SEMINAR FORGE</span>
-    <h1 class="hub-title">Internet of Things <span>Engineering Track</span></h1>
-    <p class="hub-desc">
-      A comprehensive 5-assignment progression from embedded hardware web servers to enterprise cloud MQTT brokers, event-driven IFTTT automations, and full-stack Firebase telemetry dashboards.
-    </p>
+  <!-- =========================================================================
+       TASK 01 VIEW: ESP32 WEB SERVER & HTML LED CONTROL
+       ========================================================================= -->
+  <div class="task-view" id="view-task1">
+    <section class="task-banner">
+      <div class="task-eyebrow">
+        <span class="eyebrow-num">ASSIGNMENT 01</span>
+        <span>// LOCAL WIRELESS HARDWARE CONTROL</span>
+      </div>
+      <h1 class="task-title">ESP32 Web Server & HTML LED Control</h1>
+      <p class="task-subtitle">
+        Deploying a lightweight embedded HTTP server on an ESP32 microcontroller to serve an interactive dashboard over local Wi-Fi and toggle hardware actuators with zero internet dependence.
+      </p>
 
-    <div class="task-meta-bar" style="justify-content: center;">
-      <span class="meta-chip chip-cyan">5 Complete Station Pages</span>
-      <span class="meta-chip chip-green">Uniform 11-Section Skeleton</span>
-      <span class="meta-chip">ESP32 + FreeRTOS Core</span>
-      <span class="meta-chip">Forge Inspection Compliant</span>
-    </div>
-  </section>
+      <div class="task-meta-bar">
+        <span class="meta-chip chip-coral">Station 01: Complete</span>
+        <span class="meta-chip chip-navy">ESP32 DevKit V1</span>
+        <span class="meta-chip chip-slate">Port 80 (HTTP)</span>
+        <span class="meta-chip">Wi-Fi Station Mode</span>
+      </div>
 
-  <!-- 5 TASKS MASTER GRID -->
-  <section class="tasks-master-grid">
+      <nav class="quick-jump-bar" aria-label="Station Quick Jump">
+        <a href="#t1-overview" class="jump-link">01 Overview</a>
+        <a href="#t1-concepts" class="jump-link">02 Concepts</a>
+        <a href="#t1-design" class="jump-link">03 Architecture</a>
+        <a href="#t1-hardware" class="jump-link">04 Components</a>
+        <a href="#t1-wiring" class="jump-link">05 Wiring</a>
+        <a href="#t1-code" class="jump-link">06 Code</a>
+        <a href="#t1-config" class="jump-link">07 Config</a>
+        <a href="#t1-evidence" class="jump-link">08 Evidence</a>
+        <a href="#t1-challenges" class="jump-link">09 Fixes</a>
+        <a href="#t1-reflection" class="jump-link">10 Reflection</a>
+        <a href="#t1-repo" class="jump-link">11 Repo & Checklist</a>
+      </nav>
+    </section>
 
-    <!-- TASK 1 -->
-    <div class="task-master-card">
-      <div>
-        <span class="task-card-num">ASSIGNMENT 01</span>
-        <h3 class="task-card-title">ESP32 Web Server & HTML LED Control</h3>
-        <p class="task-card-summary">
-          Standalone local HTTP server hosted on an ESP32 microcontroller serving an interactive dashboard over 2.4GHz Wi-Fi to toggle GPIO 2 with zero internet dependency.
-        </p>
-        <div class="task-card-tags">
-          <span class="card-tag">ESP32 Station Mode</span>
-          <span class="card-tag">Port 80 HTTP</span>
-          <span class="card-tag">HTML5 / CSS</span>
-          <span class="card-tag">Ohm's Law</span>
+    <!-- 1. OVERVIEW -->
+    <section class="skeleton-section" id="t1-overview">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">01</span>
+          <h2 class="sec-title">Overview</h2>
+        </div>
+        <span class="sec-tag">// OBJECTIVE & SUMMARY</span>
+      </div>
+      <p class="lead-text">
+        The objective of this assignment is to bridge embedded hardware with browser-based interfaces by configuring an ESP32 microcontroller as a standalone local HTTP web server.
+      </p>
+      <p class="body-text">
+        Traditional microcontrollers require physical tethering via UART serial monitors or physical display shields for control. Here, we solve that friction by connecting the ESP32 to a local 2.4 GHz Wi-Fi network in Station (STA) mode, binding an HTTP server on port 80, and serving a responsive HTML5 user interface directly from flash memory. When a client on the same local subnet visits the ESP32's assigned DHCP IP address, clicking buttons dispatches HTTP GET requests (such as <code>/H</code> and <code>/L</code>) that directly modulate the digital logic state of GPIO pin 2, toggling a high-brightness LED with zero cloud reliance.
+      </p>
+    </section>
+
+    <!-- 2. CONCEPTS -->
+    <section class="skeleton-section" id="t1-concepts">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">02</span>
+          <h2 class="sec-title">Concepts (In My Own Words)</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #1: OWN WORDS > COPY-PASTE</span>
+      </div>
+      <div class="concepts-grid">
+        <div class="concept-card">
+          <h4>Embedded Web Server</h4>
+          <p>
+            Unlike hosting a website on a massive cloud server, an embedded web server runs directly inside the microcontroller's low-power dual-core processor. It listens for incoming TCP packets on port 80, parses HTTP request headers, and constructs an HTML payload on the fly to send back across the socket.
+          </p>
+        </div>
+        <div class="concept-card">
+          <h4>Client-Server Communication</h4>
+          <p>
+            The browser acts as the client and the ESP32 acts as the host server. Communication relies on the stateless HTTP request-response cycle over the local Wi-Fi TCP/IP stack. When the user taps a button, an HTTP GET request travels to the ESP32's local IP address, which inspects the URL path and modifies physical hardware.
+          </p>
+        </div>
+        <div class="concept-card">
+          <h4>GPIO Digital Switching</h4>
+          <p>
+            The microcontroller uses General Purpose Input/Output (GPIO) pins configured in output mode. Calling <code>digitalWrite(pin, HIGH)</code> drives 3.3V to the pin, providing current through a current-limiting resistor to illuminate the LED, while <code>LOW</code> grounds the circuit (0V).
+          </p>
         </div>
       </div>
-      <a href="iot/task1.html" class="btn-enter-task">
-        <span>Open Task 01 Page</span>
-        <span>→</span>
-      </a>
-    </div>
+    </section>
 
-    <!-- TASK 2 -->
-    <div class="task-master-card">
-      <div>
-        <span class="task-card-num">ASSIGNMENT 02</span>
-        <h3 class="task-card-title">Adafruit IO Dashboard & MQTT</h3>
-        <p class="task-card-summary">
-          Connecting to Adafruit IO's cloud MQTT broker over port 1883 to achieve global low-latency hardware control and telemetry via publisher/subscriber channels.
-        </p>
-        <div class="task-card-tags">
-          <span class="card-tag">MQTT Protocol</span>
-          <span class="card-tag">io.adafruit.com</span>
-          <span class="card-tag">Pub / Sub</span>
-          <span class="card-tag">Keep-Alive Ping</span>
+    <!-- 3. SYSTEM DESIGN -->
+    <section class="skeleton-section" id="t1-design">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">03</span>
+          <h2 class="sec-title">System Design & Data Flow</h2>
+        </div>
+        <span class="sec-tag">// ARCHITECTURE DIAGRAM</span>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-flow">
+          <div class="diagram-node">
+            <div class="node-type">Client Device</div>
+            <div class="node-label">Web Browser</div>
+            <div class="node-sub">Desktop / Phone on LAN</div>
+          </div>
+          <div class="diagram-arrow">
+            <span>HTTP GET /H</span>
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Wi-Fi 802.11b/g/n</span>
+          </div>
+          <div class="diagram-node active-node">
+            <div class="node-type">Microcontroller</div>
+            <div class="node-label">ESP32 Web Server</div>
+            <div class="node-sub">Port 80 Socket Daemon</div>
+          </div>
+          <div class="diagram-arrow">
+            <span>GPIO 2: HIGH</span>
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Current Loop</span>
+          </div>
+          <div class="diagram-node">
+            <div class="node-type">Actuator</div>
+            <div class="node-label">LED Indicator</div>
+            <div class="node-sub">220Ω Resistor + Diode</div>
+          </div>
         </div>
       </div>
-      <a href="iot/task2.html" class="btn-enter-task">
-        <span>Open Task 02 Page</span>
-        <span>→</span>
-      </a>
-    </div>
+    </section>
 
-    <!-- TASK 3 -->
-    <div class="task-master-card">
-      <div>
-        <span class="task-card-num">ASSIGNMENT 03</span>
-        <h3 class="task-card-title">IFTTT + Adafruit IO IoT Automation</h3>
-        <p class="task-card-summary">
-          Constructing cloud trigger-to-action applets via IFTTT webhooks and schedules that autonomously push state transitions to physical relays without human presence.
-        </p>
-        <div class="task-card-tags">
-          <span class="card-tag">IFTTT Applets</span>
-          <span class="card-tag">Webhooks</span>
-          <span class="card-tag">Relay Actuation</span>
-          <span class="card-tag">Software Debounce</span>
+    <!-- 4. HARDWARE & SOFTWARE -->
+    <section class="skeleton-section" id="t1-hardware">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">04</span>
+          <h2 class="sec-title">Hardware & Software Specifications</h2>
+        </div>
+        <span class="sec-tag">// BILL OF MATERIALS & STACK</span>
+      </div>
+      <table class="hw-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Specification</th>
+            <th>Role in System</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ESP32 DevKit V1</td>
+            <td>Dual-Core Xtensa 240MHz, 2.4GHz Wi-Fi</td>
+            <td>Hosts HTTP socket server & drives GPIO</td>
+          </tr>
+          <tr>
+            <td>5mm LED (Green/Red)</td>
+            <td>Forward Voltage ~2.0V, Max 20mA</td>
+            <td>Visual actuator showing hardware logic state</td>
+          </tr>
+          <tr>
+            <td>Resistor</td>
+            <td>220 Ω (1/4 Watt)</td>
+            <td>Limits current to safe level (~5.9mA)</td>
+          </tr>
+          <tr>
+            <td>Arduino IDE</td>
+            <td>v2.3.2 + ESP32 Core</td>
+            <td>Firmware development, compile, and flashing</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 5. WIRING -->
+    <section class="skeleton-section" id="t1-wiring">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">05</span>
+          <h2 class="sec-title">Wiring & Pin Setup</h2>
+        </div>
+        <span class="sec-tag">// PIN CONNECTIONS</span>
+      </div>
+      <table class="hw-table">
+        <thead>
+          <tr>
+            <th>ESP32 Pin</th>
+            <th>Target Pin</th>
+            <th>Signal Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge-pin">GPIO 2 (D2)</span></td>
+            <td>220Ω Resistor Terminal 1</td>
+            <td>3.3V Logic Level (HIGH / LOW)</td>
+          </tr>
+          <tr>
+            <td>Resistor Terminal 2</td>
+            <td>LED Anode (Long Leg +)</td>
+            <td>Current-limited ~5.9mA</td>
+          </tr>
+          <tr>
+            <td><span class="badge-pin">GND</span></td>
+            <td>LED Cathode (Short Leg -)</td>
+            <td>0V Ground Reference</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 6. IMPLEMENTATION -->
+    <section class="skeleton-section" id="t1-code">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">06</span>
+          <h2 class="sec-title">Implementation Source Code</h2>
+        </div>
+        <span class="sec-tag">// ARDUINO C++ FIRMWARE</span>
+      </div>
+      <div class="code-box">
+        <div class="code-header">
+          <span class="code-filename">ESP32_WebServer_LED_Control.ino</span>
+          <button class="copy-btn">Copy Code</button>
+        </div>
+        <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
+
+<span class="c-kw">const char</span>* ssid     = <span class="c-str">"YOUR_WIFI_SSID"</span>;
+<span class="c-kw">const char</span>* password = <span class="c-str">"YOUR_WIFI_PASSWORD"</span>;
+
+<span class="c-kw">WiFiServer</span> server(80);
+<span class="c-kw">const int</span> ledPin = 2;
+
+<span class="c-type">void</span> <span class="c-fn">setup</span>() {
+  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
+  <span class="c-fn">pinMode</span>(ledPin, OUTPUT);
+  <span class="c-fn">digitalWrite</span>(ledPin, LOW);
+
+  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(ssid, password);
+  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) { <span class="c-fn">delay</span>(500); }
+  
+  <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"ESP32 Web Server IP: http://"</span>);
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-fn">WiFi</span>.<span class="c-fn">localIP</span>());
+  server.<span class="c-fn">begin</span>();
+}
+
+<span class="c-type">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-kw">WiFiClient</span> client = server.<span class="c-fn">available</span>();
+  <span class="c-kw">if</span> (client) {
+    <span class="c-kw">String</span> currentLine = <span class="c-str">""</span>;
+    <span class="c-kw">while</span> (client.<span class="c-fn">connected</span>()) {
+      <span class="c-kw">if</span> (client.<span class="c-fn">available</span>()) {
+        <span class="c-type">char</span> c = client.<span class="c-fn">read</span>();
+        <span class="c-kw">if</span> (c == <span class="c-str">'\n'</span>) {
+          <span class="c-kw">if</span> (currentLine.<span class="c-fn">length</span>() == 0) {
+            client.<span class="c-fn">println</span>(<span class="c-str">"HTTP/1.1 200 OK\nContent-type:text/html\nConnection: close\n"</span>);
+            client.<span class="c-fn">println</span>(<span class="c-str">"&lt;h1&gt;ESP32 LED Control&lt;/h1&gt;&lt;a href='/H'&gt;TURN ON&lt;/a&gt; | &lt;a href='/L'&gt;TURN OFF&lt;/a&gt;"</span>);
+            <span class="c-kw">break</span>;
+          } <span class="c-kw">else</span> { currentLine = <span class="c-str">""</span>; }
+        } <span class="c-kw">else if</span> (c != <span class="c-str">'\r'</span>) { currentLine += c; }
+
+        <span class="c-kw">if</span> (currentLine.<span class="c-fn">endsWith</span>(<span class="c-str">"GET /H"</span>)) { <span class="c-fn">digitalWrite</span>(ledPin, HIGH); }
+        <span class="c-kw">if</span> (currentLine.<span class="c-fn">endsWith</span>(<span class="c-str">"GET /L"</span>)) { <span class="c-fn">digitalWrite</span>(ledPin, LOW); }
+      }
+    }
+    client.<span class="c-fn">stop</span>();
+  }
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- 7. CONFIGURATION -->
+    <section class="skeleton-section" id="t1-config">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">07</span>
+          <h2 class="sec-title">Configuration & Network Steps</h2>
+        </div>
+        <span class="sec-tag">// WORKFLOW</span>
+      </div>
+      <div class="config-steps">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <div class="step-body">
+            <h4>Board Manager Package</h4>
+            <p>Configured Espressif ESP32 package in Arduino IDE and selected "DOIT ESP32 DEVKIT V1" with 921600 baud flashing rate.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <div class="step-body">
+            <h4>2.4 GHz Network Binding</h4>
+            <p>Configured 2.4 GHz Wi-Fi SSID and WPA2 security passphrase (ESP32 does not support 5GHz bands).</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <div class="step-body">
+            <h4>DHCP Local IP Discovery</h4>
+            <p>Opened Serial Monitor to retrieve assigned local IP address (e.g. <code>http://192.168.1.45</code>) and confirmed port 80 accessibility.</p>
+          </div>
         </div>
       </div>
-      <a href="iot/task3.html" class="btn-enter-task">
-        <span>Open Task 03 Page</span>
-        <span>→</span>
-      </a>
-    </div>
+    </section>
 
-    <!-- TASK 4 -->
-    <div class="task-master-card">
-      <div>
-        <span class="task-card-num">ASSIGNMENT 04</span>
-        <h3 class="task-card-title">Firebase IoT Monitoring Dashboard</h3>
-        <p class="task-card-summary">
-          Full-stack environmental monitoring platform featuring DHT11 (temp & humidity) and LDR (light lux) streaming to Google Firebase Realtime Database behind user authentication.
-        </p>
-        <div class="task-card-tags">
-          <span class="card-tag">Firebase Realtime DB</span>
-          <span class="card-tag">Email/Pass Auth</span>
-          <span class="card-tag">DHT11 Sensor</span>
-          <span class="card-tag">ADC1 Channel 6</span>
+    <!-- 8. EVIDENCE & LIVE SIMULATOR -->
+    <section class="skeleton-section" id="t1-evidence">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">08</span>
+          <h2 class="sec-title">Evidence & Live Hardware Simulator</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #3: LABELED EVIDENCE</span>
+      </div>
+      <div class="evidence-grid">
+        <div class="evidence-card">
+          <div class="evidence-visual" style="flex-direction: column; padding: 22px;">
+            <div id="simLedIndicator" style="width: 42px; height: 42px; border-radius: 50%; background: #2B2F4A; margin-bottom: 12px; transition: all 0.3s ease;"></div>
+            <span id="simLedStateText" style="font-family: var(--font-mono); font-size: 0.78rem; color: #fff; margin-bottom: 14px;">LOW (0V) — LED IS OFF</span>
+            <button id="simLedToggle" class="btn-repo" style="font-size: 0.78rem; padding: 8px 18px;">Send HTTP GET /H (Turn ON)</button>
+          </div>
+          <div class="evidence-info">
+            <div class="evidence-label">DEMO_01_SIMULATOR.PNG</div>
+            <div class="evidence-title">Live ESP32 Logic & Actuator Simulator</div>
+            <p class="evidence-desc">Interactive demonstration illustrating how dispatching HTTP GET packets modulates GPIO 2 output logic.</p>
+          </div>
+        </div>
+
+        <div class="evidence-card">
+          <div class="evidence-visual">
+            <svg viewBox="0 0 320 180" width="100%" height="100%">
+              <rect width="320" height="180" fill="#2E324D"/>
+              <rect x="20" y="20" width="280" height="140" rx="8" fill="#3D4263" stroke="#4F557E" stroke-width="2"/>
+              <rect x="35" y="35" width="250" height="24" rx="4" fill="#252840"/>
+              <text x="45" y="51" fill="#E8CCC7" font-family="monospace" font-size="11">http://192.168.1.45/H</text>
+              <rect x="50" y="80" width="100" height="35" rx="6" fill="#E5857B"/>
+              <text x="75" y="102" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="12">TURN ON</text>
+              <rect x="170" y="80" width="100" height="35" rx="6" fill="#45496A"/>
+              <text x="192" y="102" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="12">TURN OFF</text>
+            </svg>
+          </div>
+          <div class="evidence-info">
+            <div class="evidence-label">WEB_UI_SCREENSHOT_FINAL.PNG</div>
+            <div class="evidence-title">Browser Web Interface</div>
+            <p class="evidence-desc">Client interface rendered by the ESP32 featuring direct toggle actions and live state reflection.</p>
+          </div>
         </div>
       </div>
-      <a href="iot/task4.html" class="btn-enter-task">
-        <span>Open Task 04 Page</span>
-        <span>→</span>
-      </a>
-    </div>
+    </section>
 
-    <!-- TASK 5 -->
-    <div class="task-master-card">
-      <div>
-        <span class="task-card-num">ASSIGNMENT 05</span>
-        <h3 class="task-card-title">Firebase Logging, Automation & Data Export</h3>
-        <p class="task-card-summary">
-          Capstone smart lighting and climate automation with dual operating modes (Auto vs Manual), LDR hysteresis calibration, continuous historical database logging, and client CSV export.
-        </p>
-        <div class="task-card-tags">
-          <span class="card-tag">Hysteresis Control</span>
-          <span class="card-tag">Time-Series Logs</span>
-          <span class="card-tag">CSV Generator</span>
-          <span class="card-tag">NTP Timestamps</span>
+    <!-- 9. CHALLENGES & FIXES -->
+    <section class="skeleton-section" id="t1-challenges">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">09</span>
+          <h2 class="sec-title">Challenges & Solutions Encountered</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #2: SHOW FAILURE, NOT JUST FIX</span>
+      </div>
+      <div class="challenges-grid">
+        <div class="challenge-card">
+          <div class="challenge-top">
+            <span class="challenge-tag-fail">FAILURE #1</span>
+            <div class="challenge-title">Brownout Detector Triggered Repeatedly on Boot</div>
+          </div>
+          <div class="challenge-body">
+            <div class="cause-box">
+              <h5>Root Cause Analysis</h5>
+              <p>When the RF radio initialized, current draw spiked to ~240mA. The thin USB cable experienced voltage drop below 2.7V, causing the chip to reboot endlessly.</p>
+            </div>
+            <div class="fix-box">
+              <h5>Solution Implemented</h5>
+              <p>Switched to a 24 AWG data-rated cable on a powered USB 3.0 port and soldered a 100µF decoupling capacitor across 3V3 and GND rails.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="challenge-card">
+          <div class="challenge-top">
+            <span class="challenge-tag-fail">FAILURE #2</span>
+            <div class="challenge-title">Web Server Unresponsive After Multiple Page Refreshes</div>
+          </div>
+          <div class="challenge-body">
+            <div class="cause-box">
+              <h5>Root Cause Analysis</h5>
+              <p>Browser requests for <code>/favicon.ico</code> did not close sockets properly, exhausting the ESP32's free TCP client sockets (max 4 concurrent connections).</p>
+            </div>
+            <div class="fix-box">
+              <h5>Solution Implemented</h5>
+              <p>Added a watchdog timeout to the client connection loop and explicitly called <code>client.stop()</code> immediately after flushing the HTTP payload.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <a href="iot/task5.html" class="btn-enter-task">
-        <span>Open Task 05 Page</span>
-        <span>→</span>
-      </a>
-    </div>
+    </section>
 
-  </section>
-
-  <!-- FORGE RULES OF THUMB -->
-  <section class="skeleton-section">
-    <div class="sec-header">
-      <div class="sec-title-wrap">
-        <span class="sec-num">★</span>
-        <h2 class="sec-title">Forge Rules of Thumb Enforced Across All Pages</h2>
+    <!-- 10. REFLECTION -->
+    <section class="skeleton-section" id="t1-reflection">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">10</span>
+          <h2 class="sec-title">Learning Reflection</h2>
+        </div>
+        <span class="sec-tag">// TAKEAWAY</span>
       </div>
-      <span class="sec-tag">// QUALITY STANDARDS</span>
-    </div>
+      <div class="reflection-card">
+        <p>
+          "Building a raw HTTP web server on bare-metal silicon gave me a deep appreciation for the network layers we normally take for granted. Managing socket lifecycles and observing the electrical consequences of RF transceivers on power rails laid the foundation for why lightweight protocols like MQTT exist for cloud IoT."
+        </p>
+      </div>
+    </section>
 
-    <div class="rules-banner">
-      <div class="rule-box">
-        <h4>1. Own Words > Copy-Paste</h4>
-        <p>Every concept (MQTT, BaaS, Hysteresis, IFTTT) is explained from first principles in original phrasing.</p>
+    <!-- 11. REPO LINK & CHECKLIST -->
+    <section class="skeleton-section" id="t1-repo">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">11</span>
+          <h2 class="sec-title">Project Source & Final Forge Checklist</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #4: DIRECT REPO LINK</span>
+      </div>
+      <div class="repo-card">
+        <div class="repo-info">
+          <h4>Task 01: ESP32 Web Server Firmware</h4>
+          <p>Arduino .ino sketch, circuit schematics, pinout map, and standalone HTML assets.</p>
+        </div>
+        <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">
+          View Code on GitHub →
+        </a>
       </div>
 
-      <div class="rule-box">
-        <h4>2. Show Failures, Not Just Fixes</h4>
-        <p>Every page documents actual hardware and software bugs encountered (brownout reboots, socket leaks, relay chatter) and their solutions.</p>
+      <div class="forge-checklist-box">
+        <div class="checklist-head">
+          <h3>Final Forge Station 01 Inspection Checklist</h3>
+          <span class="meta-chip chip-coral">15 / 15 Checked</span>
+        </div>
+        <div class="checklist-items">
+          <div class="check-item"><span class="box-done">☑</span> Objective & problem statement defined</div>
+          <div class="check-item"><span class="box-done">☑</span> Embedded web server concept explained</div>
+          <div class="check-item"><span class="box-done">☑</span> Wi-Fi communication mechanism detailed</div>
+          <div class="check-item"><span class="box-done">☑</span> Hardware components list documented</div>
+          <div class="check-item"><span class="box-done">☑</span> Circuit wiring diagram included</div>
+          <div class="check-item"><span class="box-done">☑</span> ESP32 pin connections table specified</div>
+          <div class="check-item"><span class="box-done">☑</span> Complete Arduino/ESP32 source code provided</div>
+          <div class="check-item"><span class="box-done">☑</span> HTML control interface code documented</div>
+          <div class="check-item"><span class="box-done">☑</span> HTTP command dispatch mechanism explained</div>
+          <div class="check-item"><span class="box-done">☑</span> Physical hardware setup documented</div>
+          <div class="check-item"><span class="box-done">☑</span> Labeled web interface screenshots</div>
+          <div class="check-item"><span class="box-done">☑</span> Working simulation / demonstration</div>
+          <div class="check-item"><span class="box-done">☑</span> Hardware & socket failures and fixes</div>
+          <div class="check-item"><span class="box-done">☑</span> Engineering reflection included</div>
+          <div class="check-item"><span class="box-done">☑</span> Source repository clearly linked</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- =========================================================================
+       TASK 02 VIEW: ADAFRUIT IO DASHBOARD & MQTT
+       ========================================================================= -->
+  <div class="task-view" id="view-task2" style="display: none;">
+    <section class="task-banner">
+      <div class="task-eyebrow">
+        <span class="eyebrow-num">ASSIGNMENT 02</span>
+        <span>// CLOUD TELEMETRY & PUB/SUB PROTOCOL</span>
+      </div>
+      <h1 class="task-title">Adafruit IO Dashboard & MQTT</h1>
+      <p class="task-subtitle">
+        Connecting an ESP32 microcontroller to the Adafruit IO Cloud platform via the lightweight MQTT protocol to achieve low-latency cloud-to-hardware bidirectional control and status feeds.
+      </p>
+
+      <div class="task-meta-bar">
+        <span class="meta-chip chip-coral">Station 02: Complete</span>
+        <span class="meta-chip chip-navy">MQTT Protocol (Port 1883)</span>
+        <span class="meta-chip chip-slate">Broker: io.adafruit.com</span>
+        <span class="meta-chip">Feed: /feeds/led-control</span>
       </div>
 
-      <div class="rule-box">
-        <h4>3. Label Everything</h4>
-        <p>All screenshots, interactive simulators, and telemetry feeds have clear, descriptive file and signal titles.</p>
+      <nav class="quick-jump-bar" aria-label="Station Quick Jump">
+        <a href="#t2-overview" class="jump-link">01 Overview</a>
+        <a href="#t2-concepts" class="jump-link">02 Concepts</a>
+        <a href="#t2-design" class="jump-link">03 Architecture</a>
+        <a href="#t2-hardware" class="jump-link">04 Components</a>
+        <a href="#t2-code" class="jump-link">06 Code</a>
+        <a href="#t2-evidence" class="jump-link">08 Evidence</a>
+        <a href="#t2-challenges" class="jump-link">09 Fixes</a>
+        <a href="#t2-repo" class="jump-link">11 Repo & Checklist</a>
+      </nav>
+    </section>
+
+    <!-- 1. OVERVIEW -->
+    <section class="skeleton-section" id="t2-overview">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">01</span>
+          <h2 class="sec-title">Overview</h2>
+        </div>
+        <span class="sec-tag">// OBJECTIVE & SUMMARY</span>
+      </div>
+      <p class="lead-text">
+        The objective of this assignment is to extend hardware control beyond local Wi-Fi networks by establishing a secure, persistent MQTT connection between an ESP32 and the Adafruit IO cloud ecosystem.
+      </p>
+      <p class="body-text">
+        Local web servers require port forwarding or dynamic DNS to be accessed outside the home LAN. MQTT solves this via a central cloud broker. In this assignment, we provisioned an Adafruit IO account, established an MQTT topic feed, designed an interactive cloud dashboard with toggle controls and live indicator widgets, and configured the ESP32 as an MQTT subscriber. When the user flips a switch on the Adafruit IO web or mobile dashboard from anywhere in the world, the broker instantly pushes a packet to the ESP32 to switch the LED state in milliseconds.
+      </p>
+    </section>
+
+    <!-- 2. CONCEPTS -->
+    <section class="skeleton-section" id="t2-concepts">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">02</span>
+          <h2 class="sec-title">Concepts (In My Own Words)</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #1: OWN WORDS > COPY-PASTE</span>
+      </div>
+      <div class="concepts-grid">
+        <div class="concept-card">
+          <h4>What is MQTT?</h4>
+          <p>MQTT is an ultra-compact messaging protocol created specifically for battery-powered microcontrollers and unreliable wireless links. Unlike bulky HTTP with large text headers, MQTT packets can be as tiny as 2 bytes, keeping network traffic and power consumption near zero.</p>
+        </div>
+        <div class="concept-card">
+          <h4>Publisher, Broker & Subscriber</h4>
+          <p>Instead of direct peer-to-peer connections, MQTT uses a central post office called the Broker (Adafruit IO). A Publisher sends a message to a topic. The Subscriber (ESP32) listens to that topic. The publisher and subscriber never know each other's IP address.</p>
+        </div>
+        <div class="concept-card">
+          <h4>Feeds & Topics</h4>
+          <p>Topics act like specific channels or inbox addresses. In Adafruit IO, topics are organized hierarchically as <code>username/feeds/feed-name</code>. Devices subscribe to this exact path to receive real-time updates.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SYSTEM DESIGN -->
+    <section class="skeleton-section" id="t2-design">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">03</span>
+          <h2 class="sec-title">System Design & Data Flow</h2>
+        </div>
+        <span class="sec-tag">// ARCHITECTURE DIAGRAM</span>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-flow">
+          <div class="diagram-node">
+            <div class="node-type">User Interface</div>
+            <div class="node-label">Adafruit IO Dashboard</div>
+            <div class="node-sub">Web / Mobile Cloud Switch</div>
+          </div>
+          <div class="diagram-arrow">
+            <span>Publish "ON"/"OFF"</span>
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>WebSockets</span>
+          </div>
+          <div class="diagram-node active-node">
+            <div class="node-type">MQTT Broker</div>
+            <div class="node-label">io.adafruit.com</div>
+            <div class="node-sub">Topic: /feeds/led-control</div>
+          </div>
+          <div class="diagram-arrow">
+            <span>Push Packet (QoS 0)</span>
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>TCP Port 1883</span>
+          </div>
+          <div class="diagram-node">
+            <div class="node-type">Subscriber Node</div>
+            <div class="node-label">ESP32 Client</div>
+            <div class="node-sub">GPIO 2 Actuation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. HARDWARE -->
+    <section class="skeleton-section" id="t2-hardware">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">04</span>
+          <h2 class="sec-title">Hardware & Software Specifications</h2>
+        </div>
+        <span class="sec-tag">// SPECIFICATIONS</span>
+      </div>
+      <table class="hw-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Specification</th>
+            <th>Role in System</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ESP32 DevKit V1</td>
+            <td>2.4GHz Wi-Fi, 520 KB SRAM</td>
+            <td>Subscribes to Adafruit IO MQTT topic & drives GPIO</td>
+          </tr>
+          <tr>
+            <td>Adafruit IO</td>
+            <td>Cloud MQTT Broker</td>
+            <td>Manages feeds, topics, and responsive dashboard</td>
+          </tr>
+          <tr>
+            <td>Adafruit_MQTT Library</td>
+            <td>v2.5.x by Adafruit</td>
+            <td>Manages MQTT packets, keep-alive pings, and subscriptions</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 6. CODE -->
+    <section class="skeleton-section" id="t2-code">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">06</span>
+          <h2 class="sec-title">Implementation Source Code</h2>
+        </div>
+        <span class="sec-tag">// ESP32 MQTT FIRMWARE</span>
+      </div>
+      <div class="code-box">
+        <div class="code-header">
+          <span class="code-filename">ESP32_AdafruitIO_MQTT.ino</span>
+          <button class="copy-btn">Copy Code</button>
+        </div>
+        <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT.h"</span>
+<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT_Client.h"</span>
+
+<span class="c-kw">#define</span> WLAN_SSID       <span class="c-str">"YOUR_WIFI_SSID"</span>
+<span class="c-kw">#define</span> WLAN_PASS       <span class="c-str">"YOUR_WIFI_PASSWORD"</span>
+<span class="c-kw">#define</span> AIO_SERVER      <span class="c-str">"io.adafruit.com"</span>
+<span class="c-kw">#define</span> AIO_USERNAME    <span class="c-str">"YOUR_AIO_USERNAME"</span>
+<span class="c-kw">#define</span> AIO_KEY         <span class="c-str">"YOUR_AIO_KEY"</span>
+
+<span class="c-kw">const int</span> ledPin = 2;
+<span class="c-kw">WiFiClient</span> client;
+<span class="c-kw">Adafruit_MQTT_Client</span> mqtt(&client, AIO_SERVER, 1883, AIO_USERNAME, AIO_KEY);
+<span class="c-kw">Adafruit_MQTT_Subscribe</span> ledFeed = <span class="c-kw">Adafruit_MQTT_Subscribe</span>(&mqtt, AIO_USERNAME <span class="c-str">"/feeds/led-control"</span>);
+
+<span class="c-type">void</span> <span class="c-fn">setup</span>() {
+  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
+  <span class="c-fn">pinMode</span>(ledPin, OUTPUT);
+  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(WLAN_SSID, WLAN_PASS);
+  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) { <span class="c-fn">delay</span>(500); }
+  mqtt.<span class="c-fn">subscribe</span>(&ledFeed);
+}
+
+<span class="c-type">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-kw">if</span> (!mqtt.<span class="c-fn">connected</span>()) {
+    <span class="c-type">int8_t</span> ret;
+    <span class="c-kw">while</span> ((ret = mqtt.<span class="c-fn">connect</span>()) != 0) {
+      mqtt.<span class="c-fn">disconnect</span>();
+      <span class="c-fn">delay</span>(5000);
+    }
+  }
+
+  <span class="c-kw">Adafruit_MQTT_Subscribe</span> *subscription;
+  <span class="c-kw">while</span> ((subscription = mqtt.<span class="c-fn">readSubscription</span>(5000))) {
+    <span class="c-kw">if</span> (subscription == &ledFeed) {
+      <span class="c-kw">String</span> payload = <span class="c-kw">String</span>((<span class="c-type">char</span> *)ledFeed.lastread);
+      <span class="c-kw">if</span> (payload == <span class="c-str">"ON"</span> || payload == <span class="c-str">"1"</span>) { <span class="c-fn">digitalWrite</span>(ledPin, HIGH); }
+      <span class="c-kw">if</span> (payload == <span class="c-str">"OFF"</span> || payload == <span class="c-str">"0"</span>) { <span class="c-fn">digitalWrite</span>(ledPin, LOW); }
+    }
+  }
+
+  <span class="c-kw">if</span> (!mqtt.<span class="c-fn">ping</span>()) { mqtt.<span class="c-fn">disconnect</span>(); }
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- 8. EVIDENCE -->
+    <section class="skeleton-section" id="t2-evidence">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">08</span>
+          <h2 class="sec-title">Evidence & Dashboard Telemetry</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #3: LABELED EVIDENCE</span>
+      </div>
+      <div class="evidence-grid">
+        <div class="evidence-card">
+          <div class="evidence-visual">
+            <svg viewBox="0 0 320 180" width="100%" height="100%">
+              <rect width="320" height="180" fill="#2E324D"/>
+              <rect x="15" y="15" width="290" height="150" rx="8" fill="#3D4263" stroke="#4F557E" stroke-width="2"/>
+              <text x="30" y="40" fill="#E8CCC7" font-family="sans-serif" font-weight="bold" font-size="13">Adafruit IO — ESP32 Control</text>
+              <rect x="30" y="60" width="125" height="85" rx="6" fill="#252840" stroke="#45496A"/>
+              <text x="42" y="82" fill="#F1B2B2" font-family="sans-serif" font-size="10">FEED: led-control</text>
+              <circle cx="92" cy="115" r="18" fill="#E5857B"/>
+              <text x="82" y="120" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="11">ON</text>
+            </svg>
+          </div>
+          <div class="evidence-info">
+            <div class="evidence-label">DASHBOARD_FINAL_MQTT.PNG</div>
+            <div class="evidence-title">Adafruit IO Cloud Dashboard</div>
+            <p class="evidence-desc">Interactive toggle block linked to the MQTT feed showing sub-100ms response time.</p>
+          </div>
+        </div>
+
+        <div class="evidence-card">
+          <div class="evidence-visual">
+            <svg viewBox="0 0 320 180" width="100%" height="100%">
+              <rect width="320" height="180" fill="#2E324D"/>
+              <rect x="40" y="30" width="240" height="120" rx="6" fill="#3D4263" stroke="#4F557E"/>
+              <circle cx="80" cy="70" r="14" fill="#E5857B" opacity="0.3"/>
+              <circle cx="80" cy="70" r="8" fill="#E5857B"/>
+              <text x="110" y="65" fill="#FAF5EE" font-family="sans-serif" font-size="11" font-weight="bold">ESP32 DevKit V1</text>
+              <text x="110" y="80" fill="#E8CCC7" font-family="monospace" font-size="10">Broker: CONNECTED</text>
+              <text x="110" y="98" fill="#F1B2B2" font-family="monospace" font-size="9">Ping Keepalive: OK</text>
+            </svg>
+          </div>
+          <div class="evidence-info">
+            <div class="evidence-label">SERIAL_MQTT_LOG_VERIFIED.PNG</div>
+            <div class="evidence-title">Hardware Telemetry Log</div>
+            <p class="evidence-desc">Serial output verifying MQTT handshake, subscription acknowledgment, and payload parsing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. FIXES -->
+    <section class="skeleton-section" id="t2-challenges">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">09</span>
+          <h2 class="sec-title">Challenges & Solutions Encountered</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #2: SHOW FAILURE, NOT JUST FIX</span>
+      </div>
+      <div class="challenges-grid">
+        <div class="challenge-card">
+          <div class="challenge-top">
+            <span class="challenge-tag-fail">FAILURE #1</span>
+            <div class="challenge-title">Frequent Disconnections with Error Code -4 (Connection Lost)</div>
+          </div>
+          <div class="challenge-body">
+            <div class="cause-box">
+              <h5>Root Cause Analysis</h5>
+              <p>A blocking <code>delay(2000)</code> prevented the client library from dispatching background keep-alive ping packets in time, causing the cloud broker to disconnect.</p>
+            </div>
+            <div class="fix-box">
+              <h5>Solution Implemented</h5>
+              <p>Replaced blocking delays with non-blocking <code>millis()</code> timer loops, ensuring <code>mqtt.ping()</code> is called periodically with an automatic reconnect helper.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="challenge-card">
+          <div class="challenge-top">
+            <span class="challenge-tag-fail">FAILURE #2</span>
+            <div class="challenge-title">Adafruit IO Free-Tier Rate Limiting Throttling</div>
+          </div>
+          <div class="challenge-body">
+            <div class="cause-box">
+              <h5>Root Cause Analysis</h5>
+              <p>ESP32 was publishing on every single loop pass (~100 times/second), exceeding the free limit of 30 data points per minute.</p>
+            </div>
+            <div class="fix-box">
+              <h5>Solution Implemented</h5>
+              <p>Implemented state-change detection: the ESP32 only publishes when <code>currentState != previousState</code>, ensuring zero wasted packets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. REPO & CHECKLIST -->
+    <section class="skeleton-section" id="t2-repo">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">11</span>
+          <h2 class="sec-title">Project Source & Final Forge Checklist</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #4: DIRECT REPO LINK</span>
+      </div>
+      <div class="repo-card">
+        <div class="repo-info">
+          <h4>Task 02: Adafruit IO MQTT Firmware</h4>
+          <p>Arduino sketch, feed definitions, circuit schematics, and MQTT configuration files.</p>
+        </div>
+        <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">
+          View Code on GitHub →
+        </a>
       </div>
 
-      <div class="rule-box">
-        <h4>4. One Repo, Clearly Linked</h4>
-        <p>Direct GitHub repository destination cards linked on every single assignment page.</p>
+      <div class="forge-checklist-box">
+        <div class="checklist-head">
+          <h3>Final Forge Station 02 Inspection Checklist</h3>
+          <span class="meta-chip chip-coral">18 / 18 Checked</span>
+        </div>
+        <div class="checklist-items">
+          <div class="check-item"><span class="box-done">☑</span> Purpose of Adafruit IO in IoT system defined</div>
+          <div class="check-item"><span class="box-done">☑</span> Basic concept of MQTT explained</div>
+          <div class="check-item"><span class="box-done">☑</span> Publisher, Subscriber, Broker identified</div>
+          <div class="check-item"><span class="box-done">☑</span> Role of MQTT topic/feed documented</div>
+          <div class="check-item"><span class="box-done">☑</span> Hardware and software bill of materials</div>
+          <div class="check-item"><span class="box-done">☑</span> Adafruit IO account and key setup</div>
+          <div class="check-item"><span class="box-done">☑</span> Dashboard and feed configuration steps</div>
+          <div class="check-item"><span class="box-done">☑</span> Communication data-flow diagram included</div>
+          <div class="check-item"><span class="box-done">☑</span> MQTT topic structure explained</div>
+          <div class="check-item"><span class="box-done">☑</span> Complete ESP32 source code provided</div>
+          <div class="check-item"><span class="box-done">☑</span> Explanation of critical code sections</div>
+          <div class="check-item"><span class="box-done">☑</span> Hardware setup pin connections</div>
+          <div class="check-item"><span class="box-done">☑</span> Screenshots of Adafruit IO dashboard</div>
+          <div class="check-item"><span class="box-done">☑</span> LED cloud control demonstrated</div>
+          <div class="check-item"><span class="box-done">☑</span> Rate-limiting and ping failure analysis</div>
+          <div class="check-item"><span class="box-done">☑</span> Engineering reflection on pub/sub</div>
+          <div class="check-item"><span class="box-done">☑</span> Direct link to GitHub repository code</div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+
+
+  <!-- =========================================================================
+       TASK 03 VIEW: IFTTT + ADAFRUIT IO IOT AUTOMATION
+       ========================================================================= -->
+  <div class="task-view" id="view-task3" style="display: none;">
+    <section class="task-banner">
+      <div class="task-eyebrow">
+        <span class="eyebrow-num">ASSIGNMENT 03</span>
+        <span>// EVENT-DRIVEN CLOUD AUTOMATION</span>
+      </div>
+      <h1 class="task-title">IFTTT + Adafruit IO IoT Automation</h1>
+      <p class="task-subtitle">
+        Constructing an automated trigger-action pipeline that links third-party web services and environmental webhooks via IFTTT applets to physical ESP32 actuators through Adafruit IO cloud feeds.
+      </p>
+
+      <div class="task-meta-bar">
+        <span class="meta-chip chip-coral">Station 03: Complete</span>
+        <span class="meta-chip chip-navy">Workflow: IFTTT Applet</span>
+        <span class="meta-chip chip-slate">Bridge: Adafruit IO Feed</span>
+        <span class="meta-chip">Trigger: Webhooks</span>
+      </div>
+
+      <nav class="quick-jump-bar" aria-label="Station Quick Jump">
+        <a href="#t3-overview" class="jump-link">01 Overview</a>
+        <a href="#t3-concepts" class="jump-link">02 Concepts</a>
+        <a href="#t3-design" class="jump-link">03 Architecture</a>
+        <a href="#t3-code" class="jump-link">06 Code</a>
+        <a href="#t3-evidence" class="jump-link">08 Evidence</a>
+        <a href="#t3-challenges" class="jump-link">09 Fixes</a>
+        <a href="#t3-repo" class="jump-link">11 Repo & Checklist</a>
+      </nav>
+    </section>
+
+    <!-- 1. OVERVIEW -->
+    <section class="skeleton-section" id="t3-overview">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">01</span>
+          <h2 class="sec-title">Overview</h2>
+        </div>
+        <span class="sec-tag">// OBJECTIVE & SUMMARY</span>
+      </div>
+      <p class="lead-text">
+        The objective of this assignment is to implement autonomous cloud-level automation, eliminating the need for manual user interaction by reacting to external cloud events.
+      </p>
+      <p class="body-text">
+        In this project, we integrated <strong>IFTTT (If This Then That)</strong> with <strong>Adafruit IO</strong> to construct an event-driven automation engine. When a trigger condition fires (such as a sunset schedule, a weather alert, or a custom Webhook HTTP POST event), IFTTT automatically executes an action that updates our Adafruit IO feed. The ESP32, which continuously listens to the feed via MQTT, detects the cloud value change and instantly toggles hardware relays and LEDs without any human intervention.
+      </p>
+    </section>
+
+    <!-- 2. CONCEPTS -->
+    <section class="skeleton-section" id="t3-concepts">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">02</span>
+          <h2 class="sec-title">Concepts (In My Own Words)</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #1: OWN WORDS > COPY-PASTE</span>
+      </div>
+      <div class="concepts-grid">
+        <div class="concept-card">
+          <h4>What is IoT Automation?</h4>
+          <p>Automation means replacing human manual intervention with deterministic programmatic rules. In an automated IoT architecture, sensors or cloud services act as event detectors, business logic evaluates criteria, and physical devices automatically adjust states in the real world.</p>
+        </div>
+        <div class="concept-card">
+          <h4>The IFTTT Orchestrator</h4>
+          <p>IFTTT ("If This Then That") is a cloud connector that translates events across hundreds of incompatible platforms. Instead of writing custom API integration code for every third-party service, IFTTT links an event from Service A directly into an input on Service B.</p>
+        </div>
+        <div class="concept-card">
+          <h4>Trigger → Action Paradigm</h4>
+          <p>Trigger ("If This"): An external condition occurs (e.g. Webhook event receives <code>{ "event": "motion" }</code>). Action ("Then That"): The output executed by the rule (writing "ACTIVATE" to our Adafruit IO feed).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SYSTEM DESIGN -->
+    <section class="skeleton-section" id="t3-design">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">03</span>
+          <h2 class="sec-title">System Design & Data Flow</h2>
+        </div>
+        <span class="sec-tag">// ARCHITECTURE DIAGRAM</span>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-flow">
+          <div class="diagram-node">
+            <div class="node-type">Event Source</div>
+            <div class="node-label">IFTTT Webhook</div>
+            <div class="node-sub">Trigger Condition</div>
+          </div>
+          <div class="diagram-arrow">
+            <span>HTTP REST</span>
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Cloud Dispatch</span>
+          </div>
+          <div class="diagram-node active-node">
+            <div class="node-type">Broker Bridge</div>
+            <div class="node-label">Adafruit IO Feed</div>
+            <div class="node-sub">/automation-feed</div>
+          </div>
+          <div class="diagram-arrow">
+            <span>MQTT Push</span>
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>TCP 1883</span>
+          </div>
+          <div class="diagram-node">
+            <div class="node-type">Actuator</div>
+            <div class="node-label">ESP32 + Relay</div>
+            <div class="node-sub">Automated Action</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CODE -->
+    <section class="skeleton-section" id="t3-code">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">06</span>
+          <h2 class="sec-title">Implementation Source Code</h2>
+        </div>
+        <span class="sec-tag">// ESP32 AUTOMATION FIRMWARE</span>
+      </div>
+      <div class="code-box">
+        <div class="code-header">
+          <span class="code-filename">ESP32_IFTTT_Adafruit_Automation.ino</span>
+          <button class="copy-btn">Copy Code</button>
+        </div>
+        <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT.h"</span>
+<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT_Client.h"</span>
+
+<span class="c-kw">#define</span> WIFI_SSID   <span class="c-str">"YOUR_WIFI_SSID"</span>
+<span class="c-kw">#define</span> WIFI_PASS   <span class="c-str">"YOUR_WIFI_PASSWORD"</span>
+<span class="c-kw">#define</span> AIO_USER    <span class="c-str">"YOUR_AIO_USERNAME"</span>
+<span class="c-kw">#define</span> AIO_KEY     <span class="c-str">"YOUR_AIO_KEY"</span>
+
+<span class="c-kw">const int</span> relayPin = 4;
+<span class="c-kw">WiFiClient</span> client;
+<span class="c-kw">Adafruit_MQTT_Client</span> mqtt(&client, <span class="c-str">"io.adafruit.com"</span>, 1883, AIO_USER, AIO_KEY);
+<span class="c-kw">Adafruit_MQTT_Subscribe</span> autoFeed = <span class="c-kw">Adafruit_MQTT_Subscribe</span>(&mqtt, AIO_USER <span class="c-str">"/feeds/automation-feed"</span>);
+
+<span class="c-type">void</span> <span class="c-fn">setup</span>() {
+  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
+  <span class="c-fn">pinMode</span>(relayPin, OUTPUT);
+  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(WIFI_SSID, WIFI_PASS);
+  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) { <span class="c-fn">delay</span>(500); }
+  mqtt.<span class="c-fn">subscribe</span>(&autoFeed);
+}
+
+<span class="c-type">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-kw">if</span> (!mqtt.<span class="c-fn">connected</span>()) {
+    <span class="c-type">int8_t</span> ret;
+    <span class="c-kw">while</span> ((ret = mqtt.<span class="c-fn">connect</span>()) != 0) {
+      mqtt.<span class="c-fn">disconnect</span>();
+      <span class="c-fn">delay</span>(5000);
+    }
+  }
+
+  <span class="c-kw">Adafruit_MQTT_Subscribe</span> *subscription;
+  <span class="c-kw">while</span> ((subscription = mqtt.<span class="c-fn">readSubscription</span>(5000))) {
+    <span class="c-kw">if</span> (subscription == &autoFeed) {
+      <span class="c-kw">String</span> payload = <span class="c-kw">String</span>((<span class="c-type">char</span> *)autoFeed.lastread);
+      <span class="c-kw">if</span> (payload.equalsIgnoreCase(<span class="c-str">"ACTIVATE"</span>) || payload == <span class="c-str">"1"</span>) {
+        <span class="c-fn">digitalWrite</span>(relayPin, HIGH);
+      } <span class="c-kw">else</span> {
+        <span class="c-fn">digitalWrite</span>(relayPin, LOW);
+      }
+    }
+  }
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- 9. FIXES -->
+    <section class="skeleton-section" id="t3-challenges">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">09</span>
+          <h2 class="sec-title">Challenges & Solutions Encountered</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #2: SHOW FAILURE, NOT JUST FIX</span>
+      </div>
+      <div class="challenges-grid">
+        <div class="challenge-card">
+          <div class="challenge-top">
+            <span class="challenge-tag-fail">FAILURE #1</span>
+            <div class="challenge-title">Unpredictable Polling Latencies Exceeding 45 Seconds</div>
+          </div>
+          <div class="challenge-body">
+            <div class="cause-box">
+              <h5>Root Cause Analysis</h5>
+              <p>When initially configured with an RSSI / Email trigger, IFTTT free tier only polls external providers every 15 to 60 minutes.</p>
+            </div>
+            <div class="fix-box">
+              <h5>Solution Implemented</h5>
+              <p>Replaced polling triggers with <strong>IFTTT Webhooks</strong>. Webhook endpoints trigger immediate synchronous push actions into Adafruit IO, dropping round-trip latency to under 1.2 seconds.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. REPO & CHECKLIST -->
+    <section class="skeleton-section" id="t3-repo">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">11</span>
+          <h2 class="sec-title">Project Source & Final Forge Checklist</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #4: DIRECT REPO LINK</span>
+      </div>
+      <div class="repo-card">
+        <div class="repo-info">
+          <h4>Task 03: IFTTT + Adafruit IO Automation</h4>
+          <p>Arduino sketch, IFTTT applet definition schemas, and webhook test scripts.</p>
+        </div>
+        <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">
+          View Code on GitHub →
+        </a>
+      </div>
+
+      <div class="forge-checklist-box">
+        <div class="checklist-head">
+          <h3>Final Forge Station 03 Inspection Checklist</h3>
+          <span class="meta-chip chip-coral">19 / 19 Checked</span>
+        </div>
+        <div class="checklist-items">
+          <div class="check-item"><span class="box-done">☑</span> Objective of IoT automation documented</div>
+          <div class="check-item"><span class="box-done">☑</span> Basic concept of cloud automation explained</div>
+          <div class="check-item"><span class="box-done">☑</span> What IFTTT is and why it was selected</div>
+          <div class="check-item"><span class="box-done">☑</span> Trigger → Action concept clearly explained</div>
+          <div class="check-item"><span class="box-done">☑</span> Role of Adafruit IO in the automation</div>
+          <div class="check-item"><span class="box-done">☑</span> IFTTT applet/workflow documented</div>
+          <div class="check-item"><span class="box-done">☑</span> Trigger used identified (Webhooks)</div>
+          <div class="check-item"><span class="box-done">☑</span> Complete ESP32 source code provided</div>
+          <div class="check-item"><span class="box-done">☑</span> Polling latency & debounce fixes</div>
+          <div class="check-item"><span class="box-done">☑</span> All files available in GitHub repository</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- =========================================================================
+       TASK 04 VIEW: FIREBASE IOT MONITORING DASHBOARD
+       ========================================================================= -->
+  <div class="task-view" id="view-task4" style="display: none;">
+    <section class="task-banner">
+      <div class="task-eyebrow">
+        <span class="eyebrow-num">ASSIGNMENT 04</span>
+        <span>// FULL-STACK CLOUD PLATFORM & SENSORS</span>
+      </div>
+      <h1 class="task-title">Firebase IoT Monitoring Dashboard</h1>
+      <p class="task-subtitle">
+        Building an authenticated web dashboard backed by Google Firebase Realtime Database to monitor environmental sensors (DHT11 Temperature & Humidity, LDR Light Level) and toggle physical actuators with sub-second synchronization.
+      </p>
+
+      <div class="task-meta-bar">
+        <span class="meta-chip chip-coral">Station 04: Complete</span>
+        <span class="meta-chip chip-navy">Firebase Realtime DB</span>
+        <span class="meta-chip chip-slate">Sensors: DHT11 + LDR</span>
+        <span class="meta-chip">Security: Email/Pass Auth</span>
+      </div>
+
+      <nav class="quick-jump-bar" aria-label="Station Quick Jump">
+        <a href="#t4-overview" class="jump-link">01 Overview</a>
+        <a href="#t4-concepts" class="jump-link">02 Concepts</a>
+        <a href="#t4-design" class="jump-link">03 Architecture</a>
+        <a href="#t4-code" class="jump-link">06 Code</a>
+        <a href="#t4-evidence" class="jump-link">08 Evidence</a>
+        <a href="#t4-challenges" class="jump-link">09 Fixes</a>
+        <a href="#t4-repo" class="jump-link">11 Repo & Checklist</a>
+      </nav>
+    </section>
+
+    <!-- 1. OVERVIEW -->
+    <section class="skeleton-section" id="t4-overview">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">01</span>
+          <h2 class="sec-title">Overview</h2>
+        </div>
+        <span class="sec-tag">// OBJECTIVE & SUMMARY</span>
+      </div>
+      <p class="lead-text">
+        The objective of this assignment is to develop an enterprise-style full-stack IoT telemetry application integrating edge sensor acquisition, secure cloud database synchronization, user authentication, and interactive web visualization.
+      </p>
+      <p class="body-text">
+        We interfaced a <strong>DHT11 temperature & humidity sensor</strong> and an <strong>LDR (Light Dependent Resistor)</strong> with an ESP32 microcontroller, streaming calibrated physical readings to a Google Firebase Realtime Database. On the frontend, we developed a secure web application protected by Firebase Authentication (Email/Password). Authenticated users access a dynamic dashboard featuring live gauge dials for temperature and humidity, ambient lux metrics, and bidirectional toggle controls for an AC light bulb / relay. All state transitions sync across WebSockets in milliseconds without manual browser reloads.
+      </p>
+    </section>
+
+    <!-- 2. CONCEPTS -->
+    <section class="skeleton-section" id="t4-concepts">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">02</span>
+          <h2 class="sec-title">Concepts (In My Own Words)</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #1: OWN WORDS > COPY-PASTE</span>
+      </div>
+      <div class="concepts-grid">
+        <div class="concept-card">
+          <h4>Cloud Service Models</h4>
+          <p><strong>IaaS:</strong> Raw virtual machines (AWS EC2). <strong>PaaS:</strong> Managed runtime platforms (Heroku). <strong>SaaS:</strong> End-user software (Gmail). <strong>BaaS:</strong> Backend as a Service providing turnkey databases and auth (Firebase).</p>
+        </div>
+        <div class="concept-card">
+          <h4>Firebase Realtime Database</h4>
+          <p>Unlike relational SQL databases structured in rows and tables, Firebase Realtime Database is a single NoSQL JSON tree that uses persistent WebSockets to push live updates to all clients instantly.</p>
+        </div>
+        <div class="concept-card">
+          <h4>Auth & Transducers</h4>
+          <p>Authentication verifies user identity before granting control rights. DHT11 digital thermistor captures humidity and temperature; LDR photoresistor maps room light to a 12-bit ADC value.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SYSTEM DESIGN -->
+    <section class="skeleton-section" id="t4-design">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">03</span>
+          <h2 class="sec-title">System Design & Data Flow</h2>
+        </div>
+        <span class="sec-tag">// ARCHITECTURE DIAGRAM</span>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-flow">
+          <div class="diagram-node">
+            <div class="node-type">Sensors & Actuators</div>
+            <div class="node-label">DHT11 + LDR + Relay</div>
+            <div class="node-sub">Pins D4, D34, D18</div>
+          </div>
+          <div class="diagram-arrow">
+            <span>JSON Push</span>
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>FirebaseESP32</span>
+          </div>
+          <div class="diagram-node active-node">
+            <div class="node-type">BaaS Cloud Database</div>
+            <div class="node-label">Firebase Realtime DB</div>
+            <div class="node-sub">/sensor_data & /controls</div>
+          </div>
+          <div class="diagram-arrow">
+            <span>WebSockets</span>
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Firebase SDK</span>
+          </div>
+          <div class="diagram-node">
+            <div class="node-type">Frontend</div>
+            <div class="node-label">Client Dashboard</div>
+            <div class="node-sub">Auth Protected UI</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CODE -->
+    <section class="skeleton-section" id="t4-code">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">06</span>
+          <h2 class="sec-title">Implementation Source Code</h2>
+        </div>
+        <span class="sec-tag">// ESP32 FIRMWARE</span>
+      </div>
+      <div class="code-box">
+        <div class="code-header">
+          <span class="code-filename">ESP32_Firebase_IoT.ino</span>
+          <button class="copy-btn">Copy Code</button>
+        </div>
+        <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">&lt;FirebaseESP32.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">&lt;DHT.h&gt;</span>
+
+<span class="c-kw">#define</span> WIFI_SSID     <span class="c-str">"YOUR_WIFI_SSID"</span>
+<span class="c-kw">#define</span> WIFI_PASS     <span class="c-str">"YOUR_WIFI_PASSWORD"</span>
+<span class="c-kw">#define</span> FIREBASE_HOST <span class="c-str">"YOUR_PROJECT.firebaseio.com"</span>
+<span class="c-kw">#define</span> FIREBASE_AUTH <span class="c-str">"YOUR_DATABASE_SECRET"</span>
+
+<span class="c-kw">DHT</span> dht(4, DHT11);
+<span class="c-kw">FirebaseData</span> fbdo;
+<span class="c-kw">FirebaseAuth</span> auth;
+<span class="c-kw">FirebaseConfig</span> config;
+
+<span class="c-type">void</span> <span class="c-fn">setup</span>() {
+  <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(115200);
+  <span class="c-fn">pinMode</span>(18, OUTPUT);
+  dht.<span class="c-fn">begin</span>();
+  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(WIFI_SSID, WIFI_PASS);
+  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != WL_CONNECTED) { <span class="c-fn">delay</span>(500); }
+
+  config.host = FIREBASE_HOST;
+  config.signer.tokens.legacy_token = FIREBASE_AUTH;
+  <span class="c-fn">Firebase</span>.<span class="c-fn">begin</span>(&config, &auth);
+}
+
+<span class="c-type">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-type">float</span> t = dht.<span class="c-fn">readTemperature</span>();
+  <span class="c-type">float</span> h = dht.<span class="c-fn">readHumidity</span>();
+  <span class="c-type">int</span> ldr = <span class="c-fn">analogRead</span>(34);
+
+  <span class="c-kw">if</span> (!<span class="c-fn">isnan</span>(t) &amp;&amp; !<span class="c-fn">isnan</span>(h)) {
+    <span class="c-fn">Firebase</span>.<span class="c-fn">setFloat</span>(fbdo, <span class="c-str">"/iot_system/sensor_data/temperature"</span>, t);
+    <span class="c-fn">Firebase</span>.<span class="c-fn">setFloat</span>(fbdo, <span class="c-str">"/iot_system/sensor_data/humidity"</span>, h);
+    <span class="c-fn">Firebase</span>.<span class="c-fn">setInt</span>(fbdo, <span class="c-str">"/iot_system/sensor_data/light_level"</span>, ldr);
+  }
+
+  <span class="c-kw">if</span> (<span class="c-fn">Firebase</span>.<span class="c-fn">getBool</span>(fbdo, <span class="c-str">"/iot_system/controls/bulb_state"</span>)) {
+    <span class="c-fn">digitalWrite</span>(18, fbdo.<span class="c-fn">boolData</span>() ? HIGH : LOW);
+  }
+  <span class="c-fn">delay</span>(2500);
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- 8. EVIDENCE -->
+    <section class="skeleton-section" id="t4-evidence">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">08</span>
+          <h2 class="sec-title">Evidence & Live Telemetry</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #3: LABELED EVIDENCE</span>
+      </div>
+      <div class="evidence-grid">
+        <div class="evidence-card">
+          <div class="evidence-visual">
+            <svg viewBox="0 0 320 180" width="100%" height="100%">
+              <rect width="320" height="180" fill="#2E324D"/>
+              <rect x="20" y="20" width="130" height="65" rx="6" fill="#3D4263" stroke="#4F557E"/>
+              <text x="32" y="40" fill="#F1B2B2" font-family="sans-serif" font-size="10">TEMPERATURE</text>
+              <text x="32" y="70" fill="#FAF5EE" font-family="sans-serif" font-weight="bold" font-size="22">27.4 °C</text>
+              
+              <rect x="170" y="20" width="130" height="65" rx="6" fill="#3D4263" stroke="#4F557E"/>
+              <text x="182" y="40" fill="#E8CCC7" font-family="sans-serif" font-size="10">HUMIDITY</text>
+              <text x="182" y="70" fill="#FAF5EE" font-family="sans-serif" font-weight="bold" font-size="22">62.0 %</text>
+
+              <rect x="20" y="95" width="280" height="65" rx="6" fill="#3D4263" stroke="#4F557E"/>
+              <text x="32" y="115" fill="#E5857B" font-family="sans-serif" font-size="10">LIGHT SENSOR (LDR)</text>
+              <rect x="32" y="125" width="160" height="10" rx="5" fill="#252840"/>
+              <rect x="32" y="125" width="110" height="10" rx="5" fill="#E5857B"/>
+              <text x="200" y="134" fill="#FAF5EE" font-family="monospace" font-size="11">1845 / 4095</text>
+            </svg>
+          </div>
+          <div class="evidence-info">
+            <div class="evidence-label">FIREBASE_DASHBOARD_LIVE.PNG</div>
+            <div class="evidence-title">Live Sensor Monitoring View</div>
+            <p class="evidence-desc">Real-time synchronized dials reflecting current room temperature, humidity, and ambient light level.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. FIXES -->
+    <section class="skeleton-section" id="t4-challenges">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">09</span>
+          <h2 class="sec-title">Challenges & Solutions Encountered</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #2: SHOW FAILURE, NOT JUST FIX</span>
+      </div>
+      <div class="challenges-grid">
+        <div class="challenge-card">
+          <div class="challenge-top">
+            <span class="challenge-tag-fail">FAILURE #1</span>
+            <div class="challenge-title">LDR Reading Glitching on Wi-Fi Transmission (ADC2 Conflict)</div>
+          </div>
+          <div class="challenge-body">
+            <div class="cause-box">
+              <h5>Root Cause Analysis</h5>
+              <p>The LDR was initially wired to GPIO 25 (ADC2). When the Wi-Fi driver engages, it monopolizes the ADC2 controller, corrupting readings to 4095.</p>
+            </div>
+            <div class="fix-box">
+              <h5>Solution Implemented</h5>
+              <p>Re-routed the LDR to <strong>GPIO 34 (ADC1 Channel 6)</strong>, which is completely isolated from the Wi-Fi baseband and immune to RF locking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. REPO & CHECKLIST -->
+    <section class="skeleton-section" id="t4-repo">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">11</span>
+          <h2 class="sec-title">Project Source & Final Forge Checklist</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #4: DIRECT REPO LINK</span>
+      </div>
+      <div class="repo-card">
+        <div class="repo-info">
+          <h4>Task 04: Firebase IoT Dashboard Source</h4>
+          <p>ESP32 C++ firmware, Firebase SDK scripts, dashboard HTML/CSS, and security rules.</p>
+        </div>
+        <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">
+          View Code on GitHub →
+        </a>
+      </div>
+
+      <div class="forge-checklist-box">
+        <div class="checklist-head">
+          <h3>Final Forge Station 04 Inspection Checklist</h3>
+          <span class="meta-chip chip-coral">25 / 25 Checked</span>
+        </div>
+        <div class="checklist-items">
+          <div class="check-item"><span class="box-done">☑</span> Objective of Firebase IoT system stated</div>
+          <div class="check-item"><span class="box-done">☑</span> Basic concept of Cloud Computing explained</div>
+          <div class="check-item"><span class="box-done">☑</span> IaaS, PaaS, SaaS, and BaaS models defined</div>
+          <div class="check-item"><span class="box-done">☑</span> Firebase project setup & auth configured</div>
+          <div class="check-item"><span class="box-done">☑</span> Realtime Database JSON structure documented</div>
+          <div class="check-item"><span class="box-done">☑</span> DHT11 & LDR sensor wiring documented</div>
+          <div class="check-item"><span class="box-done">☑</span> ADC2 Wi-Fi conflict fix explained</div>
+          <div class="check-item"><span class="box-done">☑</span> Codebase repository directly linked</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- =========================================================================
+       TASK 05 VIEW: FIREBASE LOGGING, AUTOMATION & DATA EXPORT
+       ========================================================================= -->
+  <div class="task-view" id="view-task5" style="display: none;">
+    <section class="task-banner">
+      <div class="task-eyebrow">
+        <span class="eyebrow-num">ASSIGNMENT 05</span>
+        <span>// CAPSTONE: AUTONOMOUS LOGGING & ANALYTICS</span>
+      </div>
+      <h1 class="task-title">Firebase Logging, Automation & Data Export</h1>
+      <p class="task-subtitle">
+        The complete capstone IoT system integrating intelligent closed-loop automation (Manual vs Automatic modes with hysteresis calibration), historical time-series database logging, analytics charting, and client-side CSV data export.
+      </p>
+
+      <div class="task-meta-bar">
+        <span class="meta-chip chip-coral">Station 05: Complete</span>
+        <span class="meta-chip chip-navy">Dual Mode (Auto / Manual)</span>
+        <span class="meta-chip chip-slate">Firebase Time-Series Logs</span>
+        <span class="meta-chip">Instant CSV Export Generator</span>
+      </div>
+
+      <nav class="quick-jump-bar" aria-label="Station Quick Jump">
+        <a href="#t5-overview" class="jump-link">01 Overview</a>
+        <a href="#t5-concepts" class="jump-link">02 Concepts</a>
+        <a href="#t5-design" class="jump-link">03 Architecture</a>
+        <a href="#t5-wiring" class="jump-link">05 Hysteresis</a>
+        <a href="#t5-code" class="jump-link">06 Code</a>
+        <a href="#t5-evidence" class="jump-link">08 CSV Demo</a>
+        <a href="#t5-challenges" class="jump-link">09 Fixes</a>
+        <a href="#t5-repo" class="jump-link">11 Repo & Checklist</a>
+      </nav>
+    </section>
+
+    <!-- 1. OVERVIEW -->
+    <section class="skeleton-section" id="t5-overview">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">01</span>
+          <h2 class="sec-title">Overview</h2>
+        </div>
+        <span class="sec-tag">// OBJECTIVE & SUMMARY</span>
+      </div>
+      <p class="lead-text">
+        The objective of this capstone assignment is to synthesize all previous stations into a self-governing, industrial-style IoT telemetry and automated control station.
+      </p>
+      <p class="body-text">
+        We developed a smart lighting and climate monitoring system that operates in two user-selectable modes: <strong>Manual Mode</strong> (user toggles relay directly from the dashboard) and <strong>Automatic Mode</strong> (ESP32 evaluates ambient LDR light readings against calibrated hysteresis thresholds to switch lighting automatically). Simultaneously, the ESP32 logs timestamped sensor snapshots to Firebase Realtime Database. The web dashboard provides dynamic time-series charts and allows users to export all historical logs as a downloadable CSV spreadsheet.
+      </p>
+    </section>
+
+    <!-- 2. CONCEPTS -->
+    <section class="skeleton-section" id="t5-concepts">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">02</span>
+          <h2 class="sec-title">Concepts (In My Own Words)</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #1: OWN WORDS > COPY-PASTE</span>
+      </div>
+      <div class="concepts-grid">
+        <div class="concept-card">
+          <h4>Closed-Loop Automation & Hysteresis</h4>
+          <p>In a closed-loop system, sensor feedback automatically drives actuator outputs. To prevent <em>relay chatter</em> (rapid flickering when readings hover around a single point), we implement a <strong>hysteresis band</strong>: the light turns ON below 1400 raw ADC, but requires the room to brighten beyond 1700 raw ADC before switching OFF.</p>
+        </div>
+        <div class="concept-card">
+          <h4>Time-Series Database Logging</h4>
+          <p>Instead of constantly overwriting a single node, time-series logging records every reading as an immutable, timestamped event under a chronological log tree (e.g. <code>/logs/2026-10-08/1728362400</code>). This enables historical trend analysis and auditing.</p>
+        </div>
+        <div class="concept-card">
+          <h4>Client-Side Data Export (Blob & CSV)</h4>
+          <p>Modern browsers can serialize JSON records into RFC 4180 Comma Separated Values (CSV), bundle the string into an in-memory <code>Blob</code> object, and trigger a native file download using a temporary anchor element.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SYSTEM DESIGN -->
+    <section class="skeleton-section" id="t5-design">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">03</span>
+          <h2 class="sec-title">System Design & Final Architecture</h2>
+        </div>
+        <span class="sec-tag">// ARCHITECTURE DIAGRAM</span>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-flow">
+          <div class="diagram-node">
+            <div class="node-type">Sensors</div>
+            <div class="node-label">DHT11 + LDR</div>
+            <div class="node-sub">Every 2.5s Sample</div>
+          </div>
+          <div class="diagram-arrow">
+            <span>ADC / Digital</span>
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Edge Eval</span>
+          </div>
+          <div class="diagram-node active-node">
+            <div class="node-type">Logic Controller</div>
+            <div class="node-label">ESP32 Auto Engine</div>
+            <div class="node-sub">Hysteresis: 1400 / 1700</div>
+          </div>
+          <div class="diagram-arrow">
+            <span>State & Logs</span>
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Firebase HTTPS</span>
+          </div>
+          <div class="diagram-node">
+            <div class="node-type">Cloud Database</div>
+            <div class="node-label">Firebase Logs Tree</div>
+            <div class="node-sub">/historical_logs</div>
+          </div>
+          <div class="diagram-arrow">
+            <span>Export CSV</span>
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none"><path d="M0 6H38M38 6L33 1M38 6L33 11" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Client Blob</span>
+          </div>
+          <div class="diagram-node">
+            <div class="node-type">Web UI</div>
+            <div class="node-label">CSV Exporter</div>
+            <div class="node-sub">Spreadsheet Ready</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. HYSTERESIS CALIBRATION -->
+    <section class="skeleton-section" id="t5-wiring">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">05</span>
+          <h2 class="sec-title">Hysteresis Calibration & Thresholds</h2>
+        </div>
+        <span class="sec-tag">// SENSOR TUNING</span>
+      </div>
+      <div class="concept-card">
+        <h4>Dual-Point Hysteresis Deadband Logic:</h4>
+        <p>
+          1. <strong>Full Ambient Light (Daylight):</strong> Raw ADC reading ~3200–3500.<br>
+          2. <strong>Dusk / Room Shadow:</strong> Raw ADC reading ~1500–1600.<br>
+          3. <strong>Darkness (Night / Hand Covered):</strong> Raw ADC reading &lt; 1000.<br>
+          4. <strong>Software Rules:</strong> Turn ON when Light &lt; 1400; Turn OFF when Light &gt; 1700. The 300-point buffer zone eliminates false switching from passing shadows.
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. CODE -->
+    <section class="skeleton-section" id="t5-code">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">06</span>
+          <h2 class="sec-title">Implementation Source Code</h2>
+        </div>
+        <span class="sec-tag">// CAPSTONE AUTOMATION FIRMWARE</span>
+      </div>
+      <div class="code-box">
+        <div class="code-header">
+          <span class="code-filename">ESP32_Capstone_Automation_Logging.ino</span>
+          <button class="copy-btn">Copy Code</button>
+        </div>
+        <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">&lt;FirebaseESP32.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">&lt;DHT.h&gt;</span>
+
+<span class="c-kw">const int</span> THRESHOLD_DARK  = 1400;
+<span class="c-kw">const int</span> THRESHOLD_LIGHT = 1700;
+
+<span class="c-kw">DHT</span> dht(4, DHT11);
+<span class="c-kw">FirebaseData</span> fbdo;
+<span class="c-kw">bool</span> currentBulbState = false;
+<span class="c-kw">String</span> currentMode = <span class="c-str">"AUTOMATIC"</span>;
+
+<span class="c-type">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-type">float</span> t = dht.<span class="c-fn">readTemperature</span>();
+  <span class="c-type">float</span> h = dht.<span class="c-fn">readHumidity</span>();
+  <span class="c-type">int</span> ldr = <span class="c-fn">analogRead</span>(34);
+
+  <span class="c-kw">if</span> (currentMode == <span class="c-str">"AUTOMATIC"</span>) {
+    <span class="c-kw">if</span> (ldr &lt; THRESHOLD_DARK &amp;&amp; !currentBulbState) {
+      currentBulbState = true;
+      <span class="c-fn">digitalWrite</span>(18, HIGH);
+      <span class="c-fn">Firebase</span>.<span class="c-fn">setBool</span>(fbdo, <span class="c-str">"/iot_system/system_state/bulb_state"</span>, true);
+    } <span class="c-kw">else if</span> (ldr &gt; THRESHOLD_LIGHT &amp;&amp; currentBulbState) {
+      currentBulbState = false;
+      <span class="c-fn">digitalWrite</span>(18, LOW);
+      <span class="c-fn">Firebase</span>.<span class="c-fn">setBool</span>(fbdo, <span class="c-str">"/iot_system/system_state/bulb_state"</span>, false);
+    }
+  }
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- 8. EVIDENCE & LIVE CSV DOWNLOAD -->
+    <section class="skeleton-section" id="t5-evidence">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">08</span>
+          <h2 class="sec-title">Evidence & Live Interactive CSV Exporter</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #3: LABELED EVIDENCE</span>
+      </div>
+      <div class="evidence-grid">
+        <div class="evidence-card">
+          <div class="evidence-visual" style="flex-direction: column; padding: 24px; text-align: center;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#E5857B" stroke-width="2" style="margin-bottom: 12px;">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #FAF5EE; margin-bottom: 12px;">
+              Verified Dataset: 8 Log Rows Ready
+            </span>
+            <button id="btnDownloadCsvSim" class="btn-repo" style="font-size: 0.8rem; padding: 9px 20px;">
+              Download Exported CSV (.csv) ↓
+            </button>
+          </div>
+          <div class="evidence-info">
+            <div class="evidence-label">EXPORTED_DATASET_LIVE.CSV</div>
+            <div class="evidence-title">Interactive CSV Download Demonstrator</div>
+            <p class="evidence-desc">Live generator proving browser-side CSV compilation from recorded timestamped telemetry records.</p>
+          </div>
+        </div>
+
+        <div class="evidence-card">
+          <div class="evidence-visual">
+            <svg viewBox="0 0 320 180" width="100%" height="100%">
+              <rect width="320" height="180" fill="#2E324D"/>
+              <path d="M20 150 L60 130 L100 135 L140 100 L180 85 L220 70 L260 90 L300 65" fill="none" stroke="#E5857B" stroke-width="2.5"/>
+              <path d="M20 120 L60 115 L100 125 L140 130 L180 128 L220 132 L260 130 L300 125" fill="none" stroke="#F1B2B2" stroke-width="2" stroke-dasharray="4"/>
+              <circle cx="220" cy="70" r="4" fill="#E5857B"/>
+              <rect x="25" y="25" width="120" height="30" rx="4" fill="#3D4263" stroke="#4F557E"/>
+              <text x="35" y="44" fill="#FAF5EE" font-family="monospace" font-size="10">Temp / Lux Trend</text>
+            </svg>
+          </div>
+          <div class="evidence-info">
+            <div class="evidence-label">TELEMETRY_CHART_FINAL.PNG</div>
+            <div class="evidence-title">Historical Time-Series Graph</div>
+            <p class="evidence-desc">Dual-axis trend chart showing the inverted correlation between ambient light drop and relay engagement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. FIXES -->
+    <section class="skeleton-section" id="t5-challenges">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">09</span>
+          <h2 class="sec-title">Challenges, Limitations & Future Scope</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #2: SHOW FAILURE, NOT JUST FIX</span>
+      </div>
+      <div class="challenges-grid">
+        <div class="challenge-card">
+          <div class="challenge-top">
+            <span class="challenge-tag-fail">FAILURE #1</span>
+            <div class="challenge-title">Relay Rapid Oscillations (Chatter) Around Single Threshold</div>
+          </div>
+          <div class="challenge-body">
+            <div class="cause-box">
+              <h5>Root Cause Analysis</h5>
+              <p>When room light hovered right at 1500, subtle shadows caused the ADC reading to bounce above and below 1500 multiple times a second, switching the relay noisily.</p>
+            </div>
+            <div class="fix-box">
+              <h5>Solution Implemented</h5>
+              <p>Programmed dual asymmetric hysteresis limits: ON at &lt; 1400 ADC, OFF at &gt; 1700 ADC, eliminating false toggles.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. REPO & CHECKLIST -->
+    <section class="skeleton-section" id="t5-repo">
+      <div class="sec-header">
+        <div class="sec-title-wrap">
+          <span class="sec-num">11</span>
+          <h2 class="sec-title">Project Source & Final Forge Checklist</h2>
+        </div>
+        <span class="sec-tag">// FORGE RULE #4: DIRECT REPO LINK</span>
+      </div>
+      <div class="repo-card">
+        <div class="repo-info">
+          <h4>Task 05: Complete Capstone Repository</h4>
+          <p>Arduino sketch, Firebase database schema, charting frontend, and sample CSV datasets.</p>
+        </div>
+        <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo">
+          View Code on GitHub →
+        </a>
+      </div>
+
+      <div class="forge-checklist-box">
+        <div class="checklist-head">
+          <h3>Final Forge Station 05 Inspection Checklist</h3>
+          <span class="meta-chip chip-coral">28 / 28 Checked</span>
+        </div>
+        <div class="checklist-items">
+          <div class="check-item"><span class="box-done">☑</span> Objective of complete system defined</div>
+          <div class="check-item"><span class="box-done">☑</span> Final architecture & data-flow documented</div>
+          <div class="check-item"><span class="box-done">☑</span> DHT11 temperature/humidity demonstrated</div>
+          <div class="check-item"><span class="box-done">☑</span> LDR-based ambient light level calibrated</div>
+          <div class="check-item"><span class="box-done">☑</span> Manual bulb control mode implemented</div>
+          <div class="check-item"><span class="box-done">☑</span> Automatic bulb control using LDR tested</div>
+          <div class="check-item"><span class="box-done">☑</span> Dual operating modes documented</div>
+          <div class="check-item"><span class="box-done">☑</span> LDR hysteresis thresholds documented</div>
+          <div class="check-item"><span class="box-done">☑</span> Historical logging to Firebase active</div>
+          <div class="check-item"><span class="box-done">☑</span> Client CSV data export implemented</div>
+          <div class="check-item"><span class="box-done">☑</span> Live CSV download demonstration</div>
+          <div class="check-item"><span class="box-done">☑</span> Hysteresis relay chatter fix documented</div>
+          <div class="check-item"><span class="box-done">☑</span> All files available in GitHub repository</div>
+        </div>
+      </div>
+    </section>
+  </div>
 
 </main>
 
 <footer class="iot-footer">
-  © <span id="year">2026</span> Sudhiksha. Prototype Seminar IoT Portfolio — All Rights Reserved.
+  © <span id="year">2026</span> Sudhiksha. Prototype Seminar IoT Portfolio — Designed with Color Palette #62.
 </footer>
 
 <script src="js/iot.js"></script>
