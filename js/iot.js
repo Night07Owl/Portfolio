@@ -12,7 +12,7 @@ const TASK_META = {
     blob: 'radial-gradient(circle, rgba(0, 242, 254, 0.6) 0%, rgba(59, 130, 246, 0.2) 70%, transparent 100%)'
   },
   task3: {
-    breadcrumb: 'Station 03: IFTTT Event Automation & Webhooks',
+    breadcrumb: 'Station 03: IFTTT + Adafruit IO IoT Automation',
     blob: 'radial-gradient(circle, rgba(16, 185, 129, 0.6) 0%, rgba(6, 182, 212, 0.2) 70%, transparent 100%)'
   },
   task4: {
@@ -296,46 +296,66 @@ function setupTask2Sandbox() {
 }
 
 // ==========================================================================
-// 4. TASK 3 SANDBOX: IFTTT EVENT AUTOMATION & NOTIFICATION
+// 4. TASK 3 SANDBOX: IFTTT + ADAFRUIT IO VOICE AUTOMATION SIMULATOR
 // ==========================================================================
 function setupTask3Sandbox() {
+  const voiceBtn = document.getElementById('btnSimulateVoiceAutomation');
+  const voiceSelect = document.getElementById('simVoiceTriggerSelect');
+  const voiceLog = document.getElementById('simVoiceLog');
+  const virtualBulb = document.getElementById('simTask3VirtualBulb');
+  const bulbStatus = document.getElementById('simTask3BulbStatusText');
+  const gpioStatus = document.getElementById('simTask3GpioStatus');
+
+  if (voiceBtn) {
+    voiceBtn.addEventListener('click', () => {
+      const cmd = voiceSelect ? voiceSelect.value : 'ON';
+      const isOn = cmd === 'ON';
+      const now = new Date().toLocaleTimeString();
+
+      if (voiceLog) {
+        voiceLog.innerHTML = `[${now}] 🎙️ VOICE: Spoken phrase recognized by Google Assistant<br>
+[${now}] ⚙️ IFTTT: Matched Applet "Activate ${isOn ? 'Bulb' : 'TURN off bulb'}"<br>
+[${now}] ☁️ ADAFRUIT IO: Published "${cmd}" to sudhiksha/feeds/bulb<br>
+[${now}] 📡 MQTT: QoS 0 packet pushed to ESP32 (Port 1883)<br>
+[${now}] 🖥️ ESP32: bulb.lastread = "${cmd}" -> digitalWrite(26, ${isOn ? 'LOW' : 'HIGH'})<br>
+[${now}] ⚡ RELAY: Active-LOW Relay ${isOn ? 'CLOSED (Energized)' : 'OPEN (De-energized)'} -> Bulb ${isOn ? 'ON' : 'OFF'}`;
+      }
+
+      if (virtualBulb) {
+        if (isOn) {
+          virtualBulb.classList.add('lit');
+          virtualBulb.style.filter = 'drop-shadow(0 0 24px rgba(254, 240, 138, 0.9))';
+        } else {
+          virtualBulb.classList.remove('lit');
+          virtualBulb.style.filter = 'none';
+        }
+      }
+
+      if (bulbStatus) {
+        bulbStatus.textContent = isOn ? 'BULB IS ON (ENERGIZED)' : 'BULB IS OFF (DE-ENERGIZED)';
+        bulbStatus.style.color = isOn ? '#34d399' : '#f43f5e';
+      }
+
+      if (gpioStatus) {
+        gpioStatus.textContent = isOn ? 'LOW (0V / Active)' : 'HIGH (3.3V / Idle)';
+      }
+
+      voiceBtn.textContent = '✅ Automation Executed!';
+      setTimeout(() => {
+        voiceBtn.textContent = '🎙️ Speak Voice Command & Fire Automation';
+      }, 1600);
+    });
+  }
+
+  // Backward compatibility with legacy webhook trigger button if present
   const triggerBtn = document.getElementById('btnTriggerIfttt');
-  const eventSelect = document.getElementById('simIftttEvent');
   const notifCard = document.getElementById('simPhoneNotification');
-  const notifTitle = document.getElementById('simPhoneTitle');
-  const notifMsg = document.getElementById('simPhoneMsg');
-
-  if (!triggerBtn || !notifCard) return;
-
-  triggerBtn.addEventListener('click', () => {
-    const selected = eventSelect ? eventSelect.value : 'temp_alarm';
-    const now = new Date().toLocaleTimeString();
-
-    if (selected === 'temp_alarm') {
-      if (notifTitle) notifTitle.textContent = '🚨 Overheat Warning (Temp > 35°C)';
-      if (notifMsg) notifMsg.textContent = `[${now}] Sensor node ESP32-DEV-01 exceeded calibrated limit. Auto-fan relay triggered.`;
-    } else if (selected === 'intruder_alert') {
-      if (notifTitle) notifTitle.textContent = '🚪 Perimeter Breach Detected';
-      if (notifMsg) notifMsg.textContent = `[${now}] Hall effect magnetic sensor OPEN on Forge Station Lab door.`;
-    } else {
-      if (notifTitle) notifTitle.textContent = '💧 Water Leak Alert';
-      if (notifMsg) notifMsg.textContent = `[${now}] Liquid detected on PCB ground basin (ADC: 382). Power cut safely.`;
-    }
-
-    // Pop-in animation
-    notifCard.style.transform = 'scale(0.96)';
-    notifCard.style.borderColor = 'var(--t3-accent)';
-    notifCard.style.boxShadow = '0 0 25px rgba(16, 185, 129, 0.4)';
-    
-    setTimeout(() => {
-      notifCard.style.transform = 'scale(1)';
-    }, 150);
-
-    triggerBtn.textContent = '📲 Webhook Dispatched & Delivered!';
-    setTimeout(() => {
-      triggerBtn.textContent = '📲 Dispatch Webhook & Receive Phone Alert';
-    }, 1800);
-  });
+  if (triggerBtn && notifCard) {
+    triggerBtn.addEventListener('click', () => {
+      notifCard.style.transform = 'scale(0.96)';
+      setTimeout(() => { notifCard.style.transform = 'scale(1)'; }, 150);
+    });
+  }
 }
 
 // ==========================================================================

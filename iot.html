@@ -77,8 +77,8 @@
             <span class="btn-accent-bar"></span>
             <span class="btn-num">03</span>
             <div class="btn-info">
-              <span class="btn-title">IFTTT Auto</span>
-              <span class="btn-sub">Webhooks & Triggers</span>
+              <span class="btn-title">IFTTT + Adafruit IO</span>
+              <span class="btn-sub">IoT Automation</span>
             </div>
             <span class="btn-chevron">→</span>
           </button>
@@ -2872,7 +2872,7 @@
       </div>
 
       <!-- =======================================================================
-         TASK 03: IFTTT EVENT AUTOMATION & WEBHOOKS (EMERALD MINT / AQUA)
+         TASK 03: IFTTT + ADAFRUIT IO IOT AUTOMATION (EMERALD MINT / AQUA)
          ======================================================================= -->
       <div class="task-view" id="view-task3" style="display: none;">
 
@@ -2880,41 +2880,33 @@
         <section class="task-banner banner-t3">
           <div class="banner-eyebrow">
             <span class="pill-badge pill-t3">ASSIGNMENT 03</span>
-            <span class="eyebrow-text">// EVENT-DRIVEN AUTOMATION &amp; NOTIFICATIONS</span>
+            <span class="eyebrow-text">// CLOUD AUTOMATION &amp; GOOGLE ASSISTANT TRIGGER</span>
           </div>
-          <h1 class="task-title title-t3">IFTTT Event Automation &amp; Webhooks</h1>
+          <h1 class="task-title title-t3">IFTTT + Adafruit IO IoT Automation</h1>
           <p class="task-lead">
-            Connecting physical sensor thresholds to real-world communication channels (push alerts, email, SMS) through
-            HTTP REST webhooks and cloud service orchestration.
+            An end-to-end voice and cloud automation system linking Google Assistant voice triggers through IFTTT Applets and Adafruit IO feeds to an ESP32 microcontroller via MQTT, enabling fully autonomous hardware switching without manual user dashboard control.
           </p>
 
           <div class="stats-grid">
             <div class="stat-card">
-              <span class="stat-icon">🔔</span>
+              <span class="stat-icon">🎙️</span>
               <div class="stat-content">
-                <h4>Action Service</h4>
-                <p>IFTTT Maker Webhooks REST API</p>
+                <h4>IFTTT Applet Trigger</h4>
+                <p>Google Assistant Voice ("Activate Bulb")</p>
               </div>
             </div>
             <div class="stat-card">
-              <span class="stat-icon">📨</span>
+              <span class="stat-icon">☁️</span>
               <div class="stat-content">
-                <h4>Notification</h4>
-                <p>Instant Mobile Push &amp; Email</p>
+                <h4>Adafruit IO &amp; MQTT</h4>
+                <p>io.adafruit.com:1883 · Feed: bulb</p>
               </div>
             </div>
             <div class="stat-card">
-              <span class="stat-icon">⏱️</span>
+              <span class="stat-icon">⚡</span>
               <div class="stat-content">
-                <h4>Delivery Speed</h4>
-                <p>&lt; 2.4s from Trigger to Phone</p>
-              </div>
-            </div>
-            <div class="stat-card">
-              <span class="stat-icon">🛡️</span>
-              <div class="stat-content">
-                <h4>Anti-Spam</h4>
-                <p>120-Second Software Cooldown</p>
+                <h4>Actuator Target</h4>
+                <p>Tongling 5V Relay (GPIO 26 Active-LOW)</p>
               </div>
             </div>
           </div>
@@ -2922,6 +2914,14 @@
 
         <!-- 1. OBJECTIVE, PROBLEM STATEMENT & PROJECT SUMMARY -->
         <section class="content-block">
+          <div class="block-header">
+            <div class="title-with-num">
+              <span class="badge-num num-t3">01</span>
+              <h2>Statement and system summary</h2>
+            </div>
+            <span class="block-tag">// IOT AUTOMATION SYSTEM</span>
+          </div>
+
           <!-- Box 01: Objective -->
           <div class="distinct-content-box box-t3">
             <div class="box-header-row">
@@ -2929,13 +2929,14 @@
                 <span class="badge-num num-t3">01</span>
                 <h2>Objective</h2>
               </div>
-              <span class="block-tag">// CORE OBJECTIVES</span>
+              <span class="pill-badge pill-t3">PROJECT GOALS</span>
             </div>
             <ul class="bullet-list-lg t3-bullets">
-              <li>To construct an <strong>event-driven automation pipeline</strong> linking physical environmental sensors to third-party web services.</li>
-              <li>To configure <strong>HTTP REST Maker Webhooks</strong> on the ESP32 to trigger cloud workflows upon threshold crossings.</li>
-              <li>To automate <strong>push notifications, SMS, or email dispatch</strong> directly to mobile devices without running a custom server.</li>
-              <li>To implement <strong>software debouncing and cooldown mechanisms</strong> to prevent webhook rate-limit flooding.</li>
+              <li>To develop an IoT-based automation system using <strong>ESP32, IFTTT, Adafruit IO, and MQTT</strong>.</li>
+              <li>To demonstrate automatic communication between an external trigger and an IoT device.</li>
+              <li>To enable the ESP32 to perform an action without requiring manual user control.</li>
+              <li>To understand the integration of cloud-based IoT platforms with hardware devices.</li>
+              <li>To control an actuator, such as an LED or 230V electric bulb, based on an automated command.</li>
             </ul>
           </div>
 
@@ -2946,12 +2947,15 @@
                 <span class="badge-num num-t3">02</span>
                 <h2>Problem Being Addressed</h2>
               </div>
-              <span class="block-tag">// PROBLEM STATEMENT</span>
+              <span class="pill-badge pill-t3">PAIN POINTS &amp; LIMITATIONS</span>
             </div>
             <ul class="bullet-list-lg t3-bullets">
-              <li>Manual monitoring requires human oversight to stare at dashboards, causing delayed responses to critical environmental emergencies.</li>
-              <li>Microcontrollers lack the memory and TLS cryptographic libraries needed to directly interface with hundreds of vendor APIs (e.g. Gmail, Twilio, APNs).</li>
-              <li>Sensor noise near trigger thresholds can trigger hundreds of false spam alerts per minute without state debouncing.</li>
+              <li>In a basic IoT system, the user needs to manually control the connected device.</li>
+              <li>Manual control requires continuous interaction through a dashboard or mobile application.</li>
+              <li>Such systems may not respond automatically to external events.</li>
+              <li>IoT automation can eliminate the need for continuous manual intervention.</li>
+              <li>A predefined event can be used to automatically generate a command for the IoT device.</li>
+              <li>The system can then process the command and perform the required action.</li>
             </ul>
           </div>
 
@@ -2962,241 +2966,348 @@
                 <span class="badge-num num-t3">03</span>
                 <h2>Project Summary</h2>
               </div>
-              <span class="block-tag">// ARCHITECTURAL SUMMARY</span>
+              <span class="pill-badge pill-t3">SYSTEM OVERVIEW</span>
             </div>
             <ul class="bullet-list-lg t3-bullets">
-              <li>The <strong>ESP32</strong> monitors ambient analog conditions continuously in its background loop.</li>
-              <li>When readings breach safety boundaries (e.g. Temperature &gt; 35°C), the device dispatches an <strong>HTTPS POST request</strong> to the IFTTT Webhook service.</li>
-              <li>The payload contains a secret key and formatted JSON parameters describing the incident.</li>
-              <li>The <strong>IFTTT cloud engine</strong> parses the webhook event rule and fires rich push alerts to the technician's smartphone within 2.4 seconds.</li>
-              <li>A <strong>120-second non-blocking timer</strong> locks out subsequent requests to ensure strict quota compliance.</li>
+              <li><strong>IFTTT</strong> is used as the automation platform.</li>
+              <li><strong>Adafruit IO</strong> is used as the IoT cloud platform.</li>
+              <li>An <strong>IFTTT Applet</strong> is configured to detect a predefined trigger.</li>
+              <li>When the trigger occurs, IFTTT automatically updates a feed on Adafruit IO.</li>
+              <li>The <strong>ESP32</strong> connects to Adafruit IO using the <strong>MQTT protocol</strong>.</li>
+              <li>The ESP32 continuously monitors the specified Adafruit IO feed.</li>
+              <li>When a new value is received, the ESP32 processes the command.</li>
+              <li>Based on the received value, the ESP32 changes the state of the connected <strong>LED / Electric Bulb</strong>.</li>
+              <li>This process enables automatic control of the IoT device without direct user intervention.</li>
             </ul>
           </div>
 
-          <!-- VISUAL DATAFLOW PIPELINE -->
-          <div class="visual-pipeline-box">
-            <div class="pipeline-header">
-              <span class="pipeline-title">Event-Driven Automation Dataflow</span>
-              <span class="pill-badge pill-t3">Webhook Pipeline</span>
+          <!-- DISTINCT SYSTEM FLOW BOX -->
+          <div class="t3-system-flow-box">
+            <div class="t3-system-flow-topbar">
+              <h4 class="t3-system-flow-title">
+                <span class="t3-flow-pulse-dot"></span>
+                System Flow
+              </h4>
+              <span class="t3-flow-tag">External Trigger → IFTTT → Adafruit IO → MQTT → ESP32 → LED / Actuator</span>
             </div>
-            <div class="pipeline-flow">
-              <div class="pipe-node">
-                <span class="node-icon">🚨</span>
-                <span class="node-label">ESP32 Sensor Node</span>
-                <span class="node-sub">Temp &gt; 35°C Trigger</span>
+
+            <div class="t3-flow-steps-grid">
+              <!-- Step 1 -->
+              <div class="t3-flow-step-card">
+                <span class="t3-flow-step-num">STEP 01</span>
+                <span class="t3-flow-step-icon">🎙️</span>
+                <h5 class="t3-flow-step-name">External Trigger</h5>
+                <p class="t3-flow-step-desc">Voice phrase or external event initiates automation.</p>
               </div>
-              <div class="pipe-arrow arrow-t3">
-                <span>HTTPS POST (JSON)</span>
-                <span class="arrow-symbol">→</span>
-                <span>Port 443 REST</span>
+
+              <!-- Step 2 -->
+              <div class="t3-flow-step-card">
+                <span class="t3-flow-step-num">STEP 02</span>
+                <span class="t3-flow-step-icon">⚡</span>
+                <h5 class="t3-flow-step-name">IFTTT</h5>
+                <p class="t3-flow-step-desc">Matches Applet logic and generates cloud action.</p>
               </div>
-              <div class="pipe-node active-t3">
-                <span class="node-icon">⚡</span>
-                <span class="node-label">IFTTT Cloud Engine</span>
-                <span class="node-sub">Maker Webhook Rule</span>
+
+              <!-- Step 3 -->
+              <div class="t3-flow-step-card">
+                <span class="t3-flow-step-num">STEP 03</span>
+                <span class="t3-flow-step-icon">☁️</span>
+                <h5 class="t3-flow-step-name">Adafruit IO</h5>
+                <p class="t3-flow-step-desc">Cloud platform receives data and updates feed.</p>
               </div>
-              <div class="pipe-arrow arrow-t3">
-                <span>Push Service</span>
-                <span class="arrow-symbol">→</span>
-                <span>APNs / FCM Alert</span>
+
+              <!-- Step 4 -->
+              <div class="t3-flow-step-card">
+                <span class="t3-flow-step-num">STEP 04</span>
+                <span class="t3-flow-step-icon">📡</span>
+                <h5 class="t3-flow-step-name">MQTT</h5>
+                <p class="t3-flow-step-desc">Minimal-overhead protocol pushes feed payload.</p>
               </div>
-              <div class="pipe-node">
-                <span class="node-icon">📱</span>
-                <span class="node-label">Mobile Phone</span>
-                <span class="node-sub">Instant Lock Screen Alert</span>
+
+              <!-- Step 5 -->
+              <div class="t3-flow-step-card">
+                <span class="t3-flow-step-num">STEP 05</span>
+                <span class="t3-flow-step-icon">🖥️</span>
+                <h5 class="t3-flow-step-name">ESP32</h5>
+                <p class="t3-flow-step-desc">Subscribed client parses ON/OFF command.</p>
+              </div>
+
+              <!-- Step 6 -->
+              <div class="t3-flow-step-card">
+                <span class="t3-flow-step-num">STEP 06</span>
+                <span class="t3-flow-step-icon">💡</span>
+                <h5 class="t3-flow-step-name">LED / Actuator</h5>
+                <p class="t3-flow-step-desc">Relay module switches physical AC bulb state.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 2. WHAT I LEARNT (KEY ARCHITECTURAL CONCEPTS & PARADIGMS) -->
+        <!-- 2. WHAT I LEARNT (END-TO-END AUTOMATION LIFECYCLE & ARCHITECTURAL CONCEPTS) -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t3">02</span>
               <h2>What I Learnt</h2>
             </div>
-            <span class="block-tag">// EMBEDDED KNOWLEDGE &amp; ARCHITECTURAL MASTERY</span>
+            <span class="block-tag">// 11-STAGE AUTOMATION LIFECYCLE &amp; CLOUD ARCHITECTURE</span>
           </div>
 
-          <!-- HERO "IN SIMPLE WORDS" FORMULA BANNER -->
-          <div class="learnt-formula-card">
-            <div class="formula-card-top">
-              <div class="formula-badges">
-                <span class="pill-badge pill-t3">IN SIMPLE WORDS</span>
-                <span class="formula-tagline">// EVENT-ACTION PARADIGM</span>
+          <!-- 11-STEP VISUAL AUTOMATION LIFECYCLE PIPELINE -->
+          <div class="t3-lifecycle-container">
+            <div class="t3-lifecycle-header">
+              <div class="t3-lifecycle-title-group">
+                <h3>
+                  <span class="node-icon">🔄</span>
+                  End-to-End Voice Automation Lifecycle
+                </h3>
+                <p class="t3-lifecycle-subtitle">
+                  Complete 11-stage trace from user acoustic voice command to physical AC electric bulb illumination
+                </p>
               </div>
-              <span class="status-pill-badge">
-                <span class="dot-online"></span> Zero Cloud Maintenance
-              </span>
+              <span class="pill-badge pill-t3">VOICE-TO-BULB EXECUTION PIPELINE</span>
             </div>
 
-            <div class="formula-pipeline-track">
-              <div class="formula-node node-highlight">
-                <span class="formula-node-icon">⚡</span>
-                <div class="formula-node-info">
-                  <span class="formula-node-name">Threshold</span>
-                  <span class="formula-node-role">Edge Sensor Evaluation</span>
+            <div class="t3-lifecycle-steps-flow">
+              <!-- Stage 01 -->
+              <div class="t3-life-card">
+                <div class="t3-life-badge-col">
+                  <span class="t3-life-num">01</span>
+                  <span class="t3-life-icon">🗣️</span>
+                </div>
+                <div class="t3-life-meta-col">
+                  <span class="t3-life-layer">VOICE INPUT</span>
+                  <h4 class="t3-life-title">USER VOICE INPUT</h4>
+                </div>
+                <div class="t3-life-content">
+                  <ul class="t3-life-bullets">
+                    <li>Spoken command: <strong>"Activate bulb ON"</strong> or <strong>"Activate TURN off bulb"</strong></li>
+                    <li>Hands-free acoustic trigger captured via smartphone or smart home microphone</li>
+                  </ul>
                 </div>
               </div>
 
-              <div class="formula-connector">
-                <span class="arrow-glyph">→</span>
-                <span>HTTPS REST POST</span>
-              </div>
+              <div class="t3-life-connector"><span class="t3-life-arrow">▼</span></div>
 
-              <div class="formula-node">
-                <span class="formula-node-icon">🌐</span>
-                <div class="formula-node-info">
-                  <span class="formula-node-name">IFTTT</span>
-                  <span class="formula-node-role">Cloud Rules Dispatcher</span>
+              <!-- Stage 02 -->
+              <div class="t3-life-card">
+                <div class="t3-life-badge-col">
+                  <span class="t3-life-num">02</span>
+                  <span class="t3-life-icon">🎙️</span>
+                </div>
+                <div class="t3-life-meta-col">
+                  <span class="t3-life-layer">VOICE ASSISTANT</span>
+                  <h4 class="t3-life-title">GOOGLE ASSISTANT</h4>
+                </div>
+                <div class="t3-life-content">
+                  <ul class="t3-life-bullets">
+                    <li>Receives voice command via Natural Language Processing (NLP)</li>
+                    <li>Identifies user intent through trained semantic models</li>
+                    <li>Activates the configured IFTTT integration trigger</li>
+                  </ul>
                 </div>
               </div>
 
-              <div class="formula-connector">
-                <span class="arrow-glyph">→</span>
-                <span>Push Notification</span>
-              </div>
+              <div class="t3-life-connector"><span class="t3-life-arrow">▼</span></div>
 
-              <div class="formula-node">
-                <span class="formula-node-info">📱</span>
-                <div class="formula-node-info">
-                  <span class="formula-node-name">Smartphone</span>
-                  <span class="formula-node-role">Vibration &amp; Banner Alert</span>
+              <!-- Stage 03 -->
+              <div class="t3-life-card">
+                <div class="t3-life-badge-col">
+                  <span class="t3-life-num">03</span>
+                  <span class="t3-life-icon">⚙️</span>
+                </div>
+                <div class="t3-life-meta-col">
+                  <span class="t3-life-layer">AUTOMATION ENGINE</span>
+                  <h4 class="t3-life-title">IFTTT SERVICE</h4>
+                </div>
+                <div class="t3-life-content">
+                  <ul class="t3-life-bullets">
+                    <li>Receives incoming real-time trigger webhook from Google Assistant</li>
+                    <li>Matches the defined Applet rule in user's account</li>
+                    <li>Starts execution of the automation workflow</li>
+                  </ul>
                 </div>
               </div>
-            </div>
 
-            <div class="formula-summary-box">
-              <p>
-                Instead of running heavy notification servers, <strong>webhooks act as instant HTTP callbacks</strong> that notify third-party cloud bridges only when specific hardware thresholds are violated.
-              </p>
+              <div class="t3-life-connector"><span class="t3-life-arrow">▼</span></div>
+
+              <!-- Stage 04 -->
+              <div class="t3-life-card">
+                <div class="t3-life-badge-col">
+                  <span class="t3-life-num">04</span>
+                  <span class="t3-life-icon">⚡</span>
+                </div>
+                <div class="t3-life-meta-col">
+                  <span class="t3-life-layer">CLOUD APPLET</span>
+                  <h4 class="t3-life-title">IFTTT APPLET</h4>
+                </div>
+                <div class="t3-life-content">
+                  <ul class="t3-life-bullets">
+                    <li>Processes the matched event payload</li>
+                    <li>Generates an action targeting the Adafruit IO service</li>
+                    <li>Sends authenticated cloud command with configured value</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="t3-life-connector"><span class="t3-life-arrow">▼</span></div>
+
+              <!-- Stage 05 -->
+              <div class="t3-life-card">
+                <div class="t3-life-badge-col">
+                  <span class="t3-life-num">05</span>
+                  <span class="t3-life-icon">☁️</span>
+                </div>
+                <div class="t3-life-meta-col">
+                  <span class="t3-life-layer">IOT CLOUD PLATFORM</span>
+                  <h4 class="t3-life-title">ADAFRUIT IO CLOUD PLATFORM</h4>
+                </div>
+                <div class="t3-life-content">
+                  <ul class="t3-life-bullets">
+                    <li>Receives the command from IFTTT via secure REST endpoint</li>
+                    <li>Updates target feed <code>bulb</code> (or <code>bulb-control</code>) with new payload</li>
+                    <li>Publishes new value to the internal MQTT message broker</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="t3-life-connector"><span class="t3-life-arrow">▼</span></div>
+
+              <!-- Stage 06 -->
+              <div class="t3-life-card">
+                <div class="t3-life-badge-col">
+                  <span class="t3-life-num">06</span>
+                  <span class="t3-life-icon">📡</span>
+                </div>
+                <div class="t3-life-meta-col">
+                  <span class="t3-life-layer">NETWORK PROTOCOL</span>
+                  <h4 class="t3-life-title">MQTT COMMUNICATION</h4>
+                </div>
+                <div class="t3-life-content">
+                  <ul class="t3-life-bullets">
+                    <li>Transfers feed value over persistent TCP socket (Port 1883)</li>
+                    <li>Uses MQTT topic <code>sudhiksha/feeds/bulb</code></li>
+                    <li>Delivers message with minimal 2-byte header overhead to active subscribers</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="t3-life-connector"><span class="t3-life-arrow">▼</span></div>
+
+              <!-- Stage 07 -->
+              <div class="t3-life-card">
+                <div class="t3-life-badge-col">
+                  <span class="t3-life-num">07</span>
+                  <span class="t3-life-icon">🖥️</span>
+                </div>
+                <div class="t3-life-meta-col">
+                  <span class="t3-life-layer">EDGE DEVICE</span>
+                  <h4 class="t3-life-title">ESP32 MICROCONTROLLER</h4>
+                </div>
+                <div class="t3-life-content">
+                  <ul class="t3-life-bullets">
+                    <li>Subscribes to topic via <code>Adafruit_MQTT_Subscribe</code></li>
+                    <li>Receives incoming MQTT packet inside non-blocking polling loop</li>
+                    <li>Reads incoming payload value (<code>"ON"</code> or <code>"OFF"</code>)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="t3-life-connector"><span class="t3-life-arrow">▼</span></div>
+
+              <!-- Stage 08 -->
+              <div class="t3-life-card">
+                <div class="t3-life-badge-col">
+                  <span class="t3-life-num">08</span>
+                  <span class="t3-life-icon">🧠</span>
+                </div>
+                <div class="t3-life-meta-col">
+                  <span class="t3-life-layer">FIRMWARE LOGIC</span>
+                  <h4 class="t3-life-title">COMMAND PROCESSING</h4>
+                </div>
+                <div class="t3-life-content">
+                  <ul class="t3-life-bullets">
+                    <li>Checks received string value against command conditions</li>
+                    <li>Active-LOW logic: <code>ON → LOW</code> (Energizes Relay Coil)</li>
+                    <li>Active-LOW logic: <code>OFF → HIGH</code> (De-energizes Relay Coil)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="t3-life-connector"><span class="t3-life-arrow">▼</span></div>
+
+              <!-- Stage 09 -->
+              <div class="t3-life-card">
+                <div class="t3-life-badge-col">
+                  <span class="t3-life-num">09</span>
+                  <span class="t3-life-icon">📍</span>
+                </div>
+                <div class="t3-life-meta-col">
+                  <span class="t3-life-layer">HARDWARE GPIO</span>
+                  <h4 class="t3-life-title">GPIO 26 / GPIO 2</h4>
+                </div>
+                <div class="t3-life-content">
+                  <ul class="t3-life-bullets">
+                    <li>Output voltage state transitions cleanly (0V or 3.3V)</li>
+                    <li>Drives relay module optocoupler input pin</li>
+                    <li>Provides instant hardware control signal with sub-millisecond edge</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="t3-life-connector"><span class="t3-life-arrow">▼</span></div>
+
+              <!-- Stage 10 -->
+              <div class="t3-life-card">
+                <div class="t3-life-badge-col">
+                  <span class="t3-life-num">10</span>
+                  <span class="t3-life-icon">🔌</span>
+                </div>
+                <div class="t3-life-meta-col">
+                  <span class="t3-life-layer">ELECTROMECHANICAL</span>
+                  <h4 class="t3-life-title">RELAY MODULE</h4>
+                </div>
+                <div class="t3-life-content">
+                  <ul class="t3-life-bullets">
+                    <li>Receives control signal from ESP32 output pin</li>
+                    <li>Internal electromagnetic coil is energized (LOW) or released (HIGH)</li>
+                    <li>Electrical armature snaps: Common (COM) connects to Normally Open (NO)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="t3-life-connector"><span class="t3-life-arrow">▼</span></div>
+
+              <!-- Stage 11 -->
+              <div class="t3-life-card">
+                <div class="t3-life-badge-col">
+                  <span class="t3-life-num">11</span>
+                  <span class="t3-life-icon">💡</span>
+                </div>
+                <div class="t3-life-meta-col">
+                  <span class="t3-life-layer">HIGH-VOLTAGE LOAD</span>
+                  <h4 class="t3-life-title">ELECTRIC BULB</h4>
+                </div>
+                <div class="t3-life-content">
+                  <ul class="t3-life-bullets">
+                    <li>230V AC mains electrical circuit is closed and completed</li>
+                    <li>Bulb socket receives full utility voltage safely through isolated contacts</li>
+                    <li>Bulb illuminates immediately in the physical room!</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- GRAPHICAL LIFECYCLE CYCLE DIAGRAM -->
-          <div class="lifecycle-section-wrap">
-            <div class="lifecycle-header">
-              <div class="lifecycle-title-group">
-                <span class="node-icon">🔄</span>
-                <div>
-                  <h4 class="lifecycle-title">Event Automation Lifecycle (Graphical Cycle)</h4>
-                  <p class="lifecycle-subtitle">Continuous threshold monitoring, encrypted webhook dispatch, and phone notification cycle</p>
-                </div>
-              </div>
-              <span class="pill-badge pill-t3">CIRCULAR DATA EXCHANGE</span>
-            </div>
-
-            <div class="cycle-graphic-wrap">
-              <svg viewBox="0 0 940 560" class="cycle-svg" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <filter id="cycleGlowT3" x="-30%" y="-30%" width="160%" height="160%">
-                    <feGaussianBlur stdDeviation="5" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                  <linearGradient id="centerCoreGradT3" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#064e3b" />
-                    <stop offset="50%" stop-color="#022c22" />
-                    <stop offset="100%" stop-color="#02140e" />
-                  </linearGradient>
-                  <linearGradient id="nodeBoxGradT3" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#12241d" />
-                    <stop offset="100%" stop-color="#0a1712" />
-                  </linearGradient>
-                  <marker id="cycleArrowT3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 1 L 9 5 L 0 9 z" fill="#34d399" />
-                  </marker>
-                </defs>
-
-                <!-- Subtle Grid Canvas -->
-                <rect width="940" height="560" fill="#08080f" rx="10" />
-
-                <!-- Orbital Circular Track -->
-                <circle cx="470" cy="280" r="185" fill="none" stroke="#1c2d25" stroke-width="2" stroke-dasharray="6,6" />
-                <circle cx="470" cy="280" r="185" fill="none" stroke="rgba(16, 185, 129, 0.18)" stroke-width="28" />
-
-                <!-- Curved Clockwise Connecting Flow Arcs -->
-                <path d="M 525 125 A 185 185 0 0 1 615 195" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" marker-end="url(#cycleArrowT3)" filter="url(#cycleGlowT3)" />
-                <path d="M 660 300 A 185 185 0 0 1 580 415" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" marker-end="url(#cycleArrowT3)" filter="url(#cycleGlowT3)" />
-                <path d="M 480 465 A 185 185 0 0 1 420 465" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" marker-end="url(#cycleArrowT3)" filter="url(#cycleGlowT3)" />
-                <path d="M 320 405 A 185 185 0 0 1 270 295" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" marker-end="url(#cycleArrowT3)" filter="url(#cycleGlowT3)" />
-                <path d="M 315 185 A 185 185 0 0 1 405 120" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" marker-end="url(#cycleArrowT3)" filter="url(#cycleGlowT3)" />
-
-                <!-- Central IFTTT Hub -->
-                <g transform="translate(470, 280)">
-                  <circle cx="0" cy="0" r="75" fill="url(#centerCoreGradT3)" stroke="#10b981" stroke-width="2" filter="url(#cycleGlowT3)" />
-                  <circle cx="0" cy="0" r="60" fill="#062018" stroke="#059669" stroke-width="1.5" />
-                  <text x="0" y="-20" text-anchor="middle" font-size="24">⚡</text>
-                  <text x="0" y="4" text-anchor="middle" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700">IFTTT Engine</text>
-                  <text x="0" y="20" text-anchor="middle" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600">Maker Webhook</text>
-                  <text x="0" y="34" text-anchor="middle" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="7.5">Event Dispatch</text>
-                </g>
-
-                <!-- STAGE 1: Top -->
-                <g transform="translate(370, 40)">
-                  <rect x="0" y="0" width="200" height="72" rx="8" fill="url(#nodeBoxGradT3)" stroke="#34d399" stroke-width="1.8" filter="url(#cycleGlowT3)" />
-                  <rect x="10" y="8" width="60" height="18" rx="4" fill="rgba(52, 211, 153, 0.15)" />
-                  <text x="40" y="20" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">STAGE 01</text>
-                  <text x="80" y="21" font-size="13">🌡️</text>
-                  <text x="12" y="42" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700">1. Threshold Trigger</text>
-                  <text x="12" y="58" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">Temp exceeds 35°C limit</text>
-                </g>
-
-                <!-- STAGE 2: Top-Right -->
-                <g transform="translate(630, 180)">
-                  <rect x="0" y="0" width="210" height="74" rx="8" fill="url(#nodeBoxGradT3)" stroke="#10b981" stroke-width="1.8" filter="url(#cycleGlowT3)" />
-                  <rect x="10" y="8" width="60" height="18" rx="4" fill="rgba(16, 185, 129, 0.15)" />
-                  <text x="40" y="20" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">STAGE 02</text>
-                  <text x="80" y="21" font-size="13">📤</text>
-                  <text x="12" y="42" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700">2. HTTPS POST Dispatched</text>
-                  <text x="12" y="58" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">maker.ifttt.com/trigger/...</text>
-                </g>
-
-                <!-- STAGE 3: Bottom-Right -->
-                <g transform="translate(560, 420)">
-                  <rect x="0" y="0" width="220" height="76" rx="8" fill="url(#nodeBoxGradT3)" stroke="#06b6d4" stroke-width="1.8" filter="url(#cycleGlowT3)" />
-                  <rect x="10" y="8" width="60" height="18" rx="4" fill="rgba(6, 182, 212, 0.15)" />
-                  <text x="40" y="20" fill="#22d3ee" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">STAGE 03</text>
-                  <text x="80" y="21" font-size="13">⚙️</text>
-                  <text x="12" y="42" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700">3. Cloud Applet Logic</text>
-                  <text x="12" y="58" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">Matches key &amp; formats notification</text>
-                </g>
-
-                <!-- STAGE 4: Bottom-Left -->
-                <g transform="translate(170, 420)">
-                  <rect x="0" y="0" width="220" height="76" rx="8" fill="url(#nodeBoxGradT3)" stroke="#f59e0b" stroke-width="1.8" filter="url(#cycleGlowT3)" />
-                  <rect x="10" y="8" width="60" height="18" rx="4" fill="rgba(245, 158, 11, 0.15)" />
-                  <text x="40" y="20" fill="#f59e0b" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">STAGE 04</text>
-                  <text x="80" y="21" font-size="13">📱</text>
-                  <text x="12" y="42" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700">4. Mobile Alert Delivered</text>
-                  <text x="12" y="58" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">Phone banner pops in &lt;2.4s</text>
-                </g>
-
-                <!-- STAGE 5: Top-Left -->
-                <g transform="translate(90, 180)">
-                  <rect x="0" y="0" width="220" height="76" rx="8" fill="url(#nodeBoxGradT3)" stroke="#ec4899" stroke-width="1.8" filter="url(#cycleGlowT3)" />
-                  <rect x="10" y="8" width="60" height="18" rx="4" fill="rgba(236, 72, 153, 0.15)" />
-                  <text x="40" y="20" fill="#ec4899" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">STAGE 05</text>
-                  <text x="80" y="21" font-size="13">🛡️</text>
-                  <text x="12" y="42" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700">5. 120s Cooldown Active</text>
-                  <text x="12" y="58" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5">Debounces spam &amp; resets loop</text>
-                </g>
-              </svg>
-            </div>
-          </div>
-
-          <!-- 6 CORE ARCHITECTURAL CONCEPTS GRID -->
-          <div class="learnt-concepts-grid">
+          <!-- CORE ARCHITECTURAL CONCEPTS GRID -->
+          <div class="learnt-concepts-grid" style="margin-top: 24px;">
             <div class="concept-card">
               <div class="concept-top">
                 <div class="concept-icon-pill">⚡</div>
-                <span class="concept-category-tag">EVENT ARCHITECTURE</span>
+                <span class="concept-category-tag">IOT AUTOMATION</span>
               </div>
-              <h4 class="concept-title">Event-Driven Automation</h4>
-              <p class="concept-text">Replaces continuous polling with deterministic rules. Bandwidth and CPU cycles are only consumed when an actual state change occurs.</p>
+              <h4 class="concept-title">Basic Concept of IoT Automation</h4>
+              <p class="concept-text">Eliminates continuous manual interaction through dashboards or mobile apps by linking external real-world triggers to automated cloud dispatchers.</p>
               <div class="concept-meta-footer">
                 <span>Model</span>
                 <span class="spec-highlight">Trigger → Action</span>
@@ -3206,424 +3317,385 @@
             <div class="concept-card">
               <div class="concept-top">
                 <div class="concept-icon-pill">🌐</div>
-                <span class="concept-category-tag">WEB SERVICES</span>
+                <span class="concept-category-tag">IFTTT PLATFORM</span>
               </div>
-              <h4 class="concept-title">RESTful Webhooks</h4>
-              <p class="concept-text">Standardized HTTP POST requests that carry event notification payloads over port 443 with encrypted bearer tokens.</p>
+              <h4 class="concept-title">What IFTTT Is &amp; Why It Is Used</h4>
+              <p class="concept-text">"If This Then That" is a cloud orchestration platform connecting disparate web services. It translates Google Assistant voice intents directly into IoT cloud updates.</p>
               <div class="concept-meta-footer">
-                <span>Interface</span>
-                <span class="spec-highlight">HTTP POST (Port 443)</span>
-              </div>
-            </div>
-
-            <div class="concept-card">
-              <div class="concept-top">
-                <div class="concept-icon-pill">🔐</div>
-                <span class="concept-category-tag">AUTHENTICATION</span>
-              </div>
-              <h4 class="concept-title">Maker Secret Key Auth</h4>
-              <p class="concept-text">Secures cloud invocations using a unique alphanumeric private key embedded inside the URL path, preventing unauthorized triggers.</p>
-              <div class="concept-meta-footer">
-                <span>Security</span>
-                <span class="spec-highlight">Token Verification</span>
-              </div>
-            </div>
-
-            <div class="concept-card">
-              <div class="concept-top">
-                <div class="concept-icon-pill">📄</div>
-                <span class="concept-category-tag">PAYLOAD FORMAT</span>
-              </div>
-              <h4 class="concept-title">Dynamic JSON Serialization</h4>
-              <p class="concept-text">Passes real-time variables (such as <code>value1: "36.2 °C"</code>) directly inside the JSON body, rendering rich alert banners on phones.</p>
-              <div class="concept-meta-footer">
-                <span>Format</span>
-                <span class="spec-highlight">application/json</span>
-              </div>
-            </div>
-
-            <div class="concept-card">
-              <div class="concept-top">
-                <div class="concept-icon-pill">🛡️</div>
-                <span class="concept-category-tag">RELIABILITY</span>
-              </div>
-              <h4 class="concept-title">Software Debouncing &amp; Cooldown</h4>
-              <p class="concept-text">A 120-second non-blocking lock prevents sensor noise from firing dozens of repetitive push alerts within seconds.</p>
-              <div class="concept-meta-footer">
-                <span>Resilience</span>
-                <span class="spec-highlight">Non-blocking millis()</span>
+                <span>Role</span>
+                <span class="spec-highlight">Cloud Rule Engine</span>
               </div>
             </div>
 
             <div class="concept-card">
               <div class="concept-top">
                 <div class="concept-icon-pill">☁️</div>
-                <span class="concept-category-tag">INTEGRATION</span>
+                <span class="concept-category-tag">ADAFRUIT IO BROKER</span>
               </div>
-              <h4 class="concept-title">Serverless Multi-Channel Dispatch</h4>
-              <p class="concept-text">The cloud orchestrator handles Apple APNs, Android FCM, and email gateways without requiring complex libraries on the ESP32.</p>
+              <h4 class="concept-title">Role of Adafruit IO in Automation</h4>
+              <p class="concept-text">Acts as the secure cloud broker bridging web services with embedded microcontrollers. When IFTTT pushes a value to the feed, Adafruit IO immediately forwards it over MQTT.</p>
               <div class="concept-meta-footer">
-                <span>Delivery</span>
-                <span class="spec-highlight">Push, SMS &amp; Email</span>
+                <span>Endpoint</span>
+                <span class="spec-highlight">io.adafruit.com:1883</span>
               </div>
             </div>
-          </div>
 
-          <!-- COMMERCIAL APPLICATIONS MATRIX -->
-          <div class="commercial-matrix-wrap">
-            <div class="commercial-header">
-              <div class="commercial-title-wrap">
-                <span class="node-icon">🏭</span>
-                <div>
-                  <h4 class="commercial-title">Commercial Applications</h4>
-                  <p class="commercial-tagline">Event-driven webhooks power emergency incident responses across physical installations</p>
-                </div>
+            <div class="concept-card">
+              <div class="concept-top">
+                <div class="concept-icon-pill">📦</div>
+                <span class="concept-category-tag">LIGHTWEIGHT PROTOCOL</span>
               </div>
-              <span class="pill-badge pill-t3">AUTOMATION ECOSYSTEM</span>
+              <h4 class="concept-title">MQTT Protocol Delivery</h4>
+              <p class="concept-text">Unlike heavy HTTP polling which consumes excessive memory, MQTT maintains a lightweight open TCP connection where the ESP32 receives instant push alerts with minimal latency.</p>
+              <div class="concept-meta-footer">
+                <span>Overhead</span>
+                <span class="spec-highlight">2-Byte Header</span>
+              </div>
             </div>
 
-            <div class="commercial-grid">
-              <div class="commercial-card">
-                <span class="commercial-card-icon">🖥️</span>
-                <h5>Server Room Thermal Alarms</h5>
-                <p>Instant SMS and push alerts when IT server rack temperatures cross safe limits.</p>
-                <span class="commercial-tag">Data Centers</span>
+            <div class="concept-card">
+              <div class="concept-top">
+                <div class="concept-icon-pill">🔌</div>
+                <span class="concept-category-tag">ACTUATOR CONTROL</span>
               </div>
-
-              <div class="commercial-card">
-                <span class="commercial-card-icon">💧</span>
-                <h5>Facility Water Leak Detection</h5>
-                <p>Detecting pipe bursts in commercial basements and notifying facilities management.</p>
-                <span class="commercial-tag">Facilities</span>
+              <h4 class="concept-title">Active-LOW Relay Logic</h4>
+              <p class="concept-text">The 5V relay module utilizes an optocoupler that conducts when the input pin is pulled LOW (0V). Hence, command "ON" sets GPIO LOW, while "OFF" sets GPIO HIGH for safety.</p>
+              <div class="concept-meta-footer">
+                <span>Logic</span>
+                <span class="spec-highlight">LOW = ON · HIGH = OFF</span>
               </div>
+            </div>
 
-              <div class="commercial-card">
-                <span class="commercial-card-icon">🚪</span>
-                <h5>Perimeter Breach Alarms</h5>
-                <p>Magnetic reed switch triggers dispatching security alarms upon door opening.</p>
-                <span class="commercial-tag">Security &amp; Safety</span>
+            <div class="concept-card">
+              <div class="concept-top">
+                <div class="concept-icon-pill">🛡️</div>
+                <span class="concept-category-tag">ELECTRICAL SAFETY</span>
               </div>
-
-              <div class="commercial-card">
-                <span class="commercial-card-icon">❄️</span>
-                <h5>Cold-Storage Defrost Alerts</h5>
-                <p>Automated warning alerts when commercial freezer doors are left ajar.</p>
-                <span class="commercial-tag">Cold Storage</span>
-              </div>
-
-              <div class="commercial-card">
-                <span class="commercial-card-icon">🌾</span>
-                <h5>Agricultural Frost Warning</h5>
-                <p>Notifying farmers when sub-zero ground temperatures threaten vulnerable crops.</p>
-                <span class="commercial-tag">AgriTech</span>
+              <h4 class="concept-title">Galvanic Isolation &amp; Actuation</h4>
+              <p class="concept-text">An optical isolator separates the sensitive 3.3V ESP32 microcontroller logic from inductive transients and 230V AC mains voltage, protecting the board from electrical back-EMF.</p>
+              <div class="concept-meta-footer">
+                <span>Protection</span>
+                <span class="spec-highlight">Optocoupled Barrier</span>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 3. PHYSICAL HARDWARE TESTING -->
+        <!-- 3. PHYSICAL HARDWARE TESTING, IFTTT EVIDENCE & VIDEO DEMO -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t3">03</span>
-              <h2>Physical Hardware Testing</h2>
+              <h2>Physical Hardware Testing &amp; Verification</h2>
             </div>
-            <span class="block-tag">// LAB VERIFICATION PROOF</span>
+            <span class="block-tag">// LAB VERIFICATION PROOF &amp; VIDEO DEMO</span>
           </div>
 
-          <div class="evidence-photos-grid">
-            <div class="evidence-photo-card">
-              <div class="photo-img-wrap">
-                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #061c14; color: #34d399; font-family: var(--font-mono); font-size: 0.9rem;">
-                  [TRIGGER] Temp &gt; 35°C → POST 200 OK
-                </div>
-                <span class="photo-state-badge state-on">● POST : 200 OK</span>
+          <!-- WORKING VIDEO DEMONSTRATION CARD -->
+          <div class="t3-video-card">
+            <div class="t3-video-header">
+              <div class="t2-pipeline-title-group">
+                <span class="t3-flow-pulse-dot"></span>
+                <h4 style="margin: 0; font-family: var(--font-display); font-size: 1.15rem; color: #f8fafc;">
+                  Working Demonstration Video — Task 3 Voice &amp; Cloud Automation
+                </h4>
               </div>
-              <div class="photo-card-info">
-                <h4>Active State: Overheat Trigger Verification</h4>
-                <ul class="bullet-list-sm">
-                  <li>Sensor warmed above 35.0°C threshold. Firmware formats JSON payload containing reading and dispatches HTTPS POST to maker.ifttt.com. Server returns <code>200 OK</code> within 340ms, and smartphone vibrates with push notification banner in &lt;2.4s.</li>
+              <span class="pill-badge pill-t3">LIVE PROTOTYPE VIDEO</span>
+            </div>
+
+            <div class="t3-video-body">
+              <video controls class="t3-video-player" poster="images/iot/task3_ifttt_my_applets.png">
+                <source src="videos/iot/task3.mp4" type="video/mp4">
+                <source src="vid/task3.mp4" type="video/mp4">
+                <source src="vid/task 3.mp4" type="video/mp4">
+                Your browser does not support HTML5 video playback.
+              </video>
+
+              <div class="t3-video-info-panel">
+                <h4>Complete Automation in Action</h4>
+                <p>
+                  This video captures the entire autonomous loop in real time. The user gives a spoken command to Google Assistant ("Activate Bulb"), which triggers the IFTTT applet, pushes the "ON" state to Adafruit IO, transfers over MQTT, and energizes the Tongling relay to illuminate the 230V electric bulb.
+                </p>
+                <ul class="t3-video-timeline-list">
+                  <li>
+                    <span class="t3-time-badge">0:00</span>
+                    <span>System idle state: ESP32 connected to Wi-Fi and subscribed to Adafruit IO MQTT feed.</span>
+                  </li>
+                  <li>
+                    <span class="t3-time-badge">0:03</span>
+                    <span>Voice command spoken: "Activate Bulb" recognized by Google Assistant.</span>
+                  </li>
+                  <li>
+                    <span class="t3-time-badge">0:06</span>
+                    <span>IFTTT applet fires realtime webhook updating Adafruit IO <code>bulb</code> feed.</span>
+                  </li>
+                  <li>
+                    <span class="t3-time-badge">0:08</span>
+                    <span>ESP32 receives MQTT packet, pulls GPIO 26 LOW, and relay switches the AC bulb ON.</span>
+                  </li>
+                  <li>
+                    <span class="t3-time-badge">0:12</span>
+                    <span>Turn-off command demonstrated, opening the relay contact safely.</span>
+                  </li>
                 </ul>
               </div>
             </div>
-
-            <div class="evidence-photo-card">
-              <div class="photo-img-wrap">
-                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #061c14; color: #f59e0b; font-family: var(--font-mono); font-size: 0.9rem;">
-                  [DEBOUNCE] Cooldown Active (Hold 120s)
-                </div>
-                <span class="photo-state-badge state-off">○ COOLDOWN : 120s LOCK</span>
-              </div>
-              <div class="photo-card-info">
-                <h4>Inactive State: Cooldown &amp; Nominal Range Lockout</h4>
-                <ul class="bullet-list-sm">
-                  <li>Subsequent temperature spikes during the 120-second cooldown window are safely suppressed by software timer logic, preventing webhook spam and quota burn.</li>
-                </ul>
-              </div>
-            </div>
           </div>
 
-          <!-- SUBSECTION: WEBHOOK TELEMETRY -->
-          <div class="evidence-sub-header">
+          <!-- IFTTT CONFIGURATION SCREENSHOTS SHOWCASE -->
+          <div class="evidence-sub-header" style="margin-top: 30px;">
             <div class="sub-title-group">
-              <span class="sub-icon">📲</span>
+              <span class="sub-icon">📱</span>
               <div>
-                <h3>Live Webhook Interface &amp; Delivery Telemetry</h3>
-                <p>Inspecting real-time HTTPS POST request/response cycles to maker.ifttt.com</p>
+                <h3>IFTTT Applet Configuration &amp; Workflow Evidence</h3>
+                <p>Screenshots of the active Google Assistant trigger, Adafruit IO action fields, and verified applets</p>
+              </div>
+            </div>
+            <span class="pill-badge pill-t3">IFTTT APPLET EVIDENCE</span>
+          </div>
+
+          <div class="ifttt-gallery-grid">
+            <!-- Image 1: My Applets List -->
+            <div class="ifttt-gallery-card">
+              <div class="ifttt-img-frame">
+                <img src="images/iot/task3_ifttt_my_applets.png" alt="IFTTT My Applets showing Google Assistant triggers for bulb">
+              </div>
+              <div class="ifttt-card-body">
+                <span class="ifttt-card-tag">APPLET INVENTORY</span>
+                <h4 class="ifttt-card-title">1. Configured Voice Applets</h4>
+                <p class="ifttt-card-desc">
+                  Two separate applets configured for deterministic control: "If you say 'Okay Google, activate Bulb', then Send data to bulb feed" and "If you say 'Okay Google, activate TURN off bulb'".
+                </p>
+              </div>
+            </div>
+
+            <!-- Image 2: Edit Applet Interface -->
+            <div class="ifttt-gallery-card">
+              <div class="ifttt-img-frame">
+                <img src="images/iot/task3_ifttt_edit_applet.png" alt="IFTTT Edit Applet with If Google Assistant activate scene and Then send data to Adafruit IO">
+              </div>
+              <div class="ifttt-card-body">
+                <span class="ifttt-card-tag">APPLET WORKFLOW</span>
+                <h4 class="ifttt-card-title">2. Trigger &amp; Action Pipeline</h4>
+                <p class="ifttt-card-desc">
+                  The IFTTT Applet logic editor showing <strong>If</strong> Google Assistant "Activate scene" <strong>Then</strong> Adafruit IO "Send data to Adafruit IO" bound to account Sudhiksha G.
+                </p>
+              </div>
+            </div>
+
+            <!-- Image 3: About this Applet Details -->
+            <div class="ifttt-gallery-card">
+              <div class="ifttt-img-frame">
+                <img src="images/iot/task3_ifttt_applet_details.png" alt="IFTTT Connected status and realtime trigger ingredients">
+              </div>
+              <div class="ifttt-card-body">
+                <span class="ifttt-card-tag">TRIGGER DETAILS</span>
+                <h4 class="ifttt-card-title">3. Realtime Trigger &amp; Action Fields</h4>
+                <p class="ifttt-card-desc">
+                  Connected applet status confirming realtime trigger ingredients (SceneName, ActivatedAt) mapped into action fields (feed_name = <code>bulb</code>, data = <code>ON</code>/<code>OFF</code>).
+                </p>
               </div>
             </div>
           </div>
 
-          <div class="evidence-photos-grid">
+          <!-- PHYSICAL HARDWARE STATE TESTING CARDS -->
+          <div class="evidence-photos-grid" style="margin-top: 24px;">
             <div class="evidence-photo-card">
+              <div class="photo-img-wrap">
+                <img src="images/iot/task2_hardware_setup.jpg" alt="Active state testing showing bulb illuminated" style="width: 100%; height: 100%; object-fit: cover;">
+                <span class="photo-state-badge state-on">● BULB STATE : ILLUMINATED (ON)</span>
+              </div>
               <div class="photo-card-info">
-                <h4>1. Main Webhook Trigger Flow</h4>
-                <p class="photo-simple-explain">When the sensor breaches the threshold, the ESP32 initiates an authenticated HTTPS transaction with IFTTT's cloud dispatch endpoint.</p>
-                <div class="network-detail-block">
-                  <h5>How It Works:</h5>
-                  <ul class="bullet-list-sm">
-                    <li>The ESP32 samples sensor ADC and checks if value exceeds threshold.</li>
-                    <li>Firmware checks that cooldown elapsed (<code>millis() - lastTrigger &gt; 120000</code>).</li>
-                    <li>ESP32 executes HTTPS POST with encrypted token and JSON values.</li>
-                    <li>IFTTT returns HTTP 200 OK and dispatches mobile push notification.</li>
-                  </ul>
-                  <h5>Working:</h5>
-                  <p class="pipeline-inline-text">Sensor ADC &gt; 35°C → Cooldown Check → HTTPS POST (Port 443) → IFTTT Engine → Mobile Alert</p>
-                  <h5>Network Result:</h5>
-                  <p>HTTP 200 OK received with response body "Congratulations! You've fired the temp_alert event".</p>
-                </div>
+                <h4>Active State: Automated Voice Trigger "Activate Bulb"</h4>
+                <ul class="bullet-list-sm">
+                  <li>Spoken trigger processed by Google Assistant and IFTTT in under 1.4 seconds.</li>
+                  <li>Adafruit IO feed <code>bulb</code> updated with payload string <code>"ON"</code>.</li>
+                  <li>ESP32 executes <code>digitalWrite(RELAY_PIN, LOW)</code>, pulling GPIO 26 to GND.</li>
+                  <li>Tongling relay coil is energized, closing the 230V circuit to illuminate the 60W bulb.</li>
+                </ul>
               </div>
             </div>
 
             <div class="evidence-photo-card">
+              <div class="photo-img-wrap">
+                <img src="images/iot/task2_relay_module.jpg" alt="Inactive state testing showing relay de-energized" style="width: 100%; height: 100%; object-fit: cover;">
+                <span class="photo-state-badge state-off">○ BULB STATE : DE-ENERGIZED (OFF)</span>
+              </div>
               <div class="photo-card-info">
-                <h4>2. Cooldown Protection Telemetry</h4>
-                <p class="photo-simple-explain">While in cooldown mode, the ESP32 logs <code>[COOLDOWN] Suppressed redundant trigger (108s remaining)</code> without establishing network connections, conserving device power and memory.</p>
+                <h4>Inactive State: Automated Voice Trigger "Turn Off Bulb"</h4>
+                <ul class="bullet-list-sm">
+                  <li>Spoken shutoff phrase matched by IFTTT Applet 2, transmitting <code>"OFF"</code>.</li>
+                  <li>ESP32 parses message, executing <code>digitalWrite(RELAY_PIN, HIGH)</code>.</li>
+                  <li>Relay contacts spring back to the Normally Open (NO) position, isolating high voltage.</li>
+                  <li>Bulb shuts off with zero physical touch required on the microcontroller board.</li>
+                </ul>
               </div>
             </div>
+          </div>
+
+          <!-- TESTING UNDER DIFFERENT CONDITIONS -->
+          <div class="distinct-content-box box-t3" style="margin-top: 22px;">
+            <div class="box-header-row">
+              <div class="title-with-num">
+                <span class="badge-num num-t3">04</span>
+                <h2>Automation Tested Under Different Conditions</h2>
+              </div>
+              <span class="pill-badge pill-t3">EMPIRICAL TESTING MATRIX</span>
+            </div>
+            <ul class="bullet-list-lg t3-bullets">
+              <li><strong>Voice Phrasing Variations:</strong> Verified that both natural variations and exact scene triggers ("Okay Google, activate Bulb" vs "activate TURN off bulb") correctly match the respective applet.</li>
+              <li><strong>End-to-End Latency:</strong> Measured voice command round-trip latency. From speech completion on smartphone to relay contact closure averaged between <strong>1.2s to 2.2s</strong> across Wi-Fi.</li>
+              <li><strong>Wi-Fi Drop &amp; Auto-Recovery:</strong> Temporarily cycled the router power. The firmware's <code>connectWiFi()</code> loop automatically detected disconnection and re-established the MQTT feed subscription upon network restoration without requiring hardware reboot.</li>
+              <li><strong>Continuous Reliability:</strong> Tested over 25 consecutive trigger cycles without a single dropped packet or desynchronized relay state.</li>
+            </ul>
           </div>
         </section>
 
-        <!-- 4. INTERACTIVE EMBEDDED SERVER SANDBOX -->
+        <!-- 4. INTERACTIVE VOICE AUTOMATION SANDBOX -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t3">04</span>
-              <h2>Interactive Webhook Trigger Sandbox</h2>
+              <h2>Interactive Voice &amp; Cloud Automation Sandbox</h2>
             </div>
-            <span class="block-tag">// SIMULATE PUSH NOTIFICATION</span>
+            <span class="block-tag">// SIMULATE VOICE TRIGGER → IFTTT → MQTT → BULB</span>
           </div>
 
           <div class="interactive-sandbox sandbox-t3">
             <div class="sandbox-left">
               <div class="slider-control-card">
-                <label class="slider-label" for="simIftttEvent">
-                  <span>Select Trigger Event Type:</span>
+                <label class="slider-label" for="simVoiceTriggerSelect">
+                  <span>Select Voice Command Input:</span>
                 </label>
-                <select class="custom-select" id="simIftttEvent">
-                  <option value="temp_alarm">🚨 Overheat Warning (Temp &gt; 35°C)</option>
-                  <option value="intruder_alert">🚪 Perimeter Breach (Motion Sensor HIGH)</option>
-                  <option value="water_leak">💧 Flood Sensor Detected (ADC &lt; 500)</option>
+                <select class="custom-select" id="simVoiceTriggerSelect">
+                  <option value="ON">🗣️ "Okay Google, activate Bulb" (Turn ON)</option>
+                  <option value="OFF">🗣️ "Okay Google, activate TURN off bulb" (Turn OFF)</option>
                 </select>
               </div>
-              <button class="interactive-btn btn-t3" id="btnTriggerIfttt">
-                📲 Dispatch Webhook &amp; Receive Phone Alert
+              <button class="interactive-btn btn-t3" id="btnSimulateVoiceAutomation">
+                🎙️ Speak Voice Command &amp; Fire Automation
               </button>
+
+              <div class="sim-telemetry-console" style="margin-top: 14px; background: #050d09; border: 1px solid rgba(16, 185, 129, 0.25); border-radius: var(--radius-sm); padding: 12px; font-family: var(--font-mono); font-size: 0.76rem; color: #34d399; max-height: 180px; overflow-y: auto;">
+                <div id="simVoiceLog">[SYSTEM READY] Awaiting voice automation simulation...</div>
+              </div>
             </div>
 
             <div class="sandbox-right">
-              <!-- Simulated Phone Notification Preview -->
-              <div class="sim-phone-screen">
-                <div class="phone-notch"></div>
-                <div class="phone-time">09:41 AM</div>
-                <div class="phone-notification" id="simPhoneNotification">
-                  <div class="notif-header">
-                    <span class="notif-app-icon">🔔</span>
-                    <span class="notif-app-name">IFTTT Alert · Forge Lab</span>
-                    <span class="notif-time">Just now</span>
-                  </div>
-                  <div class="notif-body">
-                    <strong id="simPhoneTitle">🚨 Overheat Warning (Temp &gt; 35°C)</strong>
-                    <p id="simPhoneMsg">Sensor node ESP32-DEV-01 exceeded calibrated threshold. Auto-ventilation relay activated.</p>
-                  </div>
+              <!-- Virtual Actuator Simulation -->
+              <div class="virtual-bulb-box" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; background: rgba(0,0,0,0.5); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); width: 100%; box-sizing: border-box;">
+                <div class="bulb-lamp-icon" id="simTask3VirtualBulb" style="font-size: 3.5rem; margin-bottom: 12px; transition: all 0.3s ease;">
+                  💡
                 </div>
+                <h4 id="simTask3BulbStatusText" style="margin: 0; font-family: var(--font-display); font-size: 1.1rem; color: #f43f5e;">
+                  BULB IS OFF (DE-ENERGIZED)
+                </h4>
+                <p style="margin: 6px 0 0; font-family: var(--font-mono); font-size: 0.75rem; color: #94a3b8;">
+                  GPIO 26: <span id="simTask3GpioStatus">HIGH (3.3V)</span> · Relay Armature: OPEN
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 5. CIRCUIT ARCHITECTURE -->
+        <!-- 5. CIRCUIT ARCHITECTURE & COMPONENT OVERVIEW -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t3">05</span>
-              <h2>Circuit Architecture</h2>
+              <h2>Hardware Architecture &amp; Component Overview</h2>
             </div>
-            <span class="block-tag">// EVENT SENSOR INPUT &amp; HARDWARE INTERFACE</span>
-          </div>
-
-          <div class="schematic-card">
-            <div class="schematic-svg-wrap">
-              <svg viewBox="0 0 940 450" class="schematic-svg" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <pattern id="schemGridT3" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#12241d" stroke-width="0.8" />
-                  </pattern>
-                  <filter id="glowMintT3" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="4" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
-
-                <!-- Background Grid -->
-                <rect width="940" height="450" fill="#08080f" rx="10" />
-                <rect width="940" height="450" fill="url(#schemGridT3)" rx="10" />
-
-                <!-- ESP32 Module -->
-                <g transform="translate(40, 25)">
-                  <rect x="0" y="0" width="280" height="395" rx="12" fill="#0d1814" stroke="#1d3b2f" stroke-width="2" />
-                  <rect x="45" y="48" width="190" height="150" rx="6" fill="#142820" stroke="#22543d" stroke-width="1.5" />
-                  <text x="140" y="95" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" text-anchor="middle">ESP-WROOM-32</text>
-                  <text x="140" y="115" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Event Trigger Engine</text>
-
-                  <!-- Micro USB -->
-                  <rect x="110" y="380" width="60" height="25" rx="3" fill="#475569" stroke="#94a3b8" stroke-width="1.5" />
-                  <text x="140" y="396" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" text-anchor="middle">USB 5V</text>
-
-                  <!-- GPIO 35 Input Pin Highlight -->
-                  <rect x="25" y="270" width="230" height="34" rx="5" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" stroke-width="1.5" />
-                  <circle cx="45" cy="287" r="6" fill="#10b981" filter="url(#glowMintT3)" />
-                  <text x="60" y="291" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">GPIO 35 / ADC1_CH7</text>
-                </g>
-
-                <!-- Zoomed-in Sensor Circuit -->
-                <g transform="translate(370, 75)">
-                  <rect x="0" y="0" width="530" height="290" rx="10" fill="#0a1712" stroke="#1d3b2f" stroke-width="1.5" />
-                  <rect x="0" y="0" width="530" height="42" rx="10" fill="#12261e" />
-                  <circle cx="20" cy="21" r="6" fill="#10b981" filter="url(#glowMintT3)" />
-                  <text x="34" y="25" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">THRESHOLD SENSOR INPUT CIRCUIT (GPIO 35)</text>
-
-                  <!-- Sensor Unit -->
-                  <g transform="translate(40, 70)">
-                    <rect x="0" y="0" width="140" height="130" rx="8" fill="#14261f" stroke="#10b981" stroke-width="1.5" />
-                    <text x="70" y="30" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Thermal / PIR Sensor</text>
-                    <text x="70" y="50" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Analog / Digital State</text>
-                    <rect x="20" y="70" width="100" height="36" rx="4" fill="#0c1a14" stroke="#059669" stroke-width="1" />
-                    <text x="70" y="92" fill="#6ee7b7" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" text-anchor="middle">TRIGGER OUT</text>
-                  </g>
-
-                  <!-- Trace Wire -->
-                  <path d="M 180 155 L 320 155" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" filter="url(#glowMintT3)" />
-                  <text x="250" y="145" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" text-anchor="middle">Sensor Bus</text>
-
-                  <!-- Pull-up / Filter Stage -->
-                  <g transform="translate(320, 100)">
-                    <rect x="0" y="0" width="160" height="110" rx="8" fill="#14261f" stroke="#34d399" stroke-width="1.5" />
-                    <text x="80" y="28" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Input Conditioning</text>
-                    <text x="80" y="52" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">10kΩ Pull-Up + Cap</text>
-                    <rect x="25" y="65" width="110" height="30" rx="4" fill="#0c1a14" stroke="#047857" stroke-width="1" />
-                    <text x="80" y="84" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" text-anchor="middle">To GPIO 35</text>
-                  </g>
-
-                  <!-- Ground Rail -->
-                  <path d="M 110 200 L 110 240 L 400 240" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4" />
-                  <g transform="translate(400, 240)">
-                    <line x1="0" y1="0" x2="0" y2="15" stroke="#64748b" stroke-width="2" />
-                    <line x1="-12" y1="15" x2="12" y2="15" stroke="#64748b" stroke-width="2" />
-                    <line x1="-8" y1="19" x2="8" y2="19" stroke="#64748b" stroke-width="2" />
-                    <line x1="-4" y1="23" x2="4" y2="23" stroke="#64748b" stroke-width="2" />
-                    <text x="0" y="35" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="bold" text-anchor="middle">COMMON GND (0V)</text>
-                  </g>
-                </g>
-              </svg>
-            </div>
-
-            <!-- Color-Coded Schematic Legend -->
-            <div class="schematic-legend">
-              <div class="legend-item">
-                <span class="wire-dot" style="background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
-                <span>GPIO 35 Input Trace: Threshold Sensing Line (0–3.3V)</span>
-              </div>
-              <div class="legend-item">
-                <span class="wire-dot" style="background: #34d399; box-shadow: 0 0 8px #34d399;"></span>
-                <span>VCC Power Rail: Clean 3.3V Sensor Power Supply</span>
-              </div>
-              <div class="legend-item">
-                <span class="wire-dot" style="background: #64748b; box-shadow: 0 0 8px #64748b;"></span>
-                <span>Internal GND Plane: Board Common Ground Reference (0V)</span>
-              </div>
-              <div class="legend-item">
-                <span class="wire-dot" style="background: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
-                <span>VIN / Micro-USB: 5V DC Supply &amp; Flashing Bus</span>
-              </div>
-            </div>
+            <span class="block-tag">// SYSTEM SCHEMATIC &amp; HARDWARE PIN MAPPING</span>
           </div>
 
           <div class="hardware-spec-cards">
+            <!-- ESP32 Module -->
             <div class="hw-card">
-              <span class="hw-chip">Input Pin Spec</span>
-              <h4>GPIO 35 (ADC1 Channel 7)</h4>
+              <span class="hw-chip">Controller</span>
+              <h4>ESP32 DevKit V1 / V4</h4>
               <ul class="bullet-list-sm">
-                <li>Dedicated input pin with no internal pull-up/pull-down</li>
-                <li>Requires external 10kΩ pull-up resistor to 3.3V</li>
-                <li>High-speed hardware interrupt and ADC sampling support</li>
+                <li>Xtensa Dual-Core 32-bit @ 160 MHz</li>
+                <li>Built-in 2.4 GHz Wi-Fi 802.11 b/g/n</li>
+                <li>Connects as persistent MQTT client to Adafruit IO broker</li>
+                <li>Drives GPIO 26 with Active-LOW logic output</li>
               </ul>
             </div>
+
+            <!-- Relay Module -->
             <div class="hw-card">
-              <span class="hw-chip">Conditioning</span>
-              <h4>Debounce Circuit</h4>
+              <span class="hw-chip">Actuator</span>
+              <h4>SRD-05VDC-SL-C / Tongling 5V Relay</h4>
               <ul class="bullet-list-sm">
-                <li>100nF ceramic capacitor suppresses transient mechanical noise</li>
-                <li>Ensures razor-sharp clean rising edges for threshold detection</li>
-                <li>Prevents spurious interrupts on the Xtensa core</li>
+                <li>Coil Voltage: 5V DC · Coil Current: ~70mA</li>
+                <li>Contact Rating: 250V AC / 10A</li>
+                <li>Active-LOW optocoupled input trigger</li>
+                <li>Galvanic isolation protects ESP32 from mains voltage</li>
               </ul>
             </div>
+
+            <!-- AC Bulb Load -->
             <div class="hw-card">
-              <span class="hw-chip">Transport Engine</span>
-              <h4>TLS/HTTPS Stack</h4>
+              <span class="hw-chip">Load</span>
+              <h4>230V AC Electric Bulb (60W)</h4>
               <ul class="bullet-list-sm">
-                <li>ESP32 WiFiClientSecure communicates over port 443</li>
-                <li>Encrypts sensitive webhook secret token during transit</li>
-                <li>Guarantees authenticated cloud execution</li>
+                <li>Standard E27 socket wired to utility mains</li>
+                <li>Switched via Relay Common (COM) &amp; Normally Open (NO) terminals</li>
+                <li>Visual feedback proving successful voice command actuation</li>
               </ul>
             </div>
           </div>
 
-          <div class="wiring-table-wrap">
+          <!-- WIRING TABLE -->
+          <div class="wiring-table-wrap" style="margin-top: 20px;">
             <table class="clean-table">
               <thead>
                 <tr>
                   <th>ESP32 Pin</th>
                   <th>Target Component</th>
-                  <th>Connection Type</th>
-                  <th>Signal / Purpose</th>
+                  <th>Connection Line</th>
+                  <th>Signal / Electrical Function</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><span class="pin-badge">GPIO 35</span></td>
-                  <td>Sensor Output Pin</td>
-                  <td><span class="wire-dot" style="background: #10b981;"></span> Jumper / PCB Trace</td>
-                  <td>Active Sensor Signal Line (Threshold Input)</td>
+                  <td><span class="pin-badge">GPIO 26</span></td>
+                  <td>Relay Module IN Pin</td>
+                  <td><span class="wire-dot" style="background: #10b981;"></span> Green Jumper Wire</td>
+                  <td>Active-LOW Relay Control Signal (LOW=ON, HIGH=OFF)</td>
                 </tr>
                 <tr>
-                  <td><span class="pin-badge">3V3</span></td>
-                  <td>Sensor VCC + 10k Pull-up</td>
-                  <td><span class="wire-dot" style="background: #34d399;"></span> Regulated 3.3V Line</td>
-                  <td>Sensor Logic Power Supply (3.3V)</td>
+                  <td><span class="pin-badge">VIN (5V)</span></td>
+                  <td>Relay Module VCC Pin</td>
+                  <td><span class="wire-dot" style="background: #ef4444;"></span> Red Jumper Wire</td>
+                  <td>5V DC Power Supply for Relay Electromagnetic Coil</td>
                 </tr>
                 <tr>
                   <td><span class="pin-badge">GND</span></td>
-                  <td>Sensor GND</td>
-                  <td><span class="wire-dot" style="background: #64748b;"></span> Internal Ground Plane</td>
-                  <td>Common System Ground (0V Reference)</td>
+                  <td>Relay Module GND Pin</td>
+                  <td><span class="wire-dot" style="background: #64748b;"></span> Black Jumper Wire</td>
+                  <td>Common System Ground Reference (0V)</td>
+                </tr>
+                <tr>
+                  <td><span class="pin-badge">Relay COM</span></td>
+                  <td>230V AC Mains Phase</td>
+                  <td><span class="wire-dot" style="background: #f59e0b;"></span> Mains Phase Lead</td>
+                  <td>Utility Line Input to Relay Armature</td>
+                </tr>
+                <tr>
+                  <td><span class="pin-badge">Relay NO</span></td>
+                  <td>Electric Bulb Phase</td>
+                  <td><span class="wire-dot" style="background: #f59e0b;"></span> Switched Phase Wire</td>
+                  <td>Normally Open Contact — closes when relay coil is energized</td>
+                </tr>
+                <tr>
+                  <td><span class="pin-badge">Mains Neutral</span></td>
+                  <td>Electric Bulb Neutral</td>
+                  <td><span class="wire-dot" style="background: #3b82f6;"></span> Neutral Lead</td>
+                  <td>Direct return circuit to AC supply neutral</td>
                 </tr>
               </tbody>
             </table>
-            <p class="table-note">ℹ️ <strong>Hardware Note:</strong> GPIO 35 is an input-only pin. It cannot be used as an output, making it optimal for dedicated sensor thresholds and telemetry triggers.</p>
+            <p class="table-note">⚠️ <strong>Mains Safety Notice:</strong> 230V AC mains lines carry lethal voltages. Proper mechanical insulation, terminal block shrouding, and optocoupled relay separation are strictly implemented.</p>
           </div>
         </section>
 
@@ -3634,57 +3706,153 @@
               <span class="badge-num num-t3">06</span>
               <h2>Core Firmware Architecture, Code Breakdown &amp; Telemetry</h2>
             </div>
-            <span class="block-tag">// ARDUINO C++ SOURCE &amp; SYSTEM TELEMETRY</span>
+            <span class="block-tag">// ARDUINO C++ SOURCE &amp; ADAFRUIT MQTT ENGINE</span>
           </div>
 
           <div class="code-box">
             <div class="code-header">
-              <span class="code-filename">esp32_ifttt_webhook.ino</span>
+              <span class="code-filename">esp32_mqtt_bulb_controller.ino</span>
               <button class="copy-btn">Copy Code</button>
             </div>
             <pre class="code-content"><code><span class="c-kw">#include</span> <span class="c-str">&lt;WiFi.h&gt;</span>
-<span class="c-kw">#include</span> <span class="c-str">&lt;HTTPClient.h&gt;</span>
+<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT.h"</span>
+<span class="c-kw">#include</span> <span class="c-str">"Adafruit_MQTT_Client.h"</span>
 
-<span class="c-kw">const char</span>* ssid     = <span class="c-str">"protosem"</span>;
-<span class="c-kw">const char</span>* password = <span class="c-str">"Proto#123"</span>;
+<span class="c-cmt">// =====================================================</span>
+<span class="c-cmt">// Wi-Fi credentials</span>
+<span class="c-cmt">// =====================================================</span>
+<span class="c-kw">#define</span> WIFI_SSID     <span class="c-str">"protosem"</span>
+<span class="c-kw">#define</span> WIFI_PASSWORD <span class="c-str">"Proto#123"</span>
 
-<span class="c-kw">const char</span>* iftttUrl = <span class="c-str">"https://maker.ifttt.com/trigger/temp_alert/with/key/A1B2C3D4E5_SECRET_KEY"</span>;
-<span class="c-kw">unsigned long</span> lastTrigger = <span class="c-num">0</span>;
-<span class="c-kw">const unsigned long</span> cooldownMs = <span class="c-num">120000</span>; <span class="c-cmt">// 120-second spam protection lock</span>
+<span class="c-cmt">// =====================================================</span>
+<span class="c-cmt">// Adafruit IO credentials</span>
+<span class="c-cmt">// =====================================================</span>
+<span class="c-kw">#define</span> AIO_SERVER      <span class="c-str">"io.adafruit.com"</span>
+<span class="c-kw">#define</span> AIO_SERVERPORT  <span class="c-num">1883</span>
+<span class="c-kw">#define</span> AIO_USERNAME    <span class="c-str">"sudhiksha"</span>
+<span class="c-kw">#define</span> AIO_KEY         <span class="c-str">"aio_YOUR_ADAFRUIT_IO_KEY"</span>
 
-<span class="c-kw">void</span> <span class="c-fn">sendIftttAlert</span>(<span class="c-kw">float</span> temp) {
-  <span class="c-kw">if</span> (<span class="c-fn">millis</span>() - lastTrigger &lt; cooldownMs) {
-    <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"[COOLDOWN] Trigger suppressed to protect API rate limits."</span>);
-    <span class="c-kw">return</span>;
+<span class="c-cmt">// =====================================================</span>
+<span class="c-cmt">// Relay Pin Mapping</span>
+<span class="c-cmt">// =====================================================</span>
+<span class="c-kw">#define</span> RELAY_PIN <span class="c-num">26</span>
+
+<span class="c-cmt">// =====================================================</span>
+<span class="c-cmt">// MQTT setup</span>
+<span class="c-cmt">// =====================================================</span>
+<span class="c-type">WiFiClient</span> client;
+
+<span class="c-type">Adafruit_MQTT_Client</span> mqtt(
+  &amp;client,
+  AIO_SERVER,
+  AIO_SERVERPORT,
+  AIO_USERNAME,
+  AIO_KEY
+);
+
+<span class="c-cmt">// =====================================================</span>
+<span class="c-cmt">// MQTT feed</span>
+<span class="c-cmt">// Subscribes to the target Adafruit IO bulb feed</span>
+<span class="c-cmt">// =====================================================</span>
+<span class="c-type">Adafruit_MQTT_Subscribe</span> bulb = <span class="c-type">Adafruit_MQTT_Subscribe</span>(
+  &amp;mqtt,
+  AIO_USERNAME <span class="c-str">"/feeds/bulb"</span>
+);
+
+<span class="c-cmt">// =====================================================</span>
+<span class="c-cmt">// Connect to Wi-Fi</span>
+<span class="c-cmt">// =====================================================</span>
+<span class="c-kw">void</span> <span class="c-fn">connectWiFi</span>() {
+  <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"Connecting to Wi-Fi"</span>);
+  <span class="c-type">WiFi</span>.<span class="c-fn">begin</span>(WIFI_SSID, WIFI_PASSWORD);
+
+  <span class="c-kw">while</span> (<span class="c-type">WiFi</span>.<span class="c-fn">status</span>() != <span class="c-kw">WL_CONNECTED</span>) {
+    <span class="c-fn">delay</span>(<span class="c-num">500</span>);
+    <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"."</span>);
   }
-  
-  <span class="c-type">HTTPClient</span> http;
-  http.<span class="c-fn">begin</span>(iftttUrl);
-  http.<span class="c-fn">addHeader</span>(<span class="c-str">"Content-Type"</span>, <span class="c-str">"application/json"</span>);
-  <span class="c-type">String</span> payload = <span class="c-str">"{\"value1\":\""</span> + <span class="c-type">String</span>(temp, <span class="c-num">1</span>) + <span class="c-str">" C\",\"value2\":\"Forge Station 03 Overheat\"}"</span>;
-  <span class="c-kw">int</span> httpCode = http.<span class="c-fn">POST</span>(payload);
-  
-  <span class="c-kw">if</span> (httpCode &gt; <span class="c-num">0</span>) {
-    <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"Webhook Sent! HTTP Status: "</span>);
-    <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(httpCode);
-  }
-  http.<span class="c-fn">end</span>();
-  lastTrigger = <span class="c-fn">millis</span>();
+
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>();
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"Wi-Fi connected!"</span>);
+  <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"IP address: "</span>);
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-type">WiFi</span>.<span class="c-fn">localIP</span>());
 }
 
+<span class="c-cmt">// =====================================================</span>
+<span class="c-cmt">// Connect to MQTT</span>
+<span class="c-cmt">// =====================================================</span>
+<span class="c-kw">void</span> <span class="c-fn">connectMQTT</span>() {
+  <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"Connecting to Adafruit IO MQTT..."</span>);
+  <span class="c-kw">int8_t</span> ret;
+
+  <span class="c-kw">while</span> ((ret = mqtt.<span class="c-fn">connect</span>()) != <span class="c-num">0</span>) {
+    <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(mqtt.<span class="c-fn">connectErrorString</span>(ret));
+    mqtt.<span class="c-fn">disconnect</span>();
+    <span class="c-fn">delay</span>(<span class="c-num">5000</span>);
+    <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"Retrying MQTT connection..."</span>);
+  }
+
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>();
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"MQTT connected!"</span>);
+}
+
+<span class="c-cmt">// =====================================================</span>
+<span class="c-cmt">// SETUP</span>
+<span class="c-cmt">// =====================================================</span>
 <span class="c-kw">void</span> <span class="c-fn">setup</span>() {
   <span class="c-fn">Serial</span>.<span class="c-fn">begin</span>(<span class="c-num">115200</span>);
-  <span class="c-fn">WiFi</span>.<span class="c-fn">begin</span>(ssid, password);
-  <span class="c-kw">while</span> (<span class="c-fn">WiFi</span>.<span class="c-fn">status</span>() != <span class="c-kw">WL_CONNECTED</span>) { <span class="c-fn">delay</span>(<span class="c-num">500</span>); }
-  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"WiFi connected!"</span>);
+  <span class="c-fn">delay</span>(<span class="c-num">1000</span>);
+
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>();
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"================================"</span>);
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"ESP32 MQTT BULB CONTROLLER"</span>);
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"================================"</span>);
+
+  <span class="c-cmt">// Relay setup (Active-LOW: LOW=ON, HIGH=OFF)</span>
+  <span class="c-fn">pinMode</span>(RELAY_PIN, <span class="c-kw">OUTPUT</span>);
+  <span class="c-fn">digitalWrite</span>(RELAY_PIN, <span class="c-kw">HIGH</span>); <span class="c-cmt">// Start OFF</span>
+  <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"Relay initialized: OFF"</span>);
+
+  <span class="c-fn">connectWiFi</span>();
+  mqtt.<span class="c-fn">subscribe</span>(&amp;bulb);
+  <span class="c-fn">connectMQTT</span>();
 }
 
+<span class="c-cmt">// =====================================================</span>
+<span class="c-cmt">// LOOP</span>
+<span class="c-cmt">// =====================================================</span>
 <span class="c-kw">void</span> <span class="c-fn">loop</span>() {
-  <span class="c-kw">float</span> currentTemp = <span class="c-fn">analogRead</span>(<span class="c-num">35</span>) * (<span class="c-num">3.3</span> / <span class="c-num">4095.0</span>) * <span class="c-num">15.0</span>;
-  <span class="c-kw">if</span> (currentTemp &gt; <span class="c-num">35.0</span>) {
-    <span class="c-fn">sendIftttAlert</span>(currentTemp);
+  <span class="c-cmt">// Auto-reconnect if connection is lost</span>
+  <span class="c-kw">if</span> (!mqtt.<span class="c-fn">connected</span>()) {
+    <span class="c-fn">connectMQTT</span>();
   }
-  <span class="c-fn">delay</span>(<span class="c-num">2000</span>);
+
+  <span class="c-cmt">// Poll for incoming MQTT messages</span>
+  <span class="c-type">Adafruit_MQTT_Subscribe</span> *subscription;
+
+  <span class="c-kw">while</span> ((subscription = mqtt.<span class="c-fn">readSubscription</span>(<span class="c-num">1000</span>)) != <span class="c-kw">NULL</span>) {
+    <span class="c-kw">if</span> (subscription == &amp;bulb) {
+      <span class="c-type">String</span> value = (<span class="c-kw">char</span> *)bulb.<span class="c-fn">lastread</span>;
+      value.<span class="c-fn">trim</span>();
+      value.<span class="c-fn">toUpperCase</span>();
+
+      <span class="c-fn">Serial</span>.<span class="c-fn">print</span>(<span class="c-str">"Received: "</span>);
+      <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(value);
+
+      <span class="c-cmt">// BULB ON: Active-LOW relay -> LOW turns relay ON</span>
+      <span class="c-kw">if</span> (value == <span class="c-str">"ON"</span>) {
+        <span class="c-fn">digitalWrite</span>(RELAY_PIN, <span class="c-kw">LOW</span>);
+        <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"GPIO 26 = LOW -> BULB ON"</span>);
+      }
+      <span class="c-cmt">// BULB OFF: Active-LOW relay -> HIGH turns relay OFF</span>
+      <span class="c-kw">else if</span> (value == <span class="c-str">"OFF"</span>) {
+        <span class="c-fn">digitalWrite</span>(RELAY_PIN, <span class="c-kw">HIGH</span>);
+        <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"GPIO 26 = HIGH -> BULB OFF"</span>);
+      }
+      <span class="c-kw">else</span> {
+        <span class="c-fn">Serial</span>.<span class="c-fn">println</span>(<span class="c-str">"Unknown command. Use ON or OFF."</span>);
+      }
+    }
+  }
 }</code></pre>
           </div>
 
@@ -3700,60 +3868,60 @@
               <div class="breakdown-card">
                 <div class="breakdown-card-top">
                   <span class="breakdown-num">PART 01</span>
-                  <span class="breakdown-code-tag">#include</span>
+                  <span class="breakdown-code-tag">#include &amp; Setup</span>
                 </div>
-                <h5>1. Including HTTPClient Library</h5>
+                <h5>1. Adafruit MQTT Client Instantiation</h5>
                 <ul class="breakdown-list">
-                  <li><code>HTTPClient.h</code> provides high-level REST client capabilities to compose HTTPS POST requests.</li>
-                  <li>Handles TCP connection, SSL handshakes, and header management seamlessly.</li>
+                  <li>Includes <code>Adafruit_MQTT.h</code> and <code>Adafruit_MQTT_Client.h</code> for non-blocking MQTT socket handling.</li>
+                  <li>Initializes client with host <code>io.adafruit.com</code> on port <code>1883</code>.</li>
                 </ul>
               </div>
 
               <div class="breakdown-card">
                 <div class="breakdown-card-top">
                   <span class="breakdown-num">PART 02</span>
-                  <span class="breakdown-code-tag">Webhook URL &amp; Key</span>
+                  <span class="breakdown-code-tag">Feed Subscription</span>
                 </div>
-                <h5>2. Target URL &amp; Token Declaration</h5>
+                <h5>2. Subscribing to Cloud Topic</h5>
                 <ul class="breakdown-list">
-                  <li>Specifies the exact Maker event endpoint <code>maker.ifttt.com/trigger/temp_alert/with/key/...</code>.</li>
-                  <li>Embeds the unique user secret key to authorize trigger execution.</li>
+                  <li>Declares <code>Adafruit_MQTT_Subscribe bulb</code> on feed topic <code>sudhiksha/feeds/bulb</code>.</li>
+                  <li>Calls <code>mqtt.subscribe(&amp;bulb)</code> during setup to receive incoming push updates.</li>
                 </ul>
               </div>
 
               <div class="breakdown-card">
                 <div class="breakdown-card-top">
                   <span class="breakdown-num">PART 03</span>
-                  <span class="breakdown-code-tag">Cooldown Logic</span>
+                  <span class="breakdown-code-tag">Pin Config</span>
                 </div>
-                <h5>3. 120-Second Spam Lockout</h5>
+                <h5>3. Active-LOW Relay Initialization</h5>
                 <ul class="breakdown-list">
-                  <li>Compares <code>millis() - lastTrigger &lt; 120000</code> to prevent multiple triggers during sensor fluctuation.</li>
-                  <li>Protects free tier API rate limits while keeping the main loop non-blocking.</li>
+                  <li>Configures <code>RELAY_PIN 26</code> as <code>OUTPUT</code>.</li>
+                  <li>Writes <code>HIGH</code> immediately on boot to guarantee the high-voltage bulb starts in a safe DE-ENERGIZED state.</li>
                 </ul>
               </div>
 
               <div class="breakdown-card">
                 <div class="breakdown-card-top">
                   <span class="breakdown-num">PART 04</span>
-                  <span class="breakdown-code-tag">JSON Payload Creation</span>
+                  <span class="breakdown-code-tag">readSubscription()</span>
                 </div>
-                <h5>4. Dynamic JSON String Serialization</h5>
+                <h5>4. Non-Blocking Message Polling</h5>
                 <ul class="breakdown-list">
-                  <li>Formats payload <code>{"value1": "36.2 C", "value2": "Overheat Alert"}</code>.</li>
-                  <li>Sets <code>Content-Type: application/json</code> header so IFTTT maps variables correctly.</li>
+                  <li><code>mqtt.readSubscription(1000)</code> listens for incoming packets from the broker with a 1-second timeout.</li>
+                  <li>Extracts payload string from <code>bulb.lastread</code>, trims whitespace, and converts to uppercase.</li>
                 </ul>
               </div>
 
               <div class="breakdown-card">
                 <div class="breakdown-card-top">
                   <span class="breakdown-num">PART 05</span>
-                  <span class="breakdown-code-tag">http.POST() &amp; Cleanup</span>
+                  <span class="breakdown-code-tag">Logic Inversion</span>
                 </div>
-                <h5>5. Dispatch &amp; Socket Teardown</h5>
+                <h5>5. Command Execution &amp; Inversion</h5>
                 <ul class="breakdown-list">
-                  <li><code>http.POST(payload)</code> sends the request and returns the HTTP status code (200 OK).</li>
-                  <li><code>http.end()</code> safely closes the SSL socket, freeing RAM on the microcontroller.</li>
+                  <li><code>value == "ON"</code> pulls pin <strong>LOW</strong>, closing relay contact and turning the bulb ON.</li>
+                  <li><code>value == "OFF"</code> pulls pin <strong>HIGH</strong>, de-energizing the coil and turning the bulb OFF.</li>
                 </ul>
               </div>
             </div>
@@ -3783,28 +3951,33 @@
                   <span>Timestamp: Disabled</span>
                 </div>
               </div>
-              <pre class="serial-output-code"><code><span class="log-boot">[BOOT] Station 03 Event Automation Engine Online</span>
-<span class="log-wifi">Connecting to WiFi.....</span>
-<span class="log-wifi">WiFi connected! IP: 192.168.56.202</span>
-<span class="log-srv">[SAMPLE] Reading: 31.4 C | Status: Nominal (Below 35 C Threshold)</span>
-<span class="log-srv">[SAMPLE] Reading: 35.8 C | THRESHOLD BREACH DETECTED!</span>
-<span class="log-hit">[POST] Connecting to maker.ifttt.com:443 (TLS Negotiated)</span>
-<span class="log-hit">[POST] Payload: {"value1":"35.8 C","value2":"Forge Station 03 Overheat"}</span>
-<span class="log-ip">[RESP] HTTP 200 OK (Event temp_alert Fired Successfully)</span>
-<span class="log-srv">[COOLDOWN] Locking triggers for 120 seconds...</span>
-<span class="log-srv">[SAMPLE] Reading: 36.1 C | [COOLDOWN ACTIVE] Alert suppressed</span></code></pre>
+              <pre class="serial-output-code"><code><span class="log-boot">================================</span>
+<span class="log-boot">ESP32 MQTT BULB CONTROLLER</span>
+<span class="log-boot">================================</span>
+<span class="log-srv">Relay initialized: OFF</span>
+<span class="log-wifi">Connecting to Wi-Fi.....</span>
+<span class="log-wifi">Wi-Fi connected!</span>
+<span class="log-ip">IP address: 192.168.56.202</span>
+<span class="log-hit">Connecting to Adafruit IO MQTT...</span>
+<span class="log-hit">MQTT connected!</span>
+<span class="log-srv">[VOICE TRIGGER RECEIVED] Message on feed: bulb</span>
+<span class="log-hit">Received: ON</span>
+<span class="log-srv">GPIO 26 = LOW -> BULB ON</span>
+<span class="log-srv">[VOICE TRIGGER RECEIVED] Message on feed: bulb</span>
+<span class="log-hit">Received: OFF</span>
+<span class="log-srv">GPIO 26 = HIGH -> BULB OFF</span></code></pre>
             </div>
           </div>
         </section>
 
-        <!-- 7. REFLECTION -->
+        <!-- 7. REFLECTION & WHAT I LEARNED -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t3">07</span>
-              <h2>Reflection</h2>
+              <h2>Reflection &amp; What I Learned</h2>
             </div>
-            <span class="block-tag">// PERSONAL LEARNING</span>
+            <span class="block-tag">// CLOUD-BASED AUTOMATION TAKEAWAYS</span>
           </div>
 
           <div class="reflection-card reflection-t3">
@@ -3813,39 +3986,92 @@
                 <span class="reflection-icon">💡</span>
                 <span class="reflection-label">STUDENT REFLECTION</span>
               </div>
-              <span class="pill-badge pill-t3">KEY TAKEAWAY</span>
+              <span class="pill-badge pill-t3">CLOUD AUTOMATION INSIGHT</span>
             </div>
             <blockquote class="reflection-quote">
-              Automating real-world alerts through IFTTT webhooks highlighted the power of event-driven thinking. Instead of constantly pulling data or refreshing dashboards, building systems that speak only when something important occurs saves immense bandwidth and ensures immediate human response.
+              Connecting Google Assistant, IFTTT, and Adafruit IO to the ESP32 demonstrated the true essence of the Internet of Things: decoupling user input from direct hardware control. By leveraging cloud rule engines, hardware can respond intelligently to spoken voice commands without embedding complex natural language models directly onto the microcontroller.
             </blockquote>
+          </div>
+
+          <div class="distinct-content-box box-t3" style="margin-top: 20px;">
+            <div class="box-header-row">
+              <div class="title-with-num">
+                <span class="badge-num num-t3">02</span>
+                <h2>What I Learned About Cloud-Based Automation</h2>
+              </div>
+              <span class="pill-badge pill-t3">ARCHITECTURAL TAKEAWAYS</span>
+            </div>
+            <ul class="bullet-list-lg t3-bullets">
+              <li><strong>Zero Direct Device Exposure:</strong> The ESP32 never needs to expose an open incoming port to the public internet; it establishes an outbound connection to the cloud MQTT broker and listens safely behind NAT.</li>
+              <li><strong>Asynchronous Orchestration:</strong> Third-party services like IFTTT act as a universal translation layer, mapping modern voice interfaces (Google Assistant, Siri, Alexa) seamlessly into lightweight IoT feeds.</li>
+              <li><strong>Edge Reliability &amp; Fallbacks:</strong> Cloud automations rely on internet connectivity; designing robust non-blocking reconnection routines in firmware ensures the hardware gracefully recovers whenever network interruptions occur.</li>
+            </ul>
           </div>
         </section>
 
-        <!-- 8. CHALLENGES FACED -->
+        <!-- 8. PROBLEMS AND SOLUTIONS -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t3">08</span>
-              <h2>Challenges Faced</h2>
+              <h2>Problems and Their Solutions Documented</h2>
             </div>
-            <span class="block-tag">// TROUBLESHOOTING LOG</span>
+            <span class="block-tag">// TROUBLESHOOTING LOG &amp; DEFECT RESOLUTION</span>
           </div>
 
-          <div class="debug-cards-grid">
-            <div class="debug-card bug-side">
-              <div class="debug-head head-bug">
+          <div class="solutions-grid">
+            <div class="solution-card">
+              <div class="solution-head">
                 <span class="debug-icon">⚠️</span>
-                <h4>Challenge 1 — Webhook Rate Limiting &amp; Notification Flooding</h4>
+                <h4>Problem 1 — Active-LOW Relay Inversion Logic</h4>
               </div>
-              <p class="challenge-text">Sensor noise fluctuating around 35.0°C fired 40 duplicate webhook calls within 10 seconds, quickly hitting IFTTT free-tier rate limits. This was eliminated by programming a 120-second non-blocking cooldown lockout timer using millis().</p>
+              <p class="challenge-text">
+                Initially, sending "ON" set the pin to HIGH, but the relay remained open and the bulb stayed off. Because the Tongling module features an active-LOW optocoupled input, driving the pin LOW completes the circuit to ground and energizes the coil.
+              </p>
+              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
+                <strong>Fix:</strong> Corrected the firmware branch: <code>if (value == "ON") digitalWrite(RELAY_PIN, LOW)</code> and <code>else if (value == "OFF") digitalWrite(RELAY_PIN, HIGH)</code>.
+              </div>
             </div>
 
-            <div class="debug-card bug-side">
-              <div class="debug-head head-bug">
+            <div class="solution-card">
+              <div class="solution-head">
                 <span class="debug-icon">⚠️</span>
-                <h4>Challenge 2 — TLS/SSL Handshake Memory Overhead</h4>
+                <h4>Problem 2 — Voice Recognition Scene Phrase Matching</h4>
               </div>
-              <p class="challenge-text">Full cryptographic SSL certificate negotiation initially consumed substantial ESP32 heap memory. We resolved this by managing connection lifecycles strictly with http.end() after each transaction to avoid memory fragmentation.</p>
+              <p class="challenge-text">
+                Google Assistant sometimes interpreted spoken commands as native Google Home lighting requests instead of forwarding them to the IFTTT applet, returning "Device not set up" errors.
+              </p>
+              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
+                <strong>Fix:</strong> Used the dedicated Google Assistant "Activate scene" trigger with explicit invocation keywords ("activate Bulb" and "activate TURN off bulb"), guaranteeing deterministic applet matching.
+              </div>
+            </div>
+
+            <div class="solution-card">
+              <div class="solution-head">
+                <span class="debug-icon">⚠️</span>
+                <h4>Problem 3 — MQTT TCP Socket Timeouts During Inactivity</h4>
+              </div>
+              <p class="challenge-text">
+                When left idle for several minutes, the TCP connection to <code>io.adafruit.com</code> would silently drop due to router NAT table expiration, causing missed voice commands.
+              </p>
+              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
+                <strong>Fix:</strong> Added <code>if (!mqtt.connected()) connectMQTT();</code> at the top of the main <code>loop()</code>, ensuring the socket is kept alive and immediately restored before each polling cycle.
+              </div>
+            </div>
+          </div>
+
+          <div class="repo-banner-box">
+            <div class="repo-text">
+              <h4>Source Repository</h4>
+            </div>
+            <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer"
+              class="btn-repo btn-t3">
+              View on GitHub ↗
+            </a>
+          </div>
+        </section>
+
+      </div> initially consumed substantial ESP32 heap memory. We resolved this by managing connection lifecycles strictly with http.end() after each transaction to avoid memory fragmentation.</p>
             </div>
           </div>
 

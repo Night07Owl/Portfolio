@@ -3804,5 +3804,514 @@ pre.code-content code {
   color: #34d399;
 }
 
+/* ==========================================================================
+   TASK 3 ENHANCEMENTS: SYSTEM FLOW, 11-STEP LIFECYCLE, VIDEO & IFTTT GALLERY
+   ========================================================================== */
+
+/* System Flow Container (Section 01) */
+.t3-system-flow-box {
+  margin-top: 24px;
+  background: linear-gradient(135deg, rgba(6, 28, 20, 0.95), rgba(4, 16, 12, 0.95));
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.65), 0 0 24px rgba(16, 185, 129, 0.1);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.t3-system-flow-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.t3-system-flow-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.t3-flow-pulse-dot {
+  width: 9px;
+  height: 9px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #10b981;
+  display: inline-block;
+}
+
+.t3-flow-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.t3-flow-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1080px) {
+  .t3-flow-steps-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .t3-flow-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.t3-flow-step-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  min-width: 0;
+  word-break: break-word;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.t3-flow-step-card:hover {
+  transform: translateY(-3px);
+  border-color: #10b981;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.2);
+}
+
+.t3-flow-step-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.t3-flow-step-icon {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.t3-flow-step-name {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.25;
+}
+
+.t3-flow-step-desc {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #94a3b8;
+  line-height: 1.35;
+}
+
+/* 11-Step Lifecycle Visual Pipeline (Section 02) */
+.t3-lifecycle-container {
+  margin-top: 24px;
+  background: linear-gradient(135deg, rgba(8, 22, 16, 0.96), rgba(5, 14, 11, 0.98));
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75), 0 0 25px rgba(16, 185, 129, 0.12);
+  box-sizing: border-box;
+}
+
+.t3-lifecycle-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.t3-lifecycle-title-group h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.t3-lifecycle-subtitle {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.t3-lifecycle-steps-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+}
+
+.t3-life-card {
+  display: grid;
+  grid-template-columns: 80px 180px 1fr;
+  align-items: center;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-left: 4px solid #10b981;
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  box-sizing: border-box;
+  min-width: 0;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.t3-life-card:hover {
+  transform: translateX(4px);
+  background: rgba(16, 185, 129, 0.05);
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.12);
+}
+
+@media (max-width: 820px) {
+  .t3-life-card {
+    grid-template-columns: 60px 1fr;
+    gap: 14px;
+  }
+  .t3-life-content {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 520px) {
+  .t3-life-card {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .t3-life-content {
+    grid-column: span 1;
+  }
+}
+
+.t3-life-badge-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.t3-life-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #061c14;
+  background: #10b981;
+  padding: 3px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.t3-life-icon {
+  font-size: 1.5rem;
+  margin-top: 4px;
+}
+
+.t3-life-meta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.t3-life-layer {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #34d399;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.t3-life-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.t3-life-content {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.t3-life-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.t3-life-bullets li {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.t3-life-bullets li::before {
+  content: "•";
+  color: #10b981;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.t3-life-connector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.t3-life-arrow {
+  font-size: 1rem;
+  color: #10b981;
+  opacity: 0.75;
+}
+
+/* IFTTT Screenshot Showcase Gallery */
+.ifttt-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 960px) {
+  .ifttt-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .ifttt-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ifttt-gallery-card {
+  background: #091511;
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+
+.ifttt-gallery-card:hover {
+  transform: translateY(-4px);
+  border-color: #10b981;
+  box-shadow: 0 10px 28px rgba(16, 185, 129, 0.2);
+}
+
+.ifttt-img-frame {
+  width: 100%;
+  height: 260px;
+  background: #040d09;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.ifttt-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.ifttt-gallery-card:hover .ifttt-img-frame img {
+  transform: scale(1.03);
+}
+
+.ifttt-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.ifttt-card-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #34d399;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ifttt-card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.3;
+}
+
+.ifttt-card-desc {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+/* Task 3 Video Demonstration Card */
+.t3-video-card {
+  margin-top: 24px;
+  background: linear-gradient(135deg, rgba(8, 24, 18, 0.95), rgba(4, 14, 10, 0.95));
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 24px rgba(16, 185, 129, 0.12);
+}
+
+.t3-video-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: rgba(16, 185, 129, 0.08);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.t3-video-body {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+  padding: 24px;
+  align-items: center;
+}
+
+@media (max-width: 880px) {
+  .t3-video-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.t3-video-player {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(16, 185, 129, 0.15);
+  background: #000;
+  outline: none;
+  max-height: 480px;
+}
+
+.t3-video-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.t3-video-info-panel h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.t3-video-info-panel p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.t3-video-timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.t3-video-timeline-list li {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.t3-time-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.14);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+
 
 
