@@ -4572,8 +4572,53 @@ pre.code-content code {
   object-fit: contain !important;
 }
 
+/* ==========================================================================
+   TASK 5 SPECIFIC ENHANCEMENTS: SMARTYY REDIRECT & SCROLLABLE CODE BOX
+   ========================================================================== */
+.btn-smartyy-redirect {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--t5-gradient);
+  color: #FFFFFF !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px var(--t5-glow);
+}
 
+.btn-smartyy-redirect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px var(--t5-glow);
+  color: #FFFFFF !important;
+}
 
+.code-scroll-viewport {
+  max-height: 480px;
+  overflow-y: auto;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #f43f5e #110e16;
+}
 
+.code-scroll-viewport::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
 
+.code-scroll-viewport::-webkit-scrollbar-track {
+  background: #0d0a12;
+}
 
+.code-scroll-viewport::-webkit-scrollbar-thumb {
+  background: #f43f5e;
+  border-radius: 4px;
+}
+
+.code-scroll-viewport::-webkit-scrollbar-thumb:hover {
+  background: #fb7185;
+}

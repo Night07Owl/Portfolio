@@ -6118,12 +6118,19 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
             and client-side CSV data export.
           </p>
 
+          <div style="margin: 18px 0 24px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" class="btn-smartyy-redirect">
+              <span style="font-size: 1rem;">🌐</span> Visit Smartyy Website ↗
+            </a>
+            <span style="font-size: 0.82rem; color: #94a3b8; font-family: var(--font-mono);">Live Production App: smartyy-e6f48.web.app</span>
+          </div>
+
           <div class="stats-grid">
             <div class="stat-card">
               <span class="stat-icon">🗄️</span>
               <div class="stat-content">
                 <h4>Storage Engine</h4>
-                <p>Firebase Realtime DB (/history)</p>
+                <p>Firebase Realtime DB</p>
               </div>
             </div>
             <div class="stat-card">
@@ -6175,7 +6182,7 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
               <li>To implement intelligent dual-mode actuation: allowing operators to trigger <strong>Manual Bulb Control</strong> via the dashboard or engage <strong>Automatic Light-Adaptive Control</strong> driven by ambient LDR threshold evaluation.</li>
               <li>To execute automated time-series logging, committing cryptographically synchronized NTP epoch snapshots into the Firebase <code>/history</code> database branch every 30 seconds.</li>
               <li>To visualize recorded environmental data on an interactive <strong>dual-axis streaming graph</strong> and provide seamless one-click <strong>CSV data download</strong> for offline engineering analytics.</li>
-              <li>To deploy and host the complete live production web application at <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" style="color: #f43f5e; text-decoration: underline; font-weight: 700;">Smart Room IoT (https://smartyy-e6f48.web.app/)</a>.</li>
+              <li>To deploy and host the complete live production web application at <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" class="btn-smartyy-redirect" style="padding: 3px 14px; font-size: 0.78rem; margin-left: 6px; vertical-align: middle;">Visit Smartyy Website ↗</a></li>
             </ul>
           </div>
 
@@ -6410,21 +6417,21 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
                 <p>
                   Demonstrating the full operating pipeline: ESP32 sensor acquisition (DHT11 &amp; LDR), dual manual and light-adaptive bulb actuation, real-time telemetry streaming to Firebase, and automated client-side CSV spreadsheet export.
                 </p>
-                <ul class="t3-video-timeline-list">
-                  <li><span class="t3-time-badge" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">0:00</span><span>Hardware overview: ESP32 DevKit, DHT11 sensor, LDR voltage divider, relay module, and lamp.</span></li>
-                  <li><span class="t3-time-badge" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">0:25</span><span>Live telemetry monitoring: Temperature, Humidity, and LDR lux values syncing in real time.</span></li>
-                  <li><span class="t3-time-badge" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">0:50</span><span>Light-adaptive automation demonstrated: Covering LDR trips bulb ON; uncovering de-energizes it.</span></li>
-                  <li><span class="t3-time-badge" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">1:15</span><span>Firebase Console verification: Inspecting structured JSON logs committed under <code>/history</code>.</span></li>
-                  <li><span class="t3-time-badge" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">1:40</span><span>CSV export: Clicking "Download CSV" generates and saves formatted <code>smart-room-history.csv</code>.</span></li>
+                <ul class="t3-video-timeline-list" style="list-style: none; padding-left: 0; margin-top: 12px;">
+                  <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;"><span style="color: #f43f5e; font-weight: 700;">▶</span><span><strong>Hardware Overview:</strong> ESP32 DevKit, DHT11 sensor, LDR voltage divider, relay module, and lamp connected and running.</span></li>
+                  <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;"><span style="color: #f43f5e; font-weight: 700;">▶</span><span><strong>Live Telemetry:</strong> Real-time temperature, humidity, and LDR lux values syncing to the cloud and dashboard.</span></li>
+                  <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;"><span style="color: #f43f5e; font-weight: 700;">▶</span><span><strong>Light-Adaptive Automation:</strong> Covering the LDR triggers the bulb ON; uncovering turns the bulb OFF automatically.</span></li>
+                  <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;"><span style="color: #f43f5e; font-weight: 700;">▶</span><span><strong>Cloud Logging Verification:</strong> Inspecting structured real-time telemetry records logged in the database.</span></li>
+                  <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;"><span style="color: #f43f5e; font-weight: 700;">▶</span><span><strong>CSV Data Export:</strong> One-click download generating and saving formatted telemetry spreadsheets for offline analysis.</span></li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- EVIDENCE SCREENSHOTS & PROTOTYPE RIG PHOTOGRAPH -->
+          <!-- EVIDENCE SCREENSHOTS & DASHBOARD EVIDENCE -->
           <div style="margin-top: 26px;">
             <h4 style="font-family: var(--font-display); color: #f8fafc; font-size: 1.15rem; margin-bottom: 14px;">
-              System Telemetry, Cloud Database, Prototype Hardware &amp; Dashboard Evidence
+              System Telemetry, Cloud Database &amp; Dashboard Evidence
             </h4>
 
             <div class="evidence-photos-grid">
@@ -6442,20 +6449,6 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
                 </div>
               </div>
 
-              <!-- Photograph: Complete Prototype Hardware Rig -->
-              <div class="evidence-photo-card">
-                <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
-                  <img src="images/iot/task2_hardware_setup.jpg" alt="Complete prototype hardware rig featuring ESP32, relay, incandescent bulb, DHT11 and LDR sensor" style="max-height: 300px; object-fit: contain;">
-                  <span class="photo-state-badge state-on">● COMPLETE PROTOTYPE HARDWARE RIG</span>
-                </div>
-                <div class="photo-card-info">
-                  <h4>2. Complete Prototype Rig in Lab</h4>
-                  <p class="photo-simple-explain">
-                    Physical hardware testbench showcasing the ESP32 DevKit, breadboard wiring, DHT11 temp/humidity probe, LDR sensor, 5V SPDT relay module, and 230V mains incandescent bulb under active testing.
-                  </p>
-                </div>
-              </div>
-
               <!-- Screenshot 2: Live Dashboard Telemetry Cards -->
               <div class="evidence-photo-card">
                 <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
@@ -6463,35 +6456,21 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
                   <span class="photo-state-badge state-on">● LIVE DASHBOARD CARDS</span>
                 </div>
                 <div class="photo-card-info">
-                  <h4>3. Live Environmental Telemetry</h4>
+                  <h4>2. Live Environmental Telemetry</h4>
                   <p class="photo-simple-explain">
                     Real-time dashboard cards displaying <strong>22.2°C Temperature</strong>, <strong>49% Relative Humidity</strong>, <strong>2479 ADC Ambient Light</strong>, and verified <strong>Smart Bulb ON</strong> state.
                   </p>
                 </div>
               </div>
 
-              <!-- Screenshot 3: Firebase Cloud Console -->
-              <div class="evidence-photo-card">
-                <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
-                  <img src="images/iot/task4_firebase_console.png" alt="Google Firebase Cloud Platform Console" style="max-height: 300px;">
-                  <span class="photo-state-badge state-on">● FIREBASE REALTIME DB CLUSTER</span>
-                </div>
-                <div class="photo-card-info">
-                  <h4>4. Firebase Realtime Database Logs</h4>
-                  <p class="photo-simple-explain">
-                    Google Firebase Console managing real-time NoSQL JSON tree synchronization, user auth directory, and <code>/history</code> timestamped telemetry storage.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Screenshot 4: Login Gateway -->
+              <!-- Screenshot 3: Login Gateway -->
               <div class="evidence-photo-card">
                 <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
                   <img src="images/iot/task4_login.png" alt="Smartyy Firebase Authentication login screen" style="max-height: 300px;">
                   <span class="photo-state-badge state-on">● AUTHENTICATION GATEWAY</span>
                 </div>
                 <div class="photo-card-info">
-                  <h4>5. Smartyy Authentication Gateway</h4>
+                  <h4>3. Smartyy Authentication Gateway</h4>
                   <p class="photo-simple-explain">
                     Email/Password login gate securing the control suite and CSV export endpoints from unauthenticated visitors.
                   </p>
@@ -6955,15 +6934,19 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
           </div>
 
           <!-- ESP32 INO CODE -->
-          <div class="code-card">
-            <div class="code-header">
-              <div class="code-title">
+          <div class="code-card" style="border: 1px solid var(--t5-border); border-radius: 8px; overflow: hidden; background: #08060a; margin-top: 14px;">
+            <div class="code-header" style="background: #110e16; border-bottom: 1px solid var(--t5-border); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+              <div class="code-title" style="display: flex; align-items: center; gap: 8px;">
                 <span class="code-icon">⚡</span>
-                <span class="code-filename">SmartRoom.ino — ESP32 Firmware (DHT11, LDR, Relay &amp; Firebase Sync)</span>
+                <span class="code-filename" style="color: #f8fafc; font-weight: 600;">SmartRoom.ino — ESP32 Firmware (DHT11, LDR, Relay &amp; Firebase Sync)</span>
               </div>
-              <span class="pill-badge pill-t5">ARDUINO C++</span>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 0.72rem; color: #94a3b8; font-family: var(--font-mono);">↕ Scrollable Box</span>
+                <span class="pill-badge pill-t5">ARDUINO C++</span>
+              </div>
             </div>
-            <pre class="code-pre"><code>/* =========================================================================
+            <div class="code-scroll-viewport" style="max-height: 480px; overflow-y: auto; overflow-x: auto; padding: 16px; background: #070509;">
+              <pre class="code-pre" style="margin: 0; font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.6; color: #e2e8f0; white-space: pre;"><code>/* =========================================================================
    SMART ROOM IOT — ESP32 FIRMWARE
    System: Environmental Telemetry &amp; Automatic/Manual Appliance Automation
    Target: ESP32 DevKit V1
@@ -7257,18 +7240,23 @@ void loop() {
   delay(50); // Small loop yield for ESP32 background tasks (Wi-Fi watchdog)
 }
 </code></pre>
+            </div>
           </div>
 
           <!-- DASHBOARD APP.JS CODE -->
-          <div class="code-card" style="margin-top: 24px;">
-            <div class="code-header">
-              <div class="code-title">
+          <div class="code-card" style="border: 1px solid var(--t5-border); border-radius: 8px; overflow: hidden; background: #08060a; margin-top: 24px;">
+            <div class="code-header" style="background: #110e16; border-bottom: 1px solid var(--t5-border); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+              <div class="code-title" style="display: flex; align-items: center; gap: 8px;">
                 <span class="code-icon">🗄️</span>
-                <span class="code-filename">app.js — Smartyy Dashboard (Firebase Realtime DB, Auth &amp; CSV Export)</span>
+                <span class="code-filename" style="color: #f8fafc; font-weight: 600;">app.js — Smartyy Dashboard (Firebase Realtime DB, Auth &amp; CSV Export)</span>
               </div>
-              <span class="pill-badge pill-t5">JAVASCRIPT ES6</span>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 0.72rem; color: #94a3b8; font-family: var(--font-mono);">↕ Scrollable Box</span>
+                <span class="pill-badge pill-t5">JAVASCRIPT ES6</span>
+              </div>
             </div>
-            <pre class="code-pre"><code>/* =========================================================
+            <div class="code-scroll-viewport" style="max-height: 480px; overflow-y: auto; overflow-x: auto; padding: 16px; background: #070509;">
+              <pre class="code-pre" style="margin: 0; font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.6; color: #e2e8f0; white-space: pre;"><code>/* =========================================================
    FIREBASE IMPORTS
    ========================================================= */
 
@@ -7888,6 +7876,7 @@ document.getElementById(&quot;csvBtn&quot;).addEventListener(&quot;click&quot;, 
     URL.revokeObjectURL(url);
 });
 </code></pre>
+            </div>
           </div>
         </section>
 
@@ -7902,63 +7891,27 @@ document.getElementById(&quot;csvBtn&quot;).addEventListener(&quot;click&quot;, 
           </div>
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
-            <!-- Challenge 1 -->
+            <!-- Problem 1 -->
             <div class="debug-card bug-side">
               <div class="debug-head head-bug">
                 <span class="debug-icon">⚠️</span>
-                <h4>1. Memory Fragmentation &amp; Heap Depletion During Continuous Logging</h4>
+                <h4>1. Inverted Relay Switching (Active-LOW Relay)</h4>
               </div>
-              <p class="challenge-text"><strong>Issue:</strong> Unbounded dynamic String concatenations inside the 30-second logging loop caused ESP32 heap memory fragmentation, crashing the microcontroller after multiple hours of execution.</p>
+              <p class="challenge-text"><strong>Issue:</strong> The 5V relay module was turning OFF when receiving a HIGH signal and turning ON when receiving a LOW signal, causing the bulb to work backwards.</p>
               <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
-                <strong>Fixed Solution:</strong> Managed HTTP connection states strictly with fixed-size JSON buffers (<code>StaticJsonDocument&lt;256&gt;</code>) and explicit connection closure (<code>http.end()</code>) immediately after each transaction, preserving stable free heap (&gt;210 KB) indefinitely.
+                <strong>Fixed Solution:</strong> Inverted the relay logic in the code so sending LOW turns the light ON and sending HIGH turns it OFF.
               </div>
             </div>
 
-            <!-- Challenge 2 -->
+            <!-- Problem 2 -->
             <div class="debug-card bug-side">
               <div class="debug-head head-bug">
                 <span class="debug-icon">⚠️</span>
-                <h4>2. Clock Drift &amp; Invalid Timestamps Before NTP Synchronization</h4>
+                <h4>2. Incorrect Timestamps Before Wi-Fi &amp; NTP Sync</h4>
               </div>
-              <p class="challenge-text"><strong>Issue:</strong> The microcontroller lacks battery-backed RTC hardware; attempting to commit historical logs before internet time synchronization resulted in zero or 1970 epoch timestamps.</p>
+              <p class="challenge-text"><strong>Issue:</strong> When the ESP32 started up before connecting to Wi-Fi, time-series log entries were being saved with 0 or 1970 timestamps.</p>
               <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
-                <strong>Fixed Solution:</strong> Gated the logging routine behind an explicit NTP readiness validator (<code>time_t now = time(nullptr); if (now &lt; 1700000000) return;</code>), guaranteeing that only cryptographically verified UTC+5:30 timestamps are committed to the cloud.
-              </div>
-            </div>
-
-            <!-- Challenge 3 -->
-            <div class="debug-card bug-side">
-              <div class="debug-head head-bug">
-                <span class="debug-icon">⚠️</span>
-                <h4>3. Dual Y-Axis Telemetry Scaling &amp; CSV Row Serialization</h4>
-              </div>
-              <p class="challenge-text"><strong>Issue:</strong> Raw LDR readings (0–4095) flattened Temperature/Humidity lines on single-axis charts, and client CSV generation risked quote-escaping syntax errors.</p>
-              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
-                <strong>Fixed Solution:</strong> Configured a dual Y-axis layout in Chart.js with left (0–60) and right (0–4500) scales, and implemented an RFC 4180-compliant quote-encapsulated CSV serializer (<code>"Timestamp","Temperature","Humidity","LDR","Bulb State","Operating Mode"</code>) ensuring seamless import into Microsoft Excel.
-              </div>
-            </div>
-
-            <!-- Challenge 4 -->
-            <div class="debug-card bug-side">
-              <div class="debug-head head-bug">
-                <span class="debug-icon">⚠️</span>
-                <h4>4. Operating Mode Arbitration Race Condition (Manual Toggle vs LDR Automation)</h4>
-              </div>
-              <p class="challenge-text"><strong>Issue:</strong> When a user manually toggled the lamp ON from the web dashboard while ambient light was bright, the continuous 500ms sensor evaluation loop immediately detected ambient light and forced the relay back OFF.</p>
-              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
-                <strong>Fixed Solution:</strong> Enforced strict state partitioning in firmware and dashboard: when <code>operatingMode == "manual"</code>, the LDR threshold evaluation block is bypassed entirely, granting absolute sovereignty to user dashboard commands until explicitly switched back to <code>automatic</code> mode.
-              </div>
-            </div>
-
-            <!-- Challenge 5 -->
-            <div class="debug-card bug-side">
-              <div class="debug-head head-bug">
-                <span class="debug-icon">⚠️</span>
-                <h4>5. Inverted Relay Active-LOW Switching Logic</h4>
-              </div>
-              <p class="challenge-text"><strong>Issue:</strong> Standard 5V optocoupler relay modules trigger on <code>LOW</code> (0V) logic and disengage on <code>HIGH</code> (3.3V). Standard <code>HIGH</code> writes caused inverted behavior where the light turned off in darkness and energized in daylight.</p>
-              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
-                <strong>Fixed Solution:</strong> Defined explicit semantic macros (<code>#define RELAY_ON LOW</code>, <code>#define RELAY_OFF HIGH</code>) and initialized GPIO 26 to <code>RELAY_OFF</code> during <code>setup()</code>, preventing startup flash glitches and enforcing fail-safe de-energized behavior.
+                <strong>Fixed Solution:</strong> Added a quick check in the firmware loop to verify NTP time is synced before saving any log entries to the cloud.
               </div>
             </div>
           </div>
@@ -8028,8 +7981,8 @@ document.getElementById(&quot;csvBtn&quot;).addEventListener(&quot;click&quot;, 
                 <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" style="color: #f43f5e; text-decoration: underline; margin-left: 4px;">https://smartyy-e6f48.web.app/</a>
               </p>
             </div>
-            <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" class="btn-repo btn-t5">
-              Smart Room IoT ↗
+            <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" class="btn-smartyy-redirect">
+              Visit Smartyy Website ↗
             </a>
           </div>
         </section>
