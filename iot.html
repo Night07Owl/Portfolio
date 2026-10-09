@@ -6277,13 +6277,13 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
                 <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-family: var(--font-display);">ESP32 Development Module</h4>
                 <table class="component-specs-table">
                   <tbody>
-                    <tr><td><strong>Processor</strong></td><td>Xtensa dual-core 32-bit LX6</td></tr>
+                    <tr><td><strong>Processor</strong></td><td>Xtensa dual-core 32-bit</td></tr>
                     <tr><td><strong>Clock Speed</strong></td><td>160 MHz</td></tr>
-                    <tr><td><strong>RAM &amp; Storage</strong></td><td>520 KB SRAM + 4 MB PSRAM</td></tr>
+                    <tr><td><strong>RAM</strong></td><td>520 KB SRAM + 4 MB PSRAM</td></tr>
                     <tr><td><strong>WiFi</strong></td><td>802.11 b/g/n (2.4 GHz)</td></tr>
-                    <tr><td><strong>ADC Resolution</strong></td><td>12-bit (0–4095 digital counts)</td></tr>
-                    <tr><td><strong>GPIO Pins</strong></td><td>34 total (25 usable headers)</td></tr>
-                    <tr><td><strong>Power Input</strong></td><td>5V USB or 3.3V direct regulated</td></tr>
+                    <tr><td><strong>ADC Resolution</strong></td><td>12-bit (0–4095)</td></tr>
+                    <tr><td><strong>GPIO Pins</strong></td><td>34 total (25 usable)</td></tr>
+                    <tr><td><strong>Power</strong></td><td>5V USB or 3.3V direct</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -6294,16 +6294,14 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
                   <span class="hw-chip" style="color: #f43f5e; background: rgba(244, 63, 94, 0.14); border-color: rgba(244, 63, 94, 0.35);">CLIMATE PROBE</span>
                   <span style="font-size: 1.25rem;">🌡️</span>
                 </div>
-                <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-family: var(--font-display);">DHT11 Temp &amp; Humidity Sensor</h4>
+                <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-family: var(--font-display);">DHT11 Temperature &amp; Humidity Sensor</h4>
                 <table class="component-specs-table">
                   <tbody>
                     <tr><td><strong>Temperature Range</strong></td><td>0–50°C</td></tr>
                     <tr><td><strong>Accuracy</strong></td><td>±2°C</td></tr>
-                    <tr><td><strong>Humidity Range</strong></td><td>20–90% RH (±5% tolerance)</td></tr>
-                    <tr><td><strong>Communication</strong></td><td>Custom single-wire digital protocol</td></tr>
-                    <tr><td><strong>Connection Pin</strong></td><td><code>GPIO 4</code> (Data bus)</td></tr>
-                    <tr><td><strong>Supply Voltage</strong></td><td>3.3V from ESP32 rail</td></tr>
-                    <tr><td><strong>Sampling Rate</strong></td><td>1 Hz (1 sample/second max)</td></tr>
+                    <tr><td><strong>Humidity Range</strong></td><td>20–90% RH</td></tr>
+                    <tr><td><strong>Protocol</strong></td><td>Custom single-wire digital</td></tr>
+                    <tr><td><strong>Connection</strong></td><td>GPIO4</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -6317,13 +6315,10 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
                 <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-family: var(--font-display);">LDR Light Sensor Module</h4>
                 <table class="component-specs-table">
                   <tbody>
-                    <tr><td><strong>Circuit Type</strong></td><td>Analog with onboard voltage divider</td></tr>
-                    <tr><td><strong>Dynamic Range</strong></td><td>0–4095 (12-bit ADC quantization)</td></tr>
-                    <tr><td><strong>Response Time</strong></td><td>~100–200 ms</td></tr>
-                    <tr><td><strong>Connection Pin</strong></td><td><code>GPIO 34</code> (ADC1 Channel 6)</td></tr>
-                    <tr><td><strong>Dark Resistance</strong></td><td>&gt;1 MΩ (High ADC voltage)</td></tr>
-                    <tr><td><strong>Light Resistance</strong></td><td>~10 kΩ–400 Ω (Low ADC voltage)</td></tr>
-                    <tr><td><strong>Supply Voltage</strong></td><td>3.3V with 10kΩ pull-down</td></tr>
+                    <tr><td><strong>Type</strong></td><td>Analog with onboard voltage divider</td></tr>
+                    <tr><td><strong>Range</strong></td><td>0–4095 (12-bit ADC)</td></tr>
+                    <tr><td><strong>Response Time</strong></td><td>~100–200ms</td></tr>
+                    <tr><td><strong>Connection</strong></td><td>GPIO34 (ADC)</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -6334,16 +6329,14 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
                   <span class="hw-chip" style="color: #f43f5e; background: rgba(244, 63, 94, 0.14); border-color: rgba(244, 63, 94, 0.35);">MAINS ACTUATOR</span>
                   <span style="font-size: 1.25rem;">🔌</span>
                 </div>
-                <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-family: var(--font-display);">5V Dual-Channel Relay Module</h4>
+                <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-family: var(--font-display);">5V Relay Module</h4>
                 <table class="component-specs-table">
                   <tbody>
-                    <tr><td><strong>Channels</strong></td><td>2 (1 channel actively wired)</td></tr>
-                    <tr><td><strong>Contact Rating</strong></td><td>250V AC / 10A (30V DC / 10A)</td></tr>
-                    <tr><td><strong>Switching Logic</strong></td><td>ACTIVE-LOW (LOW = ON, HIGH = OFF)</td></tr>
-                    <tr><td><strong>Galvanic Isolation</strong></td><td>Optocoupler (Mains 230V isolated)</td></tr>
-                    <tr><td><strong>Connection Pin</strong></td><td><code>GPIO 26</code> (Signal IN)</td></tr>
-                    <tr><td><strong>Coil Voltage</strong></td><td>5V DC (powered via VIN pin)</td></tr>
-                    <tr><td><strong>Load Connected</strong></td><td>230V AC incandescent test lamp</td></tr>
+                    <tr><td><strong>Channels</strong></td><td>2 (1 used)</td></tr>
+                    <tr><td><strong>Contact Rating</strong></td><td>250V AC / 10A</td></tr>
+                    <tr><td><strong>Logic</strong></td><td>ACTIVE-LOW</td></tr>
+                    <tr><td><strong>Isolation</strong></td><td>Mains power (230V) completely isolated</td></tr>
+                    <tr><td><strong>Connection</strong></td><td>GPIO26 (active-LOW)</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -6638,13 +6631,13 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
               <!-- Photograph: Complete Prototype Hardware Setup -->
               <div class="evidence-photo-card">
                 <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
-                  <img src="images/iot/task2_hardware_setup.jpg" alt="Photograph of the complete prototype hardware rig" style="max-height: 300px; object-fit: contain;">
+                  <img src="images/iot/task5_hardware_setup.jpg" alt="Photograph of the complete prototype hardware rig" style="max-height: 300px; object-fit: contain;">
                   <span class="photo-state-badge state-on">● COMPLETE PROTOTYPE SETUP</span>
                 </div>
                 <div class="photo-card-info">
                   <h4>2. Complete Prototype Rig in Lab</h4>
                   <p class="photo-simple-explain">
-                    Physical hardware testbench showcasing the ESP32 DevKit, breadboard wiring, DHT11 temp/humidity probe, LDR sensor, 5V SPDT relay module, and 230V mains incandescent bulb under active testing.
+                    Physical hardware testbench showcasing the ESP32 DevKit, breadboard wiring, DHT11 temp/humidity probe, LDR sensor circuit, and live serial monitor telemetry stream during bench testing.
                   </p>
                 </div>
               </div>
@@ -8189,15 +8182,20 @@ document.getElementById(&quot;csvBtn&quot;).addEventListener(&quot;click&quot;, 
           <!-- SOURCE REPOSITORY (EXACT LINK REQUESTED BY USER) -->
           <div class="repo-banner-box" style="margin-top: 24px;">
             <div class="repo-text">
-              <h4>Task 5 Source Repository — Smart Room IoT</h4>
+              <h4>Task 5 Source Repository &amp; Production Platform</h4>
               <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: #94a3b8;">
                 Production platform containing ESP32 firmware, web dashboard, Firebase configurations, and live telemetry export:
-                <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" style="color: #f43f5e; text-decoration: underline; margin-left: 4px;">https://smartyy-e6f48.web.app/</a>
+                <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" style="color: #f43f5e; text-decoration: underline; margin-left: 4px;">smartyy-e6f48.web.app</a>
               </p>
             </div>
-            <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" class="btn-smartyy-redirect">
-              Visit Smartyy Website ↗
-            </a>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" class="btn-smartyy-redirect">
+                Visit Smartyy Website ↗
+              </a>
+              <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo btn-t5" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; font-weight: 600; text-decoration: none;">
+                GitHub Repository ↗
+              </a>
+            </div>
           </div>
         </section>
 
