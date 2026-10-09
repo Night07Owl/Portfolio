@@ -6253,6 +6253,192 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
               </div>
             </div>
           </div>
+
+          <!-- DISTINCT CONTENT BOX 4: HARDWARE COMPONENTS & TECHNICAL SPECIFICATIONS -->
+          <div class="distinct-content-box box-t5" style="margin-top: 20px;">
+            <div class="box-header-row">
+              <div class="title-with-num">
+                <span class="badge-num num-t5">04</span>
+                <h2>Hardware Components &amp; Technical Specifications</h2>
+              </div>
+              <span class="pill-badge pill-t5">EMBEDDED HARDWARE</span>
+            </div>
+            <p class="distinct-para">
+              Comprehensive hardware specifications, operational limits, communication protocols, and GPIO pinout mappings for all embedded system sensors, controllers, and actuators:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 14px;">
+              <!-- 1. ESP32 DevKit Module -->
+              <div class="hw-card" style="background: rgba(244, 63, 94, 0.04); border: 1px solid var(--t5-border); border-radius: 8px; padding: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <span class="hw-chip" style="color: #f43f5e; background: rgba(244, 63, 94, 0.14); border-color: rgba(244, 63, 94, 0.35);">EDGE CONTROLLER</span>
+                  <span style="font-size: 1.25rem;">⚡</span>
+                </div>
+                <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-family: var(--font-display);">ESP32 Development Module</h4>
+                <table class="component-specs-table">
+                  <tbody>
+                    <tr><td><strong>Processor</strong></td><td>Xtensa dual-core 32-bit LX6</td></tr>
+                    <tr><td><strong>Clock Speed</strong></td><td>160 MHz</td></tr>
+                    <tr><td><strong>RAM &amp; Storage</strong></td><td>520 KB SRAM + 4 MB PSRAM</td></tr>
+                    <tr><td><strong>WiFi</strong></td><td>802.11 b/g/n (2.4 GHz)</td></tr>
+                    <tr><td><strong>ADC Resolution</strong></td><td>12-bit (0–4095 digital counts)</td></tr>
+                    <tr><td><strong>GPIO Pins</strong></td><td>34 total (25 usable headers)</td></tr>
+                    <tr><td><strong>Power Input</strong></td><td>5V USB or 3.3V direct regulated</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- 2. DHT11 Sensor -->
+              <div class="hw-card" style="background: rgba(244, 63, 94, 0.04); border: 1px solid var(--t5-border); border-radius: 8px; padding: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <span class="hw-chip" style="color: #f43f5e; background: rgba(244, 63, 94, 0.14); border-color: rgba(244, 63, 94, 0.35);">CLIMATE PROBE</span>
+                  <span style="font-size: 1.25rem;">🌡️</span>
+                </div>
+                <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-family: var(--font-display);">DHT11 Temp &amp; Humidity Sensor</h4>
+                <table class="component-specs-table">
+                  <tbody>
+                    <tr><td><strong>Temperature Range</strong></td><td>0–50°C</td></tr>
+                    <tr><td><strong>Accuracy</strong></td><td>±2°C</td></tr>
+                    <tr><td><strong>Humidity Range</strong></td><td>20–90% RH (±5% tolerance)</td></tr>
+                    <tr><td><strong>Communication</strong></td><td>Custom single-wire digital protocol</td></tr>
+                    <tr><td><strong>Connection Pin</strong></td><td><code>GPIO 4</code> (Data bus)</td></tr>
+                    <tr><td><strong>Supply Voltage</strong></td><td>3.3V from ESP32 rail</td></tr>
+                    <tr><td><strong>Sampling Rate</strong></td><td>1 Hz (1 sample/second max)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- 3. LDR Sensor Module -->
+              <div class="hw-card" style="background: rgba(244, 63, 94, 0.04); border: 1px solid var(--t5-border); border-radius: 8px; padding: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <span class="hw-chip" style="color: #f43f5e; background: rgba(244, 63, 94, 0.14); border-color: rgba(244, 63, 94, 0.35);">OPTICAL SENSOR</span>
+                  <span style="font-size: 1.25rem;">☀️</span>
+                </div>
+                <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-family: var(--font-display);">LDR Light Sensor Module</h4>
+                <table class="component-specs-table">
+                  <tbody>
+                    <tr><td><strong>Circuit Type</strong></td><td>Analog with onboard voltage divider</td></tr>
+                    <tr><td><strong>Dynamic Range</strong></td><td>0–4095 (12-bit ADC quantization)</td></tr>
+                    <tr><td><strong>Response Time</strong></td><td>~100–200 ms</td></tr>
+                    <tr><td><strong>Connection Pin</strong></td><td><code>GPIO 34</code> (ADC1 Channel 6)</td></tr>
+                    <tr><td><strong>Dark Resistance</strong></td><td>&gt;1 MΩ (High ADC voltage)</td></tr>
+                    <tr><td><strong>Light Resistance</strong></td><td>~10 kΩ–400 Ω (Low ADC voltage)</td></tr>
+                    <tr><td><strong>Supply Voltage</strong></td><td>3.3V with 10kΩ pull-down</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- 4. 5V Relay Module -->
+              <div class="hw-card" style="background: rgba(244, 63, 94, 0.04); border: 1px solid var(--t5-border); border-radius: 8px; padding: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <span class="hw-chip" style="color: #f43f5e; background: rgba(244, 63, 94, 0.14); border-color: rgba(244, 63, 94, 0.35);">MAINS ACTUATOR</span>
+                  <span style="font-size: 1.25rem;">🔌</span>
+                </div>
+                <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-family: var(--font-display);">5V Dual-Channel Relay Module</h4>
+                <table class="component-specs-table">
+                  <tbody>
+                    <tr><td><strong>Channels</strong></td><td>2 (1 channel actively wired)</td></tr>
+                    <tr><td><strong>Contact Rating</strong></td><td>250V AC / 10A (30V DC / 10A)</td></tr>
+                    <tr><td><strong>Switching Logic</strong></td><td>ACTIVE-LOW (LOW = ON, HIGH = OFF)</td></tr>
+                    <tr><td><strong>Galvanic Isolation</strong></td><td>Optocoupler (Mains 230V isolated)</td></tr>
+                    <tr><td><strong>Connection Pin</strong></td><td><code>GPIO 26</code> (Signal IN)</td></tr>
+                    <tr><td><strong>Coil Voltage</strong></td><td>5V DC (powered via VIN pin)</td></tr>
+                    <tr><td><strong>Load Connected</strong></td><td>230V AC incandescent test lamp</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- 5. Firebase Cloud Backend Integration -->
+              <div class="hw-card" style="background: rgba(244, 63, 94, 0.04); border: 1px solid var(--t5-border); border-radius: 8px; padding: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <span class="hw-chip" style="color: #f43f5e; background: rgba(244, 63, 94, 0.14); border-color: rgba(244, 63, 94, 0.35);">CLOUD BACKEND</span>
+                  <span style="font-size: 1.25rem;">🔥</span>
+                </div>
+                <h4 style="margin: 0 0 10px 0; color: #f8fafc; font-family: var(--font-display);">Firebase Backend Integration</h4>
+                <table class="component-specs-table">
+                  <tbody>
+                    <tr><td><strong>Database Engine</strong></td><td>Firebase Realtime Database (NoSQL JSON)</td></tr>
+                    <tr><td><strong>Cluster Region</strong></td><td><code>asia-southeast1</code> (Singapore ~42ms)</td></tr>
+                    <tr><td><strong>Sync Protocol</strong></td><td>Persistent WebSockets (WSS) &amp; HTTP REST</td></tr>
+                    <tr><td><strong>Security Gate</strong></td><td>Firebase Authentication (Email/Password)</td></tr>
+                    <tr><td><strong>Hosting CDN</strong></td><td>Firebase App Hosting (SSL enabled)</td></tr>
+                    <tr><td><strong>Logging Endpoint</strong></td><td><code>/history.json</code> (30s time-series snapshots)</td></tr>
+                    <tr><td><strong>Control Endpoint</strong></td><td><code>/control.json</code> (Manual &amp; threshold sync)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- DISTINCT CONTENT BOX 5: AUTOMATIC LIGHTING LOGIC, CALIBRATION & DATABASE STRUCTURE -->
+          <div class="distinct-content-box box-t5" style="margin-top: 20px;">
+            <div class="box-header-row">
+              <div class="title-with-num">
+                <span class="badge-num num-t5">05</span>
+                <h2>Automatic Lighting Logic, LDR Calibration &amp; Database Architecture</h2>
+              </div>
+              <span class="pill-badge pill-t5">ALGORITHM &amp; SCHEMA</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin-top: 14px;">
+              <!-- Left Column: Automatic Lighting Logic & Calibration -->
+              <div>
+                <h4 style="color: #f43f5e; font-family: var(--font-display); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+                  <span>💡</span> Automatic Lighting Logic &amp; Calibration Method
+                </h4>
+                <ul class="bullet-list-sm" style="color: #cbd5e1; font-size: 0.84rem;">
+                  <li><strong>Operating Mode Check:</strong> The ESP32 evaluates the active mode set via the dashboard. In <code>"manual"</code> mode, ambient sensor switching is bypassed so operator buttons retain full control.</li>
+                  <li><strong>Darkness Detection Logic:</strong> In <code>"automatic"</code> mode, when the light level drops below the calibrated threshold (<code>ldrValue &gt;= ldrThreshold</code>), the ESP32 drives GPIO 26 <code>LOW</code>, energizing the active-LOW relay and turning the bulb <strong>ON</strong>.</li>
+                  <li><strong>Daylight De-energization:</strong> When natural or ambient light rises above the threshold (<code>ldrValue &lt; ldrThreshold</code>), GPIO 26 is driven <code>HIGH</code>, turning the relay <strong>OFF</strong>.</li>
+                  <li><strong>LDR Calibration Baseline:</strong>
+                    <ul style="margin-top: 4px; padding-left: 18px;">
+                      <li>Ambient Daylight / Indoor Lit Room: <strong>2100–2500 ADC</strong></li>
+                      <li>Covered / Dark Room State: <strong>&gt;2800 ADC</strong> (up to 4095 ADC)</li>
+                      <li>Direct Bright Light: <strong>&lt;1500 ADC</strong></li>
+                      <li>Default Calibration Threshold: <strong>2400 ADC</strong> (calibrated for reliable dark activation)</li>
+                    </ul>
+                  </li>
+                  <li><strong>Anti-Chatter Hysteresis:</strong> A software deadband of ±150 ADC prevents rapid oscillatory relay clicking caused by transitional shadows or incandescent bulb reflection.</li>
+                </ul>
+              </div>
+
+              <!-- Right Column: Database Structure Used for Logs -->
+              <div>
+                <h4 style="color: #f43f5e; font-family: var(--font-display); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+                  <span>🗄️</span> Firebase Realtime Database Structure &amp; Schema
+                </h4>
+                <p style="font-size: 0.82rem; color: #94a3b8; margin: 0 0 8px 0;">
+                  Structured NoSQL JSON tree partitioned for low-latency live telemetry, remote command arbitration, and immutable time-series logging:
+                </p>
+                <div style="background: #08060a; border: 1px solid var(--t5-border); border-radius: 6px; padding: 12px; font-family: var(--font-mono); font-size: 0.76rem; color: #e2e8f0; overflow-x: auto;">
+<pre style="margin: 0; color: #e2e8f0;"><code>{
+  <span style="color: #f43f5e;">"current"</span>: {
+    <span style="color: #38bdf8;">"temperature"</span>: 22.2,     <span style="color: #64748b;">// Live Celsius float</span>
+    <span style="color: #38bdf8;">"humidity"</span>: 49.0,        <span style="color: #64748b;">// Live relative humidity %</span>
+    <span style="color: #38bdf8;">"ldr"</span>: 2479,             <span style="color: #64748b;">// 12-bit ADC optical reading</span>
+    <span style="color: #38bdf8;">"bulb"</span>: true,            <span style="color: #64748b;">// Verified relay state (true=ON)</span>
+    <span style="color: #38bdf8;">"mode"</span>: "automatic"      <span style="color: #64748b;">// "manual" or "automatic"</span>
+  },
+  <span style="color: #f43f5e;">"control"</span>: {
+    <span style="color: #38bdf8;">"bulb"</span>: true,            <span style="color: #64748b;">// Manual command trigger</span>
+    <span style="color: #38bdf8;">"mode"</span>: "automatic",     <span style="color: #64748b;">// Active operating mode</span>
+    <span style="color: #38bdf8;">"ldrThreshold"</span>: 2400     <span style="color: #64748b;">// Calibrated dark setpoint</span>
+  },
+  <span style="color: #f43f5e;">"history"</span>: {
+    <span style="color: #a855f7;">"1726137270000"</span>: {       <span style="color: #64748b;">// NTP Unix millisecond key</span>
+      <span style="color: #38bdf8;">"timestamp"</span>: 1726137270000,
+      <span style="color: #38bdf8;">"temperature"</span>: 22.6,
+      <span style="color: #38bdf8;">"humidity"</span>: 50.0,
+      <span style="color: #38bdf8;">"ldr"</span>: 2815,
+      <span style="color: #38bdf8;">"bulb"</span>: true,
+      <span style="color: #38bdf8;">"mode"</span>: "automatic"
+    }
+  }
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- 2. WHAT I LEARNT (CONCEPTS & 3 COMMERCIAL APPLICATIONS) -->
@@ -6428,10 +6614,10 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
             </div>
           </div>
 
-          <!-- EVIDENCE SCREENSHOTS & DASHBOARD EVIDENCE -->
+          <!-- EVIDENCE SCREENSHOTS & LAB EVIDENCE -->
           <div style="margin-top: 26px;">
             <h4 style="font-family: var(--font-display); color: #f8fafc; font-size: 1.15rem; margin-bottom: 14px;">
-              System Telemetry, Cloud Database &amp; Dashboard Evidence
+              System Telemetry, Cloud Database, Prototype Hardware &amp; Dashboard Evidence
             </h4>
 
             <div class="evidence-photos-grid">
@@ -6442,9 +6628,23 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
                   <span class="photo-state-badge state-on">● DUAL-AXIS STREAMING TELEMETRY GRAPH (FULL VIEW)</span>
                 </div>
                 <div class="photo-card-info">
-                  <h4>1. Environmental History Graph (Complete Uncropped View)</h4>
+                  <h4>1. Environmental History Graph &amp; Data Visualization</h4>
                   <p class="photo-simple-explain">
                     Full uncropped streaming telemetry chart. Displays Temperature (0–60°C) and Humidity (0–100%) on the left axis alongside raw LDR light intensity (0–4095 ADC) on the independent right axis, illustrating environmental state shifts and automation events over time.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Photograph: Complete Prototype Hardware Setup -->
+              <div class="evidence-photo-card">
+                <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
+                  <img src="images/iot/task2_hardware_setup.jpg" alt="Photograph of the complete prototype hardware rig" style="max-height: 300px; object-fit: contain;">
+                  <span class="photo-state-badge state-on">● COMPLETE PROTOTYPE SETUP</span>
+                </div>
+                <div class="photo-card-info">
+                  <h4>2. Complete Prototype Rig in Lab</h4>
+                  <p class="photo-simple-explain">
+                    Physical hardware testbench showcasing the ESP32 DevKit, breadboard wiring, DHT11 temp/humidity probe, LDR sensor, 5V SPDT relay module, and 230V mains incandescent bulb under active testing.
                   </p>
                 </div>
               </div>
@@ -6456,21 +6656,35 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
                   <span class="photo-state-badge state-on">● LIVE DASHBOARD CARDS</span>
                 </div>
                 <div class="photo-card-info">
-                  <h4>2. Live Environmental Telemetry</h4>
+                  <h4>3. Live Environmental Telemetry</h4>
                   <p class="photo-simple-explain">
                     Real-time dashboard cards displaying <strong>22.2°C Temperature</strong>, <strong>49% Relative Humidity</strong>, <strong>2479 ADC Ambient Light</strong>, and verified <strong>Smart Bulb ON</strong> state.
                   </p>
                 </div>
               </div>
 
-              <!-- Screenshot 3: Login Gateway -->
+              <!-- Screenshot 3: Firebase Cloud Console Log Data -->
+              <div class="evidence-photo-card">
+                <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
+                  <img src="images/iot/task4_firebase_console.png" alt="Google Firebase Cloud Platform Console log data" style="max-height: 300px;">
+                  <span class="photo-state-badge state-on">● FIREBASE REALTIME DB LOGS</span>
+                </div>
+                <div class="photo-card-info">
+                  <h4>4. Firebase Realtime Database Logs</h4>
+                  <p class="photo-simple-explain">
+                    Google Firebase Console managing real-time NoSQL JSON tree synchronization, user auth directory, and timestamped telemetry storage.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Screenshot 4: Login Gateway -->
               <div class="evidence-photo-card">
                 <div class="photo-img-wrap-fit" style="min-height: 280px; max-height: 320px; background: #160e05;">
                   <img src="images/iot/task4_login.png" alt="Smartyy Firebase Authentication login screen" style="max-height: 300px;">
                   <span class="photo-state-badge state-on">● AUTHENTICATION GATEWAY</span>
                 </div>
                 <div class="photo-card-info">
-                  <h4>3. Smartyy Authentication Gateway</h4>
+                  <h4>5. Smartyy Authentication Gateway</h4>
                   <p class="photo-simple-explain">
                     Email/Password login gate securing the control suite and CSV export endpoints from unauthenticated visitors.
                   </p>
