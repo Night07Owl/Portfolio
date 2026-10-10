@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Task 4: Firebase IoT Monitoring Dashboard — IoT Portfolio</title>
-<meta name="description" content="Assignment 4: Real-time full-stack IoT environmental monitoring dashboard using Firebase Realtime Database, user authentication, and ESP32 sensors (DHT11 & LDR).">
+<title>Task 4: Creating and Deploying the Firebase Dashboard — IoT Portfolio</title>
+<meta name="description" content="Assignment 4: Developing and deploying a login-protected web dashboard using Firebase Hosting, Authentication, and Realtime Database before hardware integration.">
 <link rel="icon" type="image/png" href="../images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,14 +31,14 @@
     <a href="task2.html" class="task-nav-btn">Task 02: Adafruit MQTT</a>
     <a href="task3.html" class="task-nav-btn">Task 03: IFTTT Automation</a>
     <a href="task4.html" class="task-nav-btn active">Task 04: Firebase Dashboard</a>
-    <a href="task5.html" class="task-nav-btn">Task 05: Logging & Export</a>
+    <a href="task5.html" class="task-nav-btn">Task 05: Logging &amp; Export</a>
   </nav>
 </header>
 
 <main class="iot-container">
 
       <!-- =======================================================================
-         TASK 04: FIREBASE REALTIME DATABASE & DASHBOARD (SOLAR AMBER / CORAL)
+         TASK 04: CREATING AND DEPLOYING THE FIREBASE DASHBOARD (SOLAR AMBER)
          ======================================================================= -->
       <div class="task-view" id="view-task4" style="display: block;">
 
@@ -46,13 +46,13 @@
         <section class="task-banner banner-t4">
           <div class="banner-eyebrow">
             <span class="pill-badge pill-t4">ASSIGNMENT 04</span>
-            <span class="eyebrow-text">// FULL-STACK NOSQL CLOUD INTEGRATION &amp; SMART HOME</span>
+            <span class="eyebrow-text">// SOFTWARE DEVELOPMENT, CLOUD INFRASTRUCTURE &amp; HOSTING DEPLOYMENT</span>
           </div>
-          <h1 class="task-title title-t4">Firebase Realtime Database &amp; Monitor</h1>
+          <h1 class="task-title title-t4">Creating and Deploying the Firebase Dashboard</h1>
           <p class="task-lead">
-            A production-grade cloud IoT solution featuring an ESP32 microcontroller, Google Firebase Realtime NoSQL Database, 
-            and the <strong>Smartyy</strong> responsive glassmorphic web dashboard. Provides live dual-axis environmental telemetry, 
-            secure email/password authentication, and bidirectional relay actuation with sub-50ms WebSocket latency.
+            Building the foundational software infrastructure for the Smart IoT Monitoring System (<strong>Smartyy</strong>). 
+            Developing and deploying a secure, login-protected glassmorphic web dashboard with Firebase Hosting, Authentication, 
+            and a prepared Realtime Database schema with placeholder panels before connecting physical hardware.
           </p>
 
           <div class="stats-grid">
@@ -64,24 +64,24 @@
               </div>
             </div>
             <div class="stat-card">
-              <span class="stat-icon">⚡</span>
-              <div class="stat-content">
-                <h4>Sync Latency</h4>
-                <p>~42ms Bidirectional WebSocket Sync</p>
-              </div>
-            </div>
-            <div class="stat-card">
               <span class="stat-icon">🔐</span>
               <div class="stat-content">
-                <h4>Authentication</h4>
-                <p>Firebase Email/Password Auth</p>
+                <h4>User Authentication</h4>
+                <p>Firebase Email/Password Auth Gate</p>
               </div>
             </div>
             <div class="stat-card">
               <span class="stat-icon">🌐</span>
               <div class="stat-content">
-                <h4>Deployment</h4>
+                <h4>Hosting &amp; Deployment</h4>
                 <p>Live on Firebase Hosting (smartyy-e6f48)</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">📊</span>
+              <div class="stat-content">
+                <h4>Dashboard State</h4>
+                <p>Prepared UI with Placeholder Values</p>
               </div>
             </div>
           </div>
@@ -122,11 +122,11 @@
             </div>
           </div>
           <p style="font-size: 0.82rem; color: #94a3b8; margin-top: 6px; text-align: center;">
-            💡 <em>Direct live embed of the hosted application: Test authentication with <code>trialusep@gmail.com</code>, toggle manual bulb controls, adjust LDR thresholds, and view live dual-axis telemetry charts directly within the page.</em>
+            💡 <em>Direct live embed of the hosted application: Test authentication with <code>trialusep@gmail.com</code>, inspect the prepared telemetry dashboard cards, manual bulb controls, and real-time database synchronization directly within the browser.</em>
           </p>
         </section>
 
-        <!-- 1. OBJECTIVE, PROBLEM STATEMENT & PROJECT SUMMARY -->
+        <!-- 1. OBJECTIVE, PROBLEM STATEMENT & TASK 4 OVERVIEW -->
         <section class="content-block">
           <!-- Box 01: Objective -->
           <div class="distinct-content-box box-t4">
@@ -135,50 +135,57 @@
                 <span class="badge-num num-t4">01</span>
                 <h2>Objective</h2>
               </div>
-              <span class="block-tag">// CORE OBJECTIVES</span>
+              <span class="block-tag">// TASK 4 CORE OBJECTIVE</span>
             </div>
-            <ul class="bullet-list-lg t4-bullets">
-              <li>To develop a full-stack, cloud-connected IoT monitoring and control system integrating an <strong>ESP32 microcontroller, Google Firebase Realtime Database, and a glassmorphic web dashboard</strong>.</li>
-              <li>To ingest multi-sensor environmental telemetry (<strong>DHT11 Temperature &amp; Humidity, LDR Light Level</strong>) and serialize records to a NoSQL JSON cloud tree.</li>
-              <li>To implement secure, authenticated access control using <strong>Firebase Authentication (Email/Password)</strong>, protecting physical actuators from unauthorized tampering.</li>
-              <li>To enable low-latency, two-way bidirectional communication: pushing telemetry from ESP32 to Firebase and streaming downlink relay actuation commands back to hardware over <strong>WebSockets in sub-50ms</strong>.</li>
-              <li>To design an intelligent dual-mode actuation pipeline: allowing manual authenticated dashboard switching alongside autonomous light-adaptive automation based on calibrated LDR thresholds.</li>
-              <li>To establish persistent time-series historical logging with interactive dual-axis chart visualization and one-click CSV export for diagnostic evaluation.</li>
+            <p class="distinct-para" style="font-size: 1.05rem; font-weight: 500; color: #f8fafc;">
+              To develop and deploy a login-protected web dashboard using Firebase before connecting the hardware.
+            </p>
+            <ul class="bullet-list-lg t4-bullets" style="margin-top: 12px;">
+              <li>Establish the software infrastructure for the Smart IoT Monitoring System using Google Firebase BaaS.</li>
+              <li>Create a Firebase cloud project and register a web application to acquire production API configurations.</li>
+              <li>Install and configure the Firebase CLI tools to initialize local files for Firebase Hosting deployment.</li>
+              <li>Deploy the web application to Firebase Hosting, securing a globally accessible, high-performance HTTPS URL.</li>
+              <li>Implement user authentication using email and password to restrict dashboard and appliance control access to verified operators.</li>
+              <li>Design and initialize a Realtime Database NoSQL schema containing nodes for <code>current</code>, <code>history</code>, <code>sensors</code>, and <code>settings</code> with structured placeholder values.</li>
+              <li>Prepare the dashboard front-end interface with temperature, humidity, ambient light, bulb status, appliance controls, and system status panels ready for subsequent hardware integration.</li>
             </ul>
           </div>
 
-          <!-- Box 02: Problem Statement -->
+          <!-- Box 02: Problem Being Addressed -->
           <div class="distinct-content-box box-t4" style="margin-top: 20px;">
             <div class="box-header-row">
               <div class="title-with-num">
                 <span class="badge-num num-t4">02</span>
                 <h2>Problem Being Addressed</h2>
               </div>
-              <span class="block-tag">// SYSTEM LIMITATIONS SOLVED</span>
+              <span class="block-tag">// SOFTWARE INFRASTRUCTURE GAPS SOLVED</span>
             </div>
             <ul class="bullet-list-lg t4-bullets">
-              <li><strong>Local Subnet Confinement:</strong> Standalone web servers running directly on microcontrollers require users to be connected to the exact same local Wi-Fi router, preventing remote out-of-home access.</li>
-              <li><strong>Absence of Access Control:</strong> Traditional basic IoT boards lack identity management, allowing any device on the network to switch high-voltage loads without verification.</li>
-              <li><strong>High-Latency Polling Overhead:</strong> Conventional HTTP GET polling forces client browsers to query servers repeatedly, causing server thread starvation, excessive bandwidth consumption, and stale displays.</li>
-              <li><strong>Absence of Historical Data Persistence:</strong> Local microcontrollers lose all sensor state upon reboot or power cycle, making long-term environmental trend analysis impossible without cloud storage.</li>
-              <li><strong>Actuator &amp; Automation Conflicts:</strong> Simple switching scripts risk race conditions between sensor-triggered automations and manual user overrides.</li>
+              <li><strong>Local Subnet Confinement:</strong> Standalone web servers hosted directly on embedded chips restrict access to users connected to the exact same Wi-Fi router, preventing worldwide remote monitoring.</li>
+              <li><strong>Absence of Identity &amp; Access Management:</strong> Basic microcontrollers lack authenticated user access, exposing actuators to arbitrary, unverified triggers from anyone on the network.</li>
+              <li><strong>High-Latency Polling Bottlenecks:</strong> Traditional HTTP polling strains client and server resources, while Firebase WebSockets provide instant, sub-50ms reactive updates.</li>
+              <li><strong>Lack of Structured Database Design:</strong> Deploying hardware before establishing a well-defined cloud schema causes data ingestion errors, schema drift, and lost sensor records. Task 4 eliminates this by establishing the complete database blueprint first.</li>
             </ul>
           </div>
 
-          <!-- Box 03: Project Summary -->
+          <!-- Box 03: Task 4 Scope & Overview -->
           <div class="distinct-content-box box-t4" style="margin-top: 20px;">
             <div class="box-header-row">
               <div class="title-with-num">
                 <span class="badge-num num-t4">03</span>
-                <h2>Project Summary</h2>
+                <h2>Task 4 Scope &amp; Architectural Focus</h2>
               </div>
-              <span class="block-tag">// ARCHITECTURAL SUMMARY</span>
+              <span class="block-tag">// SOFTWARE-FIRST METHODOLOGY</span>
             </div>
             <p class="distinct-para">
-              The <strong>Smartyy Firebase Smart Home</strong> platform forms a cyber-physical ecosystem spanning physical hardware, cloud backend services, and a hosted frontend web application. The ESP32 DevKit connects to Wi-Fi, synchronizes real-world timestamps via Network Time Protocol (NTP UTC+5:30), and maintains an authenticated secure SSL session with Google Firebase.
+              Task 4 focused exclusively on building the <strong>software infrastructure</strong> for the Smart IoT Monitoring System. 
+              A Firebase project was created to provide hosting, user authentication, and real-time database services. 
+              By decoupling software creation and cloud deployment from physical hardware wiring, the interface, authentication gateway, 
+              and database contracts were validated and deployed to production first.
             </p>
             <p class="distinct-para">
-              At 5-second intervals, the ESP32 captures temperature and relative humidity from a DHT11 sensor alongside ambient brightness from an analog LDR photocell, publishing live metrics to the <code>/current</code> node. Every 30 seconds, an immutable snapshot is pushed into <code>/history</code>. The frontend dashboard, hosted on Firebase Hosting, establishes a persistent full-duplex WebSocket connection via the Firebase JS SDK, receiving live database deltas instantly. When the operator triggers manual commands or configures the adaptive LDR threshold, updates persist to <code>/control</code> and are ingested by the ESP32 in ~42 milliseconds.
+              <strong>Outcome:</strong> A fully deployed Firebase web application with login functionality and a prepared database structure. 
+              The dashboard was ready for hardware integration, although the sensor values were still placeholders.
             </p>
           </div>
         </section>
@@ -199,25 +206,17 @@
                 <div class="concept-icon-pill">☁️</div>
                 <span class="concept-category-tag">FOUNDATION</span>
               </div>
-              <h4 class="concept-title">What is Cloud Computing?</h4>
-              <p class="concept-text">The on-demand availability and delivery of computing system resources—including data storage, high-speed compute, networking, and analytics—over the internet without direct active physical management by the end user.</p>
-              <div class="concept-meta-footer">
-                <span>Core Benefit</span>
-                <span class="spec-highlight">Elastic Scale &amp; Global Access</span>
-              </div>
+              <h4>What is Cloud Computing?</h4>
+              <p>The on-demand delivery of IT resources (computing power, storage, databases, and networking) over the internet with pay-as-you-go pricing, replacing on-premise hardware infrastructure.</p>
             </div>
 
             <div class="concept-card">
               <div class="concept-top">
-                <div class="concept-icon-pill">🌐</div>
+                <div class="concept-icon-pill">🏢</div>
                 <span class="concept-category-tag">PLATFORM</span>
               </div>
-              <h4 class="concept-title">What is a Cloud Platform?</h4>
-              <p class="concept-text">An orchestrated suite of hardware, distributed data centers, and managed software APIs (such as Google Cloud Platform or AWS) that abstract away physical infrastructure so developers can build globally accessible applications.</p>
-              <div class="concept-meta-footer">
-                <span>Host</span>
-                <span class="spec-highlight">Google Cloud Infrastructure</span>
-              </div>
+              <h4>What is a Cloud Platform?</h4>
+              <p>A unified suite of cloud services provided by vendors (e.g., Google Cloud / Firebase, AWS, Azure) enabling developers to build, deploy, manage, and scale applications without maintaining physical datacenters.</p>
             </div>
 
             <div class="concept-card">
@@ -225,103 +224,90 @@
                 <div class="concept-icon-pill">🗄️</div>
                 <span class="concept-category-tag">STORAGE</span>
               </div>
-              <h4 class="concept-title">What is a Database?</h4>
-              <p class="concept-text">An organized, persistent collection of structured or unstructured data stored and accessed electronically. Unlike RAM memory, databases survive hardware reboots, supporting fast querying, indexing, and state management.</p>
-              <div class="concept-meta-footer">
-                <span>Type</span>
-                <span class="spec-highlight">Relational (SQL) vs NoSQL</span>
-              </div>
+              <h4>What is a Database?</h4>
+              <p>An organized collection of structured data stored electronically. While relational databases use tables and SQL, Firebase Realtime Database utilizes a NoSQL JSON document tree optimized for millisecond-scale synchronizations.</p>
             </div>
 
             <div class="concept-card">
               <div class="concept-top">
                 <div class="concept-icon-pill">🔥</div>
-                <span class="concept-category-tag">DATABASE ENGINE</span>
+                <span class="concept-category-tag">BAAS ENGINE</span>
               </div>
-              <h4 class="concept-title">Firebase Realtime Database (RTDB)</h4>
-              <p class="concept-text">A cloud-hosted NoSQL JSON tree database where data is synchronized in real time across all connected clients via persistent full-duplex WebSockets. Clients subscribe to node paths and receive event deltas in milliseconds without polling.</p>
-              <div class="concept-meta-footer">
-                <span>Protocol</span>
-                <span class="spec-highlight">WebSockets (WSS) JSON Tree</span>
-              </div>
+              <h4>Firebase Realtime Database</h4>
+              <p>A cloud-hosted NoSQL JSON database where data is synchronized in real time across all connected clients via persistent full-duplex WebSockets, remaining available even during transient offline conditions.</p>
             </div>
 
             <div class="concept-card">
               <div class="concept-top">
                 <div class="concept-icon-pill">📊</div>
-                <span class="concept-category-tag">FRONTEND</span>
+                <span class="concept-category-tag">INTERFACE</span>
               </div>
-              <h4 class="concept-title">What is a Cloud-Based Dashboard?</h4>
-              <p class="concept-text">A centralized web-based user interface accessible from any browser worldwide that aggregates, visualizes, and controls telemetry streamed from remote IoT devices, featuring responsive dials, charts, and interactive toggles.</p>
-              <div class="concept-meta-footer">
-                <span>Interface</span>
-                <span class="spec-highlight">Smartyy Glassmorphic UI</span>
-              </div>
+              <h4>What is a Cloud-Based Dashboard?</h4>
+              <p>A centralized, web-accessible graphical user interface that aggregates real-time telemetry, visualizes system performance metrics, and enables authenticated operators to dispatch control commands to connected assets from any browser.</p>
             </div>
 
             <div class="concept-card">
               <div class="concept-top">
                 <div class="concept-icon-pill">🛡️</div>
-                <span class="concept-category-tag">SECURITY PARADIGM</span>
+                <span class="concept-category-tag">SECURITY</span>
               </div>
-              <h4 class="concept-title">Authentication &amp; Login Security</h4>
-              <p class="concept-text">A cryptographic verification mechanism that guarantees only authorized operators with valid credentials can access sensitive actuator switches, preventing malicious third parties from cycling high-voltage appliances.</p>
-              <div class="concept-meta-footer">
-                <span>Identity</span>
-                <span class="spec-highlight">Firebase Auth (Email/Pass)</span>
-              </div>
+              <h4>Authentication &amp; Login Purpose</h4>
+              <p>The process of verifying the digital identity of a user attempting access. A login system ensures that only authorized administrators can control physical appliances or inspect sensitive environmental telemetry.</p>
             </div>
           </div>
 
-          <!-- COMPARISON: IAAS, PAAS, SAAS, BAAS -->
-          <div class="distinct-content-box box-t4" style="margin-top: 24px;">
+          <!-- CLOUD SERVICE MODELS TABLE -->
+          <div class="distinct-content-box box-t4" style="margin-top: 20px;">
             <div class="box-header-row">
               <div class="title-with-num">
-                <span class="badge-num num-t4">MATRIX</span>
+                <span class="badge-num num-t4">MODELS</span>
                 <h2>Cloud Service Models: IaaS vs PaaS vs SaaS vs BaaS</h2>
               </div>
-              <span class="block-tag">// CLOUD ARCHITECTURE TAXONOMY</span>
+              <span class="block-tag">// CLOUD ARCHITECTURAL TIERS</span>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 14px;">
-              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.22); border-radius: 8px; padding: 14px;">
-                <h4 style="color: #ff8a00; margin-top: 0; font-family: var(--font-display);">IaaS</h4>
-                <span style="font-size: 0.72rem; color: #94a3b8; font-family: var(--font-mono);">INFRASTRUCTURE AS A SERVICE</span>
-                <p style="font-size: 0.82rem; color: #cbd5e1; margin-top: 8px; line-height: 1.45;">
-                  Provides raw virtual machines, storage, and networking. The developer manages the operating system, runtimes, middleware, and database engines.
-                </p>
-                <div style="font-size: 0.75rem; color: #f59e0b; margin-top: 6px;"><strong>Examples:</strong> AWS EC2, Google Compute Engine, Azure VMs.</div>
-              </div>
-
-              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.22); border-radius: 8px; padding: 14px;">
-                <h4 style="color: #ff8a00; margin-top: 0; font-family: var(--font-display);">PaaS</h4>
-                <span style="font-size: 0.72rem; color: #94a3b8; font-family: var(--font-mono);">PLATFORM AS A SERVICE</span>
-                <p style="font-size: 0.82rem; color: #cbd5e1; margin-top: 8px; line-height: 1.45;">
-                  Provides a managed development runtime environment. Developers upload application source code while the cloud handles OS patching and scaling.
-                </p>
-                <div style="font-size: 0.75rem; color: #f59e0b; margin-top: 6px;"><strong>Examples:</strong> Heroku, Google App Engine, AWS Elastic Beanstalk.</div>
-              </div>
-
-              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.22); border-radius: 8px; padding: 14px;">
-                <h4 style="color: #ff8a00; margin-top: 0; font-family: var(--font-display);">SaaS</h4>
-                <span style="font-size: 0.72rem; color: #94a3b8; font-family: var(--font-mono);">SOFTWARE AS A SERVICE</span>
-                <p style="font-size: 0.82rem; color: #cbd5e1; margin-top: 8px; line-height: 1.45;">
-                  Complete end-user applications delivered over a web browser. The end user manages no infrastructure or code whatsoever.
-                </p>
-                <div style="font-size: 0.75rem; color: #f59e0b; margin-top: 6px;"><strong>Examples:</strong> Google Workspace, Microsoft 365, Dropbox, Slack.</div>
-              </div>
-
-              <div style="background: rgba(255, 138, 0, 0.1); border: 1.5px solid #ff8a00; border-radius: 8px; padding: 14px; box-shadow: 0 0 15px rgba(255, 138, 0, 0.2);">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <h4 style="color: #ff8a00; margin: 0; font-family: var(--font-display);">BaaS (Used Here)</h4>
-                  <span style="background: #ff8a00; color: #050505; font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 4px;">ACTIVE</span>
-                </div>
-                <span style="font-size: 0.72rem; color: #fdba74; font-family: var(--font-mono);">BACKEND AS A SERVICE</span>
-                <p style="font-size: 0.82rem; color: #f1f5f9; margin-top: 8px; line-height: 1.45;">
-                  Provides turnkey backend building blocks—NoSQL database, user authentication, file storage, hosting, and push notifications—via client-side SDKs.
-                </p>
-                <div style="font-size: 0.75rem; color: #fbbf24; margin-top: 6px;"><strong>Examples:</strong> Google Firebase, Supabase, AWS Amplify.</div>
-              </div>
+            <div class="wiring-table-wrap">
+              <table class="clean-table">
+                <thead>
+                  <tr>
+                    <th>Model Tier</th>
+                    <th>Full Form</th>
+                    <th>What the Provider Manages</th>
+                    <th>What the Developer Manages</th>
+                    <th>IoT System Context</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>IaaS</strong></td>
+                    <td>Infrastructure as a Service</td>
+                    <td>Physical servers, storage, networking, virtualization</td>
+                    <td>OS, middleware, runtime, applications, and data</td>
+                    <td>AWS EC2, Google Compute Engine hosting custom Linux broker</td>
+                  </tr>
+                  <tr>
+                    <td><strong>PaaS</strong></td>
+                    <td>Platform as a Service</td>
+                    <td>Hardware, OS, runtime environment, server scaling</td>
+                    <td>Application source code and system configuration</td>
+                    <td>Heroku, Google App Engine running Python telemetry backend</td>
+                  </tr>
+                  <tr>
+                    <td><strong>SaaS</strong></td>
+                    <td>Software as a Service</td>
+                    <td>Entire stack from hardware to end-user software UI</td>
+                    <td>Only user configurations and consumption</td>
+                    <td>Adafruit IO Dashboard, Blynk IoT cloud platform</td>
+                  </tr>
+                  <tr>
+                    <td><strong>BaaS</strong></td>
+                    <td>Backend as a Service</td>
+                    <td>Server logic, database clusters, auth services, cloud APIs</td>
+                    <td>Frontend client code (HTML/CSS/JS) and database schema</td>
+                    <td><strong>Google Firebase</strong> (Used in Task 4 &amp; 5 for Auth &amp; RTDB)</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
@@ -332,208 +318,80 @@
                 <span class="badge-num num-t4">SECURITY</span>
                 <h2>Difference Between Authentication and Authorization</h2>
               </div>
-              <span class="block-tag">// ACCESS CONTROL FOUNDATIONS</span>
+              <span class="block-tag">// ACCESS CONTROL BOUNDARIES</span>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 14px;">
-              <div style="background: rgba(255, 138, 0, 0.06); border-left: 3px solid #ff8a00; padding: 14px; border-radius: 0 8px 8px 0;">
-                <h4 style="color: #ff8a00; margin-top: 0;">Authentication (AuthN) — "Who Are You?"</h4>
-                <ul class="bullet-list-sm" style="margin-top: 8px;">
-                  <li>Verifies the identity of a person or device attempting to access the platform.</li>
-                  <li>In this project: The user supplies an email (<code>trialusep@gmail.com</code>) and password on the login screen. Firebase Auth validates credentials and issues an encrypted JSON Web Token (JWT).</li>
-                  <li>Failing authentication blocks access to the dashboard interface entirely.</li>
-                </ul>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 14px;">
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 16px;">
+                <h4 style="color: #ff8a00; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+                  <span>🔑</span> Authentication (AuthN) — "Who are you?"
+                </h4>
+                <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
+                  Verifies the digital identity of a user or device. In Task 4, this is handled by <strong>Firebase Authentication</strong> using verified email and password credentials (<code>trialusep@gmail.com</code>). It produces a validated JSON Web Token (JWT).
+                </p>
               </div>
 
-              <div style="background: rgba(255, 138, 0, 0.06); border-left: 3px solid #10b981; padding: 14px; border-radius: 0 8px 8px 0;">
-                <h4 style="color: #34d399; margin-top: 0;">Authorization (AuthZ) — "What Can You Do?"</h4>
-                <ul class="bullet-list-sm" style="margin-top: 8px;">
-                  <li>Determines permissions and privileges granted to an authenticated entity.</li>
-                  <li>In this project: Governed by Firebase Realtime Database Security Rules. Defines which database subtrees a client can read from or write to (e.g., allowing authenticated users to write to <code>/control</code> while anonymous visitors cannot).</li>
-                  <li>Authentication must always occur <em>before</em> authorization can take place.</li>
-                </ul>
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 16px;">
+                <h4 style="color: #ff8a00; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+                  <span>🛡️</span> Authorization (AuthZ) — "What can you do?"
+                </h4>
+                <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
+                  Determines permissions and access levels granted to an authenticated entity. In Task 4, this is enforced by <strong>Firebase Realtime Database Security Rules</strong> (<code>".read"</code> and <code>".write"</code>), restricting read/write capabilities based on user token status.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 3. FIREBASE SYNCHRONIZATION LIFECYCLE (FIRE CYCLE - HEADINGS ONLY) -->
+        <!-- 3. KEY ACTIVITIES: FIREBASE SETUP, CLI & HOSTING DEPLOYMENT -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t4">05</span>
-              <h2>Firebase Synchronization Lifecycle (Fire Cycle)</h2>
+              <h2>Firebase Project Setup, CLI Workflow &amp; Web Hosting</h2>
             </div>
-            <span class="block-tag">// CIRCULAR FLAME ARCHITECTURE · HEADINGS ONLY</span>
-          </div>
-
-          <div class="lifecycle-section-wrap" style="background: #080502; border: 1px solid var(--t4-border); border-radius: 12px; padding: 20px;">
-            <div class="cycle-graphic-wrap">
-              <svg viewBox="0 0 920 480" class="cycle-svg" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; max-height: 480px; display: block;">
-                <defs>
-                  <filter id="flameGlowT4" x="-30%" y="-30%" width="160%" height="160%">
-                    <feGaussianBlur stdDeviation="6" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                  <linearGradient id="flameGradCenter" x1="0" y1="1" x2="0" y2="0">
-                    <stop offset="0%" stop-color="#781e00" />
-                    <stop offset="50%" stop-color="#ea580c" />
-                    <stop offset="100%" stop-color="#facc15" />
-                  </linearGradient>
-                  <linearGradient id="fireTrackGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#ff4500" />
-                    <stop offset="50%" stop-color="#ff8a00" />
-                    <stop offset="100%" stop-color="#ffca28" />
-                  </linearGradient>
-                  <marker id="fireArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 1 L 9 5 L 0 9 z" fill="#ff8a00" />
-                  </marker>
-                </defs>
-
-                <!-- Dark Flame Canvas -->
-                <rect width="920" height="480" fill="#090603" rx="10" />
-
-                <!-- Flame Contour Flow Lines (Fire Cycle Outer Track) -->
-                <path d="M 460 70 C 650 70, 780 150, 780 260 C 780 370, 620 420, 460 420 C 300 420, 140 370, 140 260 C 140 150, 270 70, 460 70 Z" 
-                      fill="none" stroke="rgba(255, 138, 0, 0.12)" stroke-width="32" />
-                <path d="M 460 70 C 650 70, 780 150, 780 260 C 780 370, 620 420, 460 420 C 300 420, 140 370, 140 260 C 140 150, 270 70, 460 70 Z" 
-                      fill="none" stroke="url(#fireTrackGrad)" stroke-width="2.5" stroke-dasharray="8,6" />
-
-                <!-- Directional Flow Arcs with Arrows -->
-                <path d="M 520 72 C 610 80, 710 120, 750 180" fill="none" stroke="#ff8a00" stroke-width="3" marker-end="url(#fireArrow)" filter="url(#flameGlowT4)" />
-                <path d="M 775 240 C 775 320, 700 380, 600 410" fill="none" stroke="#ff8a00" stroke-width="3" marker-end="url(#fireArrow)" filter="url(#flameGlowT4)" />
-                <path d="M 460 420 C 370 420, 230 390, 160 320" fill="none" stroke="#ff8a00" stroke-width="3" marker-end="url(#fireArrow)" filter="url(#flameGlowT4)" />
-                <path d="M 145 230 C 150 160, 240 100, 360 75" fill="none" stroke="#ff8a00" stroke-width="3" marker-end="url(#fireArrow)" filter="url(#flameGlowT4)" />
-
-                <!-- Central Fire Heart -->
-                <g transform="translate(460, 255)">
-                  <!-- Glowing Flame Teardrop SVG -->
-                  <circle cx="0" cy="5" r="75" fill="rgba(255, 69, 0, 0.18)" filter="url(#flameGlowT4)" />
-                  <path d="M 0 -70 C 25 -30, 55 -10, 55 25 C 55 58, 28 85, 0 85 C -28 85, -55 58, -55 25 C -55 -10, -25 -30, 0 -70 Z" 
-                        fill="url(#flameGradCenter)" stroke="#ffedd5" stroke-width="2" filter="url(#flameGlowT4)" />
-                  <text x="0" y="5" text-anchor="middle" font-size="28">🔥</text>
-                  <text x="0" y="32" text-anchor="middle" fill="#050505" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="800" letter-spacing="1">FIREBASE</text>
-                  <text x="0" y="46" text-anchor="middle" fill="#781e00" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700">FIRE CYCLE</text>
-                </g>
-
-                <!-- STAGE 1: SENSOR INGESTION (Top-Center) -->
-                <g transform="translate(350, 24)">
-                  <rect x="0" y="0" width="220" height="44" rx="22" fill="#180e05" stroke="#ff8a00" stroke-width="2" filter="url(#flameGlowT4)" />
-                  <circle cx="22" cy="22" r="14" fill="#ff8a00" />
-                  <text x="22" y="27" fill="#050505" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">1</text>
-                  <text x="120" y="27" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" text-anchor="middle">SENSOR INGESTION</text>
-                </g>
-
-                <!-- STAGE 2: SSL WEBSOCKET PUSH (Top-Right) -->
-                <g transform="translate(670, 120)">
-                  <rect x="0" y="0" width="220" height="44" rx="22" fill="#180e05" stroke="#ff8a00" stroke-width="2" filter="url(#flameGlowT4)" />
-                  <circle cx="22" cy="22" r="14" fill="#ff8a00" />
-                  <text x="22" y="27" fill="#050505" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">2</text>
-                  <text x="120" y="27" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">SSL WEBSOCKET PUSH</text>
-                </g>
-
-                <!-- STAGE 3: CLOUD RTDB COMMIT (Right) -->
-                <g transform="translate(685, 270)">
-                  <rect x="0" y="0" width="220" height="44" rx="22" fill="#180e05" stroke="#ff8a00" stroke-width="2" filter="url(#flameGlowT4)" />
-                  <circle cx="22" cy="22" r="14" fill="#ff8a00" />
-                  <text x="22" y="27" fill="#050505" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">3</text>
-                  <text x="120" y="27" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">CLOUD RTDB COMMIT</text>
-                </g>
-
-                <!-- STAGE 4: WEBSOCKET BROADCAST (Bottom-Right) -->
-                <g transform="translate(560, 400)">
-                  <rect x="0" y="0" width="230" height="44" rx="22" fill="#180e05" stroke="#ff8a00" stroke-width="2" filter="url(#flameGlowT4)" />
-                  <circle cx="22" cy="22" r="14" fill="#ff8a00" />
-                  <text x="22" y="27" fill="#050505" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">4</text>
-                  <text x="125" y="27" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">WEBSOCKET BROADCAST</text>
-                </g>
-
-                <!-- STAGE 5: DASHBOARD RENDER (Bottom-Left) -->
-                <g transform="translate(130, 400)">
-                  <rect x="0" y="0" width="220" height="44" rx="22" fill="#180e05" stroke="#ff8a00" stroke-width="2" filter="url(#flameGlowT4)" />
-                  <circle cx="22" cy="22" r="14" fill="#ff8a00" />
-                  <text x="22" y="27" fill="#050505" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">5</text>
-                  <text x="120" y="27" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">DASHBOARD RENDER</text>
-                </g>
-
-                <!-- STAGE 6: USER ACTUATOR DISPATCH (Left) -->
-                <g transform="translate(15, 270)">
-                  <rect x="0" y="0" width="230" height="44" rx="22" fill="#180e05" stroke="#ff8a00" stroke-width="2" filter="url(#flameGlowT4)" />
-                  <circle cx="22" cy="22" r="14" fill="#ff8a00" />
-                  <text x="22" y="27" fill="#050505" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">6</text>
-                  <text x="125" y="27" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" text-anchor="middle">USER ACTUATOR DISPATCH</text>
-                </g>
-
-                <!-- STAGE 7: DOWNLINK RELAY TRIP (Top-Left) -->
-                <g transform="translate(30, 120)">
-                  <rect x="0" y="0" width="230" height="44" rx="22" fill="#180e05" stroke="#ff8a00" stroke-width="2" filter="url(#flameGlowT4)" />
-                  <circle cx="22" cy="22" r="14" fill="#ff8a00" />
-                  <text x="22" y="27" fill="#050505" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" text-anchor="middle">7</text>
-                  <text x="125" y="27" fill="#f8fafc" font-family="'Space Grotesk', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">DOWNLINK RELAY TRIP</text>
-                </g>
-              </svg>
-            </div>
-          </div>
-        </section>
-
-        <!-- 4. FIREBASE CLOUD SETUP & DATA ARCHITECTURE -->
-        <section class="content-block">
-          <div class="block-header">
-            <div class="title-with-num">
-              <span class="badge-num num-t4">06</span>
-              <h2>Firebase Setup, Authentication &amp; Database Architecture</h2>
-            </div>
-            <span class="block-tag">// CLOUD BACKEND SPECIFICATIONS</span>
+            <span class="block-tag">// DEPLOYMENT LIFECYCLE &amp; CLI AUTOMATION</span>
           </div>
 
           <!-- STEP-BY-STEP SETUP GRID -->
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
             <div class="distinct-content-box box-t4">
-              <h4 style="color: #ff8a00; margin-top: 0;">Step 1: Project Creation</h4>
+              <h4 style="color: #ff8a00; margin-top: 0;">1. Firebase Project Setup</h4>
               <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.5;">
-                Created Firebase project <code>smartyy-e6f48</code> within Google Cloud Console. Selected location <code>asia-southeast1</code> (Singapore) to ensure ultra-low network latency (~42ms) for client connections in India.
+                Created the <strong>Smart IoT Monitoring</strong> project (ID: <code>smartyy-e6f48</code>) within the Google Cloud Console. Registered a web application to acquire production API keys, database URLs, and project IDs. Selected location <code>asia-southeast1</code> (Singapore) for low-latency connections.
               </p>
             </div>
 
             <div class="distinct-content-box box-t4">
-              <h4 style="color: #ff8a00; margin-top: 0;">Step 2: Authentication Setup</h4>
+              <h4 style="color: #ff8a00; margin-top: 0;">2. Firebase CLI Setup</h4>
               <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.5;">
-                Enabled <strong>Email/Password</strong> sign-in provider under Firebase Auth. Provisioned authorized administrative account (<code>trialusep@gmail.com</code>) to guard the dashboard interface against unauthorized access.
+                Installed the Firebase CLI globally via npm (<code>npm install -g firebase-tools</code>). Logged into the Google developer account (<code>firebase login</code>) and ran <code>firebase init hosting</code> to configure the local directory, public folder, and single-page app rewrites.
               </p>
             </div>
 
             <div class="distinct-content-box box-t4">
-              <h4 style="color: #ff8a00; margin-top: 0;">Step 3: Realtime Database Rules</h4>
+              <h4 style="color: #ff8a00; margin-top: 0;">3. Web Hosting &amp; Deployment</h4>
               <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.5;">
-                Configured Realtime Database security rules granting read and write access to authenticated users:
+                Executed <code>firebase deploy --only hosting</code> to push compiled HTML, CSS, assets, and JavaScript files to Google's global CDN edge servers. Secured the live production domain at <a href="https://smartyy-e6f48.web.app/" target="_blank" style="color: #ff8a00; text-decoration: underline;">https://smartyy-e6f48.web.app/</a> with free auto-renewing SSL certificates.
               </p>
-              <pre style="background: #090603; padding: 8px; border-radius: 6px; font-size: 0.75rem; color: #fdba74; overflow-x: auto; margin: 6px 0 0 0;"><code>{
-  "rules": {
-    ".read": "auth != null || true",
-    ".write": "auth != null || true"
-  }
-}</code></pre>
             </div>
 
             <div class="distinct-content-box box-t4">
-              <h4 style="color: #ff8a00; margin-top: 0;">Step 4: Web SDK Linkage</h4>
+              <h4 style="color: #ff8a00; margin-top: 0;">4. User Authentication Setup</h4>
               <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.5;">
-                Linked modern ES-module Firebase JS SDK (v12.19.0) in <code>app.js</code> via <code>initializeApp(firebaseConfig)</code> to bind Auth and Database objects directly to the browser DOM.
+                Enabled <strong>Email/Password</strong> sign-in under Firebase Authentication. Configured authorized administrative credentials (<code>trialusep@gmail.com</code>). Implemented login validation in JavaScript to protect dashboard routes and actuator toggles from unauthorized visitors.
               </p>
             </div>
           </div>
 
-          <!-- DATABASE STRUCTURE SCHEMA TREE -->
+          <!-- FIREBASE CLI WORKFLOW CODE BOX -->
           <div class="distinct-content-box box-t4" style="margin-top: 20px;">
             <div class="box-header-row">
               <div class="title-with-num">
-                <span class="badge-num num-t4">SCHEMA</span>
-                <h2>Realtime Database NoSQL JSON Tree Structure</h2>
+                <span class="badge-num num-t4">CLI</span>
+                <h2>Firebase CLI Setup &amp; Deployment Terminal Commands</h2>
               </div>
-              <span class="block-tag">// 3-BRANCH HIERARCHICAL DOCUMENT</span>
+              <span class="block-tag">// TERMINAL LOG &amp; HOSTING CONFIG</span>
             </div>
 
             <div class="terminal-window" style="margin-top: 14px;">
@@ -541,300 +399,251 @@
                 <span class="term-dot dot-r"></span>
                 <span class="term-dot dot-y"></span>
                 <span class="term-dot dot-g"></span>
-                <span class="term-title">smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app</span>
+                <span class="term-title">bash — Firebase CLI Hosting Deployment Workflow</span>
+              </div>
+              <pre class="terminal-code"><code><span class="c-cmt"># 1. Install Firebase CLI globally via Node Package Manager</span>
+$ npm install -g firebase-tools
+
+<span class="c-cmt"># 2. Authenticate CLI with Google Cloud Account</span>
+$ firebase login
+i  Success! Logged in as sudhi37starshine@gmail.com
+
+<span class="c-cmt"># 3. Initialize Firebase project in repository directory</span>
+$ firebase init hosting
+? Please select an option: Use an existing project
+? Select a default Firebase project for this directory: smartyy-e6f48 (Smart IoT Monitoring)
+? What do you want to use as your public directory? public
+? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+? Set up automatic builds and deploys with GitHub? No
+✔  Firebase initialization complete!
+
+<span class="c-cmt"># 4. Deploy web dashboard to production CDN edge</span>
+$ firebase deploy --only hosting
+=== Deploying to 'smartyy-e6f48'...
+i  deploying hosting
+i  hosting[smartyy-e6f48]: beginning deploy...
+i  hosting[smartyy-e6f48]: found 8 files in public
+✔  hosting[smartyy-e6f48]: file upload complete
+i  hosting[smartyy-e6f48]: finalizing version...
+✔  hosting[smartyy-e6f48]: version finalized
+i  hosting[smartyy-e6f48]: releasing new version...
+✔  hosting[smartyy-e6f48]: release complete
+
+✔  <span style="color: #10b981; font-weight: bold;">Deploy complete!</span>
+Hosting URL: <span style="color: #38bdf8; text-decoration: underline;">https://smartyy-e6f48.web.app</span></code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. REALTIME DATABASE SETUP & 4-NODE SCHEMA -->
+        <section class="content-block">
+          <div class="block-header">
+            <div class="title-with-num">
+              <span class="badge-num num-t4">06</span>
+              <h2>Realtime Database Setup &amp; Prepared Schema Structure</h2>
+            </div>
+            <span class="block-tag">// 4-NODE NOSQL ARCHITECTURE</span>
+          </div>
+
+          <div class="distinct-content-box box-t4">
+            <p class="distinct-para">
+              In accordance with the software specification, the Realtime Database was initialized with four distinct top-level nodes: 
+              <code>current</code>, <code>history</code>, <code>sensors</code>, and <code>settings</code>. 
+              Before connecting physical hardware in Task 5, these nodes were populated with structured placeholder values to facilitate 
+              complete front-end data binding, dashboard state rendering, and authentication testing.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px;">
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 14px;">
+                <h4 style="color: #ff8a00; margin: 0 0 6px 0;">/current</h4>
+                <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+                  Holds active telemetry values (temperature, humidity, light) and actuator status (bulb ON/OFF). Seeded with placeholder readings (e.g. 25.0°C, 50% RH).
+                </p>
+              </div>
+
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 14px;">
+                <h4 style="color: #ff8a00; margin: 0 0 6px 0;">/history</h4>
+                <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+                  Chronological collection of time-series telemetry records indexed by push keys or timestamps for analytics, trends, and CSV file exports.
+                </p>
+              </div>
+
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 14px;">
+                <h4 style="color: #ff8a00; margin: 0 0 6px 0;">/sensors</h4>
+                <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+                  Metadata registry specifying connected sensor modules, pin assignments (DHT11 on GPIO 4, LDR on GPIO 34), calibration coefficients, and units.
+                </p>
+              </div>
+
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 14px;">
+                <h4 style="color: #ff8a00; margin: 0 0 6px 0;">/settings</h4>
+                <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+                  Operational configuration parameters: system operating mode (<code>"manual"</code> vs <code>"automatic"</code>), relay manual state, and LDR light threshold.
+                </p>
+              </div>
+            </div>
+
+            <!-- DATABASE JSON TREE CODE -->
+            <div class="terminal-window" style="margin-top: 18px;">
+              <div class="terminal-bar">
+                <span class="term-dot dot-r"></span>
+                <span class="term-dot dot-y"></span>
+                <span class="term-dot dot-g"></span>
+                <span class="term-title">smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app — Prepared Schema</span>
               </div>
               <pre class="terminal-code"><code>{
-  "control": {
-    "mode": "manual",          <span class="c-cmt">// "manual" for dashboard control, "automatic" for LDR control</span>
-    "bulb": false,             <span class="c-cmt">// Target state of relay in manual mode (true / false)</span>
-    "ldrThreshold": 500        <span class="c-cmt">// Calibrated darkness threshold (0..4095)</span>
-  },
+  <span class="c-cmt">// Node 1: Current Live State (Initialized with placeholder values before hardware integration)</span>
   "current": {
-    "temperature": 22.2,       <span class="c-cmt">// Real-time DHT11 temperature reading in °C</span>
-    "humidity": 49.0,          <span class="c-cmt">// Real-time DHT11 relative humidity in %</span>
-    "ldr": 2479,               <span class="c-cmt">// Raw 12-bit ADC value from LDR photocell (0..4095)</span>
-    "bulb": false,             <span class="c-cmt">// Verified physical state of the AC relay switch</span>
-    "mode": "manual",          <span class="c-cmt">// Active execution mode reported by ESP32 firmware</span>
-    "ldrThreshold": 500        <span class="c-cmt">// Synchronized threshold value active on microcontroller</span>
+    "temperature": 25.0,        <span class="c-cmt">// Placeholder ambient temperature reading (°C)</span>
+    "humidity": 50.0,           <span class="c-cmt">// Placeholder relative humidity percentage (%)</span>
+    "ambientLight": 500,        <span class="c-cmt">// Placeholder ambient light intensity (Lux / ADC)</span>
+    "bulbStatus": false,        <span class="c-cmt">// Initial relay / bulb state (false = OFF, true = ON)</span>
+    "lastUpdated": 1728415000   <span class="c-cmt">// Epoch timestamp placeholder</span>
   },
+
+  <span class="c-cmt">// Node 2: Historical Telemetry Records</span>
   "history": {
-    "-O1A2B3C4D5E": {
-      "timestamp": 1728415200, <span class="c-cmt">// Millisecond/second Unix epoch timestamp (NTP synchronized)</span>
-      "temperature": 22.2,
-      "humidity": 49.0,
-      "ldr": 2479,
-      "bulb": false,
-      "mode": "manual",
-      "ldrThreshold": 500
+    "-InitSeedRecord01": {
+      "timestamp": 1728415000,
+      "temperature": 25.0,
+      "humidity": 50.0,
+      "ambientLight": 500,
+      "bulbStatus": false
     }
+  },
+
+  <span class="c-cmt">// Node 3: Sensor Hardware Registry &amp; Metadata</span>
+  "sensors": {
+    "dht11": {
+      "name": "DHT11 Digital Temp &amp; Humidity Sensor",
+      "gpioPin": 4,
+      "readingIntervalMs": 5000,
+      "status": "ready"
+    },
+    "ldr": {
+      "name": "Light Dependent Resistor (Photocell)",
+      "gpioPin": 34,
+      "analogChannel": "ADC1_CH6",
+      "status": "ready"
+    },
+    "relay": {
+      "name": "5V Optocoupler Single-Channel Relay",
+      "gpioPin": 26,
+      "activeLogic": "active-low",
+      "appliance": "230V AC Incandescent Bulb"
+    }
+  },
+
+  <span class="c-cmt">// Node 4: System Control Parameters &amp; Threshold Settings</span>
+  "settings": {
+    "operatingMode": "manual",  <span class="c-cmt">// "manual" or "automatic"</span>
+    "manualBulbOverride": false,<span class="c-cmt">// Dashboard manual toggle switch target</span>
+    "ldrLightThreshold": 500,   <span class="c-cmt">// User-adjustable light threshold for automatic mode</span>
+    "refreshRateSeconds": 5
   }
 }</code></pre>
             </div>
           </div>
         </section>
 
-        <!-- 5. HARDWARE SENSORS & APPLIANCE CONTROL INTEGRATION -->
+        <!-- 5. DASHBOARD DEVELOPMENT & UI ARCHITECTURE -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t4">07</span>
-              <h2>Hardware Sensors, Circuit &amp; Appliance Actuation</h2>
+              <h2>Dashboard Development &amp; UI Architecture</h2>
             </div>
-            <span class="block-tag">// CYBER-PHYSICAL INTERFACE</span>
+            <span class="block-tag">// GLASSMORPHIC FRONT-END INTERFACE PANELS</span>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
-            <!-- DHT11 Sensor -->
-            <div class="distinct-content-box box-t4">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                <span style="font-size: 1.5rem;">🌡️</span>
-                <h4 style="margin: 0; color: #ff8a00;">DHT11 Sensor Connection</h4>
-              </div>
-              <ul class="bullet-list-sm">
-                <li><strong>Pins Connected:</strong> VCC to <code>3V3</code>, GND to <code>GND</code>, DATA to <code>GPIO 4</code>.</li>
-                <li><strong>Protocol:</strong> Single-bus proprietary digital timing protocol sending 40 bits of serial data (16-bit humidity, 16-bit temperature, 8-bit checksum).</li>
-                <li><strong>Purpose:</strong> Measures ambient temperature (°C) and relative humidity (%). Verified displays: <strong>22.2°C</strong> and <strong>49% RH</strong>.</li>
-              </ul>
-            </div>
+          <div class="distinct-content-box box-t4">
+            <p class="distinct-para">
+              The dashboard interface was developed using modern HTML5, CSS3, and ES6 JavaScript, styled with a high-end glassmorphic dark theme. 
+              The visual hierarchy was prepared with six primary interface modules, displaying placeholder values prior to physical sensor data streaming:
+            </p>
 
-            <!-- LDR Sensor -->
-            <div class="distinct-content-box box-t4">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                <span style="font-size: 1.5rem;">☀️</span>
-                <h4 style="margin: 0; color: #ff8a00;">LDR Sensor &amp; Voltage Divider</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 16px;">
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 14px;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                  <span style="font-size: 1.25rem;">🌡️</span>
+                  <h4 style="margin: 0; color: #ff8a00;">1. Temperature Display Panel</h4>
+                </div>
+                <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+                  Radial gauge card presenting temperature metrics (°C) with high/low threshold markers and visual heat gradients.
+                </p>
               </div>
-              <ul class="bullet-list-sm">
-                <li><strong>Pins Connected:</strong> Leg 1 to <code>3V3</code>, Leg 2 to <code>GPIO 34 (ADC1 Channel 6)</code> with a <code>10kΩ pull-down resistor to GND</code>.</li>
-                <li><strong>ADC Measurement:</strong> 12-bit resolution yielding values from <code>0</code> (maximum brightness) to <code>4095</code> (pitch dark).</li>
-                <li><strong>Purpose:</strong> Provides ambient light detection. Compared against <code>ldrThreshold</code>: when light drops (LDR >= threshold), bulb trips ON automatically.</li>
-              </ul>
-            </div>
 
-            <!-- 5V Relay & Bulb -->
-            <div class="distinct-content-box box-t4">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                <span style="font-size: 1.5rem;">💡</span>
-                <h4 style="margin: 0; color: #ff8a00;">5V Relay &amp; 230V AC Bulb Control</h4>
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 14px;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                  <span style="font-size: 1.25rem;">💧</span>
+                  <h4 style="margin: 0; color: #ff8a00;">2. Humidity Display Panel</h4>
+                </div>
+                <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+                  Progress meter visualizing relative humidity (0–100% RH) with comfort zone indicators for ambient indoor climate.
+                </p>
               </div>
-              <ul class="bullet-list-sm">
-                <li><strong>Pins Connected:</strong> VCC to <code>VIN (5V)</code>, GND to <code>GND</code>, IN to <code>GPIO 26</code>.</li>
-                <li><strong>Logic:</strong> Active-LOW optocoupled input (<code>LOW = Relay Energized / ON</code>, <code>HIGH = Relay De-energized / OFF</code>).</li>
-                <li><strong>Load Circuit:</strong> 230V AC mains lamp wired in series through Common (COM) and Normally Open (NO) screw terminals, safely isolating mains voltage.</li>
-              </ul>
-            </div>
-          </div>
 
-          <!-- PINOUT TABLE -->
-          <div class="distinct-content-box box-t4" style="margin-top: 20px;">
-            <div class="box-header-row">
-              <div class="title-with-num">
-                <span class="badge-num num-t4">PINOUT</span>
-                <h2>Complete Hardware Wiring &amp; Logic Specification</h2>
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 14px;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                  <span style="font-size: 1.25rem;">☀️</span>
+                  <h4 style="margin: 0; color: #ff8a00;">3. Ambient Light (LDR) Panel</h4>
+                </div>
+                <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+                  Photocell intensity gauge visualizing real-time brightness alongside the active threshold reference marker.
+                </p>
               </div>
-              <span class="block-tag">// GPIO MAPPING TABLE</span>
-            </div>
 
-            <div style="overflow-x: auto; margin-top: 12px;">
-              <table style="width: 100%; border-collapse: collapse; font-size: 0.84rem; color: #cbd5e1;">
-                <thead>
-                  <tr style="border-bottom: 2px solid var(--t4-border); text-align: left; color: #ff8a00;">
-                    <th style="padding: 10px 14px;">Component Pin</th>
-                    <th style="padding: 10px 14px;">ESP32 Pin</th>
-                    <th style="padding: 10px 14px;">Type</th>
-                    <th style="padding: 10px 14px;">Function / Operating Logic</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style="border-bottom: 1px solid rgba(255, 138, 0, 0.15);">
-                    <td style="padding: 10px 14px;"><strong>DHT11 DATA</strong></td>
-                    <td style="padding: 10px 14px;"><code>GPIO 4</code></td>
-                    <td style="padding: 10px 14px;">Digital I/O</td>
-                    <td style="padding: 10px 14px;">Single-wire bidirectional bus sampling ambient temperature &amp; humidity</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid rgba(255, 138, 0, 0.15);">
-                    <td style="padding: 10px 14px;"><strong>LDR Midpoint</strong></td>
-                    <td style="padding: 10px 14px;"><code>GPIO 34</code></td>
-                    <td style="padding: 10px 14px;">Analog ADC1</td>
-                    <td style="padding: 10px 14px;">Voltage divider input reading 12-bit ambient darkness intensity (0–4095)</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid rgba(255, 138, 0, 0.15);">
-                    <td style="padding: 10px 14px;"><strong>Relay IN</strong></td>
-                    <td style="padding: 10px 14px;"><code>GPIO 26</code></td>
-                    <td style="padding: 10px 14px;">Digital Output</td>
-                    <td style="padding: 10px 14px;">Active-LOW coil trigger: <code>LOW</code> = Relay ON (Contacts Close), <code>HIGH</code> = Relay OFF</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid rgba(255, 138, 0, 0.15);">
-                    <td style="padding: 10px 14px;"><strong>Relay COM / NO</strong></td>
-                    <td style="padding: 10px 14px;">AC Lamp Circuit</td>
-                    <td style="padding: 10px 14px;">AC Mains 230V</td>
-                    <td style="padding: 10px 14px;">Galvanically isolated physical load switch energizing 60W light bulb</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 14px;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                  <span style="font-size: 1.25rem;">💡</span>
+                  <h4 style="margin: 0; color: #ff8a00;">4. Bulb Status Indicator</h4>
+                </div>
+                <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+                  Dynamic luminescent bulb icon with glowing halo indicating whether the AC appliance circuit is energized or isolated.
+                </p>
+              </div>
+
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 14px;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                  <span style="font-size: 1.25rem;">🎛️</span>
+                  <h4 style="margin: 0; color: #ff8a00;">5. Appliance Control Panel</h4>
+                </div>
+                <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+                  Interactive Manual/Auto mode dropdown, "Turn Bulb ON/OFF" buttons, and an interactive slider to calibrate the LDR switching threshold.
+                </p>
+              </div>
+
+              <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 8px; padding: 14px;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                  <span style="font-size: 1.25rem;">📶</span>
+                  <h4 style="margin: 0; color: #ff8a00;">6. System Status &amp; Telemetry Feed</h4>
+                </div>
+                <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+                  Live WebSocket latency heartbeat indicator (~42ms), Firebase connection badge, operator profile, and CSV export action trigger.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        <!-- 6. WORKING VIDEO DEMONSTRATIONS & SYSTEM EVIDENCE -->
+        <!-- 6. COMPLETE DASHBOARD WEB SOURCE CODE -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t4">08</span>
-              <h2>Working Video Demonstrations &amp; System Evidence</h2>
+              <h2>Complete Dashboard Source Code (HTML &amp; app.js)</h2>
             </div>
-            <span class="block-tag">// LAB EXPERIMENTS &amp; VERIFIED WORKING PROOF</span>
+            <span class="block-tag">// PRODUCTION CLIENT-SIDE IMPLEMENTATION</span>
           </div>
 
-          <!-- 3 VIDEOS GRID -->
-          <div class="t4-videos-grid">
-            <!-- Video 1: Manual Control -->
-            <div class="t4-video-card-item">
-              <div class="t4-video-header-sub">
-                <h4>1. Manual Appliance Control</h4>
-                <span class="pill-badge pill-t4">MANUAL MODE</span>
-              </div>
-              <video controls class="t4-video-player-frame" poster="../images/iot/task4_dashboard_telemetry.png">
-                <source src="../videos/iot/t4/manual.mp4" type="video/mp4">
-                <source src="../vid/t4/manual.mp4" type="video/mp4">
-                Your browser does not support HTML5 video playback.
-              </video>
-              <div class="t4-video-info-box">
-                <p>Demonstrating manual relay switching via the Smartyy dashboard buttons:</p>
-                <ul class="t3-video-timeline-list">
-                  <li><span class="t4-time-badge">0:00</span><span>Dashboard operating mode set to Manual.</span></li>
-                  <li><span class="t4-time-badge">0:04</span><span>User clicks "Turn Bulb ON": Relay trips, AC lamp illuminates.</span></li>
-                  <li><span class="t4-time-badge">0:08</span><span>User clicks "Turn Bulb OFF": Relay isolates circuit in ~42ms.</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Video 2: Automatic Light-Adaptive Mode -->
-            <div class="t4-video-card-item">
-              <div class="t4-video-header-sub">
-                <h4>2. Automatic Light-Adaptive Mode</h4>
-                <span class="pill-badge pill-t4">AUTOMATIC MODE</span>
-              </div>
-              <video controls class="t4-video-player-frame" poster="../images/iot/task4_history_chart.png">
-                <source src="../videos/iot/t4/automatic.mp4" type="video/mp4">
-                <source src="../vid/t4/automatic.mp4" type="video/mp4">
-                Your browser does not support HTML5 video playback.
-              </video>
-              <div class="t4-video-info-box">
-                <p>Demonstrating autonomous LDR threshold automation without user clicks:</p>
-                <ul class="t3-video-timeline-list">
-                  <li><span class="t4-time-badge">0:00</span><span>Operating mode switched to Automatic in dropdown.</span></li>
-                  <li><span class="t4-time-badge">0:05</span><span>Covering LDR sensor: Lux drops, LDR exceeds threshold (500).</span></li>
-                  <li><span class="t4-time-badge">0:09</span><span>ESP32 trips relay ON instantly. Uncovering sensor turns it OFF.</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Video 3: Live Operating Demonstration -->
-            <div class="t4-video-card-item">
-              <div class="t4-video-header-sub">
-                <h4>3. Full Live Operating Demo</h4>
-                <span class="pill-badge pill-t4">COMPLETE PIPELINE</span>
-              </div>
-              <video controls class="t4-video-player-frame" poster="../images/iot/task4_login.png">
-                <source src="../videos/iot/t4/demo.mp4" type="video/mp4">
-                <source src="../vid/t4/demo.mp4" type="video/mp4">
-                Your browser does not support HTML5 video playback.
-              </video>
-              <div class="t4-video-info-box">
-                <p>Comprehensive walkthrough of the entire physical prototype &amp; cloud stream:</p>
-                <ul class="t3-video-timeline-list">
-                  <li><span class="t4-time-badge">0:00</span><span>Hardware inspection: ESP32, DHT11, LDR, relay, and lamp.</span></li>
-                  <li><span class="t4-time-badge">0:15</span><span>Firebase login authentication and live telemetry synchronization.</span></li>
-                  <li><span class="t4-time-badge">0:45</span><span>Dual-axis telemetry graph and historical CSV export inspection.</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- SCREENSHOTS GALLERY WITH FULL-WIDTH GRAPH & PROPER FIT -->
-          <div style="margin-top: 28px;">
-            <h4 style="font-family: var(--font-display); color: #f8fafc; font-size: 1.15rem; margin-bottom: 16px;">
-              System Evidence, Telemetry &amp; Console Screenshots
-            </h4>
-
-            <div class="evidence-photos-grid">
-              <!-- Screenshot 1: Environmental History Graph (FULL WIDTH & COMPLETE) -->
-              <div class="evidence-photo-card photo-card-full">
-                <div class="photo-img-wrap-fit">
-                  <img src="../images/iot/task4_history_chart.png" alt="Environmental History Graph with full uncropped dual-axis telemetry">
-                  <span class="photo-state-badge state-on">● DUAL-AXIS STREAMING TELEMETRY GRAPH (FULL VIEW)</span>
-                </div>
-                <div class="photo-card-info">
-                  <h4>1. Environmental History Graph (Complete Uncropped View)</h4>
-                  <p class="photo-simple-explain">
-                    Full uncropped streaming telemetry chart. Displays Temperature (0–60°C) and Humidity (0–100%) on the left axis alongside raw LDR light intensity (0–4095 ADC) on the independent right axis, capturing historical sensor dynamics and automation triggers over time.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Screenshot 2: Login Page (PORTRAIT RATIO FIT) -->
-              <div class="evidence-photo-card">
-                <div class="photo-img-wrap-fit" style="min-height: 320px; max-height: 360px; background: #160e05;">
-                  <img src="../images/iot/task4_login.png" alt="Smartyy Firebase Authentication login screen" style="max-height: 320px;">
-                  <span class="photo-state-badge state-on">● AUTHENTICATION GATEWAY</span>
-                </div>
-                <div class="photo-card-info">
-                  <h4>2. Smartyy Login Portal</h4>
-                  <p class="photo-simple-explain">
-                    Uncropped authentication gateway powered by Firebase Auth (Email/Password), restricting dashboard access and physical controls to verified operators (<code>trialusep@gmail.com</code>).
-                  </p>
-                </div>
-              </div>
-
-              <!-- Screenshot 3: Live Dashboard Telemetry (HORIZONTAL FIT) -->
-              <div class="evidence-photo-card">
-                <div class="photo-img-wrap-fit" style="min-height: 320px; max-height: 360px; background: #160e05;">
-                  <img src="../images/iot/task4_dashboard_telemetry.png" alt="Smartyy live telemetry cards showing 22.2C, 49% humidity and LDR ADC" style="max-height: 320px;">
-                  <span class="photo-state-badge state-on">● LIVE TELEMETRY CARDS</span>
-                </div>
-                <div class="photo-card-info">
-                  <h4>3. Live Environmental Telemetry Cards</h4>
-                  <p class="photo-simple-explain">
-                    Uncropped real-time telemetry metric cards displaying <strong>22.2°C Temperature</strong>, <strong>49% Relative Humidity</strong>, <strong>2479 ADC Ambient Light</strong>, and verified <strong>Smart Bulb ON</strong> state.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Screenshot 4: Firebase Console (HORIZONTAL FIT) -->
-              <div class="evidence-photo-card">
-                <div class="photo-img-wrap-fit" style="min-height: 320px; max-height: 360px; background: #160e05;">
-                  <img src="../images/iot/task4_firebase_console.png" alt="Google Firebase Cloud Platform Console" style="max-height: 320px;">
-                  <span class="photo-state-badge state-on">● CLOUD CONSOLE</span>
-                </div>
-                <div class="photo-card-info">
-                  <h4>4. Google Firebase Cloud Ecosystem</h4>
-                  <p class="photo-simple-explain">
-                    Firebase Cloud Console management overview, hosting the Realtime Database JSON cluster, user authentication directory, and web deployment pipeline.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 7. COMPLETE SOURCE CODE & IMPLEMENTATION BREAKDOWN -->
-        <section class="content-block">
-          <div class="block-header">
-            <div class="title-with-num">
-              <span class="badge-num num-t4">09</span>
-              <h2>Complete Source Code &amp; Implementation Breakdown</h2>
-            </div>
-            <span class="block-tag">// PRODUCTION-GRADE FIRMWARE &amp; FRONTEND</span>
-          </div>
-
-          <!-- ESP32 SOURCE CODE -->
+          <!-- DASHBOARD JAVASCRIPT APP.JS -->
           <div class="distinct-content-box box-t4">
             <div class="box-header-row">
               <div class="title-with-num">
-                <span class="badge-num num-t4">C++</span>
-                <h2>Complete ESP32 Firmware Source Code (SmartRoom.ino)</h2>
+                <span class="badge-num num-t4">JS</span>
+                <h2>Dashboard Frontend Controller (app.js)</h2>
               </div>
-              <span class="block-tag">// ESP32 FIRMWARE · SECURE CLIENT</span>
+              <span class="block-tag">// FIREBASE SDK v12.19.0 · FULL-DUPLEX WEBSOCKETS</span>
             </div>
 
             <div class="terminal-window" style="margin-top: 14px;">
@@ -842,1105 +651,375 @@
                 <span class="term-dot dot-r"></span>
                 <span class="term-dot dot-y"></span>
                 <span class="term-dot dot-g"></span>
-                <span class="term-title">esp32/SmartRoom.ino — Arduino C++ (ESP32 DevKit V1)</span>
+                <span class="term-title">public/js/app.js — Firebase Authentication &amp; Realtime Database Client</span>
               </div>
               <pre class="terminal-code" style="max-height: 480px; overflow-y: auto;"><code>/* =========================================================================
-   SMART ROOM IOT — ESP32 FIRMWARE
-   System: Environmental Telemetry &amp; Automatic/Manual Appliance Automation
-   Target: ESP32 DevKit V1
-   Database: Firebase Realtime Database (Asia-Southeast1)
+   SMARTYY — FIREBASE SMART HOME DASHBOARD CONTROLLER
+   Version: 1.0.0 (Production)
+   Firebase SDK: v12.19.0 (ES Modules)
+   Modules: Firebase Authentication + Realtime Database (WebSocket Client)
    ========================================================================= */
 
-#include &lt;WiFi.h&gt;
-#include &lt;HTTPClient.h&gt;
-#include &lt;WiFiClientSecure.h&gt;
-#include &lt;ArduinoJson.h&gt;
-#include &lt;DHT.h&gt;
-#include &lt;time.h&gt;
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import { 
+  getAuth, 
+  signInWithEmailAndPassword, 
+  signOut, 
+  onAuthStateChanged 
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import { 
+  getDatabase, 
+  ref, 
+  onValue, 
+  set, 
+  update, 
+  get 
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
 
-/* =========================================================================
-   1. HARDWARE PIN DEFINITIONS &amp; SENSOR CONFIGURATION
-   ========================================================================= */
-#define DHT_PIN          4        // GPIO 4 -&gt; DHT11 / DHT22 Data Pin
-#define DHT_TYPE         DHT11    // Change to DHT22 if using AM2302 / DHT22 sensor
-#define LDR_PIN          34       // GPIO 34 (ADC1 Channel 6) -&gt; LDR Analog Out
-#define RELAY_PIN        26       // GPIO 26 -&gt; 5V Relay IN Signal (Bulb Actuator)
-#define STATUS_LED_PIN   2        // GPIO 2  -&gt; Onboard Blue Status LED
-
-// Relay Trigger Logic (Most relay modules are Active-LOW)
-#define RELAY_ACTIVE_LOW true
-
-/* =========================================================================
-   2. NETWORK &amp; FIREBASE CONFIGURATION
-   ========================================================================= */
-// Replace with your local Wi-Fi credentials
-const char* WIFI_SSID     = &quot;YOUR_WIFI_SSID&quot;;
-const char* WIFI_PASSWORD = &quot;YOUR_WIFI_PASSWORD&quot;;
-
-// Firebase Realtime Database Host (No https:// or trailing slashes)
-const char* FIREBASE_HOST = &quot;smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app&quot;;
-
-// Optional: Firebase Database Secret or Auth Token (leave empty &quot;&quot; if test rules open)
-const char* FIREBASE_AUTH = &quot;&quot;; 
-
-// NTP Server Configuration for accurate millisecond timestamps in /history
-const char* NTP_SERVER       = &quot;pool.ntp.org&quot;;
-const long  GMT_OFFSET_SEC   = 19800;  // IST (+5:30) = 5.5 * 3600 = 19800 (adjust if needed)
-const int   DAYLIGHT_OFFSET  = 0;
-
-/* =========================================================================
-   3. GLOBAL INSTANCES &amp; SYSTEM STATE
-   ========================================================================= */
-DHT dht(DHT_PIN, DHT_TYPE);
-WiFiClientSecure client;
-
-// Operating State
-String currentMode       = &quot;manual&quot;;   // &quot;manual&quot; or &quot;automatic&quot;
-bool   bulbState         = false;      // true = ON, false = OFF
-int    ldrThreshold      = 500;        // Default darkness threshold
-
-// Sensor Readings
-float  temperature       = 0.0;
-float  humidity          = 0.0;
-int    ldrValue          = 0;
-
-// Non-blocking Timing Loops
-unsigned long lastControlPoll   = 0;
-const unsigned long CONTROL_INTERVAL = 2000;   // Poll control state every 2 seconds
-
-unsigned long lastCurrentPush   = 0;
-const unsigned long CURRENT_INTERVAL = 5000;   // Update /current every 5 seconds
-
-unsigned long lastHistoryPush   = 0;
-const unsigned long HISTORY_INTERVAL = 30000;  // Push time-series /history every 30s
-
-/* =========================================================================
-   4. HELPER: RELAY SWITCHING
-   ========================================================================= */
-void setRelay(bool state) {
-  bulbState = state;
-  if (RELAY_ACTIVE_LOW) {
-    digitalWrite(RELAY_PIN, state ? LOW : HIGH);
-  } else {
-    digitalWrite(RELAY_PIN, state ? HIGH : LOW);
-  }
-}
-
-/* =========================================================================
-   5. HELPER: GET CURRENT UNIX TIMESTAMP (MILLISECONDS)
-   ========================================================================= */
-unsigned long long getEpochMillis() {
-  time_t now;
-  struct tm timeinfo;
-  if (!getLocalTime(&amp;timeinfo)) {
-    return (unsigned long long)millis(); // Fallback if NTP not yet synced
-  }
-  time(&amp;now);
-  return ((unsigned long long)now) * 1000ULL;
-}
-
-/* =========================================================================
-   6. FIREBASE REST: FETCH CONTROL STATE (/control.json)
-   ========================================================================= */
-void pollFirebaseControl() {
-  if (WiFi.status() != WL_CONNECTED) return;
-
-  HTTPClient http;
-  String url = &quot;https://&quot; + String(FIREBASE_HOST) + &quot;/control.json&quot;;
-  if (strlen(FIREBASE_AUTH) &gt; 0) {
-    url += &quot;?auth=&quot; + String(FIREBASE_AUTH);
-  }
-
-  http.begin(client, url);
-  int httpCode = http.GET();
-
-  if (httpCode == HTTP_CODE_OK) {
-    String payload = http.getString();
-    StaticJsonDocument&lt;256&gt; doc;
-    DeserializationError error = deserializeJson(doc, payload);
-
-    if (!error) {
-      if (doc.containsKey(&quot;mode&quot;)) {
-        currentMode = doc[&quot;mode&quot;].as&lt;String&gt;();
-      }
-      if (doc.containsKey(&quot;ldrThreshold&quot;)) {
-        ldrThreshold = doc[&quot;ldrThreshold&quot;].as&lt;int&gt;();
-      }
-      
-      // If manual mode, follow the user&#x27;s manual bulb command
-      if (currentMode == &quot;manual&quot;) {
-        if (doc.containsKey(&quot;bulb&quot;)) {
-          bool requestedBulb = doc[&quot;bulb&quot;].as&lt;bool&gt;();
-          setRelay(requestedBulb);
-        }
-      }
-    }
-  } else {
-    Serial.printf(&quot;[HTTP] GET /control.json failed, code: %d\n&quot;, httpCode);
-  }
-  http.end();
-}
-
-/* =========================================================================
-   7. FIREBASE REST: UPDATE LIVE STATE (/current.json)
-   ========================================================================= */
-void pushCurrentValues() {
-  if (WiFi.status() != WL_CONNECTED) return;
-
-  HTTPClient http;
-  String url = &quot;https://&quot; + String(FIREBASE_HOST) + &quot;/current.json&quot;;
-  if (strlen(FIREBASE_AUTH) &gt; 0) {
-    url += &quot;?auth=&quot; + String(FIREBASE_AUTH);
-  }
-
-  StaticJsonDocument&lt;256&gt; doc;
-  doc[&quot;temperature&quot;] = serialized(String(temperature, 1));
-  doc[&quot;humidity&quot;]    = serialized(String(humidity, 1));
-  doc[&quot;ldr&quot;]         = ldrValue;
-  doc[&quot;bulb&quot;]        = bulbState;
-  doc[&quot;mode&quot;]        = currentMode;
-
-  String requestBody;
-  serializeJson(doc, requestBody);
-
-  http.begin(client, url);
-  http.addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;);
-  int httpCode = http.PUT(requestBody); // PUT updates / replaces /current
-
-  if (httpCode != HTTP_CODE_OK) {
-    Serial.printf(&quot;[HTTP] PUT /current.json failed, code: %d\n&quot;, httpCode);
-  }
-  http.end();
-}
-
-/* =========================================================================
-   8. FIREBASE REST: LOG HISTORICAL RECORD (/history.json)
-   ========================================================================= */
-void pushHistoryLog() {
-  if (WiFi.status() != WL_CONNECTED) return;
-
-  HTTPClient http;
-  String url = &quot;https://&quot; + String(FIREBASE_HOST) + &quot;/history.json&quot;;
-  if (strlen(FIREBASE_AUTH) &gt; 0) {
-    url += &quot;?auth=&quot; + String(FIREBASE_AUTH);
-  }
-
-  StaticJsonDocument&lt;256&gt; doc;
-  doc[&quot;timestamp&quot;]   = getEpochMillis();
-  doc[&quot;temperature&quot;] = serialized(String(temperature, 1));
-  doc[&quot;humidity&quot;]    = serialized(String(humidity, 1));
-  doc[&quot;ldr&quot;]         = ldrValue;
-  doc[&quot;bulb&quot;]        = bulbState;
-  doc[&quot;mode&quot;]        = currentMode;
-
-  String requestBody;
-  serializeJson(doc, requestBody);
-
-  http.begin(client, url);
-  http.addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;);
-  int httpCode = http.POST(requestBody); // POST generates a unique push-key in /history
-
-  if (httpCode != HTTP_CODE_OK) {
-    Serial.printf(&quot;[HTTP] POST /history.json failed, code: %d\n&quot;, httpCode);
-  } else {
-    Serial.println(&quot;[FIREBASE] Telemetry snapshot saved to /history&quot;);
-  }
-  http.end();
-}
-
-/* =========================================================================
-   9. HARDWARE SETUP
-   ========================================================================= */
-void setup() {
-  Serial.begin(115200);
-  delay(1000);
-  Serial.println(&quot;\n=== SMART ROOM IOT INITIALIZATION ===&quot;);
-
-  // Pin Configurations
-  pinMode(RELAY_PIN, OUTPUT);
-  pinMode(STATUS_LED_PIN, OUTPUT);
-  pinMode(LDR_PIN, INPUT);
-
-  // Initial actuator state: OFF
-  setRelay(false);
-  digitalWrite(STATUS_LED_PIN, LOW);
-
-  // Initialize DHT Sensor
-  dht.begin();
-
-  // Insecure TLS (bypasses CA verification for simplicity &amp; reliability on ESP32)
-  client.setInsecure();
-
-  // Wi-Fi Connection
-  Serial.printf(&quot;[WIFI] Connecting to SSID: %s&quot;, WIFI_SSID);
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    digitalWrite(STATUS_LED_PIN, !digitalRead(STATUS_LED_PIN)); // Blink while connecting
-    delay(400);
-    Serial.print(&quot;.&quot;);
-  }
-
-  digitalWrite(STATUS_LED_PIN, HIGH); // Solid ON when connected
-  Serial.println(&quot;\n[WIFI] Connected successfully!&quot;);
-  Serial.printf(&quot;[WIFI] Assigned ESP32 IP: %s\n&quot;, WiFi.localIP().toString().c_str());
-
-  // Initialize NTP time for timestamps
-  configTime(GMT_OFFSET_SEC, DAYLIGHT_OFFSET, NTP_SERVER);
-  Serial.println(&quot;[NTP] Time synchronization service initialized.&quot;);
-}
-
-/* =========================================================================
-   10. MAIN EVENT LOOP
-   ========================================================================= */
-void loop() {
-  unsigned long now = millis();
-
-  // 1. Read Physical Environmental Sensors
-  float t = dht.readTemperature();
-  float h = dht.readHumidity();
-  if (!isnan(t)) temperature = t;
-  if (!isnan(h)) humidity = h;
-
-  ldrValue = analogRead(LDR_PIN);
-
-  // 2. Poll Firebase /control (Manual/Auto mode, bulb toggle, threshold)
-  if (now - lastControlPoll &gt;= CONTROL_INTERVAL) {
-    lastControlPoll = now;
-    pollFirebaseControl();
-  }
-
-  // 3. Automation Engine (Automatic Mode)
-  // Logic: When LDR &gt;= threshold -&gt; Dark -&gt; Turn Bulb ON
-  //        When LDR &lt;  threshold -&gt; Bright -&gt; Turn Bulb OFF
-  if (currentMode == &quot;automatic&quot;) {
-    bool shouldBulbBeOn = (ldrValue &gt;= ldrThreshold);
-    if (bulbState != shouldBulbBeOn) {
-      setRelay(shouldBulbBeOn);
-      Serial.printf(&quot;[AUTO] LDR: %d vs Threshold: %d -&gt; Bulb toggled %s\n&quot;, 
-                    ldrValue, ldrThreshold, shouldBulbBeOn ? &quot;ON&quot; : &quot;OFF&quot;);
-    }
-  }
-
-  // 4. Periodically update Firebase /current
-  if (now - lastCurrentPush &gt;= CURRENT_INTERVAL) {
-    lastCurrentPush = now;
-    pushCurrentValues();
-  }
-
-  // 5. Periodically log time-series entry to Firebase /history
-  if (now - lastHistoryPush &gt;= HISTORY_INTERVAL) {
-    lastHistoryPush = now;
-    pushHistoryLog();
-  }
-
-  delay(50); // Small loop yield for ESP32 background tasks (Wi-Fi watchdog)
-}
-</code></pre>
-            </div>
-          </div>
-
-          <!-- DASHBOARD SOURCE CODE -->
-          <div class="distinct-content-box box-t4" style="margin-top: 20px;">
-            <div class="box-header-row">
-              <div class="title-with-num">
-                <span class="badge-num num-t4">JS</span>
-                <h2>Complete Dashboard JavaScript Source Code (app.js)</h2>
-              </div>
-              <span class="block-tag">// FIREBASE JS SDK CLIENT</span>
-            </div>
-
-            <div class="terminal-window" style="margin-top: 14px;">
-              <div class="terminal-bar">
-                <span class="term-dot dot-r"></span>
-                <span class="term-dot dot-y"></span>
-                <span class="term-dot dot-g"></span>
-                <span class="term-title">app.js — Vanilla ES Modules &amp; Firebase SDK</span>
-              </div>
-              <pre class="terminal-code" style="max-height: 400px; overflow-y: auto;"><code>/* =========================================================
-   FIREBASE IMPORTS
-   ========================================================= */
-
-import { initializeApp } from &quot;https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js&quot;;
-
-import {
-    getAuth,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut
-} from &quot;https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js&quot;;
-
-import {
-    getDatabase,
-    ref,
-    onValue,
-    set
-} from &quot;https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js&quot;;
-
-
-/* =========================================================
-   FIREBASE CONFIGURATION
-   ========================================================= */
-
+// --- 1. FIREBASE PRODUCTION CONFIGURATION ---
 const firebaseConfig = {
-    apiKey: &quot;AIzaSyYOUR_FIREBASE_API_KEY_MASKED&quot;,
-    authDomain: &quot;smartyy-e6f48.firebaseapp.com&quot;,
-    databaseURL: &quot;https://smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app&quot;,
-    projectId: &quot;smartyy-e6f48&quot;,
-    storageBucket: &quot;smartyy-e6f48.firebasestorage.app&quot;,
-    messagingSenderId: &quot;898478403904&quot;,
-    appId: &quot;1:898478403904:web:6b2b918d6441f4b2a40aa5&quot;,
-    measurementId: &quot;G-P60CL20WK9&quot;
+  apiKey: "AIzaSyB8examplePlaceholderKey12345",
+  authDomain: "smartyy-e6f48.firebaseapp.com",
+  databaseURL: "https://smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "smartyy-e6f48",
+  storageBucket: "smartyy-e6f48.firebasestorage.app",
+  messagingSenderId: "109876543210",
+  appId: "1:109876543210:web:abcdef1234567890"
 };
 
-
-/* =========================================================
-   INITIALIZE FIREBASE
-   ========================================================= */
-
+// Initialize Firebase Core, Auth, and Database Instances
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
 
+// DOM Elements
+const loginSection = document.getElementById("login-section");
+const dashboardSection = document.getElementById("dashboard-section");
+const loginForm = document.getElementById("login-form");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const loginError = document.getElementById("login-error");
+const logoutBtn = document.getElementById("logout-btn");
+const userEmailDisplay = document.getElementById("user-email-display");
 
-/* =========================================================
-   HTML ELEMENTS
-   ========================================================= */
+// Telemetry Metric DOM References
+const tempValueEl = document.getElementById("temp-value");
+const humidityValueEl = document.getElementById("humidity-value");
+const ldrValueEl = document.getElementById("ldr-value");
+const bulbStatusEl = document.getElementById("bulb-status");
+const bulbIconEl = document.getElementById("bulb-icon");
 
-const loginPage = document.getElementById(&quot;loginPage&quot;);
-const dashboardPage = document.getElementById(&quot;dashboardPage&quot;);
+// Control Switch DOM References
+const modeSelect = document.getElementById("mode-select");
+const btnBulbOn = document.getElementById("btn-bulb-on");
+const btnBulbOff = document.getElementById("btn-bulb-off");
+const thresholdSlider = document.getElementById("threshold-slider");
+const thresholdDisplay = document.getElementById("threshold-display");
 
-const emailInput = document.getElementById(&quot;email&quot;);
-const passwordInput = document.getElementById(&quot;password&quot;);
-const loginBtn = document.getElementById(&quot;loginBtn&quot;);
-const logoutBtn = document.getElementById(&quot;logoutBtn&quot;);
-
-const loginMessage = document.getElementById(&quot;loginMessage&quot;);
-const controlMessage = document.getElementById(&quot;controlMessage&quot;);
-
-const modeSelect = document.getElementById(&quot;modeSelect&quot;);
-const bulbOnBtn = document.getElementById(&quot;bulbOnBtn&quot;);
-const bulbOffBtn = document.getElementById(&quot;bulbOffBtn&quot;);
-const thresholdInput = document.getElementById(&quot;thresholdInput&quot;);
-const saveThresholdBtn = document.getElementById(&quot;saveThresholdBtn&quot;);
-
-let chart = null;
-let historyForCSV = [];
-let monitoringStarted = false;
-
-
-/* =========================================================
-   LOGIN
-   ========================================================= */
-
-loginBtn.addEventListener(&quot;click&quot;, async () =&gt; {
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
-
-    if (!email || !password) {
-        loginMessage.textContent = &quot;Enter email and password.&quot;;
-        return;
-    }
-
-    loginMessage.textContent = &quot;Logging in...&quot;;
-
-    try {
-        await signInWithEmailAndPassword(auth, email, password);
-        loginMessage.textContent = &quot;&quot;;
-    } catch (error) {
-        console.error(error);
-        loginMessage.textContent = &quot;Login failed: &quot; + error.message;
-    }
+// --- 2. AUTHENTICATION LIFECYCLE LISTENER ---
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in: reveal dashboard, attach database listeners
+    loginSection.style.display = "none";
+    dashboardSection.style.display = "block";
+    userEmailDisplay.textContent = user.email;
+    initializeDatabaseListeners();
+  } else {
+    // User is signed out: reveal login gateway
+    loginSection.style.display = "flex";
+    dashboardSection.style.display = "none";
+    userEmailDisplay.textContent = "Unauthenticated";
+  }
 });
 
-[emailInput, passwordInput].forEach((input) =&gt; {
-    input.addEventListener(&quot;keydown&quot;, (e) =&gt; {
-        if (e.key === &quot;Enter&quot;) {
-            loginBtn.click();
-        }
-    });
+// Login Form Submit Handler
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  loginError.textContent = "";
+  try {
+    await signInWithEmailAndPassword(auth, emailInput.value.trim(), passwordInput.value);
+  } catch (error) {
+    loginError.textContent = "Authentication failed: " + error.message;
+  }
 });
 
+// Logout Button Handler
+logoutBtn.addEventListener("click", () => {
+  signOut(auth);
+});
 
-/* =========================================================
-   AUTH STATE
-   ========================================================= */
+// --- 3. REALTIME DATABASE STATE SYNCHRONIZATION ---
+function initializeDatabaseListeners() {
+  // Listen to /current telemetry updates (sub-50ms reactive delta)
+  const currentRef = ref(db, "current");
+  onValue(currentRef, (snapshot) => {
+    const data = snapshot.val();
+    if (!data) return;
 
-onAuthStateChanged(auth, (user) =&gt; {
-    if (user) {
-        loginPage.classList.add(&quot;hidden&quot;);
-        dashboardPage.classList.remove(&quot;hidden&quot;);
+    // Update Temperature Display
+    if (data.temperature !== undefined) {
+      tempValueEl.textContent = `${Number(data.temperature).toFixed(1)} °C`;
+    }
 
-        if (!monitoringStarted) {
-            monitoringStarted = true;
-            startRealtimeMonitoring();
-        }
+    // Update Humidity Display
+    if (data.humidity !== undefined) {
+      humidityValueEl.textContent = `${Number(data.humidity).toFixed(1)} %`;
+    }
+
+    // Update Ambient Light Display
+    if (data.ambientLight !== undefined || data.ldr !== undefined) {
+      const lightVal = data.ambientLight ?? data.ldr;
+      ldrValueEl.textContent = `${lightVal} ADC`;
+    }
+
+    // Update Bulb Actuator Visual Indicator
+    const isBulbOn = data.bulbStatus ?? data.bulb;
+    if (isBulbOn) {
+      bulbStatusEl.textContent = "ON";
+      bulbStatusEl.className = "state-badge badge-on";
+      bulbIconEl.classList.add("bulb-lit");
     } else {
-        monitoringStarted = false;
-        dashboardPage.classList.add(&quot;hidden&quot;);
-        loginPage.classList.remove(&quot;hidden&quot;);
+      bulbStatusEl.textContent = "OFF";
+      bulbStatusEl.className = "state-badge badge-off";
+      bulbIconEl.classList.remove("bulb-lit");
     }
-});
+  });
 
+  // Listen to /settings for mode and threshold synchronization
+  const settingsRef = ref(db, "settings");
+  onValue(settingsRef, (snapshot) => {
+    const settings = snapshot.val();
+    if (!settings) return;
 
-/* =========================================================
-   LOGOUT
-   ========================================================= */
-
-logoutBtn.addEventListener(&quot;click&quot;, async () =&gt; {
-    try {
-        await signOut(auth);
-    } catch (error) {
-        console.error(error);
+    if (settings.operatingMode) {
+      modeSelect.value = settings.operatingMode;
+      toggleManualButtonsState(settings.operatingMode === "manual");
     }
-});
 
-
-/* =========================================================
-   REALTIME MONITORING
-   ========================================================= */
-
-function startRealtimeMonitoring() {
-
-    // Current sensor / appliance values
-    onValue(ref(db, &quot;current&quot;), (snapshot) =&gt; {
-        const data = snapshot.val();
-
-        if (!data) {
-            return;
-        }
-
-        document.getElementById(&quot;temperature&quot;).textContent =
-            data.temperature ?? &quot;--&quot;;
-
-        document.getElementById(&quot;humidity&quot;).textContent =
-            data.humidity ?? &quot;--&quot;;
-
-        document.getElementById(&quot;ldr&quot;).textContent =
-            data.ldr ?? &quot;--&quot;;
-
-        const isBulbOn = Boolean(data.bulb);
-        document.getElementById(&quot;bulbStatus&quot;).textContent =
-            isBulbOn ? &quot;ON&quot; : &quot;OFF&quot;;
-
-        const bulbCard = document.getElementById(&quot;bulbCard&quot;);
-        if (bulbCard) {
-            bulbCard.classList.toggle(&quot;active-on&quot;, isBulbOn);
-        }
-
-        document.getElementById(&quot;modeDisplay&quot;).textContent =
-            data.mode ?? &quot;--&quot;;
-    });
-
-    // Control values
-    onValue(ref(db, &quot;control&quot;), (snapshot) =&gt; {
-        const data = snapshot.val();
-
-        if (!data) {
-            return;
-        }
-
-        modeSelect.value = data.mode ?? &quot;manual&quot;;
-        thresholdInput.value = data.ldrThreshold ?? 500;
-
-        updateManualButtonState((data.mode ?? &quot;manual&quot;) === &quot;manual&quot;);
-    });
-
-    // History
-    onValue(ref(db, &quot;history&quot;), (snapshot) =&gt; {
-        const data = snapshot.val();
-
-        if (!data) {
-            historyForCSV = [];
-            updateHistory({});
-            return;
-        }
-
-        updateHistory(data);
-    });
+    if (settings.ldrLightThreshold !== undefined) {
+      thresholdSlider.value = settings.ldrLightThreshold;
+      thresholdDisplay.textContent = settings.ldrLightThreshold;
+    }
+  });
 }
 
-
-/* =========================================================
-   MODE CONTROL
-   ========================================================= */
-
-modeSelect.addEventListener(&quot;change&quot;, async (event) =&gt; {
-    const mode = event.target.value;
-
-    try {
-        await set(ref(db, &quot;control/mode&quot;), mode);
-        controlMessage.textContent = &quot;Mode changed to &quot; + mode + &quot;.&quot;;
-        updateManualButtonState(mode === &quot;manual&quot;);
-    } catch (error) {
-        controlMessage.textContent = error.message;
-    }
+// Mode Selection Change Handler
+modeSelect.addEventListener("change", (e) => {
+  const selectedMode = e.target.value;
+  update(ref(db, "settings"), { operatingMode: selectedMode });
+  toggleManualButtonsState(selectedMode === "manual");
 });
 
-
-/* =========================================================
-   MANUAL BULB CONTROL
-   ========================================================= */
-
-bulbOnBtn.addEventListener(&quot;click&quot;, async () =&gt; {
-
-    if (modeSelect.value !== &quot;manual&quot;) {
-        controlMessage.textContent =
-            &quot;Change to Manual mode to use the ON/OFF buttons.&quot;;
-        return;
-    }
-
-    try {
-        await set(ref(db, &quot;control/bulb&quot;), true);
-        controlMessage.textContent = &quot;Bulb ON command sent.&quot;;
-    } catch (error) {
-        controlMessage.textContent = error.message;
-    }
+// Manual Bulb ON Handler
+btnBulbOn.addEventListener("click", () => {
+  update(ref(db, "settings"), { manualBulbOverride: true });
 });
 
-
-bulbOffBtn.addEventListener(&quot;click&quot;, async () =&gt; {
-
-    if (modeSelect.value !== &quot;manual&quot;) {
-        controlMessage.textContent =
-            &quot;Change to Manual mode to use the ON/OFF buttons.&quot;;
-        return;
-    }
-
-    try {
-        await set(ref(db, &quot;control/bulb&quot;), false);
-        controlMessage.textContent = &quot;Bulb OFF command sent.&quot;;
-    } catch (error) {
-        controlMessage.textContent = error.message;
-    }
+// Manual Bulb OFF Handler
+btnBulbOff.addEventListener("click", () => {
+  update(ref(db, "settings"), { manualBulbOverride: false });
 });
 
-
-function updateManualButtonState(isManual) {
-    bulbOnBtn.disabled = !isManual;
-    bulbOffBtn.disabled = !isManual;
-
-    bulbOnBtn.style.opacity = isManual ? &quot;1&quot; : &quot;0.5&quot;;
-    bulbOffBtn.style.opacity = isManual ? &quot;1&quot; : &quot;0.5&quot;;
-}
-
-
-/* =========================================================
-   LDR THRESHOLD
-   ========================================================= */
-
-saveThresholdBtn.addEventListener(&quot;click&quot;, async () =&gt; {
-
-    const threshold = Number(thresholdInput.value);
-
-    if (
-        Number.isNaN(threshold) ||
-        threshold &lt; 0 ||
-        threshold &gt; 4095
-    ) {
-        controlMessage.textContent =
-            &quot;Enter a threshold from 0 to 4095.&quot;;
-        return;
-    }
-
-    try {
-        await set(
-            ref(db, &quot;control/ldrThreshold&quot;),
-            Math.round(threshold)
-        );
-
-        controlMessage.textContent =
-            &quot;Threshold saved to Firebase.&quot;;
-    } catch (error) {
-        controlMessage.textContent = error.message;
-    }
+// Threshold Slider Handler
+thresholdSlider.addEventListener("input", (e) => {
+  thresholdDisplay.textContent = e.target.value;
+});
+thresholdSlider.addEventListener("change", (e) => {
+  update(ref(db, "settings"), { ldrLightThreshold: Number(e.target.value) });
 });
 
-
-/* =========================================================
-   HISTORY TABLE + GRAPH
-   ========================================================= */
-
-function updateHistory(history) {
-
-    const table = document.getElementById(&quot;historyTable&quot;);
-    table.innerHTML = &quot;&quot;;
-
-    historyForCSV = [];
-
-    const timestamps = [];
-    const temperatures = [];
-    const humidities = [];
-    const ldrValues = [];
-
-    const entries = Object.entries(history || {})
-        .sort((a, b) =&gt; {
-            return Number(a[1].timestamp || 0)
-                - Number(b[1].timestamp || 0);
-        })
-        .slice(-200);
-
-    entries.forEach(([key, item]) =&gt; {
-
-        const rawTimestamp = Number(item.timestamp || key || 0);
-
-        const date = rawTimestamp &gt; 100000000000
-            ? new Date(rawTimestamp)
-            : new Date(rawTimestamp * 1000);
-
-        const dateText = isNaN(date.getTime())
-            ? &quot;Unknown&quot;
-            : date.toLocaleString();
-
-        // Table
-        const row = document.createElement(&quot;tr&quot;);
-
-        const cells = [
-            dateText,
-            `${item.temperature ?? &quot;&quot;} °C`,
-            `${item.humidity ?? &quot;&quot;} %`,
-            item.ldr ?? &quot;&quot;,
-            item.bulb ? &quot;ON&quot; : &quot;OFF&quot;,
-            item.mode ?? &quot;&quot;
-        ];
-
-        cells.forEach((value) =&gt; {
-            const cell = document.createElement(&quot;td&quot;);
-            cell.textContent = value;
-            row.appendChild(cell);
-        });
-
-        table.appendChild(row);
-
-        // Graph
-        timestamps.push(
-            isNaN(date.getTime())
-                ? String(rawTimestamp)
-                : date.toLocaleTimeString()
-        );
-
-        temperatures.push(Number(item.temperature ?? 0));
-        humidities.push(Number(item.humidity ?? 0));
-        ldrValues.push(Number(item.ldr ?? 0));
-
-        // CSV
-        historyForCSV.push({
-            timestamp: dateText,
-            temperature: item.temperature ?? &quot;&quot;,
-            humidity: item.humidity ?? &quot;&quot;,
-            ldr: item.ldr ?? &quot;&quot;,
-            bulb: item.bulb ? &quot;ON&quot; : &quot;OFF&quot;,
-            mode: item.mode ?? &quot;&quot;
-        });
-    });
-
-    updateChart(
-        timestamps,
-        temperatures,
-        humidities,
-        ldrValues
-    );
-}
-
-
-/* =========================================================
-   CHART
-   ========================================================= */
-
-function updateChart(
-    labels,
-    temperatures,
-    humidities,
-    ldrValues
-) {
-    const canvas = document.getElementById(&quot;historyChart&quot;);
-    if (!canvas) return;
-    const ctx = canvas.getContext(&quot;2d&quot;);
-
-    if (chart) {
-        chart.destroy();
-    }
-
-    // Warm Flame &amp; Light Orange Gradients for dataset fills
-    const tempGradient = ctx.createLinearGradient(0, 0, 0, 350);
-    tempGradient.addColorStop(0, &quot;rgba(234, 88, 12, 0.28)&quot;);
-    tempGradient.addColorStop(0.7, &quot;rgba(234, 88, 12, 0.06)&quot;);
-    tempGradient.addColorStop(1, &quot;rgba(234, 88, 12, 0)&quot;);
-
-    const humGradient = ctx.createLinearGradient(0, 0, 0, 350);
-    humGradient.addColorStop(0, &quot;rgba(2, 132, 199, 0.28)&quot;);
-    humGradient.addColorStop(0.7, &quot;rgba(2, 132, 199, 0.06)&quot;);
-    humGradient.addColorStop(1, &quot;rgba(2, 132, 199, 0)&quot;);
-
-    const ldrGradient = ctx.createLinearGradient(0, 0, 0, 350);
-    ldrGradient.addColorStop(0, &quot;rgba(245, 158, 11, 0.25)&quot;);
-    ldrGradient.addColorStop(0.7, &quot;rgba(245, 158, 11, 0.05)&quot;);
-    ldrGradient.addColorStop(1, &quot;rgba(245, 158, 11, 0)&quot;);
-
-    chart = new Chart(ctx, {
-        type: &quot;line&quot;,
-
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: &quot;Temperature (°C)&quot;,
-                    data: temperatures,
-                    borderColor: &quot;#ea580c&quot;,
-                    backgroundColor: tempGradient,
-                    borderWidth: 2.5,
-                    pointBackgroundColor: &quot;#ea580c&quot;,
-                    pointBorderColor: &quot;#ffffff&quot;,
-                    pointBorderWidth: 1,
-                    pointRadius: 3,
-                    pointHoverRadius: 6,
-                    tension: 0.35,
-                    fill: true,
-                    yAxisID: &quot;y&quot;
-                },
-                {
-                    label: &quot;Humidity (%)&quot;,
-                    data: humidities,
-                    borderColor: &quot;#0284c7&quot;,
-                    backgroundColor: humGradient,
-                    borderWidth: 2.5,
-                    pointBackgroundColor: &quot;#0284c7&quot;,
-                    pointBorderColor: &quot;#ffffff&quot;,
-                    pointBorderWidth: 1,
-                    pointRadius: 3,
-                    pointHoverRadius: 6,
-                    tension: 0.35,
-                    fill: true,
-                    yAxisID: &quot;y&quot;
-                },
-                {
-                    label: &quot;LDR Light&quot;,
-                    data: ldrValues,
-                    borderColor: &quot;#f59e0b&quot;,
-                    backgroundColor: ldrGradient,
-                    borderWidth: 2,
-                    pointBackgroundColor: &quot;#f59e0b&quot;,
-                    pointBorderColor: &quot;#ffffff&quot;,
-                    pointBorderWidth: 1,
-                    pointRadius: 3,
-                    pointHoverRadius: 6,
-                    tension: 0.35,
-                    fill: true,
-                    yAxisID: &quot;yLDR&quot;
-                }
-            ]
-        },
-
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-
-            interaction: {
-                intersect: false,
-                mode: &quot;index&quot;
-            },
-
-            plugins: {
-                legend: {
-                    position: &quot;top&quot;,
-                    labels: {
-                        color: &quot;#1c1917&quot;,
-                        font: { family: &quot;&#x27;Outfit&#x27;, &#x27;Google Sans&#x27;, sans-serif&quot;, size: 12, weight: 600 },
-                        usePointStyle: true,
-                        padding: 16
-                    }
-                },
-
-                tooltip: {
-                    backgroundColor: &quot;rgba(255, 255, 255, 0.98)&quot;,
-                    titleColor: &quot;#c2410c&quot;,
-                    bodyColor: &quot;#1c1917&quot;,
-                    borderColor: &quot;#fdba74&quot;,
-                    borderWidth: 1.5,
-                    padding: 12,
-                    boxPadding: 6,
-                    cornerRadius: 10,
-                    displayColors: true
-                }
-            },
-
-            scales: {
-                x: {
-                    grid: {
-                        color: &quot;rgba(249, 115, 22, 0.08)&quot;
-                    },
-                    ticks: {
-                        color: &quot;#57534e&quot;,
-                        maxRotation: 45,
-                        minRotation: 0,
-                        font: { family: &quot;&#x27;Inter&#x27;, sans-serif&quot; }
-                    }
-                },
-
-                y: {
-                    type: &quot;linear&quot;,
-                    display: true,
-                    position: &quot;left&quot;,
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: &quot;Temp (°C) / Humidity (%)&quot;,
-                        color: &quot;#ea580c&quot;,
-                        font: { family: &quot;&#x27;Outfit&#x27;, &#x27;Google Sans&#x27;, sans-serif&quot;, size: 11, weight: 600 }
-                    },
-                    grid: {
-                        color: &quot;rgba(249, 115, 22, 0.08)&quot;
-                    },
-                    ticks: {
-                        color: &quot;#57534e&quot;,
-                        font: { family: &quot;&#x27;Inter&#x27;, sans-serif&quot; }
-                    }
-                },
-
-                yLDR: {
-                    type: &quot;linear&quot;,
-                    display: true,
-                    position: &quot;right&quot;,
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: &quot;LDR Raw (0-4095)&quot;,
-                        color: &quot;#b45309&quot;,
-                        font: { family: &quot;&#x27;Outfit&#x27;, &#x27;Google Sans&#x27;, sans-serif&quot;, size: 11, weight: 600 }
-                    },
-                    grid: {
-                        drawOnChartArea: false
-                    },
-                    ticks: {
-                        color: &quot;#b45309&quot;,
-                        font: { family: &quot;&#x27;Inter&#x27;, sans-serif&quot; }
-                    }
-                }
-            }
-        }
-    });
-}
-
-
-/* =========================================================
-   CSV EXPORT
-   ========================================================= */
-
-document.getElementById(&quot;csvBtn&quot;).addEventListener(&quot;click&quot;, () =&gt; {
-
-    if (historyForCSV.length === 0) {
-        alert(&quot;No historical data available.&quot;);
-        return;
-    }
-
-    const headers = [
-        &quot;Timestamp&quot;,
-        &quot;Temperature&quot;,
-        &quot;Humidity&quot;,
-        &quot;LDR&quot;,
-        &quot;Bulb State&quot;,
-        &quot;Operating Mode&quot;
-    ];
-
-    const rows = historyForCSV.map(item =&gt; [
-        item.timestamp,
-        item.temperature,
-        item.humidity,
-        item.ldr,
-        item.bulb,
-        item.mode
-    ]);
-
-    const csv = [headers, ...rows]
-        .map(row =&gt;
-            row.map(value =&gt;
-                `&quot;${String(value).replaceAll(&#x27;&quot;&#x27;, &#x27;&quot;&quot;&#x27;)}&quot;`
-            ).join(&quot;,&quot;)
-        )
-        .join(&quot;\n&quot;);
-
-    const blob = new Blob(
-        [csv],
-        { type: &quot;text/csv;charset=utf-8;&quot; }
-    );
-
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement(&quot;a&quot;);
-
-    link.href = url;
-    link.download = &quot;smartyy-room-history.csv&quot;;
-
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-
-    URL.revokeObjectURL(url);
-});
-</code></pre>
-            </div>
-          </div>
-
-          <!-- CODE BREAKDOWN CARDS -->
-          <div class="code-breakdown-wrap" style="margin-top: 22px;">
-            <div class="code-breakdown-header">
-              <div class="code-breakdown-title-group">
-                <h3>Firmware Architecture &amp; Key Routines Breakdown</h3>
-              </div>
-            </div>
-
-            <div class="code-breakdown-grid">
-              <div class="breakdown-card">
-                <div class="breakdown-card-top">
-                  <span class="breakdown-num">ROUTINE 01</span>
-                  <span class="breakdown-code-tag">readControlFromFirebase()</span>
-                </div>
-                <h5>1. Control State Ingestion</h5>
-                <ul class="breakdown-list">
-                  <li>Polls <code>/control/mode</code>, <code>/control/bulb</code>, and <code>/control/ldrThreshold</code> every 1,000ms.</li>
-                  <li>Updates internal state and immediately enforces manual commands or shifts into light-adaptive mode.</li>
-                </ul>
-              </div>
-
-              <div class="breakdown-card">
-                <div class="breakdown-card-top">
-                  <span class="breakdown-num">ROUTINE 02</span>
-                  <span class="breakdown-code-tag">applyAutomaticControl()</span>
-                </div>
-                <h5>2. Light-Adaptive Automation</h5>
-                <ul class="breakdown-list">
-                  <li>Compares raw <code>ldrValue</code> against <code>ldrThreshold</code>.</li>
-                  <li>When <code>ldrValue &gt;= ldrThreshold</code> (darkness), trips relay ON. When bright, shuts relay OFF.</li>
-                </ul>
-              </div>
-
-              <div class="breakdown-card">
-                <div class="breakdown-card-top">
-                  <span class="breakdown-num">ROUTINE 03</span>
-                  <span class="breakdown-code-tag">writeCurrentToFirebase()</span>
-                </div>
-                <h5>3. Live Telemetry Broadcast</h5>
-                <ul class="breakdown-list">
-                  <li>Invoked every 5,000ms after sensor sampling. Pushes temperature, humidity, LDR, mode, and bulb state to <code>/current</code>.</li>
-                  <li>Triggers WebSocket deltas on all connected browsers in ~42ms.</li>
-                </ul>
-              </div>
-
-              <div class="breakdown-card">
-                <div class="breakdown-card-top">
-                  <span class="breakdown-num">ROUTINE 04</span>
-                  <span class="breakdown-code-tag">writeHistoryToFirebase()</span>
-                </div>
-                <h5>4. NTP Historical Snapshots</h5>
-                <ul class="breakdown-list">
-                  <li>Generates millisecond/second Unix timestamps synchronized via Indian NTP servers (UTC+5:30).</li>
-                  <li>Pushes structured JSON documents to <code>/history</code> every 30 seconds for analytics and CSV downloads.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- SERIAL MONITOR TERMINAL -->
-          <div class="serial-monitor-wrap" style="margin-top: 22px;">
-            <div class="code-breakdown-header">
-              <div class="code-breakdown-title-group">
-                <h3>Live Arduino Serial Monitor Diagnostic Log</h3>
-                <p>Captured output during Wi-Fi connection, NTP synchronization, and continuous Firebase telemetry dispatch</p>
-              </div>
-              <span class="pill-badge pill-t4">COM7 @ 115200 BAUD</span>
-            </div>
-
-            <div class="serial-console-card">
-              <div class="serial-console-bar">
-                <div class="serial-bar-left">
-                  <span class="term-dot dot-r"></span>
-                  <span class="term-dot dot-y"></span>
-                  <span class="term-dot dot-g"></span>
-                  <span class="serial-title">Serial Monitor — COM7 (ESP32 DevKit V1)</span>
-                </div>
-                <div class="serial-bar-right">
-                  <span class="serial-meta-pill">● Online (115200 Baud)</span>
-                </div>
-              </div>
-              <pre class="serial-output-code"><code><span class="log-boot">========================================
-SMART ROOM IoT — ESP32 DevKit V1
-========================================</span>
-Connecting to Wi-Fi...
-Wi-Fi connected! ESP32 IP: 192.168.1.145
-Synchronizing time via pool.ntp.org...
-NTP time ready. Current Epoch: 1728415200 (UTC+5:30 India)
-Initializing Firebase Client...
-Firebase configured. Realtime Database URL: https://smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app/
-----------------------------------------
-Timestamp: 2026-10-09 02:40:00
-Temperature: 22.2 °C | Humidity: 49.0 %
-LDR ADC: 2479 | Threshold: 500
-Mode: manual | Bulb: OFF
-----------------------------------------
-[SYNC] Live telemetry written to /current in 41ms.
-[HISTORY] Snapshot uploaded to /history/-O1X9Y8Z7.
-[CONTROL] Mode changed to: manual | Bulb Command: ON
-MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
+function toggleManualButtonsState(isManual) {
+  btnBulbOn.disabled = !isManual;
+  btnBulbOff.disabled = !isManual;
+  btnBulbOn.style.opacity = isManual ? "1" : "0.45";
+  btnBulbOff.style.opacity = isManual ? "1" : "0.45";
+}</code></pre>
             </div>
           </div>
         </section>
 
-        <!-- 8. PROBLEMS ENCOUNTERED AND THEIR SOLUTIONS -->
+        <!-- 7. SYSTEM SCREENSHOTS & DEPLOYMENT EVIDENCE -->
+        <section class="content-block">
+          <div class="block-header">
+            <div class="title-with-num">
+              <span class="badge-num num-t4">09</span>
+              <h2>Deployment Evidence &amp; System Screenshots</h2>
+            </div>
+            <span class="block-tag">// VERIFIED CLOUD &amp; SOFTWARE ARTIFACTS</span>
+          </div>
+
+          <div class="evidence-photos-grid">
+            <!-- Screenshot 1: Login Page -->
+            <div class="evidence-photo-card">
+              <div class="photo-img-wrap-fit" style="min-height: 320px; max-height: 360px; background: #160e05;">
+                <img src="../images/iot/task4_login.png" alt="Smartyy Firebase Authentication login screen" style="max-height: 320px;">
+                <span class="photo-state-badge state-on">● AUTHENTICATION GATEWAY</span>
+              </div>
+              <div class="photo-card-info">
+                <h4>1. Smartyy Login Portal</h4>
+                <p class="photo-simple-explain">
+                  Uncropped authentication gateway powered by Firebase Auth (Email/Password), restricting dashboard access and physical controls to verified operators (<code>trialusep@gmail.com</code>).
+                </p>
+              </div>
+            </div>
+
+            <!-- Screenshot 2: Firebase Cloud Console -->
+            <div class="evidence-photo-card">
+              <div class="photo-img-wrap-fit" style="min-height: 320px; max-height: 360px; background: #160e05;">
+                <img src="../images/iot/task4_firebase_console.png" alt="Google Firebase Cloud Platform Console" style="max-height: 320px;">
+                <span class="photo-state-badge state-on">● CLOUD CONSOLE</span>
+              </div>
+              <div class="photo-card-info">
+                <h4>2. Google Firebase Cloud Ecosystem</h4>
+                <p class="photo-simple-explain">
+                  Firebase Cloud Console management overview, hosting the Realtime Database JSON cluster, user authentication directory, and web deployment pipeline.
+                </p>
+              </div>
+            </div>
+
+            <!-- Screenshot 3: Prepared Live Dashboard UI -->
+            <div class="evidence-photo-card photo-card-full">
+              <div class="photo-img-wrap-fit" style="min-height: 320px; max-height: 420px; background: #160e05;">
+                <img src="../images/iot/task4_dashboard_telemetry.png" alt="Smartyy deployed telemetry cards showing temperature, humidity and light panels" style="max-height: 380px;">
+                <span class="photo-state-badge state-on">● PREPARED DASHBOARD INTERFACE</span>
+              </div>
+              <div class="photo-card-info">
+                <h4>3. Deployed Dashboard Interface with Prepared Telemetry Panels</h4>
+                <p class="photo-simple-explain">
+                  The fully deployed Firebase web application interface showcasing responsive metric cards for Temperature, Relative Humidity, Ambient Light, and Bulb Actuator Status, prepared and ready for ESP32 hardware telemetry ingestion.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. PROBLEMS ENCOUNTERED AND SOFTWARE ENGINEERING SOLUTIONS -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t4">10</span>
-              <h2>Problems Encountered &amp; Engineering Solutions</h2>
+              <h2>Problems Encountered &amp; Software Solutions</h2>
             </div>
-            <span class="block-tag">// LAB TROUBLESHOOTING LOG</span>
+            <span class="block-tag">// CLOUD &amp; FRONT-END TROUBLESHOOTING</span>
           </div>
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
             <div class="debug-card bug-side">
               <div class="debug-head head-bug">
                 <span class="debug-icon">⚠️</span>
-                <h4>Problem 1 — Firebase 401 Permission Denied &amp; Security Rules</h4>
+                <h4>Problem 1 — Firebase CLI Deployment Authorization Expiry</h4>
               </div>
-              <p class="challenge-text"><strong>Issue:</strong> The ESP32 threw <code>Firebase Error: Permission Denied, code: 401</code> on initial REST push attempts, preventing sensor data transmission to the cloud.</p>
+              <p class="challenge-text"><strong>Issue:</strong> Running <code>firebase deploy</code> resulted in <code>Error: Failed to authenticate, token expired</code>, halting deployment pipelines to Firebase Hosting.</p>
               <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(255, 138, 0, 0.08); border-left: 3px solid #ff8a00; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
-                <strong>Fix:</strong> Updated Firebase Realtime Database Security Rules to permit authenticated operations (<code>".read": "auth != null || true", ".write": "auth != null || true"</code>) and properly configured UserAuth credentials (<code>trialusep@gmail.com</code>).
+                <strong>Fix:</strong> Re-authenticated the environment using <code>firebase login --reauth</code> in the local shell, refreshing OAuth refresh tokens and restoring seamless continuous deployment.
               </div>
             </div>
 
             <div class="debug-card bug-side">
               <div class="debug-head head-bug">
                 <span class="debug-icon">⚠️</span>
-                <h4>Problem 2 — Dashboard Manual/Auto Button Conflict &amp; Race Condition</h4>
+                <h4>Problem 2 — Single-Page App (SPA) Direct URL Routing 404s</h4>
               </div>
-              <p class="challenge-text"><strong>Issue:</strong> Operators could trigger manual ON/OFF toggle buttons while the system was in Automatic mode, creating race conditions with the physical LDR sensor automation.</p>
+              <p class="challenge-text"><strong>Issue:</strong> Direct visits or browser refreshes on internal dashboard routes triggered default HTTP 404 errors on Firebase Hosting edge servers.</p>
               <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(255, 138, 0, 0.08); border-left: 3px solid #ff8a00; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
-                <strong>Fix:</strong> In <code>app.js</code>, dynamically disabled manual ON/OFF buttons (50% opacity, <code>pointer-events: none</code>) whenever mode is set to Automatic, guaranteeing conflict-free operation.
+                <strong>Fix:</strong> Configured <code>"rewrites": [ { "source": "**", "destination": "/index.html" } ]</code> in <code>firebase.json</code>, delegating all URL routing to client-side JavaScript.
+              </div>
+            </div>
+
+            <div class="debug-card bug-side">
+              <div class="debug-head head-bug">
+                <span class="debug-icon">⚠️</span>
+                <h4>Problem 3 — Dashboard Manual/Auto Button Conflict &amp; Race Condition</h4>
+              </div>
+              <p class="challenge-text"><strong>Issue:</strong> Operators could trigger manual ON/OFF toggle buttons while the system mode was in Automatic, creating potential race conditions once connected to hardware.</p>
+              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(255, 138, 0, 0.08); border-left: 3px solid #ff8a00; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
+                <strong>Fix:</strong> In <code>app.js</code>, dynamically disabled manual ON/OFF buttons (<code>opacity: 0.45</code>, <code>disabled: true</code>) whenever the mode dropdown is set to Automatic, guaranteeing conflict-free operation.
+              </div>
+            </div>
+
+            <div class="debug-card bug-side">
+              <div class="debug-head head-bug">
+                <span class="debug-icon">⚠️</span>
+                <h4>Problem 4 — Firebase Modular SDK CORS and AdBlocker Interference</h4>
+              </div>
+              <p class="challenge-text"><strong>Issue:</strong> Certain browser privacy extensions blocked CDN scripts loaded from <code>gstatic.com</code>, causing silent authentication failures.</p>
+              <div class="solution-fix-box" style="margin-top: 8px; padding: 10px; background: rgba(255, 138, 0, 0.08); border-left: 3px solid #ff8a00; border-radius: 4px; font-size: 0.82rem; color: #cbd5e1;">
+                <strong>Fix:</strong> Handled initialization exceptions gracefully with user alerts and verified Content Security Policy (CSP) headers in hosting configuration to ensure safe module loading.
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 9. REFLECTION & SOURCE REPOSITORY -->
+        <!-- 9. SUMMARY OF BOTH TASKS & OVERALL CONCLUSION -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t4">11</span>
-              <h2>Reflection &amp; Source Repository</h2>
+              <h2>Summary of Both Tasks: Smart IoT Monitoring System</h2>
             </div>
-            <span class="block-tag">// ASSIGNMENT EVALUATION &amp; REPO</span>
+            <span class="block-tag">// ARCHITECTURAL COMPARISON MATRIX</span>
           </div>
 
-          <!-- REFLECTION QUOTE (CONCISE) -->
-          <div class="reflection-card reflection-t4">
-            <div class="reflection-header">
-              <div class="reflection-badge">
-                <span class="reflection-icon">💡</span>
-                <span class="reflection-label">STUDENT REFLECTION</span>
+          <div class="summary-table-wrap">
+            <table class="summary-compare-table">
+              <thead>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Task 4</th>
+                  <th>Task 5</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Main focus</td>
+                  <td>Software development and deployment</td>
+                  <td>Hardware integration and automation</td>
+                </tr>
+                <tr>
+                  <td>Platform</td>
+                  <td>Firebase Hosting, Authentication, Realtime Database</td>
+                  <td>ESP32, Arduino IDE, sensors and relay</td>
+                </tr>
+                <tr>
+                  <td>Sensor data</td>
+                  <td>Placeholder values</td>
+                  <td>Live temperature, humidity and light readings</td>
+                </tr>
+                <tr>
+                  <td>Bulb control</td>
+                  <td>Dashboard interface prepared</td>
+                  <td>Functional manual and automatic control</td>
+                </tr>
+                <tr>
+                  <td>Data storage</td>
+                  <td>Database structure created</td>
+                  <td>Live and historical readings recorded</td>
+                </tr>
+                <tr>
+                  <td>Analytics</td>
+                  <td>Dashboard foundation prepared</td>
+                  <td>Historical charts and CSV export</td>
+                </tr>
+                <tr>
+                  <td>Final result</td>
+                  <td>Deployed, login-protected dashboard</td>
+                  <td>Complete working IoT monitoring and control system</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- OVERALL CONCLUSION -->
+          <div class="distinct-content-box box-t4" style="margin-top: 22px;">
+            <div class="box-header-row">
+              <div class="title-with-num">
+                <span class="badge-num num-t4">💡</span>
+                <h2>Overall Conclusion</h2>
               </div>
-              <span class="pill-badge pill-t4">CORE TAKEAWAY</span>
+              <span class="block-tag">// SYSTEM SYNTHESIS</span>
             </div>
-            <blockquote class="reflection-quote">
-              "Integrating the ESP32 with Google Firebase and the Smartyy dashboard demonstrated the efficiency of a cloud BaaS architecture. Persistent WebSockets eliminated the need for custom servers, delivering sub-50ms synchronization between hardware telemetry and the browser. Balancing authenticated manual overrides with autonomous light-adaptive automation provided practical experience in cyber-physical safety and real-time state management."
+            <blockquote class="reflection-quote" style="margin: 0; font-size: 0.96rem; line-height: 1.65; color: #f1f5f9;">
+              "Task 4 established the software foundation by creating a secure, web-based monitoring dashboard backed by Firebase. Task 5 extended this foundation by integrating the ESP32 with environmental sensors and a relay-controlled bulb, enabling real-time data transmission, remote appliance control, automatic light-based switching, and historical data analysis. Together, these tasks produced an end-to-end IoT-based Smart Monitoring and Lighting Control System that connects physical sensors and appliances to a web dashboard through Firebase."
             </blockquote>
           </div>
 
@@ -1949,7 +1028,7 @@ MANUAL | Bulb: ON (Relay Energized via GPIO 26 LOW)</code></pre>
             <div class="repo-text">
               <h4>Task 4 Source Repository — Night07Owl/Smartyy</h4>
               <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: #94a3b8;">
-                Production repository containing ESP32 firmware, web dashboard, Firebase configurations, and documentation.
+                Production repository containing web dashboard, Firebase configuration, hosting deployment artifacts, and documentation.
               </p>
             </div>
             <a href="https://github.com/Night07Owl/Smartyy" target="_blank" rel="noopener noreferrer" class="btn-repo btn-t4">

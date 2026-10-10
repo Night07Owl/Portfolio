@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Task 5: Firebase Logging, Automation & Data Export — IoT Portfolio</title>
-<meta name="description" content="Assignment 5: Complete autonomous IoT environmental system featuring dual-mode lighting control, time-series Firebase telemetry logging, charting, and CSV data export.">
+<title>Task 5: ESP32 Integration, Live Sensor Data and Bulb Control — IoT Portfolio</title>
+<meta name="description" content="Assignment 5: Integrating ESP32 hardware with the Firebase dashboard, enabling live environmental monitoring, manual and automatic bulb control, and historical CSV data export.">
 <link rel="icon" type="image/png" href="../images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,14 +31,14 @@
     <a href="task2.html" class="task-nav-btn">Task 02: Adafruit MQTT</a>
     <a href="task3.html" class="task-nav-btn">Task 03: IFTTT Automation</a>
     <a href="task4.html" class="task-nav-btn">Task 04: Firebase Dashboard</a>
-    <a href="task5.html" class="task-nav-btn active">Task 05: Logging & Export</a>
+    <a href="task5.html" class="task-nav-btn active">Task 05: Logging &amp; Export</a>
   </nav>
 </header>
 
 <main class="iot-container">
 
       <!-- =======================================================================
-         TASK 05: FIREBASE LOGGING, AUTOMATION & DATA EXPORT (CYBER ROSE / VIOLET)
+         TASK 05: ESP32 INTEGRATION, LIVE SENSOR DATA AND BULB CONTROL (CYBER ROSE)
          ======================================================================= -->
       <div class="task-view" id="view-task5" style="display: block;">
 
@@ -46,13 +46,13 @@
         <section class="task-banner banner-t5">
           <div class="banner-eyebrow">
             <span class="pill-badge pill-t5">ASSIGNMENT 05</span>
-            <span class="eyebrow-text">// CAPSTONE: CLOUD LOGGING, AUTOMATION &amp; DATA EXPORT</span>
+            <span class="eyebrow-text">// HARDWARE INTEGRATION, LIVE SENSOR DATA &amp; ACTUATION AUTOMATION</span>
           </div>
-          <h1 class="task-title title-t5">Firebase Logging, Automation &amp; Data Export</h1>
+          <h1 class="task-title title-t5">ESP32 Integration, Live Sensor Data and Bulb Control</h1>
           <p class="task-lead">
-            The comprehensive capstone integration: continuous environmental telemetry logging to Google Firebase Realtime Database, 
-            intelligent dual manual and light-adaptive automated lighting control, dynamic time-series analytics, 
-            and client-side CSV data export.
+            Integrating the physical ESP32 DevKit V4, environmental sensors (DHT11 &amp; LDR), and relay module with the deployed 
+            Firebase dashboard developed in Task 4. Enabling live environmental monitoring, authenticated manual and light-adaptive 
+            automatic bulb control, historical time-series cloud logging, and client-side CSV data export.
           </p>
 
           <div style="margin: 18px 0 24px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
@@ -64,44 +64,44 @@
 
           <div class="stats-grid">
             <div class="stat-card">
-              <span class="stat-icon">🗄️</span>
-              <div class="stat-content">
-                <h4>Storage Engine</h4>
-                <p>Firebase Realtime DB</p>
-              </div>
-            </div>
-            <div class="stat-card">
-              <span class="stat-icon">⏱️</span>
-              <div class="stat-content">
-                <h4>Logging Cadence</h4>
-                <p>30-Second NTP Epoch Snapshots</p>
-              </div>
-            </div>
-            <div class="stat-card">
               <span class="stat-icon">⚡</span>
               <div class="stat-content">
-                <h4>Control Mode</h4>
-                <p>Dual: Manual &amp; Light-Adaptive Auto</p>
+                <h4>Hardware Controller</h4>
+                <p>ESP32 DevKit V4 (Xtensa 32-bit)</p>
               </div>
             </div>
             <div class="stat-card">
-              <span class="stat-icon">📊</span>
+              <span class="stat-icon">📡</span>
+              <div class="stat-content">
+                <h4>Live Telemetry</h4>
+                <p>DHT11 (Temp/Humidity) &amp; LDR (Light)</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">💡</span>
+              <div class="stat-content">
+                <h4>Bulb Actuation</h4>
+                <p>Manual Switch &amp; Auto LDR Threshold</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">📥</span>
               <div class="stat-content">
                 <h4>Data Export</h4>
-                <p>RFC 4180 Client-Side CSV Stream</p>
+                <p>RFC 4180 Client-Side CSV Download</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 1. SYSTEM SUMMARY (RENAMED AS REQUESTED) -->
+        <!-- 1. SYSTEM SUMMARY -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t5">01</span>
               <h2>System Summary</h2>
             </div>
-            <span class="block-tag">// SYSTEM SCOPE &amp; FINAL TOPOLOGY</span>
+            <span class="block-tag">// SYSTEM SCOPE &amp; KEY ACTIVITIES</span>
           </div>
 
           <!-- DISTINCT CONTENT BOX 1: OBJECTIVE -->
@@ -111,16 +111,27 @@
                 <span class="badge-num num-t5">01</span>
                 <h2>Objective</h2>
               </div>
-              <span class="pill-badge pill-t5">PROJECT GOALS</span>
+              <span class="pill-badge pill-t5">TASK 5 CORE OBJECTIVE</span>
             </div>
-            <ul class="bullet-list-lg t5-bullets">
-              <li>To develop a complete, production-grade cloud IoT system integrating <strong>ESP32 environmental sensing, Google Firebase Realtime Database, and the Smartyy web dashboard</strong>.</li>
-              <li>To ingest multi-sensor environmental telemetry (<strong>DHT11 Temperature &amp; Humidity, LDR Light Level</strong>) and broadcast live status updates to <code>/current</code>.</li>
-              <li>To implement intelligent dual-mode actuation: allowing operators to trigger <strong>Manual Bulb Control</strong> via the dashboard or engage <strong>Automatic Light-Adaptive Control</strong> driven by ambient LDR threshold evaluation.</li>
-              <li>To execute automated time-series logging, committing cryptographically synchronized NTP epoch snapshots into the Firebase <code>/history</code> database branch every 30 seconds.</li>
-              <li>To visualize recorded environmental data on an interactive <strong>dual-axis streaming graph</strong> and provide seamless one-click <strong>CSV data download</strong> for offline engineering analytics.</li>
-              <li>To deploy and host the complete live production web application at <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" class="btn-smartyy-redirect" style="padding: 3px 14px; font-size: 0.78rem; margin-left: 6px; vertical-align: middle;">Visit Smartyy Website ↗</a></li>
+            <p class="distinct-para" style="font-size: 1.05rem; font-weight: 500; color: #f8fafc;">
+              To integrate the ESP32 hardware with the Firebase dashboard, enabling real-time sensor monitoring, remote bulb control, and historical data logging.
+            </p>
+            <p class="distinct-para" style="margin-top: 10px;">
+              <strong>Task 5 Focus:</strong> Task 5 focused on connecting the physical hardware to the software system developed in Task 4. 
+              Key activities executed to achieve this objective included:
+            </p>
+            <ul class="bullet-list-lg t5-bullets" style="margin-top: 10px;">
+              <li><strong>Hardware integration:</strong> Connected the ESP32 DevKit V4, DHT11 temperature and humidity sensor, LDR ambient-light sensor, relay module, and bulb.</li>
+              <li><strong>Firmware development:</strong> Programmed the ESP32 using Arduino IDE with Wi-Fi credentials, Firebase configuration, authentication details, and sensor/relay pin assignments.</li>
+              <li><strong>Live sensor monitoring:</strong> Configured the ESP32 to read temperature, humidity, and ambient light values and send them to Firebase at regular intervals.</li>
+              <li><strong>Real-time dashboard updates:</strong> Connected the dashboard to the Realtime Database so that sensor readings and bulb status update automatically without manual page refreshes.</li>
+              <li><strong>Manual bulb control:</strong> Enabled users to switch the bulb ON or OFF directly through the dashboard.</li>
+              <li><strong>Automatic bulb control:</strong> Implemented light-dependent control using an adjustable LDR threshold. When the detected light level falls below the threshold, the bulb turns ON; when it rises above the threshold, the bulb turns OFF.</li>
+              <li><strong>Historical data and analytics:</strong> Logged sensor readings over time, displayed temperature, humidity, and ambient-light trends, and enabled historical data export as a CSV file.</li>
             </ul>
+            <p class="distinct-para" style="margin-top: 14px; padding: 12px; background: rgba(244, 63, 94, 0.08); border-left: 3px solid #f43f5e; border-radius: 4px;">
+              <strong>Outcome:</strong> The ESP32 hardware was integrated with the Firebase dashboard, enabling live environmental monitoring, manual and automatic bulb control, historical data visualization, and CSV export through a login-protected interface.
+            </p>
           </div>
 
           <!-- DISTINCT CONTENT BOX 2: PROBLEM STATEMENT -->
@@ -133,10 +144,10 @@
               <span class="pill-badge pill-t5">PAIN POINTS RESOLVED</span>
             </div>
             <ul class="bullet-list-lg t5-bullets">
-              <li><strong>Transient Telemetry Loss:</strong> Basic microcontrollers keep state in volatile RAM; without a cloud time-series database, historical environmental readings disappear completely upon power loss or reboot.</li>
-              <li><strong>Unsynchronized Historical Logs:</strong> Edge microcontrollers lack hardware Real-Time Clocks (RTCs); logging requires network NTP synchronization to timestamp data accurately without clock drift.</li>
-              <li><strong>Rigid Actuation Architectures:</strong> Isolated IoT systems force either purely manual switching or purely automatic hardcoded logic; industrial facilities require seamless mode arbitration between manual overrides and sensor-driven automation.</li>
-              <li><strong>Data Siloing &amp; Proprietary Formats:</strong> IoT cloud dashboards frequently trap sensor logs within proprietary visualizers; engineering teams require standards-compliant RFC 4180 CSV export for computational analysis in Excel, Python, and MATLAB.</li>
+              <li><strong>Bridging Physical Sensors to Cloud Software:</strong> Standalone hardware without cloud integration cannot stream telemetry beyond local serial ports. Task 5 bridges the physical ESP32 to the live Firebase web portal.</li>
+              <li><strong>Eliminating Actuator &amp; Automation Conflicts:</strong> Basic automation sketches create race conditions between manual user commands and automated threshold triggers. Task 5 resolves this with prioritized mode arbitration.</li>
+              <li><strong>Transient Telemetry Loss on Power Cycles:</strong> Microcontrollers lack permanent non-volatile time-series memory; continuous streaming to Firebase <code>/history</code> guarantees persistent records.</li>
+              <li><strong>Unsynchronized Clock Drift:</strong> Without an RTC module, timestamping is unreliable. Task 5 synchronizes Network Time Protocol (NTP) over Wi-Fi to anchor each sample with millisecond precision.</li>
             </ul>
           </div>
 
@@ -509,36 +520,67 @@
             <span class="block-tag">// LAB VERIFICATION PROOF &amp; VIDEO</span>
           </div>
 
-          <!-- WORKING VIDEO CARD -->
-          <div class="t3-video-card" style="border-color: var(--t5-border); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 24px var(--t5-glow);">
-            <div class="t3-video-header" style="background: rgba(244, 63, 94, 0.08); border-bottom: 1px solid var(--t5-border);">
-              <div class="t2-pipeline-title-group">
-                <span class="t3-flow-pulse-dot" style="background: #f43f5e; box-shadow: 0 0 10px #f43f5e;"></span>
-                <h4 style="margin: 0; font-family: var(--font-display); font-size: 1.15rem; color: #f8fafc;">
-                  Working Demonstration Video — Task 5 Firebase Logging, Automation &amp; Data Export
-                </h4>
+          <!-- 3 VIDEOS GRID (HARDWARE OPERATING DEMONSTRATIONS) -->
+          <div class="t5-videos-grid">
+            <!-- Video 1: Manual Control -->
+            <div class="t5-video-card-item">
+              <div class="t5-video-header-sub">
+                <h4>1. Manual Appliance Control</h4>
+                <span class="pill-badge pill-t5">MANUAL MODE</span>
               </div>
-              <span class="pill-badge pill-t5">t5.mp4 LAB VIDEO</span>
-            </div>
-
-            <div class="t3-video-body">
-              <video controls class="t3-video-player" poster="../images/iot/task4_history_chart.png">
-                <source src="../videos/iot/t5.mp4" type="video/mp4">
-                <source src="../vid/t5.mp4" type="video/mp4">
+              <video controls class="t4-video-player-frame" poster="../images/iot/task4_dashboard_telemetry.png">
+                <source src="../videos/iot/t4/manual.mp4" type="video/mp4">
+                <source src="../vid/t4/manual.mp4" type="video/mp4">
                 Your browser does not support HTML5 video playback.
               </video>
+              <div class="t4-video-info-box">
+                <p>Demonstrating manual relay switching via the Smartyy dashboard buttons:</p>
+                <ul class="t3-video-timeline-list">
+                  <li><span class="t5-time-badge">0:00</span><span>Dashboard operating mode set to Manual.</span></li>
+                  <li><span class="t5-time-badge">0:04</span><span>User clicks "Turn Bulb ON": Relay trips, AC lamp illuminates.</span></li>
+                  <li><span class="t5-time-badge">0:08</span><span>User clicks "Turn Bulb OFF": Relay isolates circuit in ~42ms.</span></li>
+                </ul>
+              </div>
+            </div>
 
-              <div class="t3-video-info-panel">
-                <h4>Complete Capstone Verification Demonstrated</h4>
-                <p>
-                  Demonstrating the full operating pipeline: ESP32 sensor acquisition (DHT11 &amp; LDR), dual manual and light-adaptive bulb actuation, real-time telemetry streaming to Firebase, and automated client-side CSV spreadsheet export.
-                </p>
-                <ul class="t3-video-timeline-list" style="list-style: none; padding-left: 0; margin-top: 12px;">
-                  <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;"><span style="color: #f43f5e; font-weight: 700;">▶</span><span><strong>Hardware Overview:</strong> ESP32 DevKit, DHT11 sensor, LDR voltage divider, relay module, and lamp connected and running.</span></li>
-                  <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;"><span style="color: #f43f5e; font-weight: 700;">▶</span><span><strong>Live Telemetry:</strong> Real-time temperature, humidity, and LDR lux values syncing to the cloud and dashboard.</span></li>
-                  <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;"><span style="color: #f43f5e; font-weight: 700;">▶</span><span><strong>Light-Adaptive Automation:</strong> Covering the LDR triggers the bulb ON; uncovering turns the bulb OFF automatically.</span></li>
-                  <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;"><span style="color: #f43f5e; font-weight: 700;">▶</span><span><strong>Cloud Logging Verification:</strong> Inspecting structured real-time telemetry records logged in the database.</span></li>
-                  <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;"><span style="color: #f43f5e; font-weight: 700;">▶</span><span><strong>CSV Data Export:</strong> One-click download generating and saving formatted telemetry spreadsheets for offline analysis.</span></li>
+            <!-- Video 2: Automatic Light-Adaptive Mode -->
+            <div class="t5-video-card-item">
+              <div class="t5-video-header-sub">
+                <h4>2. Automatic Light-Adaptive Mode</h4>
+                <span class="pill-badge pill-t5">AUTOMATIC MODE</span>
+              </div>
+              <video controls class="t4-video-player-frame" poster="../images/iot/task4_history_chart.png">
+                <source src="../videos/iot/t4/automatic.mp4" type="video/mp4">
+                <source src="../vid/t4/automatic.mp4" type="video/mp4">
+                Your browser does not support HTML5 video playback.
+              </video>
+              <div class="t4-video-info-box">
+                <p>Demonstrating autonomous LDR threshold automation without user intervention:</p>
+                <ul class="t3-video-timeline-list">
+                  <li><span class="t5-time-badge">0:00</span><span>Operating mode switched to Automatic in dropdown.</span></li>
+                  <li><span class="t5-time-badge">0:05</span><span>Covering LDR sensor: Lux drops, LDR exceeds threshold (500).</span></li>
+                  <li><span class="t5-time-badge">0:09</span><span>ESP32 trips relay ON instantly. Uncovering sensor turns it OFF.</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Video 3: Live Operating Demonstration -->
+            <div class="t5-video-card-item">
+              <div class="t5-video-header-sub">
+                <h4>3. Full Live Operating Demo</h4>
+                <span class="pill-badge pill-t5">COMPLETE PIPELINE</span>
+              </div>
+              <video controls class="t4-video-player-frame" poster="../images/iot/task4_login.png">
+                <source src="../videos/iot/t4/demo.mp4" type="video/mp4">
+                <source src="../vid/t4/demo.mp4" type="video/mp4">
+                Your browser does not support HTML5 video playback.
+              </video>
+              <div class="t4-video-info-box">
+                <p>Comprehensive walkthrough of the entire physical prototype &amp; cloud stream:</p>
+                <ul class="t3-video-timeline-list">
+                  <li><span class="t5-time-badge">0:00</span><span>Hardware inspection: ESP32, DHT11, LDR, relay, and lamp.</span></li>
+                  <li><span class="t5-time-badge">0:15</span><span>Firebase login authentication and live telemetry synchronization.</span></li>
+                  <li><span class="t5-time-badge">0:45</span><span>Dual-axis telemetry graph and historical CSV export inspection.</span></li>
                 </ul>
               </div>
             </div>
@@ -2092,31 +2134,94 @@ document.getElementById(&quot;csvBtn&quot;).addEventListener(&quot;click&quot;, 
           </div>
         </section>
 
-        <!-- 8. FINAL LEARNING REFLECTION & SOURCE REPOSITORY -->
+        <!-- 8. SUMMARY OF BOTH TASKS, OVERALL CONCLUSION & SOURCE REPOSITORY -->
         <section class="content-block">
           <div class="block-header">
             <div class="title-with-num">
               <span class="badge-num num-t5">08</span>
-              <h2>Final Learning Reflection &amp; Source Repository</h2>
+              <h2>Summary of Both Tasks: Smart IoT Monitoring System</h2>
             </div>
-            <span class="block-tag">// CAPSTONE SYNTHESIS</span>
+            <span class="block-tag">// ARCHITECTURAL COMPARISON &amp; CAPSTONE SYNTHESIS</span>
           </div>
 
-          <!-- REFLECTION QUOTE -->
-          <div class="reflection-card reflection-t5">
+          <div class="summary-table-wrap">
+            <table class="summary-compare-table">
+              <thead>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Task 4</th>
+                  <th>Task 5</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Main focus</td>
+                  <td>Software development and deployment</td>
+                  <td>Hardware integration and automation</td>
+                </tr>
+                <tr>
+                  <td>Platform</td>
+                  <td>Firebase Hosting, Authentication, Realtime Database</td>
+                  <td>ESP32, Arduino IDE, sensors and relay</td>
+                </tr>
+                <tr>
+                  <td>Sensor data</td>
+                  <td>Placeholder values</td>
+                  <td>Live temperature, humidity and light readings</td>
+                </tr>
+                <tr>
+                  <td>Bulb control</td>
+                  <td>Dashboard interface prepared</td>
+                  <td>Functional manual and automatic control</td>
+                </tr>
+                <tr>
+                  <td>Data storage</td>
+                  <td>Database structure created</td>
+                  <td>Live and historical readings recorded</td>
+                </tr>
+                <tr>
+                  <td>Analytics</td>
+                  <td>Dashboard foundation prepared</td>
+                  <td>Historical charts and CSV export</td>
+                </tr>
+                <tr>
+                  <td>Final result</td>
+                  <td>Deployed, login-protected dashboard</td>
+                  <td>Complete working IoT monitoring and control system</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- OVERALL CONCLUSION -->
+          <div class="distinct-content-box box-t5" style="margin-top: 22px;">
+            <div class="box-header-row">
+              <div class="title-with-num">
+                <span class="badge-num num-t5">💡</span>
+                <h2>Overall Conclusion</h2>
+              </div>
+              <span class="pill-badge pill-t5">SYSTEM SYNTHESIS</span>
+            </div>
+            <blockquote class="reflection-quote" style="margin: 0; font-size: 0.96rem; line-height: 1.65; color: #f1f5f9;">
+              "Task 4 established the software foundation by creating a secure, web-based monitoring dashboard backed by Firebase. Task 5 extended this foundation by integrating the ESP32 with environmental sensors and a relay-controlled bulb, enabling real-time data transmission, remote appliance control, automatic light-based switching, and historical data analysis. Together, these tasks produced an end-to-end IoT-based Smart Monitoring and Lighting Control System that connects physical sensors and appliances to a web dashboard through Firebase."
+            </blockquote>
+          </div>
+
+          <!-- STUDENT REFLECTION -->
+          <div class="reflection-card reflection-t5" style="margin-top: 22px;">
             <div class="reflection-header">
               <div class="reflection-badge">
-                <span class="reflection-icon">💡</span>
+                <span class="reflection-icon">🎓</span>
                 <span class="reflection-label">CAPSTONE REFLECTION</span>
               </div>
               <span class="pill-badge pill-t5">KEY TAKEAWAY</span>
             </div>
-            <blockquote class="reflection-quote">
+            <p style="margin: 0; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1;">
               "Building this complete capstone system brought together embedded C++ programming, cloud database architecture, and frontend data engineering. Solving practical challenges—such as synchronizing NTP clock time across Wi-Fi, structuring non-destructive NoSQL logs, arbitrating between manual and automated control modes, and streaming RFC 4180 CSV files directly in browser memory—provided deep, end-to-end understanding of modern cyber-physical IoT platforms."
-            </blockquote>
+            </p>
           </div>
 
-          <!-- SOURCE REPOSITORY (EXACT LINK REQUESTED BY USER) -->
+          <!-- SOURCE REPOSITORY -->
           <div class="repo-banner-box" style="margin-top: 24px;">
             <div class="repo-text">
               <h4>Task 5 Source Repository &amp; Production Platform</h4>
@@ -2129,7 +2234,7 @@ document.getElementById(&quot;csvBtn&quot;).addEventListener(&quot;click&quot;, 
               <a href="https://smartyy-e6f48.web.app/" target="_blank" rel="noopener noreferrer" class="btn-smartyy-redirect">
                 Visit Smartyy Website ↗
               </a>
-              <a href="https://github.com/Night07Owl/Portfolio" target="_blank" rel="noopener noreferrer" class="btn-repo btn-t5" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; font-weight: 600; text-decoration: none;">
+              <a href="https://github.com/Night07Owl/Smartyy" target="_blank" rel="noopener noreferrer" class="btn-repo btn-t5" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; font-weight: 600; text-decoration: none;">
                 GitHub Repository ↗
               </a>
             </div>
