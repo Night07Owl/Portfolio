@@ -5336,13 +5336,17 @@ function toggleManualButtonsState(isManual) {
             <div class="evidence-photo-card photo-card-full">
               <div class="photo-img-wrap-fit" style="min-height: 340px; max-height: 440px; background: #160e05;">
                 <img src="images/iot/task4_firebase_rtdb_tree.png" alt="Google Firebase Realtime Database console showing the full JSON cluster tree with control, current, and history nodes" style="max-height: 400px;">
-                <span class="photo-state-badge state-on">● FIREBASE REALTIME DATABASE JSON TREE (DATA.PNG)</span>
+                <span class="photo-state-badge state-on">● FIREBASE REALTIME DATABASE LIVE CONSOLE</span>
               </div>
               <div class="photo-card-info">
                 <h4>Screenshots of the Firebase Realtime Database (JSON Cluster Tree)</h4>
                 <p class="photo-simple-explain">
                   Live screenshot of the Google Firebase Realtime Database console showing the hierarchical NoSQL JSON tree. Highlights the active endpoints: <code>/control</code> (mode, bulb, ldrThreshold), <code>/current</code> (temperature, humidity, ldr, bulb, mode), and <code>/history</code> (timestamped telemetry push objects).
                 </p>
+                <div style="margin-top: 12px; padding: 10px 14px; background: rgba(255, 138, 0, 0.08); border: 1px solid rgba(255, 138, 0, 0.25); border-radius: 6px; display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                  <span style="font-size: 0.82rem; color: #f8fafc; font-weight: 600;">🔗 Realtime Database Endpoint:</span>
+                  <a href="https://smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app/" target="_blank" rel="noopener noreferrer" style="color: #ff8a00; text-decoration: underline; word-break: break-all; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600;">https://smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app/ ↗</a>
+                </div>
               </div>
             </div>
 
@@ -6221,14 +6225,18 @@ function toggleManualButtonsState(isManual) {
               <!-- Screenshot: Firebase Log Data Tree -->
               <div class="evidence-photo-card photo-card-full">
                 <div class="photo-img-wrap-fit">
-                  <img src="images/iot/task4_firebase_rtdb_tree.png" alt="Screenshots of the Firebase log data showing history nodes with temperature, humidity, ldr, bulb, and mode">
+                  <img src="images/iot/task5_firebase_history_log.png" alt="Screenshots of the Firebase log data showing history nodes with temperature, humidity, ldr, bulb, and mode">
                   <span class="photo-state-badge state-on">● SCREENSHOTS OF THE FIREBASE LOG DATA (HISTORY CLUSTER)</span>
                 </div>
                 <div class="photo-card-info">
                   <h4>Screenshots of the Firebase Log Data (Historical Telemetry Nodes)</h4>
                   <p class="photo-simple-explain">
-                    Verified Firebase Console screenshot showing the historical data logging records under <code>/history</code>. Each push ID stores timestamped readings of Temperature, Humidity, LDR raw ADC, Bulb State, and Operating Mode.
+                    Verified Firebase Console screenshot showing the historical data logging records under <code>/history</code>. Each push ID stores timestamped readings of Temperature (22.6°C), Humidity (50%), LDR raw ADC (2186), Bulb State (false), and Operating Mode (manual).
                   </p>
+                  <div style="margin-top: 12px; padding: 10px 14px; background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.25); border-radius: 6px; display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                    <span style="font-size: 0.82rem; color: #f8fafc; font-weight: 600;">🔗 Realtime Database Endpoint:</span>
+                    <a href="https://smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app/" target="_blank" rel="noopener noreferrer" style="color: #fb7185; text-decoration: underline; word-break: break-all; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600;">https://smartyy-e6f48-default-rtdb.asia-southeast1.firebasedatabase.app/ ↗</a>
+                  </div>
                 </div>
               </div>
 
